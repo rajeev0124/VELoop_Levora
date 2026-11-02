@@ -66,9 +66,18 @@ const LevelDashboard = () => {
 
             <div className={styles.navRight}>
               {data && (
-                <div className={styles.walletPill}>
-                  <img src="/assets/xp-1.svg" alt="XP" className={styles.walletSvg} />
-                  <span className={styles.walletVal}>{data.currentXP?.toLocaleString()} XP</span>
+                <div
+                  className={styles.walletPill}
+                  onClick={triggerLevelUp}
+                  title="Your Current XP Balance — Click to inspect"
+                  role="button"
+                  tabIndex={0}
+                >
+                  <div className={styles.walletIconWrap}>
+                    <img src="/assets/xp-1.svg" alt="" aria-hidden="true" className={styles.walletSvg} />
+                  </div>
+                  <span className={styles.walletVal}>{data.currentXP?.toLocaleString()}</span>
+                  <span className={styles.walletUnit}>XP</span>
                 </div>
               )}
               <button

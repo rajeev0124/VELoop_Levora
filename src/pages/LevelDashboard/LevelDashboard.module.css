@@ -5,21 +5,34 @@
 
 /* Top Sticky Navbar */
 .navbar {
-  background: rgba(7, 9, 19, 0.95);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--border);
+  background: linear-gradient(180deg, rgba(14, 10, 26, 0.92) 0%, rgba(8, 6, 18, 0.96) 100%);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border-bottom: 1px solid rgba(168, 85, 247, 0.18);
   position: sticky;
   top: 0;
   z-index: 100;
-  padding: 14px 0;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.55);
+  padding: 12px 0;
+  box-shadow: 0 6px 28px rgba(0, 0, 0, 0.65);
+  transition: all var(--transition-normal);
+}
+
+.navbar::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(168, 85, 247, 0.35) 25%, rgba(251, 191, 36, 0.35) 50%, rgba(168, 85, 247, 0.35) 75%, transparent 100%);
+  pointer-events: none;
 }
 
 .navInner {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 12px;
 }
 
 .brand {
@@ -28,31 +41,42 @@
   gap: 10px;
   cursor: pointer;
   text-decoration: none;
+  flex-shrink: 0;
+  transition: transform var(--transition-fast);
+}
+
+.brand:hover {
+  transform: scale(1.02);
 }
 
 .brandLogoImg {
   width: 32px;
   height: 32px;
   object-fit: contain;
-  filter: drop-shadow(0 0 10px rgba(168, 85, 247, 0.55));
+  filter: drop-shadow(0 0 12px rgba(168, 85, 247, 0.6));
 }
 
 .brandName {
   font-size: 19px;
   font-weight: 900;
-  color: var(--text-primary);
-  letter-spacing: -0.01em;
+  color: #FFFFFF;
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, #FFFFFF 40%, #E2E8F0 75%, #C084FC 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .brandSub {
   font-size: 10px;
   font-weight: 800;
   color: var(--purple-light);
-  background: var(--purple-soft);
-  border: 1px solid var(--border-purple);
-  padding: 2px 8px;
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.22) 0%, rgba(126, 34, 206, 0.3) 100%);
+  border: 1px solid rgba(168, 85, 247, 0.4);
+  padding: 2.5px 8px;
   border-radius: var(--radius-full);
-  letter-spacing: 0.1em;
+  letter-spacing: 0.12em;
+  box-shadow: 0 0 10px rgba(168, 85, 247, 0.25);
+  text-transform: uppercase;
 }
 
 .navLinks {
@@ -92,12 +116,13 @@
 .navRight {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
+  flex-shrink: 0;
 }
 
 .navNotifBtn {
-  background: var(--bg-card);
-  border: 1px solid var(--border-purple);
+  background: linear-gradient(135deg, rgba(30, 20, 52, 0.85) 0%, rgba(14, 10, 26, 0.95) 100%);
+  border: 1px solid rgba(168, 85, 247, 0.3);
   width: 36px;
   height: 36px;
   border-radius: 50%;
@@ -108,64 +133,99 @@
   cursor: pointer;
   color: var(--text-secondary);
   transition: all var(--transition-fast);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  flex-shrink: 0;
 }
 
 .navNotifBtn:hover {
   background: var(--purple-soft);
-  color: #fff;
-  border-color: var(--purple);
-  transform: scale(1.05);
+  color: #FFFFFF;
+  border-color: var(--purple-light);
+  transform: scale(1.06);
+  box-shadow: 0 4px 16px rgba(168, 85, 247, 0.4);
 }
 
 .navNotifDot {
   position: absolute;
-  top: 7px;
-  right: 7px;
+  top: 6px;
+  right: 6px;
   width: 8px;
   height: 8px;
   border-radius: 50%;
   background: var(--gold);
-  box-shadow: 0 0 8px rgba(251, 191, 36, 0.8);
+  box-shadow: 0 0 8px rgba(251, 191, 36, 0.9);
+  border: 1.5px solid #0E0918;
   animation: pulseSlow 2s infinite ease-in-out;
 }
 
 .walletPill {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 8px;
-  background: var(--bg-card);
-  border: 1px solid var(--border-gold);
-  padding: 6px 14px;
+  gap: 6px;
+  background: linear-gradient(135deg, rgba(46, 32, 12, 0.85) 0%, rgba(20, 14, 6, 0.95) 100%);
+  border: 1px solid rgba(251, 191, 36, 0.5);
+  padding: 5px 12px;
   border-radius: var(--radius-full);
-  box-shadow: 0 0 14px rgba(251, 191, 36, 0.22);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5), 0 0 12px rgba(251, 191, 36, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: all var(--transition-fast);
 }
 
-.walletSvg {
-  width: 18px;
-  height: 18px;
-  object-fit: contain;
+.walletPill:hover {
+  transform: translateY(-1px);
+  border-color: rgba(251, 191, 36, 0.8);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6), 0 0 18px rgba(251, 191, 36, 0.4);
 }
 
-.walletVal {
-  font-size: var(--text-xs);
-  font-weight: 800;
-  color: var(--gold);
-}
-
-.userAvatar {
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  background: var(--bg-elevated);
-  border: 2px solid var(--purple);
-  box-shadow: 0 0 14px rgba(168, 85, 247, 0.45);
+.walletIconWrap {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 16px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(251, 191, 36, 0.3) 0%, transparent 70%);
+}
+
+.walletSvg {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 6px rgba(251, 191, 36, 0.6));
+}
+
+.walletVal {
+  font-size: 13px;
+  font-weight: 900;
+  color: #FFFBEB;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+.walletUnit {
+  font-size: 10px;
+  font-weight: 800;
+  color: var(--gold);
+  letter-spacing: 0.06em;
+}
+
+.userAvatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(38, 24, 66, 0.9) 0%, rgba(16, 10, 30, 0.95) 100%);
+  border: 1.5px solid rgba(168, 85, 247, 0.5);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.5), 0 0 12px rgba(168, 85, 247, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
   position: relative;
   transition: all var(--transition-fast);
+  flex-shrink: 0;
 }
 
 .userAvatar::after {
@@ -173,17 +233,109 @@
   position: absolute;
   bottom: 0;
   right: 0;
-  width: 9px;
-  height: 9px;
-  background-color: var(--green);
-  border: 2px solid var(--bg-body);
+  width: 10px;
+  height: 10px;
+  background-color: #00E676;
+  border: 2px solid #090B16;
   border-radius: 50%;
-  box-shadow: 0 0 6px var(--green);
+  box-shadow: 0 0 8px #00E676;
 }
 
 .userAvatar:hover {
   transform: scale(1.08);
+  border-color: var(--purple-light);
   box-shadow: 0 0 20px rgba(168, 85, 247, 0.65);
+}
+
+/* Mobile Navbar Overrides */
+@media (max-width: 640px) {
+  .navbar {
+    padding: 10px 0;
+  }
+
+  .navInner {
+    gap: 8px;
+  }
+
+  .brand {
+    gap: 7px;
+  }
+
+  .brandLogoImg {
+    width: 28px;
+    height: 28px;
+  }
+
+  .brandName {
+    font-size: 16px;
+  }
+
+  .brandSub {
+    font-size: 8px;
+    padding: 2px 6px;
+    letter-spacing: 0.1em;
+  }
+
+  .navRight {
+    gap: 7px;
+  }
+
+  .walletPill {
+    padding: 4px 9px;
+    gap: 5px;
+  }
+
+  .walletIconWrap {
+    width: 17px;
+    height: 17px;
+  }
+
+  .walletSvg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .walletVal {
+    font-size: 11.5px;
+  }
+
+  .walletUnit {
+    font-size: 9px;
+  }
+
+  .navNotifBtn {
+    width: 32px;
+    height: 32px;
+  }
+
+  .userAvatar {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+@media (max-width: 374px) {
+  .brandSub {
+    display: none;
+  }
+
+  .walletPill {
+    padding: 3px 7px;
+  }
+
+  .walletVal {
+    font-size: 11px;
+  }
+
+  .navRight {
+    gap: 5px;
+  }
+
+  .navNotifBtn,
+  .userAvatar {
+    width: 30px;
+    height: 30px;
+  }
 }
 
 /* Main Container Layout (Section 39) */
