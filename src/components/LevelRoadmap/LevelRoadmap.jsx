@@ -149,7 +149,7 @@ const LevelRoadmap = ({ data }) => {
       <div className={styles.sectionHead}>
         <div className={styles.titleWrap}>
           <div className={styles.headerBadge}>
-            <Sparkles size={12} className={styles.sparkleIcon} />
+            <Sparkle size={12} weight="fill" className={styles.sparkleIcon} />
             <span>PROGRESSION PIPELINE</span>
           </div>
           <h2 id="roadmap-heading" className="section-title">
