@@ -9,6 +9,7 @@ import {
   Crown,
   Fire,
   Check,
+  MapPin,
 } from '@phosphor-icons/react'
 import styles from './LevelRoadmap.module.css'
 import { levelStateConfig } from '../../data/levelData'
@@ -189,7 +190,7 @@ const LevelRoadmap = ({ data }) => {
               }}
               title="Jump to Current Level"
             >
-              <MapPin size={13} />
+              <MapPin size={13} weight="duotone" />
               <span>Current (L{currentLvl})</span>
             </button>
             <div className={styles.chevronGroup}>
