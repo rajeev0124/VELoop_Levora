@@ -48,20 +48,20 @@ const NextLevelReward = ({ data, onTriggerLevelUp }) => {
 
         <div className={styles.vaultArtworkWrap}>
           <img
-            src="/assets/safe-1.svg"
+            src="/assets/safe-vault-3d.png"
             alt={`Level ${targetLevel} Reward Vault`}
             className={styles.vaultLargeImg}
           />
 
-          {/* Floating Prismatic Gems Cluster */}
-          <div className={styles.prismaticGemCluster} aria-hidden="true">
-            <span className={`${styles.floatingGem} ${styles.gemPurple}`}>
-              <Gem size={18} />
+          {/* Floating Prismatic Reward Rings Constellation (Matching User's Reference) */}
+          <div className={styles.orbitalConstellation} aria-hidden="true">
+            <span className={`${styles.orbitRingBadge} ${styles.orbitPurple}`} title="Rare Amethyst Gemstones">
+              <Gem size={15} />
             </span>
-            <span className={`${styles.floatingGem} ${styles.gemGold}`}>
+            <span className={`${styles.orbitRingBadge} ${styles.orbitGold}`} title="Imperial Gold Sparkles">
               <Sparkles size={16} />
             </span>
-            <span className={`${styles.floatingGem} ${styles.gemCyan}`}>
+            <span className={`${styles.orbitRingBadge} ${styles.orbitCyan}`} title="Cyber Cyan Diamonds">
               <Gem size={14} />
             </span>
           </div>
