@@ -5,7 +5,7 @@ import {
   Flame,
   Zap,
 } from 'lucide-react'
-import LevelBadgeHex from '../shared/LevelBadgeHex'
+import TierMedallion from '../shared/TierMedallion'
 import InfoTooltip from '../InfoTooltip/InfoTooltip'
 import styles from './LevelHero.module.css'
 
@@ -45,7 +45,7 @@ const LevelHero = ({ data }) => {
       <div className={styles.levelCardTop}>
         <div className={styles.levelMainInfo}>
           <div className={styles.badgeWrapper}>
-            <LevelBadgeHex level={data.currentLevel || 5} size={76} />
+            <TierMedallion level={data.currentLevel || 5} size={80} status="current" showStatusCorner={false} />
           </div>
 
           <div className={styles.levelMeta}>

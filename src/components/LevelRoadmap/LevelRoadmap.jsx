@@ -15,6 +15,7 @@ import {
 } from 'lucide-react'
 import styles from './LevelRoadmap.module.css'
 import { levelStateConfig } from '../../data/levelData'
+import TierMedallion from '../shared/TierMedallion'
 
 /**
  * Rich Lore & Milestone Perks metadata for each level
@@ -301,30 +302,12 @@ const LevelRoadmap = ({ data }) => {
 
                   {/* Emblem Halo Centerpiece */}
                   <div className={styles.emblemHaloWrap}>
-                    <div className={styles.emblemBezel}>
-                      <img
-                        src={lvl.badgeUrl}
-                        alt=""
-                        aria-hidden="true"
-                        className={styles.badgeSvg}
-                        loading="lazy"
-                      />
-                      {nodeCompleted && (
-                        <div className={styles.badgeCheckCorner}>
-                          <Check size={11} strokeWidth={3} />
-                        </div>
-                      )}
-                      {nodeLocked && !isApex && (
-                        <div className={styles.badgeLockCorner}>
-                          <Lock size={10} />
-                        </div>
-                      )}
-                      {isApex && (
-                        <div className={styles.apexCrownBadge}>
-                          <Crown size={12} />
-                        </div>
-                      )}
-                    </div>
+                    <TierMedallion
+                      level={lvl.level}
+                      size={54}
+                      status={nodeCompleted ? 'completed' : nodeCurrent ? 'current' : nodeNext ? 'next' : 'locked'}
+                      showStatusCorner={true}
+                    />
                   </div>
 
                   {/* Level Tag & Tier Name */}
@@ -375,11 +358,11 @@ const LevelRoadmap = ({ data }) => {
           {/* Column 1: Tier Identity & Lore */}
           <div className={styles.dockTierCol}>
             <div className={styles.dockBadgeWrapper}>
-              <img
-                src={activeLevelData.badgeUrl}
-                alt=""
-                aria-hidden="true"
-                className={styles.dockBadgeImg}
+              <TierMedallion
+                level={activeLevelData.level}
+                size={86}
+                status={isCompleted ? 'completed' : isCurrent ? 'current' : isNext ? 'next' : 'locked'}
+                showStatusCorner={false}
               />
               {activeLevelData.level === 10 && (
                 <div className={styles.dockApexGlow} aria-hidden="true" />

@@ -700,16 +700,16 @@
 }
 
 .dockBadgeWrapper {
-  width: 78px;
-  height: 78px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(32, 22, 58, 0.9) 0%, rgba(12, 9, 24, 0.95) 100%);
-  border: 2px solid var(--border-purple);
+  width: 102px;
+  height: 108px;
+  border-radius: 22px;
+  background: radial-gradient(circle at 50% 35%, rgba(46, 30, 78, 0.75) 0%, rgba(13, 9, 24, 0.98) 100%);
+  border: 1.5px solid rgba(168, 85, 247, 0.35);
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  box-shadow: 0 0 20px rgba(168, 85, 247, 0.35);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.65), 0 0 24px rgba(168, 85, 247, 0.22);
   position: relative;
 }
 
@@ -1131,8 +1131,9 @@
   }
 
   .dockBadgeWrapper {
-    width: 66px;
-    height: 66px;
+    width: 88px;
+    height: 94px;
+    border-radius: 18px;
   }
 
   .dockBadgeImg {
@@ -1165,13 +1166,15 @@
   }
 
   .dockTierCol {
-    flex-direction: column;
-    gap: 10px;
+    flex-direction: row;
+    align-items: center;
+    gap: 14px;
   }
 
   .dockBadgeWrapper {
-    width: 56px;
-    height: 56px;
+    width: 78px;
+    height: 84px;
+    border-radius: 16px;
   }
 
   .dockBadgeImg {

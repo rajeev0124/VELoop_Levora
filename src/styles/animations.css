@@ -102,6 +102,12 @@
   to   { transform: rotate(360deg); }
 }
 
+/* ---------- Pulse Slow ---------- */
+@keyframes pulseSlow {
+  0%, 100% { opacity: 0.85; transform: scale(1); }
+  50%      { opacity: 1; transform: scale(1.04); }
+}
+
 /* ---------- Utility Classes ---------- */
 .animate-fadeInUp  { animation: fadeInUp 0.5s ease both; }
 .animate-fadeIn    { animation: fadeIn 0.4s ease both; }

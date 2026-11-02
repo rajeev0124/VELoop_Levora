@@ -1,12 +1,17 @@
 import React, { useState } from 'react'
-import { Coins, Gem, ArrowRight, Sparkles } from 'lucide-react'
+import { Coins, Gem, ArrowRight, Sparkles, Lock, ShieldCheck } from 'lucide-react'
 import styles from './NextLevelReward.module.css'
 import InfoTooltip from '../InfoTooltip/InfoTooltip'
 
 const NextLevelReward = ({ data, onTriggerLevelUp }) => {
   const [isHovered, setIsHovered] = useState(false)
-  const targetLevel = data.nextLevel || 5
-  const pct = data.xpPercent
+  const targetLevel = data?.nextLevel || 6
+  const targetLevelName = data?.nextLevelName || 'Platinum Hero'
+  const pct = data?.xpPercent || 80
+  const xpRemaining = data?.xpRemaining || 1580
+
+  // Dynamic reward values from nextLevelData
+  const nextReward = data?.nextLevelData?.reward || { type: 'Spins', amount: 2 }
 
   return (
     <aside
@@ -18,50 +23,85 @@ const NextLevelReward = ({ data, onTriggerLevelUp }) => {
       {/* Ambient background glow */}
       <div className={styles.glowAura} aria-hidden="true" />
 
-      {/* Header matching Screen 1 */}
+      {/* Header */}
       <div className={styles.header}>
-        <div>
-          <div className={styles.levelTag}>LEVEL {String(targetLevel).padStart(2, '0')} REWARDS</div>
+        <div className={styles.headerLeft}>
+          <div className={styles.levelTagRow}>
+            <span className={styles.levelTag}>LEVEL {String(targetLevel).padStart(2, '0')} REWARDS</span>
+            <span className={styles.lockedPill}>
+              <Lock size={10} />
+              <span>LOCKED VAULT</span>
+            </span>
+          </div>
           <h2 id="reward-vault-heading" className={styles.mainHeading}>
-            Amazing rewards await you!
+            {targetLevelName} Milestone Vault
           </h2>
         </div>
-        <InfoTooltip text="Reach Level 05 to unlock this reward chest containing 500 VEs and 25 Gems. Values are credited automatically upon reaching the XP milestone." />
+        <InfoTooltip text={`Achieve Level ${String(targetLevel).padStart(2, '0')} to unlock this high-tier milestone vault. Rewards are credited automatically upon reaching the XP requirement.`} />
       </div>
 
-      {/* Visual Chest + Purple Gems Centerpiece from Screen 1 */}
-      <div className={styles.chestGraphicCenter}>
-        <div className={styles.chestArtwork}>
+      {/* Grand 3D Vault Stage Centerpiece */}
+      <div className={styles.vaultStageCenter}>
+        {/* Ambient Backlight Beam */}
+        <div className={styles.radialSpotlight} aria-hidden="true" />
+        <div className={styles.energyRings} aria-hidden="true" />
+
+        <div className={styles.vaultArtworkWrap}>
           <img
             src="/assets/safe-1.svg"
-            alt="Level 05 Reward Chest"
-            className={styles.chestImg}
+            alt={`Level ${targetLevel} Reward Vault`}
+            className={styles.vaultLargeImg}
           />
-          <div className={styles.floatingGemCluster} aria-hidden="true">
-            <span className={styles.gemSparkle}>
-              <Gem size={16} color="#A08CFF" />
+
+          {/* Floating Prismatic Gems Cluster */}
+          <div className={styles.prismaticGemCluster} aria-hidden="true">
+            <span className={`${styles.floatingGem} ${styles.gemPurple}`}>
+              <Gem size={18} />
             </span>
-            <span className={styles.gemSparkle} style={{ animationDelay: '0.4s' }}>
-              <Sparkles size={14} color="#F5C842" />
+            <span className={`${styles.floatingGem} ${styles.gemGold}`}>
+              <Sparkles size={16} />
+            </span>
+            <span className={`${styles.floatingGem} ${styles.gemCyan}`}>
+              <Gem size={14} />
             </span>
           </div>
         </div>
 
+        {/* Illuminated Pedestal Base */}
+        <div className={styles.pedestalReflection} aria-hidden="true" />
+
+        {/* High-Contrast Metallic Reward Pills */}
         <div className={styles.rewardSummaryRow}>
-          <span className={styles.rewardPillGold}>
-            <Coins size={13} color="#F5C842" aria-hidden="true" /> +500 VEs
-          </span>
-          <span className={styles.rewardPillPurple}>
-            <Gem size={13} color="#A08CFF" aria-hidden="true" /> +25 Gems
-          </span>
+          <div className={styles.rewardPillGold}>
+            <div className={styles.pillIconWrapGold}>
+              <Coins size={14} />
+            </div>
+            <div className={styles.pillTextCol}>
+              <span className={styles.pillAmountGold}>+500 VEs</span>
+              <span className={styles.pillLabel}>Token Grant</span>
+            </div>
+          </div>
+
+          <div className={styles.rewardPillPurple}>
+            <div className={styles.pillIconWrapPurple}>
+              <Gem size={14} />
+            </div>
+            <div className={styles.pillTextCol}>
+              <span className={styles.pillAmountPurple}>+25 Gems</span>
+              <span className={styles.pillLabel}>Rare Currency</span>
+            </div>
+          </div>
         </div>
       </div>
 
       {/* Progress towards unlock */}
       <div className={styles.progressWrap}>
         <div className={styles.progressText}>
-          <span>{pct}% Unlocked</span>
-          <span className="text-gold font-bold">{data.xpRemaining?.toLocaleString()} XP remaining</span>
+          <span className={styles.unlockedText}>
+            <ShieldCheck size={12} className={styles.shieldGreen} />
+            {pct}% Unlocked
+          </span>
+          <span className={styles.remainingText}>{xpRemaining.toLocaleString()} XP remaining</span>
         </div>
         <div
           className={styles.progressTrack}
@@ -71,20 +111,23 @@ const NextLevelReward = ({ data, onTriggerLevelUp }) => {
           aria-valuemax={100}
           aria-label={`Reward chest unlock progress: ${pct}%`}
         >
-          <div className={styles.progressFill} style={{ width: `${pct}%` }} />
+          <div className={styles.progressFill} style={{ width: `${pct}%` }}>
+            <span className={styles.progressBarGlow} />
+          </div>
         </div>
       </div>
 
-      {/* "View Rewards Preview" Action Button from Screen 1 */}
+      {/* Action Button */}
       <div className={styles.ctaRow}>
         <button
           type="button"
           className="ve-btn ve-btn-gold"
           onClick={onTriggerLevelUp}
-          style={{ width: '100%', padding: '9px 16px', fontSize: '13px' }}
+          style={{ width: '100%', padding: '12px 18px', fontSize: '13px' }}
           aria-label="View Rewards Preview modal"
         >
-          View Rewards Preview <ArrowRight size={14} aria-hidden="true" />
+          <span>View Rewards Preview</span>
+          <ArrowRight size={14} aria-hidden="true" />
         </button>
       </div>
 

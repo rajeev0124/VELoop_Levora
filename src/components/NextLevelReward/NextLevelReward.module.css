@@ -1,39 +1,39 @@
 /* ============================================================
-   NEXT LEVEL REWARD — Compact Executive Milestone Vault
+   NEXT LEVEL REWARD — Grand 3D Executive Milestone Vault
    ============================================================ */
 
 .card {
-  background: linear-gradient(135deg, rgba(24, 18, 44, 0.85) 0%, rgba(65, 22, 110, 0.70) 100%);
+  background: linear-gradient(145deg, rgba(24, 18, 48, 0.90) 0%, rgba(55, 18, 92, 0.78) 100%);
   backdrop-filter: blur(20px) saturate(180%);
   -webkit-backdrop-filter: blur(20px) saturate(180%);
-  border: 1px solid var(--border-purple);
+  border: 1px solid rgba(168, 85, 247, 0.35);
   border-radius: var(--radius-xl);
-  padding: 22px 24px;
-  box-shadow: 0 10px 36px rgba(168, 85, 247, 0.28), inset 0 1px 0 rgba(192, 132, 252, 0.30);
+  padding: 24px;
+  box-shadow: 0 14px 44px rgba(0, 0, 0, 0.65), 0 0 32px rgba(168, 85, 247, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.15);
   position: relative;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 14px;
+  gap: 16px;
   height: 100%;
-  transition: border-color var(--transition-normal), box-shadow var(--transition-normal), transform var(--transition-normal);
+  transition: all var(--transition-normal);
 }
 
 .card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 16px 48px rgba(168, 85, 247, 0.45), inset 0 1px 0 rgba(192, 132, 252, 0.45);
-  border-color: var(--purple-light);
+  box-shadow: 0 18px 56px rgba(0, 0, 0, 0.75), 0 0 40px rgba(168, 85, 247, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  border-color: rgba(192, 132, 252, 0.6);
 }
 
 .glowAura {
   position: absolute;
-  top: 50%;
+  top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 140px;
-  height: 140px;
-  background: radial-gradient(circle, rgba(168, 85, 247, 0.25) 0%, rgba(251, 191, 36, 0.15) 45%, transparent 70%);
+  width: 260px;
+  height: 260px;
+  background: radial-gradient(circle, rgba(168, 85, 247, 0.3) 0%, rgba(251, 191, 36, 0.15) 45%, transparent 70%);
   border-radius: 50%;
   pointer-events: none;
 }
@@ -42,93 +42,254 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  z-index: 2;
+}
+
+.headerLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.levelTagRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .levelTag {
   font-size: 10px;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
   color: var(--purple-light);
   font-weight: 800;
-  margin-bottom: 2px;
+}
+
+.lockedPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 9px;
+  font-weight: 800;
+  color: var(--gold);
+  background: var(--gold-soft);
+  border: 1px solid var(--border-gold);
+  padding: 2px 7px;
+  border-radius: var(--radius-full);
 }
 
 .mainHeading {
-  font-size: 16px;
-  font-weight: 800;
-  color: var(--text-primary);
+  font-size: 18px;
+  font-weight: 900;
+  color: #FFFFFF;
   letter-spacing: -0.01em;
-  line-height: 1.2;
+  line-height: 1.25;
 }
 
-/* Chest + Gems Graphic Centerpiece */
-.chestGraphicCenter {
+/* Grand 3D Vault Stage Centerpiece */
+.vaultStageCenter {
   display: flex;
   flex-direction: column;
   align-items: center;
   position: relative;
-  padding: 6px 0;
+  padding: 10px 0 6px;
+  z-index: 2;
 }
 
-.chestArtwork {
+.radialSpotlight {
+  position: absolute;
+  top: 10px;
+  width: 180px;
+  height: 140px;
+  background: radial-gradient(ellipse, rgba(251, 191, 36, 0.25) 0%, rgba(168, 85, 247, 0.15) 50%, transparent 70%);
+  pointer-events: none;
+  filter: blur(14px);
+}
+
+.energyRings {
+  position: absolute;
+  top: 20px;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  border: 1px dashed rgba(251, 191, 36, 0.3);
+  pointer-events: none;
+  animation: rotateClockwise 20s linear infinite;
+}
+
+@keyframes rotateClockwise {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.vaultArtworkWrap {
   position: relative;
-  width: 84px;
-  height: 70px;
+  width: 120px;
+  height: 110px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.chestImg {
-  width: 100%;
-  height: 100%;
+@keyframes vaultFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+.vaultLargeImg {
+  width: 110px;
+  height: 110px;
   object-fit: contain;
-  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.55));
+  filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.75)) drop-shadow(0 0 16px rgba(251, 191, 36, 0.35));
+  animation: vaultFloat 4s ease-in-out infinite;
+  transition: transform 0.4s ease;
 }
 
-.floatingGemCluster {
+.card:hover .vaultLargeImg {
+  transform: translateY(-8px) scale(1.06);
+}
+
+.pedestalReflection {
+  width: 160px;
+  height: 18px;
+  background: radial-gradient(ellipse, rgba(251, 191, 36, 0.5) 0%, rgba(168, 85, 247, 0.2) 45%, transparent 75%);
+  border-radius: 50%;
+  margin-top: -6px;
+  filter: blur(3px);
+}
+
+/* Prismatic Gem Cluster */
+.prismaticGemCluster {
   position: absolute;
-  right: -8px;
-  bottom: 4px;
+  right: -10px;
+  bottom: 8px;
   display: flex;
-  gap: 3px;
+  flex-direction: column;
+  gap: 4px;
 }
 
-.gemSparkle {
-  font-size: 15px;
-  animation: pulseGlow 2s infinite ease-in-out;
+.floatingGem {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid;
 }
 
+@keyframes gemBob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+.gemPurple {
+  background: rgba(168, 85, 247, 0.25);
+  border-color: var(--purple-light);
+  color: var(--purple-light);
+  box-shadow: 0 0 10px rgba(168, 85, 247, 0.6);
+  animation: gemBob 3s ease-in-out infinite;
+}
+
+.gemGold {
+  background: rgba(251, 191, 36, 0.25);
+  border-color: var(--gold);
+  color: var(--gold);
+  box-shadow: 0 0 10px rgba(251, 191, 36, 0.6);
+  animation: gemBob 2.5s ease-in-out infinite 0.4s;
+  margin-left: 8px;
+}
+
+.gemCyan {
+  background: rgba(0, 245, 255, 0.25);
+  border-color: var(--blue);
+  color: var(--blue);
+  box-shadow: 0 0 10px rgba(0, 245, 255, 0.6);
+  animation: gemBob 3.2s ease-in-out infinite 0.8s;
+}
+
+/* High-Contrast Reward Pills */
 .rewardSummaryRow {
   display: flex;
-  gap: 8px;
-  margin-top: 6px;
+  gap: 10px;
+  width: 100%;
+  margin-top: 14px;
 }
 
 .rewardPillGold {
-  background: var(--gold-soft);
-  color: var(--gold);
-  border: 1px solid var(--border-gold);
-  font-size: 11px;
-  font-weight: 800;
-  padding: 3px 10px;
-  border-radius: var(--radius-full);
-  display: inline-flex;
+  flex: 1;
+  display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 8px;
+  background: rgba(251, 191, 36, 0.1);
+  border: 1px solid var(--border-gold);
+  padding: 8px 12px;
+  border-radius: var(--radius-md);
+  box-shadow: 0 0 12px rgba(251, 191, 36, 0.25);
+}
+
+.pillIconWrapGold {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--gold-soft);
+  border: 1px solid var(--border-gold);
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
 }
 
 .rewardPillPurple {
-  background: var(--purple-soft);
-  color: var(--purple-light);
-  border: 1px solid var(--border-purple);
-  font-size: 11px;
-  font-weight: 800;
-  padding: 3px 10px;
-  border-radius: var(--radius-full);
-  display: inline-flex;
+  flex: 1;
+  display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 8px;
+  background: rgba(168, 85, 247, 0.1);
+  border: 1px solid var(--border-purple);
+  padding: 8px 12px;
+  border-radius: var(--radius-md);
+  box-shadow: 0 0 12px rgba(168, 85, 247, 0.25);
+}
+
+.pillIconWrapPurple {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--purple-soft);
+  border: 1px solid var(--border-purple);
+  color: var(--purple-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.pillTextCol {
+  display: flex;
+  flex-direction: column;
+}
+
+.pillAmountGold {
+  font-size: 14px;
+  font-weight: 900;
+  color: var(--gold);
+  line-height: 1.1;
+}
+
+.pillAmountPurple {
+  font-size: 14px;
+  font-weight: 900;
+  color: var(--purple-light);
+  line-height: 1.1;
+}
+
+.pillLabel {
+  font-size: 9px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
 }
 
 /* Progress Wrap */
@@ -136,76 +297,85 @@
   display: flex;
   flex-direction: column;
   gap: 6px;
+  z-index: 2;
 }
 
 .progressText {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   font-size: 11px;
-  color: var(--text-muted);
-  font-weight: 600;
-  font-variant-numeric: tabular-nums;
+}
+
+.unlockedText {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 800;
+  color: var(--green);
+}
+
+.shieldGreen {
+  color: var(--green);
+}
+
+.remainingText {
+  font-weight: 800;
+  color: var(--gold);
 }
 
 .progressTrack {
-  height: 7px;
-  background: rgba(255, 255, 255, 0.05);
+  height: 8px;
+  background: rgba(255, 255, 255, 0.08);
   border-radius: var(--radius-full);
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  position: relative;
 }
 
 .progressFill {
   height: 100%;
   background: var(--grad-gold);
   border-radius: var(--radius-full);
-  transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  transition: width 0.8s ease;
+  box-shadow: 0 0 10px rgba(251, 191, 36, 0.6);
+}
+
+.progressBarGlow {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 12px;
+  background: #FFFFFF;
+  filter: blur(2px);
+  border-radius: var(--radius-full);
 }
 
 .ctaRow {
-  margin-top: 0;
+  z-index: 2;
 }
 
-/* Shimmer */
 .shimmer {
   position: absolute;
-  inset: 0;
-  background: linear-gradient(105deg, transparent 40%, rgba(251, 191, 36, 0.10) 50%, transparent 60%);
-  background-size: 200% 100%;
-  transition: opacity var(--transition-slow);
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    60deg,
+    transparent 0%,
+    transparent 40%,
+    rgba(255, 255, 255, 0.08) 50%,
+    transparent 60%,
+    transparent 100%
+  );
+  transform: rotate(25deg);
   pointer-events: none;
   opacity: 0;
+  transition: opacity 0.3s;
 }
 
 .shimmerActive {
   opacity: 1;
-  animation: shimmer 1.5s ease infinite;
-}
-
-
-/* ============================================================
-   RESPONSIVE OVERRIDES — All breakpoint media queries
-   ============================================================ */
-
-/* mobile < 640px */
-@media (max-width: 639px) {
-  .card {
-    padding: 16px 18px;
-  }
-}
-
-/* xs < 400px */
-@media (max-width: 399px) {
-  .mainHeading {
-    font-size: 14px;
-  }
-
-  .chestArtwork {
-    width: 70px;
-    height: 58px;
-  }
-
-  .rewardSummaryRow {
-    flex-wrap: wrap;
-  }
 }
