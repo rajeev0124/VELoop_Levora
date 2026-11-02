@@ -136,33 +136,8 @@ const LevelDashboard = () => {
 
         {!loading && !error && data && (
           <>
-            {/* FULL-WIDTH DASHBOARD GREETING CARD */}
-            <div className={`${styles.greetingCard} animate-fadeInUp`} style={{ animationDelay: '50ms' }}>
-              <div className={styles.greetingCardAura} aria-hidden="true" />
-              <div className={styles.greetingTextWrap}>
-                <h1 className={styles.greetingTitle}>
-                  Good Morning, VeLooper!
-                </h1>
-                <p className={styles.greetingSub}>
-                  Level up your journey and unlock epic rewards every day.
-                </p>
-              </div>
-              <div className={styles.greetingActions}>
-                <button
-                  type="button"
-                  className={styles.notificationBtn}
-                  onClick={triggerLevelUp}
-                  title="Preview Level Up Celebration"
-                  aria-label="1 Unread Notification - Preview Level Up"
-                >
-                  <BellSimpleRinging size={18} weight="duotone" className={styles.bellIcon} />
-                  <span className={styles.notifBadge} aria-hidden="true">1</span>
-                </button>
-              </div>
-            </div>
-
             {/* ROW 1: Current Level + XP Progress | Next Reward (Locked Reward Vault Card) */}
-            <div id="hero" className={`${styles.heroRewardGrid} animate-fadeInUp`} style={{ animationDelay: '120ms' }}>
+            <div id="hero" className={`${styles.heroRewardGrid} animate-fadeInUp`} style={{ animationDelay: '80ms' }}>
               <section aria-label="Current Level & Daily Boost" className={styles.heroCol}>
                 <LevelHero data={data} onTriggerLevelUp={triggerLevelUp} />
               </section>

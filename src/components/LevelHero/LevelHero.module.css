@@ -1,154 +1,314 @@
 /* ============================================================
-   LEVEL HERO — Unified Executive Progression Master Card
+   LEVEL HERO — AAA Executive Cockpit & Gamified Progression
    ============================================================ */
 
 .masterCard {
-  background: linear-gradient(135deg, rgba(20, 16, 36, 0.80) 0%, rgba(10, 8, 20, 0.90) 100%);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
-  border: 1px solid rgba(168, 85, 247, 0.18);
-  border-radius: var(--radius-xl);
-  padding: 22px 24px;
-  box-shadow: 0 10px 36px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.10);
+  background: linear-gradient(145deg, rgba(20, 15, 36, 0.85) 0%, rgba(10, 8, 20, 0.95) 100%);
+  backdrop-filter: blur(24px) saturate(190%);
+  -webkit-backdrop-filter: blur(24px) saturate(190%);
+  border: 1px solid rgba(168, 85, 247, 0.22);
+  border-radius: 24px;
+  padding: 24px;
+  box-shadow: 0 16px 44px rgba(0, 0, 0, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.12);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 16px;
+  gap: 20px;
   position: relative;
   overflow: hidden;
   height: 100%;
-  transition: border-color var(--transition-normal), box-shadow var(--transition-normal);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .masterCard:hover {
-  border-color: var(--gold);
-  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.75), inset 0 1px 0 rgba(251, 191, 36, 0.25);
+  border-color: rgba(251, 191, 36, 0.5);
+  box-shadow: 0 20px 54px rgba(0, 0, 0, 0.75), 0 0 30px rgba(251, 191, 36, 0.18), inset 0 1px 0 rgba(251, 191, 36, 0.3);
 }
 
+/* Ambient Backlight Glow */
 .cardAura {
   position: absolute;
-  top: -40px;
-  left: -40px;
-  width: 180px;
-  height: 180px;
-  background: radial-gradient(circle, rgba(251, 191, 36, 0.12) 0%, transparent 70%);
+  top: -50px;
+  left: -50px;
+  width: 220px;
+  height: 220px;
+  background: radial-gradient(circle, rgba(251, 191, 36, 0.15) 0%, rgba(168, 85, 247, 0.08) 50%, transparent 70%);
   border-radius: 50%;
   pointer-events: none;
+  filter: blur(24px);
 }
 
-/* Top Section: Level Info */
-.levelCardTop {
+.specularShimmer {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg, transparent 40%, rgba(255, 255, 255, 0.03) 45%, rgba(255, 255, 255, 0.07) 50%, transparent 55%);
+  pointer-events: none;
+  animation: shimmerRay 8s infinite ease-in-out;
+}
+
+/* Top Status Capsule Bar */
+.cockpitTopBar {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
 }
 
-.levelMainInfo {
+.statusPillsRow {
   display: flex;
   align-items: center;
-  gap: 18px;
+  gap: 10px;
+  flex-wrap: wrap;
 }
 
-.badgeWrapper {
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.levelMeta {
-  display: flex;
-  flex-direction: column;
-}
-
-.xpBig {
-  font-size: clamp(26px, 3.2vw, 36px);
-  font-weight: 900;
-  color: var(--text-primary);
-  line-height: 1.1;
-  margin-bottom: 4px;
-  letter-spacing: -0.01em;
-  font-variant-numeric: tabular-nums;
-}
-
-.xpToNext {
-  font-size: var(--text-sm);
-  color: var(--text-secondary);
-  display: flex;
+.greetingPill {
+  display: inline-flex;
   align-items: center;
   gap: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
 }
 
-/* Progress Area */
-.progressArea {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.progressLabels {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: var(--text-xs);
-  color: var(--text-secondary);
-  font-weight: 600;
-  font-variant-numeric: tabular-nums;
-}
-
-.progressPct {
-  font-weight: 800;
+.greetingSparkle {
   color: var(--gold);
 }
 
-.progressBarTrack {
-  height: 10px;
-  background: rgba(255, 255, 255, 0.05);
+.activeRankBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: var(--gold);
+  background: rgba(251, 191, 36, 0.12);
+  border: 1px solid rgba(251, 191, 36, 0.35);
+  padding: 4px 10px;
   border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.activeRankBadge:hover {
+  background: rgba(251, 191, 36, 0.2);
+  border-color: var(--gold);
+  transform: translateY(-1px);
+}
+
+/* Main Identity Row */
+.heroIdentityRow {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+.emblemContainer {
+  flex-shrink: 0;
+  cursor: pointer;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  animation: floatSoft 4.5s ease-in-out infinite;
+}
+
+.emblemContainer:hover {
+  transform: scale(1.06) translateY(-4px);
+}
+
+.heroStatsCol {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+  flex: 1;
+}
+
+.tierRankLabel {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.tierRankPrefix {
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--purple-light);
+}
+
+.tierRankName {
+  font-size: clamp(20px, 2.4vw, 26px);
+  font-weight: 900;
+  color: #FFFFFF;
+  margin: 0;
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+  background: linear-gradient(135deg, #FFFFFF 0%, #FDE68A 50%, #FBBF24 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.xpBigCounter {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  margin-top: 2px;
+}
+
+.xpNumber {
+  font-size: clamp(28px, 3.6vw, 42px);
+  font-weight: 900;
+  color: #FFFFFF;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+  text-shadow: 0 4px 16px rgba(0, 0, 0, 0.7);
+}
+
+.xpUnit {
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--gold);
+  letter-spacing: 0.06em;
+}
+
+.xpTargetHorizon {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--text-secondary);
+  flex-wrap: wrap;
+}
+
+.xpRemainingHighlight {
+  color: var(--gold-light);
+  font-weight: 700;
+}
+
+.horizonDivider {
+  color: rgba(255, 255, 255, 0.2);
+}
+
+.nextTargetText {
+  color: var(--text-secondary);
+}
+
+/* Segmented Energy Conduit XP Progress */
+.conduitProgressArea {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: rgba(10, 8, 18, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 16px;
+  padding: 12px 14px;
+}
+
+.conduitLabelsRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 12px;
+  font-weight: 700;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.conduitCurrentVal {
+  color: #FFFFFF;
+  font-variant-numeric: tabular-nums;
+}
+
+.velocityCapsule {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  color: var(--gold);
+  background: rgba(251, 191, 36, 0.1);
+  border: 1px solid rgba(251, 191, 36, 0.3);
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+}
+
+.velocityIcon {
+  color: var(--gold);
+}
+
+.conduitPctText {
+  color: var(--gold);
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Conduit Trench */
+.conduitTrack {
+  height: 14px;
+  background: rgba(14, 11, 24, 0.95);
+  border: 1.5px solid rgba(168, 85, 247, 0.28);
+  border-radius: var(--radius-full);
+  position: relative;
   overflow: hidden;
-  border: 1px solid var(--border);
-  position: relative;
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.8);
 }
 
-.progressBarFill {
+.conduitTicksWrap {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.tickPip {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: rgba(255, 255, 255, 0.18);
+  transform: translateX(-50%);
+}
+
+.conduitFill {
   height: 100%;
-  background: var(--grad-xp-bar);
+  background: linear-gradient(90deg, #F59E0B 0%, #FBBF24 50%, #FEF08A 100%);
   border-radius: var(--radius-full);
   position: relative;
-  box-shadow: 0 0 12px rgba(245, 200, 66, 0.5);
+  box-shadow: 0 0 16px rgba(251, 191, 36, 0.75), inset 0 1px 0 rgba(255, 255, 255, 0.4);
 }
 
-.progressBarGlow {
+.capacitorSpark {
   position: absolute;
-  right: 0;
+  right: -2px;
   top: 50%;
   transform: translateY(-50%);
-  width: 12px;
-  height: 12px;
-  background: #fff;
+  width: 14px;
+  height: 14px;
+  background: #FFFFFF;
   border-radius: 50%;
-  filter: blur(2px);
-  opacity: 0.8;
+  box-shadow: 0 0 12px #FFFFFF, 0 0 20px rgba(251, 191, 36, 0.9);
+  animation: pulseSlow 1.5s infinite ease-in-out;
 }
 
-/* Subtle Divider */
-.divider {
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08) 15%, rgba(255, 255, 255, 0.08) 85%, transparent);
-  margin: 0;
-}
-
-/* Bottom Section: Integrated Today's Boost Telemetry */
-.boostSection {
+/* Today's Boost Telemetry Chips */
+.boostTelemetrySection {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
-.boostHeader {
+.boostSectionHead {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
 }
 
 .boostTitleWrap {
@@ -164,12 +324,14 @@
 .boostTitle {
   font-size: 11px;
   font-weight: 800;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
   color: var(--gold);
+  text-transform: uppercase;
 }
 
-.boostSubtitle {
-  font-size: var(--text-xs);
+.boostAuditStatus {
+  font-size: 10px;
+  font-weight: 600;
   color: var(--text-muted);
 }
 
@@ -179,105 +341,96 @@
   gap: 10px;
 }
 
-.boostItem {
+.boostChip {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  text-align: center;
-  padding: 8px 6px;
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: var(--radius-md);
-  transition: all var(--transition-fast);
+  gap: 10px;
+  padding: 10px 12px;
+  background: rgba(20, 16, 36, 0.6);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  transition: all 0.25s ease;
 }
 
-.boostItem:hover {
-  background: rgba(255, 255, 255, 0.06);
-  border-color: rgba(255, 255, 255, 0.14);
+.boostChip:hover {
+  background: rgba(30, 22, 54, 0.85);
+  border-color: rgba(168, 85, 247, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
 }
 
-.boostIconWrap {
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
+.boostIconBadge {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 4px;
+  flex-shrink: 0;
 }
 
-.boostIconXP {
+.iconGold {
   background: rgba(251, 191, 36, 0.15);
-  border: 1px solid rgba(251, 191, 36, 0.40);
+  color: #FBBF24;
+  border: 1px solid rgba(251, 191, 36, 0.35);
 }
 
-.boostIconTasks {
-  background: rgba(0, 245, 255, 0.15);
-  border: 1px solid rgba(0, 245, 255, 0.40);
+.iconCyan {
+  background: rgba(56, 189, 248, 0.15);
+  color: #38BDF8;
+  border: 1px solid rgba(56, 189, 248, 0.35);
 }
 
-.boostIconStreak {
-  background: rgba(255, 30, 86, 0.15);
-  border: 1px solid rgba(255, 30, 86, 0.40);
+.iconRose {
+  background: rgba(244, 63, 94, 0.15);
+  color: #F43F5E;
+  border: 1px solid rgba(244, 63, 94, 0.35);
 }
 
-.boostLabel {
-  font-size: 10px;
-  color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  margin-bottom: 2px;
+.boostTextWrap {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
 }
 
 .boostVal {
   font-size: 13px;
   font-weight: 800;
-  color: var(--text-primary);
-  font-variant-numeric: tabular-nums;
+  color: #FFFFFF;
+  line-height: 1.2;
 }
 
+.boostLabel {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 
 /* ============================================================
-   RESPONSIVE OVERRIDES — All breakpoint media queries
+   RESPONSIVENESS
    ============================================================ */
 
-/* mobile < 640px */
-@media (max-width: 639px) {
+@media (max-width: 640px) {
   .masterCard {
-    padding: 16px 18px;
+    padding: 18px 16px;
+    gap: 16px;
   }
-}
 
-/* xs < 400px */
-@media (max-width: 399px) {
-  .levelMainInfo {
-    gap: 12px;
+  .heroIdentityRow {
+    gap: 16px;
   }
-}
 
-/* xpBig fluid size */
-.xpBig {
-  font-size: clamp(22px, 6vw, 36px);
-}
-
-/* xs < 320px — boostGrid very tight screens */
-@media (max-width: 319px) {
   .boostGrid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 6px;
+    grid-template-columns: 1fr;
+    gap: 8px;
   }
 
-  .boostItem {
-    padding: 6px 4px;
-  }
-
-  .boostLabel {
-    font-size: 9px;
-  }
-
-  .boostVal {
+  .conduitLabelsRow {
     font-size: 11px;
   }
 }

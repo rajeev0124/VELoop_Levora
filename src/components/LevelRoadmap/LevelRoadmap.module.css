@@ -711,6 +711,7 @@
   flex-shrink: 0;
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.7), 0 0 24px rgba(251, 191, 36, 0.2);
   position: relative;
+  overflow: visible;
 }
 
 .dockBadgeImg {
@@ -1172,9 +1173,10 @@
   }
 
   .dockBadgeWrapper {
-    width: 86px;
-    height: 92px;
+    width: 88px;
+    height: 94px;
     border-radius: 18px;
+    overflow: visible;
   }
 
   .dockBadgeImg {

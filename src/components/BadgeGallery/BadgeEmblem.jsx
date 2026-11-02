@@ -1,4 +1,5 @@
 import React from 'react'
+import TierMedallion from '../shared/TierMedallion'
 
 /**
  * Custom metallic SVG Badge Emblem with rich 3D cyber styling
@@ -20,6 +21,18 @@ const BadgeEmblem = ({
   }
 
   const primaryGlow = glowColors[rarity] || accentColor
+
+  // If this is a progression rank badge, render our AAA heraldic vector medallion directly
+  if (tierLevel) {
+    return (
+      <TierMedallion
+        level={tierLevel}
+        size={size}
+        status={isUnlocked ? 'completed' : 'locked'}
+        showStatusCorner={false}
+      />
+    )
+  }
 
   return (
     <div

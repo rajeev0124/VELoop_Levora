@@ -102,6 +102,58 @@
   to   { transform: rotate(360deg); }
 }
 
+/* ---------- Laser Conduit Flow ---------- */
+@keyframes laserFlow {
+  0%   { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+/* ---------- Shimmer Ray (Metallic Glint) ---------- */
+@keyframes shimmerRay {
+  0% {
+    transform: translateX(-150%) rotate(25deg);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.6;
+  }
+  40% {
+    transform: translateX(250%) rotate(25deg);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(250%) rotate(25deg);
+    opacity: 0;
+  }
+}
+
+/* ---------- Energy Plasma Pulse ---------- */
+@keyframes energyPulse {
+  0%, 100% {
+    box-shadow: 0 0 10px rgba(251, 191, 36, 0.5), inset 0 0 8px rgba(251, 191, 36, 0.4);
+    filter: brightness(1);
+  }
+  50% {
+    box-shadow: 0 0 22px rgba(251, 191, 36, 0.85), inset 0 0 14px rgba(251, 191, 36, 0.7);
+    filter: brightness(1.25);
+  }
+}
+
+/* ---------- Float Soft Levitation ---------- */
+@keyframes floatSoft {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+/* Utility Classes */
+.animate-laserFlow {
+  animation: laserFlow 3s linear infinite;
+}
+
+.animate-floatSoft {
+  animation: floatSoft 4s ease-in-out infinite;
+}
+
 /* ---------- Pulse Slow ---------- */
 @keyframes pulseSlow {
   0%, 100% { opacity: 0.85; transform: scale(1); }
