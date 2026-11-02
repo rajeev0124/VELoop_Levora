@@ -1,0 +1,680 @@
+/* ============================================================
+   BADGE GALLERY — Executive Cyber Obsidian Styling
+   ============================================================ */
+
+.section {
+  width: 100%;
+  padding: 8px 0 24px;
+}
+
+.sectionHead {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 22px;
+}
+
+@media (min-width: 860px) {
+  .sectionHead {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+}
+
+.titleGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  max-width: 720px;
+}
+
+.headerBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--gold);
+  background: var(--gold-soft);
+  border: 1px solid var(--border-gold);
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  width: fit-content;
+  margin-bottom: 4px;
+}
+
+.badgeIcon {
+  color: var(--gold);
+}
+
+/* Stats Telemetry Card */
+.statsCard {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: linear-gradient(135deg, rgba(24, 18, 44, 0.85) 0%, rgba(12, 10, 24, 0.95) 100%);
+  border: 1px solid var(--border-purple);
+  padding: 12px 18px;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 0 20px rgba(168, 85, 247, 0.2);
+  flex-shrink: 0;
+}
+
+.statsLeft {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.trophyIconWrap {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--gold-soft);
+  border: 1px solid var(--border-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 10px rgba(251, 191, 36, 0.35);
+}
+
+.statsText {
+  display: flex;
+  flex-direction: column;
+}
+
+.statsVal {
+  font-size: 16px;
+  font-weight: 900;
+  color: #FFFFFF;
+  line-height: 1.1;
+}
+
+.statsLabel {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.statsProgressWrap {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 110px;
+}
+
+.statsProgressBarTrack {
+  height: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.statsProgressBarFill {
+  height: 100%;
+  background: var(--grad-gold);
+  border-radius: var(--radius-full);
+  box-shadow: 0 0 8px rgba(251, 191, 36, 0.5);
+}
+
+.statsPctText {
+  font-size: 10px;
+  color: var(--gold);
+  font-weight: 800;
+  text-align: right;
+}
+
+/* Category Filters */
+.filterBar {
+  margin-bottom: 20px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+
+.filterTabs {
+  display: inline-flex;
+  gap: 6px;
+  background: rgba(16, 12, 28, 0.7);
+  padding: 4px;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(168, 85, 247, 0.18);
+}
+
+.filterTab {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 12px;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all var(--transition-fast);
+}
+
+.filterTab:hover {
+  color: #FFFFFF;
+}
+
+.filterTabActive {
+  background: var(--purple-soft);
+  color: var(--purple-light);
+  border: 1px solid var(--border-purple);
+  box-shadow: 0 0 12px rgba(168, 85, 247, 0.35);
+}
+
+/* Badges Grid */
+.badgesGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+@media (min-width: 520px) {
+  .badgesGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 860px) {
+  .badgesGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1200px) {
+  .badgesGrid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Badge Card */
+.badgeCard {
+  background: linear-gradient(145deg, rgba(20, 16, 36, 0.8) 0%, rgba(10, 8, 20, 0.92) 100%);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(168, 85, 247, 0.18);
+  border-radius: var(--radius-xl);
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  outline: none;
+}
+
+.badgeCard:hover {
+  transform: translateY(-4px);
+  border-color: rgba(168, 85, 247, 0.45);
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.65), 0 0 24px rgba(168, 85, 247, 0.25);
+}
+
+.cardAuraGlow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.8;
+  transition: opacity var(--transition-normal);
+}
+
+.badgeCard:hover .cardAuraGlow {
+  opacity: 1;
+}
+
+/* Header within Card */
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+  z-index: 2;
+}
+
+.rarityPill {
+  font-size: 9px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  border: 1px solid;
+}
+
+.statusUnlockedPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 9px;
+  font-weight: 800;
+  color: var(--green);
+  background: var(--green-soft);
+  border: 1px solid var(--border-green);
+  padding: 2px 7px;
+  border-radius: var(--radius-full);
+}
+
+.statusProgressPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 9px;
+  font-weight: 800;
+  color: var(--purple-light);
+  background: var(--purple-soft);
+  border: 1px solid var(--border-purple);
+  padding: 2px 7px;
+  border-radius: var(--radius-full);
+}
+
+.statusLockedPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 9px;
+  font-weight: 800;
+  color: var(--text-muted);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 2px 7px;
+  border-radius: var(--radius-full);
+}
+
+/* Emblem Container */
+.emblemContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0 16px;
+  z-index: 2;
+}
+
+/* Info */
+.cardInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 16px;
+  z-index: 2;
+  flex-grow: 1;
+}
+
+.badgeName {
+  font-size: 15px;
+  font-weight: 800;
+  color: #FFFFFF;
+  line-height: 1.3;
+}
+
+.badgeDesc {
+  font-size: 11px;
+  color: var(--text-secondary);
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Card Footer */
+.cardFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  z-index: 2;
+  gap: 8px;
+}
+
+.earnedDateRow {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.earnedDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 6px var(--green);
+}
+
+.earnedText {
+  font-size: 10px;
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+.progressRow {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex-grow: 1;
+}
+
+.progressLabels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 9px;
+  color: var(--text-muted);
+  font-weight: 700;
+}
+
+.progressPctText {
+  color: var(--purple-light);
+}
+
+.progressTrack {
+  height: 5px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background: var(--grad-purple);
+  border-radius: var(--radius-full);
+}
+
+.criteriaRow {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.criteriaText {
+  font-size: 10px;
+  color: var(--text-muted);
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 170px;
+}
+
+.inspectHint {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--text-muted);
+  transition: color var(--transition-fast);
+  flex-shrink: 0;
+}
+
+.badgeCard:hover .inspectHint {
+  color: var(--gold);
+}
+
+/* ============================================================
+   MODAL STYLES
+   ============================================================ */
+
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(4, 3, 10, 0.85);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  padding: 16px;
+}
+
+.modalCard {
+  background: linear-gradient(145deg, rgba(22, 16, 42, 0.95) 0%, rgba(10, 8, 22, 0.98) 100%);
+  border: 1px solid var(--border-purple);
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.85), 0 0 36px rgba(168, 85, 247, 0.3);
+  border-radius: var(--radius-xl);
+  padding: 28px;
+  max-width: 480px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+.modalCloseBtn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  z-index: 10;
+}
+
+.modalCloseBtn:hover {
+  background: var(--purple-soft);
+  color: #fff;
+  border-color: var(--purple);
+}
+
+.modalBackGlow {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+.modalHeaderRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  z-index: 2;
+}
+
+.modalRarityPill {
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  border: 1px solid;
+}
+
+.modalClaimedPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--green);
+}
+
+.modalProgressPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--purple-light);
+}
+
+.modalLockedPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+/* 3D Pedestal Stage */
+.pedestalStage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+  z-index: 2;
+}
+
+.podiumRing {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stagePlatform {
+  width: 140px;
+  height: 12px;
+  background: linear-gradient(90deg, transparent 0%, rgba(251, 191, 36, 0.4) 50%, transparent 100%);
+  border-radius: 50%;
+  filter: blur(2px);
+  margin-top: 8px;
+}
+
+/* Title & Lore */
+.modalTitleBlock {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 18px;
+  z-index: 2;
+}
+
+.modalBadgeName {
+  font-size: 22px;
+  font-weight: 900;
+  color: #FFFFFF;
+  line-height: 1.2;
+}
+
+.modalBadgeLore {
+  font-size: 12px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+/* Criteria Box */
+.criteriaBox {
+  background: rgba(14, 10, 26, 0.85);
+  border: 1px solid rgba(168, 85, 247, 0.25);
+  border-radius: var(--radius-md);
+  padding: 12px 16px;
+  margin-bottom: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  z-index: 2;
+}
+
+.criteriaBoxHeader {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 10px;
+  font-weight: 800;
+  color: var(--gold);
+  letter-spacing: 0.08em;
+}
+
+.criteriaIcon {
+  color: var(--gold);
+}
+
+.criteriaBoxText {
+  font-size: 12px;
+  font-weight: 600;
+  color: #FFFFFF;
+}
+
+.modalProgressBarWrap {
+  margin-top: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.modalProgressBarTrack {
+  height: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.modalProgressBarFill {
+  height: 100%;
+  background: var(--grad-purple);
+  border-radius: var(--radius-full);
+}
+
+.modalProgressNote {
+  font-size: 10px;
+  color: var(--purple-light);
+  font-weight: 700;
+  text-align: right;
+}
+
+/* Perks Box */
+.perksBox {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius-md);
+  padding: 12px 16px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  z-index: 2;
+}
+
+.perksBoxTitle {
+  font-size: 10px;
+  font-weight: 800;
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+}
+
+.perksList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.perkItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.perkCheck {
+  color: var(--green);
+  flex-shrink: 0;
+}
+
+.modalActionRow {
+  z-index: 2;
+}

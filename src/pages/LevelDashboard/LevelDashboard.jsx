@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
-import { User, Home, Coins, Gift, Wallet, Bell, Zap } from 'lucide-react'
+import { User, Home, Coins, Gift, Wallet, Bell, Zap, Trophy, Sparkles } from 'lucide-react'
 import useLevelData from '../../hooks/useLevelData'
 import LevelHero from '../../components/LevelHero/LevelHero'
 import NextLevelReward from '../../components/NextLevelReward/NextLevelReward'
 import RecommendationBanner from '../../components/RecommendationBanner/RecommendationBanner'
 import LevelRoadmap from '../../components/LevelRoadmap/LevelRoadmap'
+import MysteryBoxGallery from '../../components/MysteryBox/MysteryBoxGallery'
+import BadgeGallery from '../../components/BadgeGallery/BadgeGallery'
 import PlayAndEarn from '../../components/PlayAndEarn/PlayAndEarn'
 import XPActivity from '../../components/XPActivity/XPActivity'
 import EarnMoreXP from '../../components/EarnMoreXP/EarnMoreXP'
@@ -45,11 +47,17 @@ const LevelDashboard = () => {
               <a href="#roadmap" className={`${styles.navLink} ${activeTab === 'roadmap' ? styles.navLinkActive : ''}`} onClick={() => setActiveTab('roadmap')}>
                 Roadmap
               </a>
+              <a href="#vaults" className={`${styles.navLink} ${activeTab === 'vaults' ? styles.navLinkActive : ''}`} onClick={() => setActiveTab('vaults')}>
+                Mystery Vaults
+              </a>
+              <a href="#badges" className={`${styles.navLink} ${activeTab === 'badges' ? styles.navLinkActive : ''}`} onClick={() => setActiveTab('badges')}>
+                Badges
+              </a>
               <a href="#arcade" className={`${styles.navLink} ${activeTab === 'arcade' ? styles.navLinkActive : ''}`} onClick={() => setActiveTab('arcade')}>
                 Arcade
               </a>
               <a href="#activity" className={`${styles.navLink} ${activeTab === 'activity' ? styles.navLinkActive : ''}`} onClick={() => setActiveTab('activity')}>
-                Activity
+                Ledger
               </a>
               <a href="#earn" className={`${styles.navLink} ${activeTab === 'earn' ? styles.navLinkActive : ''}`} onClick={() => setActiveTab('earn')}>
                 Earn XP
@@ -155,8 +163,18 @@ const LevelDashboard = () => {
               <LevelRoadmap data={data} />
             </div>
 
-            {/* ROW 3: ARCADE & RECENT ACTIVITY LEDGER */}
-            <div className={`${styles.row3Section} animate-fadeInUp`} style={{ animationDelay: '330ms' }}>
+            {/* ROW 3: MYSTERY BOX & MILESTONE VAULTS */}
+            <div id="vaults" className={`${styles.vaultsSection} animate-fadeInUp`} style={{ animationDelay: '310ms' }}>
+              <MysteryBoxGallery />
+            </div>
+
+            {/* ROW 4: COLLECTIBLE BADGES & ACHIEVEMENTS */}
+            <div id="badges" className={`${styles.badgesSection} animate-fadeInUp`} style={{ animationDelay: '360ms' }}>
+              <BadgeGallery />
+            </div>
+
+            {/* ROW 5: ARCADE & RECENT ACTIVITY LEDGER */}
+            <div className={`${styles.row3Section} animate-fadeInUp`} style={{ animationDelay: '410ms' }}>
               <div className={styles.row3SectionHead}>
                 <div className={styles.row3HeaderBadge}>
                   <Zap size={11} className={styles.row3BadgeIcon} />
@@ -180,8 +198,8 @@ const LevelDashboard = () => {
               </div>
             </div>
 
-            {/* ROW 4: EARN MORE XP & REWARDS */}
-            <div id="earn" className={`${styles.earnSection} animate-fadeInUp`} style={{ animationDelay: '400ms' }}>
+            {/* ROW 6: EARN MORE XP & REWARDS */}
+            <div id="earn" className={`${styles.earnSection} animate-fadeInUp`} style={{ animationDelay: '460ms' }}>
               <EarnMoreXP data={data} />
             </div>
           </>
@@ -201,9 +219,10 @@ const LevelDashboard = () => {
       <nav className={styles.mobileBottomNav}>
         {[
           { id: 'home', label: 'Home', icon: Home, href: '#hero' },
+          { id: 'roadmap', label: 'Roadmap', icon: Sparkles, href: '#roadmap' },
+          { id: 'vaults', label: 'Vaults', icon: Gift, href: '#vaults' },
+          { id: 'badges', label: 'Badges', icon: Trophy, href: '#badges' },
           { id: 'earn', label: 'Earn', icon: Coins, href: '#earn' },
-          { id: 'rewards', label: 'Rewards', icon: Gift, href: '#roadmap' },
-          { id: 'wallet', label: 'Wallet', icon: Wallet, href: '#activity' },
           { id: 'profile', label: 'Profile', icon: User, onClick: triggerLevelUp },
         ].map((item) => {
           const IconComp = item.icon
