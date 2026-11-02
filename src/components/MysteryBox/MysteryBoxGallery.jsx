@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Gift, Key, Sparkles, ShieldCheck } from 'lucide-react'
+import { TreasureChest, Key } from '@phosphor-icons/react'
 import { mysteryBoxesData } from '../../data/mysteryBoxData'
 import MysteryBoxCard from './MysteryBoxCard'
 import MysteryBoxOpeningModal from './MysteryBoxOpeningModal'
@@ -23,7 +23,7 @@ const MysteryBoxGallery = () => {
       <div className={styles.sectionHead}>
         <div className={styles.titleGroup}>
           <div className={styles.headerBadge}>
-            <Gift size={11} className={styles.badgeIcon} />
+            <TreasureChest size={13} weight="duotone" className={styles.badgeIcon} />
             <span>REWARDS DISCOVERY & VAULTS</span>
           </div>
           <h2 id="mystery-boxes-heading" className="section-title">
@@ -37,7 +37,7 @@ const MysteryBoxGallery = () => {
         {/* Ready Vaults Status Telemetry */}
         <div className={styles.readyVaultsCard}>
           <div className={styles.keyIconWrap}>
-            <Key size={18} color="#FBBF24" />
+            <Key size={20} weight="duotone" color="#FBBF24" />
           </div>
           <div className={styles.readyVaultsText}>
             <span className={styles.readyVaultsVal}>

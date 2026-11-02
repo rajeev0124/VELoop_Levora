@@ -1,16 +1,15 @@
 import React, { useState } from 'react'
 import {
-  Users,
-  ClipboardCheck,
-  Gamepad2,
+  UsersThree,
+  CheckCircle,
+  GameController,
   Coins,
-  Flame,
-  ChevronRight,
-  Zap,
-  Sparkles,
+  Fire,
+  CaretRight,
+  Lightning,
+  Sparkle,
   ShieldCheck,
-  ArrowUpRight
-} from 'lucide-react'
+} from '@phosphor-icons/react'
 import styles from './XPActivity.module.css'
 
 const recentActivities = [
@@ -20,7 +19,7 @@ const recentActivities = [
     time: 'Today, 10:45 AM',
     reward: '+20 XP',
     type: 'xp',
-    icon: Users,
+    icon: UsersThree,
     color: '#00F5FF',
     category: 'referrals',
     tag: 'Community',
@@ -31,7 +30,7 @@ const recentActivities = [
     time: 'Today, 09:12 AM',
     reward: '+50 XP',
     type: 'xp',
-    icon: ClipboardCheck,
+    icon: CheckCircle,
     color: '#00E676',
     category: 'tasks',
     tag: 'Quest Yield',
@@ -42,7 +41,7 @@ const recentActivities = [
     time: 'Today, 08:30 AM',
     reward: '+75 XP',
     type: 'xp',
-    icon: Gamepad2,
+    icon: GameController,
     color: '#A855F7',
     category: 'arcade',
     tag: 'Reflex Bonus',
@@ -64,7 +63,7 @@ const recentActivities = [
     time: 'Today, 07:20 AM',
     reward: '+25 XP',
     type: 'xp',
-    icon: Flame,
+    icon: Fire,
     color: '#FF1E56',
     category: 'tasks',
     tag: '5-Day Streak',
@@ -86,7 +85,7 @@ const XPActivity = () => {
         <div className={styles.cardHeader}>
           <div className={styles.headerTitleGroup}>
             <div className={styles.headerBadge}>
-              <Sparkles size={11} className={styles.sparkleIcon} />
+              <Sparkle size={12} weight="fill" className={styles.sparkleIcon} />
               <span>LIVE AUDIT TRAIL</span>
             </div>
             <h3 id="activity-heading" className={styles.title}>
@@ -149,7 +148,7 @@ const XPActivity = () => {
                     borderColor: `${item.color}40`,
                   }}
                 >
-                  <IconComp size={16} color={item.color} />
+                  <IconComp size={18} weight="duotone" color={item.color} />
                 </div>
 
                 {/* Center: Details */}
@@ -164,7 +163,7 @@ const XPActivity = () => {
                     <span className={styles.itemTime}>{item.time}</span>
                     <span className={styles.metaDot} />
                     <span className={styles.verifiedText}>
-                      <ShieldCheck size={11} className={styles.verifiedCheck} />
+                      <ShieldCheck size={12} weight="duotone" className={styles.verifiedCheck} />
                       Verified
                     </span>
                   </div>
@@ -179,7 +178,7 @@ const XPActivity = () => {
                   >
                     {item.reward}
                   </span>
-                  <ChevronRight size={14} className={styles.chevron} />
+                  <CaretRight size={14} weight="bold" className={styles.chevron} />
                 </div>
               </div>
             )
@@ -196,7 +195,7 @@ const XPActivity = () => {
           <div className={styles.summaryGrid}>
             <div className={styles.summaryPillXP}>
               <div className={styles.pillIconXP}>
-                <Zap size={14} />
+                <Lightning size={15} weight="fill" />
               </div>
               <div className={styles.pillText}>
                 <span className={styles.pillValXP}>+215 XP</span>
@@ -206,7 +205,7 @@ const XPActivity = () => {
 
             <div className={styles.summaryPillVE}>
               <div className={styles.pillIconVE}>
-                <Coins size={14} />
+                <Coins size={15} weight="duotone" />
               </div>
               <div className={styles.pillText}>
                 <span className={styles.pillValVE}>+35 VEs</span>

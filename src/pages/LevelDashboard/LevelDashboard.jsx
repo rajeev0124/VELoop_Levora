@@ -1,5 +1,14 @@
 import React, { useState } from 'react'
-import { User, Home, Coins, Gift, Wallet, Bell, Zap, Trophy, Sparkles } from 'lucide-react'
+import {
+  House,
+  Sparkle,
+  TreasureChest,
+  Trophy,
+  Coins,
+  UserCircle,
+  BellSimpleRinging,
+  Lightning,
+} from '@phosphor-icons/react'
 import useLevelData from '../../hooks/useLevelData'
 import LevelHero from '../../components/LevelHero/LevelHero'
 import NextLevelReward from '../../components/NextLevelReward/NextLevelReward'
@@ -87,7 +96,7 @@ const LevelDashboard = () => {
                 title="Level-Up Notification"
                 aria-label="Level-Up Notification"
               >
-                <Bell size={16} />
+                <BellSimpleRinging size={17} weight="duotone" />
                 <span className={styles.navNotifDot} />
               </button>
               <div
@@ -98,7 +107,7 @@ const LevelDashboard = () => {
                 tabIndex={0}
                 aria-label="User Profile"
               >
-                <User size={18} color="#FFFFFF" />
+                <UserCircle size={22} weight="duotone" color="#FFFFFF" />
               </div>
             </div>
           </div>
@@ -146,7 +155,7 @@ const LevelDashboard = () => {
                   title="Preview Level Up Celebration"
                   aria-label="1 Unread Notification - Preview Level Up"
                 >
-                  <Bell size={18} className={styles.bellIcon} />
+                  <BellSimpleRinging size={18} weight="duotone" className={styles.bellIcon} />
                   <span className={styles.notifBadge} aria-hidden="true">1</span>
                 </button>
               </div>
@@ -186,7 +195,7 @@ const LevelDashboard = () => {
             <div className={`${styles.row3Section} animate-fadeInUp`} style={{ animationDelay: '410ms' }}>
               <div className={styles.row3SectionHead}>
                 <div className={styles.row3HeaderBadge}>
-                  <Zap size={11} className={styles.row3BadgeIcon} />
+                  <Lightning size={12} weight="fill" className={styles.row3BadgeIcon} />
                   <span>INTERACTIVE HUBS & TRANSACTIONS</span>
                 </div>
                 <h2 id="arcade-heading" className="section-title">
@@ -227,12 +236,12 @@ const LevelDashboard = () => {
       {/* Screen 1 Mobile Bottom Navigation Bar */}
       <nav className={styles.mobileBottomNav}>
         {[
-          { id: 'home', label: 'Home', icon: Home, href: '#hero' },
-          { id: 'roadmap', label: 'Roadmap', icon: Sparkles, href: '#roadmap' },
-          { id: 'vaults', label: 'Vaults', icon: Gift, href: '#vaults' },
+          { id: 'home', label: 'Home', icon: House, href: '#hero' },
+          { id: 'roadmap', label: 'Roadmap', icon: Sparkle, href: '#roadmap' },
+          { id: 'vaults', label: 'Vaults', icon: TreasureChest, href: '#vaults' },
           { id: 'badges', label: 'Badges', icon: Trophy, href: '#badges' },
           { id: 'earn', label: 'Earn', icon: Coins, href: '#earn' },
-          { id: 'profile', label: 'Profile', icon: User, onClick: triggerLevelUp },
+          { id: 'profile', label: 'Profile', icon: UserCircle, onClick: triggerLevelUp },
         ].map((item) => {
           const IconComp = item.icon
           const isActive = activeTab === item.id
@@ -250,7 +259,12 @@ const LevelDashboard = () => {
                 }
               }}
             >
-              <IconComp size={18} className={styles.bottomNavIcon} color={isActive ? 'var(--gold)' : 'var(--text-muted)'} />
+              <IconComp
+                size={20}
+                weight={isActive ? 'fill' : 'duotone'}
+                className={styles.bottomNavIcon}
+                color={isActive ? 'var(--gold)' : 'var(--text-muted)'}
+              />
               <span className={styles.bottomNavLabel}>{item.label}</span>
             </a>
           )

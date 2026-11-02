@@ -1,5 +1,13 @@
 import React, { useEffect } from 'react'
-import { X, Check, Lock, Sparkles, Trophy, ArrowRight, ShieldCheck } from 'lucide-react'
+import {
+  X,
+  Check,
+  LockSimple,
+  Sparkle,
+  Trophy,
+  CaretRight,
+  ShieldCheck,
+} from '@phosphor-icons/react'
 import BadgeEmblem from './BadgeEmblem'
 import { rarityConfig } from '../../data/badgeData'
 import styles from './BadgeGallery.module.css'
@@ -39,7 +47,7 @@ const BadgeDetailModal = ({ badge, isOpen, onClose }) => {
           onClick={onClose}
           aria-label="Close Badge Details"
         >
-          <X size={18} />
+          <X size={18} weight="bold" />
         </button>
 
         {/* Ambient Glow */}
@@ -66,15 +74,15 @@ const BadgeDetailModal = ({ badge, isOpen, onClose }) => {
 
           {isUnlocked ? (
             <span className={styles.modalClaimedPill}>
-              <ShieldCheck size={12} /> Claimed on {badge.earnedDate}
+              <ShieldCheck size={14} weight="duotone" /> Claimed on {badge.earnedDate}
             </span>
           ) : isInProgress ? (
             <span className={styles.modalProgressPill}>
-              <Sparkles size={12} /> Active Progress: {badge.progressPct}%
+              <Sparkle size={13} weight="fill" /> Active Progress: {badge.progressPct}%
             </span>
           ) : (
             <span className={styles.modalLockedPill}>
-              <Lock size={12} /> Locked Tier
+              <LockSimple size={13} weight="duotone" /> Locked Tier
             </span>
           )}
         </div>
@@ -103,7 +111,7 @@ const BadgeDetailModal = ({ badge, isOpen, onClose }) => {
         {/* Criteria & Milestone Box */}
         <div className={styles.criteriaBox}>
           <div className={styles.criteriaBoxHeader}>
-            <Trophy size={13} className={styles.criteriaIcon} />
+            <Trophy size={14} weight="duotone" className={styles.criteriaIcon} />
             <span>CRITERIA FOR UNLOCK</span>
           </div>
           <p className={styles.criteriaBoxText}>{badge.criteria}</p>
@@ -127,7 +135,7 @@ const BadgeDetailModal = ({ badge, isOpen, onClose }) => {
             <ul className={styles.perksList}>
               {badge.perks.map((perk, idx) => (
                 <li key={idx} className={styles.perkItem}>
-                  <Check size={12} className={styles.perkCheck} />
+                  <Check size={12} weight="bold" className={styles.perkCheck} />
                   <span>{perk}</span>
                 </li>
               ))}
@@ -158,7 +166,7 @@ const BadgeDetailModal = ({ badge, isOpen, onClose }) => {
               style={{ width: '100%', padding: '14px' }}
             >
               <span>Pursue This Achievement</span>
-              <ArrowRight size={15} />
+              <CaretRight size={15} weight="bold" />
             </button>
           )}
         </div>

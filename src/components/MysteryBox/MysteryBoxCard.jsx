@@ -1,5 +1,11 @@
 import React from 'react'
-import { Lock, Sparkles, Key, Check, ChevronRight } from 'lucide-react'
+import {
+  LockSimple,
+  Sparkle,
+  Key,
+  CheckCircle,
+  CaretRight,
+} from '@phosphor-icons/react'
 import { mysteryBoxRarities } from '../../data/mysteryBoxData'
 import styles from './MysteryBox.module.css'
 
@@ -51,21 +57,21 @@ const MysteryBoxCard = ({ box, onOpen }) => {
 
         {isReady && (
           <span className={styles.readyPill}>
-            <Key size={10} />
+            <Key size={11} weight="duotone" />
             <span>READY TO CRACK</span>
           </span>
         )}
 
         {isLocked && (
           <span className={styles.lockedPill}>
-            <Lock size={10} />
+            <LockSimple size={11} weight="duotone" />
             <span>LOCKED</span>
           </span>
         )}
 
         {isOpened && (
           <span className={styles.openedPill}>
-            <Check size={10} />
+            <CheckCircle size={11} weight="fill" />
             <span>CLAIMED</span>
           </span>
         )}
@@ -93,7 +99,7 @@ const MysteryBoxCard = ({ box, onOpen }) => {
       {/* Rewards Preview Pill */}
       <div className={styles.rewardPreviewRow}>
         <span className={styles.rewardSummaryText}>
-          <Sparkles size={11} className={styles.previewSparkle} />
+          <Sparkle size={12} weight="fill" className={styles.previewSparkle} />
           {box.rewardSummary}
         </span>
       </div>
@@ -107,7 +113,7 @@ const MysteryBoxCard = ({ box, onOpen }) => {
             tabIndex={-1}
           >
             <span>Crack Vault Now</span>
-            <ChevronRight size={14} />
+            <CaretRight size={14} weight="bold" />
           </button>
         ) : (
           <div className={styles.lockedFooter}>

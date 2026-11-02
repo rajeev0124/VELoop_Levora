@@ -1,21 +1,18 @@
 import React, { useState } from 'react'
 import {
-  Tv,
+  Television,
   CalendarCheck,
-  Users,
-  Gamepad2,
-  Flame,
+  UsersThree,
+  GameController,
+  Fire,
   Magnet,
-  ChevronRight,
+  CaretRight,
   Trophy,
-  Sparkles,
-  HelpCircle,
-  Search,
+  Question,
+  MagnifyingGlass,
   Compass,
-  Zap,
-  Target,
-  ArrowRight
-} from 'lucide-react'
+  Lightning,
+} from '@phosphor-icons/react'
 import styles from './EarnMoreXP.module.css'
 
 // 6 Verified Active Operations with Professional Fintech / Gaming Copy
@@ -25,7 +22,7 @@ const activeActivities = [
     title: 'Sponsored Media Stream',
     desc: 'Engage curated partner streams and brand showcases',
     reward: '+50 XP',
-    icon: Tv,
+    icon: Television,
     color: '#A855F7',
     tint: 'rgba(168, 85, 247, 0.08)',
     border: 'rgba(168, 85, 247, 0.35)',
@@ -49,7 +46,7 @@ const activeActivities = [
     title: 'Network Expansion',
     desc: 'Invite peers to join your VELoop squad & earn commission',
     reward: '+100 XP',
-    icon: Users,
+    icon: UsersThree,
     color: '#00F5FF',
     tint: 'rgba(0, 245, 255, 0.08)',
     border: 'rgba(0, 245, 255, 0.35)',
@@ -61,7 +58,7 @@ const activeActivities = [
     title: 'Skill Arcade Tournaments',
     desc: 'Compete in rapid reflex challenges and leaderboard runs',
     reward: '+75 XP',
-    icon: Gamepad2,
+    icon: GameController,
     color: '#C084FC',
     tint: 'rgba(192, 132, 252, 0.08)',
     border: 'rgba(192, 132, 252, 0.35)',
@@ -73,7 +70,7 @@ const activeActivities = [
     title: 'Velocity Momentum Multiplier',
     desc: 'Maintain consecutive daily logins for stacked compounding yield',
     reward: '+25 XP',
-    icon: Flame,
+    icon: Fire,
     color: '#FF1E56',
     tint: 'rgba(255, 30, 86, 0.08)',
     border: 'rgba(255, 30, 86, 0.35)',
@@ -113,7 +110,7 @@ const upcomingConcepts = [
     title: 'Cryptic Bounty Hunt',
     desc: 'Find hidden reward tokens distributed across platform vaults',
     reward: '+75 XP',
-    icon: Search,
+    icon: MagnifyingGlass,
     color: '#00E676',
     tint: 'rgba(0, 230, 118, 0.08)',
     border: 'rgba(0, 230, 118, 0.35)',
@@ -125,7 +122,7 @@ const upcomingConcepts = [
     title: 'Rapid Knowledge Audit',
     desc: 'Answer quick interactive queries on platform tokenomics',
     reward: '+60 XP',
-    icon: HelpCircle,
+    icon: Question,
     color: '#00F5FF',
     tint: 'rgba(0, 245, 255, 0.08)',
     border: 'rgba(0, 245, 255, 0.35)',
@@ -148,7 +145,7 @@ const EarnMoreXP = ({ data }) => {
       <div className={styles.sectionHead}>
         <div>
           <div className={styles.headerBadge}>
-            <Zap size={11} className={styles.badgeIcon} />
+            <Lightning size={12} weight="fill" className={styles.badgeIcon} />
             <span>BOOST OPERATIONS</span>
           </div>
           <h2 id="earn-heading" className={styles.screen4Title}>XP ACCELERATION HUB</h2>
@@ -205,7 +202,7 @@ const EarnMoreXP = ({ data }) => {
                 className={styles.activityIconWrap}
                 style={{ background: `${item.color}20`, color: item.color }}
               >
-                <IconComp size={20} color={item.color} />
+                <IconComp size={20} weight="duotone" color={item.color} />
               </div>
 
               <div className={styles.activityDetails}>
@@ -226,7 +223,7 @@ const EarnMoreXP = ({ data }) => {
                 <span className={styles.rewardPillTag} style={{ color: item.color }}>
                   {item.reward}
                 </span>
-                <ChevronRight size={16} className={styles.chevron} />
+                <CaretRight size={16} weight="bold" className={styles.chevron} />
               </div>
             </div>
           )
@@ -237,7 +234,7 @@ const EarnMoreXP = ({ data }) => {
       <div className={styles.encouragementBar}>
         <div className={styles.encouragementLeft}>
           <div className={styles.trophyIconWrap}>
-            <Trophy size={16} color="#FBBF24" />
+            <Trophy size={18} weight="duotone" color="#FBBF24" />
           </div>
           <div className={styles.encouragementTextWrap}>
             <span className={styles.encouragementHeading}>MILESTONE HORIZON: LEVEL {String(nextLevel).padStart(2, '0')} ({nextLevelName.toUpperCase()})</span>
@@ -255,7 +252,7 @@ const EarnMoreXP = ({ data }) => {
           }}
         >
           <span>Launch Arcade</span>
-          <ArrowRight size={13} />
+          <CaretRight size={14} weight="bold" />
         </button>
       </div>
     </section>

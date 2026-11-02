@@ -1,5 +1,5 @@
 import React from 'react'
-import { Sparkles, ArrowRight, Play, Clock, Zap } from 'lucide-react'
+import { Sparkle, ArrowRight, Play, Timer } from '@phosphor-icons/react'
 import styles from './RecommendationBanner.module.css'
 
 const RecommendationBanner = ({ data }) => {
@@ -21,11 +21,11 @@ const RecommendationBanner = ({ data }) => {
       <div className={styles.bannerLeft}>
         <div className={styles.tagRow}>
           <div className={styles.bannerTag}>
-            <Sparkles size={12} color="#FBBF24" aria-hidden="true" />
+            <Sparkle size={13} weight="fill" color="#FBBF24" aria-hidden="true" />
             <span>RECOMMENDED FOR YOU • TARGET MILESTONE</span>
           </div>
           <div className={styles.velocityPill}>
-            <Clock size={11} className={styles.velocityIcon} />
+            <Timer size={13} weight="duotone" className={styles.velocityIcon} />
             <span>Pace: ~{estDays} Days at current velocity</span>
           </div>
         </div>
@@ -45,7 +45,7 @@ const RecommendationBanner = ({ data }) => {
           onClick={() => scrollToSection('arcade')}
           aria-label="Launch XP Catcher Blitz"
         >
-          <Play size={14} fill="currentColor" aria-hidden="true" /> Play XP Catcher
+          <Play size={13} weight="fill" aria-hidden="true" /> Play XP Catcher
         </button>
         <button
           type="button"
@@ -53,7 +53,7 @@ const RecommendationBanner = ({ data }) => {
           onClick={() => scrollToSection('earn')}
           aria-label="Jump to Acceleration Hub"
         >
-          Explore Tasks <ArrowRight size={14} aria-hidden="true" />
+          Explore Tasks <ArrowRight size={13} weight="bold" aria-hidden="true" />
         </button>
       </div>
     </section>

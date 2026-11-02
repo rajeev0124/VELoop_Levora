@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react'
-import { ArrowLeft, Clock, Zap } from 'lucide-react'
+import { CaretLeft, Timer, Lightning, Diamond } from '@phosphor-icons/react'
 import styles from './PlayAndEarn.module.css'
 
 const GamePlay = ({
@@ -54,14 +54,14 @@ const GamePlay = ({
           title="Exit game"
           aria-label="Exit game"
         >
-          <ArrowLeft size={16} />
+          <CaretLeft size={16} weight="bold" />
         </button>
         <div className={styles.gameHudTitleGroup}>
-          <span className={styles.gameHudTitle}>XP CATCHER ⓘ</span>
+          <span className={styles.gameHudTitle}>XP CATCHER</span>
           <span className={styles.gameHudSub}>Catch XP orbs & coins</span>
         </div>
         <div className={styles.timerBadge}>
-          <Clock size={13} style={{ display: 'inline', marginRight: '4px' }} />
+          <Timer size={14} weight="duotone" style={{ display: 'inline', marginRight: '4px' }} />
           00:{String(timeLeft).padStart(2, '0')}
         </div>
       </div>
@@ -95,7 +95,7 @@ const GamePlay = ({
             )}
             {item.type === 'gem' && (
               <div className={styles.orbGem}>
-                <span>💎</span>
+                <Diamond size={15} weight="duotone" color="#42D9FF" />
               </div>
             )}
           </div>
@@ -120,9 +120,9 @@ const GamePlay = ({
         <div className={styles.scoreLead}>YOUR SCORE</div>
         <div className={styles.scoreValueBig}>{score}</div>
         <div className={styles.scoreBadgesRow}>
-          <span className={styles.scoreBadgeVE}>🟡 +{veGain} VEs</span>
+          <span className={styles.scoreBadgeVE}>+{veGain} VEs</span>
           <span className={styles.scoreBadgeMult}>
-            <Zap size={13} style={{ display: 'inline', marginRight: '4px' }} />
+            <Lightning size={13} weight="fill" style={{ display: 'inline', marginRight: '4px' }} />
             2X Multiplier
           </span>
         </div>

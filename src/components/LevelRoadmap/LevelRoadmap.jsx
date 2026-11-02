@@ -1,18 +1,15 @@
 import React, { useState, useRef, useEffect } from 'react'
 import {
-  Check,
-  Star,
-  Sparkles,
-  Target,
-  Lock,
-  ChevronLeft,
-  ChevronRight,
-  MapPin,
-  ShieldAlert,
+  CheckCircle,
+  Sparkle,
+  Crosshair,
+  LockSimple,
+  CaretLeft,
+  CaretRight,
   Crown,
-  Flame,
-  ArrowRight
-} from 'lucide-react'
+  Fire,
+  Check,
+} from '@phosphor-icons/react'
 import styles from './LevelRoadmap.module.css'
 import { levelStateConfig } from '../../data/levelData'
 import TierMedallion from '../shared/TierMedallion'
@@ -202,7 +199,7 @@ const LevelRoadmap = ({ data }) => {
                 onClick={handleScrollLeft}
                 aria-label="Scroll left"
               >
-                <ChevronLeft size={16} />
+                <CaretLeft size={16} weight="bold" />
               </button>
               <button
                 type="button"
@@ -210,7 +207,7 @@ const LevelRoadmap = ({ data }) => {
                 onClick={handleScrollRight}
                 aria-label="Scroll right"
               >
-                <ChevronRight size={16} />
+                <CaretRight size={16} weight="bold" />
               </button>
             </div>
           </div>
@@ -280,7 +277,7 @@ const LevelRoadmap = ({ data }) => {
                   <div className={styles.statusPillSlot}>
                     {nodeCompleted && (
                       <span className={styles.pillCompleted}>
-                        <Check size={10} strokeWidth={3} /> COMPLETED
+                        <CheckCircle size={11} weight="fill" /> COMPLETED
                       </span>
                     )}
                     {nodeCurrent && (
@@ -290,12 +287,12 @@ const LevelRoadmap = ({ data }) => {
                     )}
                     {nodeNext && (
                       <span className={styles.pillNext}>
-                        <Target size={10} /> NEXT TARGET
+                        <Crosshair size={11} weight="duotone" /> NEXT TARGET
                       </span>
                     )}
                     {nodeLocked && (
                       <span className={styles.pillLocked}>
-                        <Lock size={9} /> LOCKED
+                        <LockSimple size={10} weight="duotone" /> LOCKED
                       </span>
                     )}
                   </div>
@@ -304,7 +301,7 @@ const LevelRoadmap = ({ data }) => {
                   <div className={styles.emblemHaloWrap}>
                     <TierMedallion
                       level={lvl.level}
-                      size={54}
+                      size={58}
                       status={nodeCompleted ? 'completed' : nodeCurrent ? 'current' : nodeNext ? 'next' : 'locked'}
                       showStatusCorner={true}
                     />
@@ -376,22 +373,22 @@ const LevelRoadmap = ({ data }) => {
                 </span>
                 {isCompleted && (
                   <span className={styles.dockStatusCompleted}>
-                    <Check size={12} /> COMPLETED
+                    <CheckCircle size={13} weight="fill" /> COMPLETED
                   </span>
                 )}
                 {isCurrent && (
                   <span className={styles.dockStatusActive}>
-                    <Sparkles size={12} /> ACTIVE RANK
+                    <Sparkle size={13} weight="fill" /> ACTIVE RANK
                   </span>
                 )}
                 {isNext && (
                   <span className={styles.dockStatusNext}>
-                    <Target size={12} /> TARGET GOAL
+                    <Crosshair size={13} weight="duotone" /> TARGET GOAL
                   </span>
                 )}
                 {isLocked && (
                   <span className={styles.dockStatusLocked}>
-                    <Lock size={12} /> LOCKED TIER
+                    <LockSimple size={13} weight="duotone" /> LOCKED TIER
                   </span>
                 )}
               </div>
@@ -424,11 +421,11 @@ const LevelRoadmap = ({ data }) => {
             <div className={styles.gaugeStatusRow}>
               {isCompleted ? (
                 <span className={styles.gaugeSuccessText}>
-                  <Check size={13} /> Tier Mastered & Claimed
+                  <CheckCircle size={14} weight="fill" /> Tier Mastered & Claimed
                 </span>
               ) : isCurrent ? (
                 <span className={styles.gaugeCurrentText}>
-                  <Flame size={13} /> In Progress: {data.currentXP.toLocaleString()} /{' '}
+                  <Fire size={14} weight="fill" /> In Progress: {data.currentXP.toLocaleString()} /{' '}
                   {activeLevelData.xpRequired.toLocaleString()} XP ({percentToLevel}%)
                 </span>
               ) : (
@@ -465,7 +462,7 @@ const LevelRoadmap = ({ data }) => {
               <ul className={styles.perksList}>
                 {activeDetails.perks.map((perk, pIdx) => (
                   <li key={pIdx} className={styles.perkItem}>
-                    <Check size={11} className={styles.perkCheck} />
+                    <Check size={12} weight="bold" className={styles.perkCheck} />
                     <span>{perk}</span>
                   </li>
                 ))}
@@ -479,15 +476,15 @@ const LevelRoadmap = ({ data }) => {
                 </button>
               ) : isCurrent ? (
                 <a href="#earn" className="ve-btn ve-btn-gold">
-                  Earn XP for Next Tier <ArrowRight size={14} />
+                  Earn XP for Next Tier <CaretRight size={14} weight="bold" />
                 </a>
               ) : isNext ? (
                 <a href="#earn" className="ve-btn ve-btn-purple">
-                  Boost to L{activeLevelData.level} <ArrowRight size={14} />
+                  Boost to L{activeLevelData.level} <CaretRight size={14} weight="bold" />
                 </a>
               ) : (
                 <a href="#earn" className="ve-btn ve-btn-ghost">
-                  View XP Missions <ArrowRight size={14} />
+                  View XP Missions <CaretRight size={14} weight="bold" />
                 </a>
               )}
             </div>

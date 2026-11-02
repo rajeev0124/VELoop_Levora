@@ -1,5 +1,5 @@
 import React from 'react'
-import { Check, Lock, Sparkles, ChevronRight } from 'lucide-react'
+import { CheckCircle, LockSimple, Sparkle, CaretRight } from '@phosphor-icons/react'
 import BadgeEmblem from './BadgeEmblem'
 import { rarityConfig } from '../../data/badgeData'
 import styles from './BadgeGallery.module.css'
@@ -54,21 +54,21 @@ const BadgeCard = ({ badge, onSelect }) => {
 
         {isUnlocked && (
           <span className={styles.statusUnlockedPill}>
-            <Check size={10} strokeWidth={3} />
+            <CheckCircle size={11} weight="fill" />
             <span>CLAIMED</span>
           </span>
         )}
 
         {isInProgress && (
           <span className={styles.statusProgressPill}>
-            <Sparkles size={10} />
+            <Sparkle size={11} weight="fill" />
             <span>IN PROGRESS</span>
           </span>
         )}
 
         {isLocked && (
           <span className={styles.statusLockedPill}>
-            <Lock size={10} />
+            <LockSimple size={11} weight="duotone" />
             <span>LOCKED</span>
           </span>
         )}
@@ -122,7 +122,7 @@ const BadgeCard = ({ badge, onSelect }) => {
 
         <div className={styles.inspectHint}>
           <span>Inspect</span>
-          <ChevronRight size={12} />
+          <CaretRight size={12} weight="bold" />
         </div>
       </div>
     </div>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Trophy, Sparkles, Filter, Award, ShieldCheck } from 'lucide-react'
+import { Trophy, Medal, Sparkle, Funnel } from '@phosphor-icons/react'
 import { badgesData, badgeCategories } from '../../data/badgeData'
 import BadgeCard from './BadgeCard'
 import BadgeDetailModal from './BadgeDetailModal'
@@ -24,7 +24,7 @@ const BadgeGallery = () => {
       <div className={styles.sectionHead}>
         <div className={styles.titleGroup}>
           <div className={styles.headerBadge}>
-            <Trophy size={11} className={styles.badgeIcon} />
+            <Trophy size={13} weight="duotone" className={styles.badgeIcon} />
             <span>PRESTIGE ACHIEVEMENTS & EMBLEMS</span>
           </div>
           <h2 id="badges-heading" className="section-title">
@@ -39,7 +39,7 @@ const BadgeGallery = () => {
         <div className={styles.statsCard}>
           <div className={styles.statsLeft}>
             <div className={styles.trophyIconWrap}>
-              <Award size={18} color="#FBBF24" />
+              <Medal size={20} weight="duotone" color="#FBBF24" />
             </div>
             <div className={styles.statsText}>
               <span className={styles.statsVal}>

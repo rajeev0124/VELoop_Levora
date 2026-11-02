@@ -1,16 +1,25 @@
 import React, { useEffect } from 'react'
-import { Coins, Gem, TrendingUp, Target, Gift, Sparkles, Zap, RefreshCw } from 'lucide-react'
+import {
+  Coins,
+  Diamond,
+  TrendUp,
+  Target,
+  TreasureChest,
+  Sparkle,
+  Lightning,
+  ArrowsClockwise,
+} from '@phosphor-icons/react'
 import LevelBadgeHex from '../shared/LevelBadgeHex'
 import { LaurelBranch } from '../shared/LaurelWreath'
 import styles from './LevelUpModal.module.css'
 
 // Maps reward type to icon + color
 const REWARD_ICON_MAP = {
-  VEs:        { Icon: Coins,     color: '#FBBF24' },
-  Gems:       { Icon: Gem,       color: '#A08CFF' },
-  Spins:      { Icon: RefreshCw, color: '#00F5FF' },
-  SVEs:       { Icon: Zap,       color: '#00E676' },
-  'Safe Vault': { Icon: Gift,    color: '#F5C842' },
+  VEs:        { Icon: Coins,           color: '#FBBF24' },
+  Gems:       { Icon: Diamond,         color: '#A08CFF' },
+  Spins:      { Icon: ArrowsClockwise, color: '#00F5FF' },
+  SVEs:       { Icon: Lightning,       color: '#00E676' },
+  'Safe Vault': { Icon: TreasureChest, color: '#F5C842' },
 }
 
 const LevelUpModal = ({ isOpen, onClose, data }) => {
@@ -52,7 +61,7 @@ const LevelUpModal = ({ isOpen, onClose, data }) => {
     10: ['1 Tier 1 Safe Vault', 'Permanent 2.0x Reward Multiplier', 'Sovereign Holographic Profile'],
   }
   const perks = tierPerks[targetLevel] || tierPerks[5]
-  const perkIcons = [TrendingUp, Target, Gift]
+  const perkIcons = [TrendUp, Target, TreasureChest]
   const perkColors = ['#7B61FF', '#3D9EFF', '#F5C842']
   const perkIconStyles = [styles.perkIconTrend, styles.perkIconTarget, styles.perkIconGift]
 
@@ -62,16 +71,16 @@ const LevelUpModal = ({ isOpen, onClose, data }) => {
         {/* Ambient Sparkles */}
         <div className={styles.sparkleWrap}>
           <span className={styles.sparkle} style={{ top: '8%', left: '12%' }}>
-            <Sparkles size={20} color="#F5C842" />
+            <Sparkle size={20} weight="fill" color="#F5C842" />
           </span>
           <span className={styles.sparkle} style={{ top: '15%', right: '15%' }}>
-            <Gem size={18} color="#A08CFF" />
+            <Diamond size={18} weight="duotone" color="#A08CFF" />
           </span>
           <span className={styles.sparkle} style={{ top: '35%', left: '8%' }}>
-            <Coins size={18} color="#F5C842" />
+            <Coins size={18} weight="duotone" color="#F5C842" />
           </span>
           <span className={styles.sparkle} style={{ top: '40%', right: '10%' }}>
-            <Sparkles size={16} color="#3D9EFF" />
+            <Sparkle size={16} weight="fill" color="#3D9EFF" />
           </span>
         </div>
 
@@ -100,7 +109,7 @@ const LevelUpModal = ({ isOpen, onClose, data }) => {
               +{rewardAmount} {rewardType}
             </span>
             <span className={styles.rewardCardIcon}>
-              <RewardIcon size={28} color={rewardColor} />
+              <RewardIcon size={28} weight="duotone" color={rewardColor} />
             </span>
           </div>
         </div>
@@ -112,7 +121,7 @@ const LevelUpModal = ({ isOpen, onClose, data }) => {
             return (
               <div key={idx} className={styles.perkItem}>
                 <span className={`${styles.perkIcon} ${perkIconStyles[idx]}`}>
-                  <PerkIcon size={16} color={perkColors[idx]} />
+                  <PerkIcon size={16} weight="duotone" color={perkColors[idx]} />
                 </span>
                 <span className={styles.perkText}>{perk}</span>
               </div>

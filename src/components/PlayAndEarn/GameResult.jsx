@@ -1,5 +1,14 @@
 import React from 'react'
-import { ArrowLeft, Share2, RotateCcw, ArrowRight, Trophy, Zap, ShieldCheck, Coins, Sparkles } from 'lucide-react'
+import {
+  CaretLeft,
+  ShareNetwork,
+  ArrowsCounterClockwise,
+  CaretRight,
+  ShieldCheck,
+  Lightning,
+  Coins,
+  Sparkle,
+} from '@phosphor-icons/react'
 import LaurelMedal from '../shared/LaurelMedal'
 import styles from './PlayAndEarn.module.css'
 
@@ -21,10 +30,10 @@ const GameResult = ({ score, reward, onPlayAgain }) => {
           title="Play Again"
           aria-label="Back to Arcade"
         >
-          <ArrowLeft size={16} />
+          <CaretLeft size={16} weight="bold" />
         </button>
         <div className={styles.verifiedHeaderBadge}>
-          <ShieldCheck size={12} className={styles.shieldIcon} />
+          <ShieldCheck size={13} weight="duotone" className={styles.shieldIcon} />
           <span>Fair-Play Certified Audit</span>
         </div>
         <button
@@ -41,13 +50,13 @@ const GameResult = ({ score, reward, onPlayAgain }) => {
             }
           }}
         >
-          <Share2 size={16} />
+          <ShareNetwork size={16} weight="duotone" />
         </button>
       </div>
 
       <div className={styles.resultTitleGroup}>
         <div className={styles.performanceTag}>
-          <Sparkles size={11} />
+          <Sparkle size={12} weight="fill" />
           <span>PERFORMANCE AUDIT</span>
         </div>
         <h3 className={styles.resultTitle}>BLITZ COMPLETE!</h3>
@@ -76,7 +85,7 @@ const GameResult = ({ score, reward, onPlayAgain }) => {
         <div className={styles.rewardPillsGrid}>
           <div className={styles.rewardPillItemXP}>
             <div className={styles.rewardPillHeader}>
-              <Zap size={13} className={styles.pillIconXPColor} />
+              <Lightning size={14} weight="fill" className={styles.pillIconXPColor} />
               <span className={styles.rewardPillLabel}>XP MINTED</span>
             </div>
             <span className={styles.rewardPillValueXP}>+{xpEarned} XP</span>
@@ -85,7 +94,7 @@ const GameResult = ({ score, reward, onPlayAgain }) => {
 
           <div className={styles.rewardPillItemVE}>
             <div className={styles.rewardPillHeader}>
-              <Coins size={13} className={styles.pillIconVEColor} />
+              <Coins size={14} weight="duotone" className={styles.pillIconVEColor} />
               <span className={styles.rewardPillLabel}>VE TOKENS</span>
             </div>
             <span className={styles.rewardPillValueVE}>+{veEarned} VEs</span>
@@ -125,7 +134,7 @@ const GameResult = ({ score, reward, onPlayAgain }) => {
             onClick={onPlayAgain}
             style={{ width: '100%', padding: '12px 18px' }}
           >
-            <RotateCcw size={15} />
+            <ArrowsCounterClockwise size={15} weight="bold" />
             <span>Play Another Round</span>
           </button>
           <button
@@ -138,7 +147,7 @@ const GameResult = ({ score, reward, onPlayAgain }) => {
             style={{ width: '100%', padding: '10px 18px', fontSize: '12px' }}
           >
             <span>Explore Acceleration Hub</span>
-            <ArrowRight size={14} />
+            <CaretRight size={14} weight="bold" />
           </button>
         </div>
       </div>

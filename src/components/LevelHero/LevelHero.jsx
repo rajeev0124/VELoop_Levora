@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import {
-  Star,
-  ClipboardCheck,
-  Flame,
-  Zap,
-} from 'lucide-react'
+  StarFour,
+  CheckCircle,
+  Fire,
+  Lightning,
+} from '@phosphor-icons/react'
 import TierMedallion from '../shared/TierMedallion'
 import InfoTooltip from '../InfoTooltip/InfoTooltip'
 import styles from './LevelHero.module.css'
@@ -93,7 +93,7 @@ const LevelHero = ({ data }) => {
       <div className={styles.boostSection}>
         <div className={styles.boostHeader}>
           <div className={styles.boostTitleWrap}>
-            <Zap size={13} className={styles.boostZap} aria-hidden="true" />
+            <Lightning size={14} weight="fill" className={styles.boostZap} aria-hidden="true" />
             <span className={styles.boostTitle}>TODAY'S BOOST</span>
           </div>
           <span className={styles.boostSubtitle}>Daily Overview</span>
@@ -102,7 +102,7 @@ const LevelHero = ({ data }) => {
         <div className={styles.boostGrid}>
           <div className={styles.boostItem}>
             <div className={`${styles.boostIconWrap} ${styles.boostIconXP}`}>
-              <Star size={15} color="#F5C842" aria-hidden="true" />
+              <StarFour size={16} weight="fill" color="#FBBF24" aria-hidden="true" />
             </div>
             <span className={styles.boostLabel}>XP Earned</span>
             <span className={styles.boostVal}>215 XP</span>
@@ -110,7 +110,7 @@ const LevelHero = ({ data }) => {
 
           <div className={styles.boostItem}>
             <div className={`${styles.boostIconWrap} ${styles.boostIconTasks}`}>
-              <ClipboardCheck size={15} color="#3D9EFF" aria-hidden="true" />
+              <CheckCircle size={16} weight="duotone" color="#38BDF8" aria-hidden="true" />
             </div>
             <span className={styles.boostLabel}>Tasks Done</span>
             <span className={styles.boostVal}>4 / 8</span>
@@ -118,7 +118,7 @@ const LevelHero = ({ data }) => {
 
           <div className={styles.boostItem}>
             <div className={`${styles.boostIconWrap} ${styles.boostIconStreak}`}>
-              <Flame size={15} color="#FF5252" aria-hidden="true" />
+              <Fire size={16} weight="fill" color="#F43F5E" aria-hidden="true" />
             </div>
             <span className={styles.boostLabel}>Streak</span>
             <span className={styles.boostVal}>7 Days</span>

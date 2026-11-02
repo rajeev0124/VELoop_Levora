@@ -1,5 +1,12 @@
 import React, { useState } from 'react'
-import { Coins, Gem, ArrowRight, Sparkles, Lock, ShieldCheck } from 'lucide-react'
+import {
+  Coins,
+  Diamond,
+  CaretRight,
+  Sparkle,
+  LockKey,
+  ShieldCheck,
+} from '@phosphor-icons/react'
 import styles from './NextLevelReward.module.css'
 import InfoTooltip from '../InfoTooltip/InfoTooltip'
 
@@ -29,7 +36,7 @@ const NextLevelReward = ({ data, onTriggerLevelUp }) => {
           <div className={styles.levelTagRow}>
             <span className={styles.levelTag}>LEVEL {String(targetLevel).padStart(2, '0')} REWARDS</span>
             <span className={styles.lockedPill}>
-              <Lock size={10} />
+              <LockKey size={12} weight="duotone" />
               <span>LOCKED VAULT</span>
             </span>
           </div>
@@ -44,27 +51,13 @@ const NextLevelReward = ({ data, onTriggerLevelUp }) => {
       <div className={styles.vaultStageCenter}>
         {/* Ambient Backlight Beam */}
         <div className={styles.radialSpotlight} aria-hidden="true" />
-        <div className={styles.energyRings} aria-hidden="true" />
 
         <div className={styles.vaultArtworkWrap}>
           <img
-            src="/assets/safe-vault-3d.png"
-            alt={`Level ${targetLevel} Reward Vault`}
+            src="/assets/safe-user-concept.png"
+            alt={`Level ${targetLevel} Milestone Safe Vault`}
             className={styles.vaultLargeImg}
           />
-
-          {/* Floating Prismatic Reward Rings Constellation (Matching User's Reference) */}
-          <div className={styles.orbitalConstellation} aria-hidden="true">
-            <span className={`${styles.orbitRingBadge} ${styles.orbitPurple}`} title="Rare Amethyst Gemstones">
-              <Gem size={15} />
-            </span>
-            <span className={`${styles.orbitRingBadge} ${styles.orbitGold}`} title="Imperial Gold Sparkles">
-              <Sparkles size={16} />
-            </span>
-            <span className={`${styles.orbitRingBadge} ${styles.orbitCyan}`} title="Cyber Cyan Diamonds">
-              <Gem size={14} />
-            </span>
-          </div>
         </div>
 
         {/* Illuminated Pedestal Base */}
@@ -74,7 +67,7 @@ const NextLevelReward = ({ data, onTriggerLevelUp }) => {
         <div className={styles.rewardSummaryRow}>
           <div className={styles.rewardPillGold}>
             <div className={styles.pillIconWrapGold}>
-              <Coins size={14} />
+              <Coins size={15} weight="duotone" />
             </div>
             <div className={styles.pillTextCol}>
               <span className={styles.pillAmountGold}>+500 VEs</span>
@@ -84,7 +77,7 @@ const NextLevelReward = ({ data, onTriggerLevelUp }) => {
 
           <div className={styles.rewardPillPurple}>
             <div className={styles.pillIconWrapPurple}>
-              <Gem size={14} />
+              <Diamond size={15} weight="duotone" />
             </div>
             <div className={styles.pillTextCol}>
               <span className={styles.pillAmountPurple}>+25 Gems</span>
@@ -98,7 +91,7 @@ const NextLevelReward = ({ data, onTriggerLevelUp }) => {
       <div className={styles.progressWrap}>
         <div className={styles.progressText}>
           <span className={styles.unlockedText}>
-            <ShieldCheck size={12} className={styles.shieldGreen} />
+            <ShieldCheck size={14} weight="duotone" className={styles.shieldGreen} />
             {pct}% Unlocked
           </span>
           <span className={styles.remainingText}>{xpRemaining.toLocaleString()} XP remaining</span>
@@ -127,7 +120,7 @@ const NextLevelReward = ({ data, onTriggerLevelUp }) => {
           aria-label="View Rewards Preview modal"
         >
           <span>View Rewards Preview</span>
-          <ArrowRight size={14} aria-hidden="true" />
+          <CaretRight size={14} weight="bold" aria-hidden="true" />
         </button>
       </div>
 

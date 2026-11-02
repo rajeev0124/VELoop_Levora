@@ -1,5 +1,15 @@
 import React, { useState, useEffect } from 'react'
-import { X, Sparkles, Coins, Gem, Zap, Check, ShieldCheck, ArrowRight, Lock } from 'lucide-react'
+import {
+  X,
+  Sparkle,
+  Coins,
+  Diamond,
+  Lightning,
+  CheckCircle,
+  ShieldCheck,
+  CaretRight,
+  LockSimple,
+} from '@phosphor-icons/react'
 import { mysteryBoxRarities } from '../../data/mysteryBoxData'
 import styles from './MysteryBox.module.css'
 
@@ -108,12 +118,12 @@ const MysteryBoxOpeningModal = ({ box, isOpen, onClose, onClaimSuccess }) => {
 
             <div className={styles.modalRewardPreviewBox}>
               <div className={styles.rewardPreviewHeader}>
-                <Sparkles size={13} className={styles.sparkleGold} />
+                <Sparkle size={13} weight="fill" className={styles.sparkleGold} />
                 <span>ESTIMATED VAULT CONTENT</span>
               </div>
               <div className={styles.previewSummaryVal}>{box.rewardSummary}</div>
               <span className={styles.verifiedClaimText}>
-                <ShieldCheck size={12} className={styles.shieldIcon} />
+                <ShieldCheck size={12} weight="duotone" className={styles.shieldIcon} />
                 {box.requirement}
               </span>
             </div>
@@ -126,13 +136,13 @@ const MysteryBoxOpeningModal = ({ box, isOpen, onClose, onClaimSuccess }) => {
                   onClick={handleCrackVault}
                   style={{ width: '100%', padding: '16px', fontSize: '15px' }}
                 >
-                  <Sparkles size={16} />
+                  <Sparkle size={16} weight="fill" />
                   <span>Initiate Vault Unlock</span>
                 </button>
               ) : (
                 <div className={styles.modalLockedNotice}>
                   <div className={styles.lockedNoticeText}>
-                    <Lock size={14} />
+                    <LockSimple size={14} weight="duotone" />
                     <span>{box.requirement}</span>
                   </div>
                   <button
@@ -162,7 +172,7 @@ const MysteryBoxOpeningModal = ({ box, isOpen, onClose, onClaimSuccess }) => {
         {openingState === 'revealed' && (
           <div className={styles.stageRevealed}>
             <div className={styles.revealedSuccessTag}>
-              <Check size={12} strokeWidth={3} />
+              <CheckCircle size={14} weight="fill" />
               <span>VAULT BREACH SUCCESSFUL!</span>
             </div>
 
@@ -175,7 +185,7 @@ const MysteryBoxOpeningModal = ({ box, isOpen, onClose, onClaimSuccess }) => {
             <div className={styles.revealedCardsGrid}>
               {box.rewardDetails.ve > 0 && (
                 <div className={styles.rewardPayoutPillVE}>
-                  <Coins size={18} className={styles.payoutIconGold} />
+                  <Coins size={18} weight="duotone" className={styles.payoutIconGold} />
                   <span className={styles.payoutAmountGold}>+{box.rewardDetails.ve} VEs</span>
                   <span className={styles.payoutLabel}>Token Payout</span>
                 </div>
@@ -183,7 +193,7 @@ const MysteryBoxOpeningModal = ({ box, isOpen, onClose, onClaimSuccess }) => {
 
               {box.rewardDetails.gems > 0 && (
                 <div className={styles.rewardPayoutPillGem}>
-                  <Gem size={18} className={styles.payoutIconPurple} />
+                  <Diamond size={18} weight="duotone" className={styles.payoutIconPurple} />
                   <span className={styles.payoutAmountPurple}>+{box.rewardDetails.gems} Gems</span>
                   <span className={styles.payoutLabel}>Rare Currency</span>
                 </div>
@@ -191,7 +201,7 @@ const MysteryBoxOpeningModal = ({ box, isOpen, onClose, onClaimSuccess }) => {
 
               {box.rewardDetails.xp > 0 && (
                 <div className={styles.rewardPayoutPillXP}>
-                  <Zap size={18} className={styles.payoutIconCyan} />
+                  <Lightning size={18} weight="fill" className={styles.payoutIconCyan} />
                   <span className={styles.payoutAmountCyan}>+{box.rewardDetails.xp} XP</span>
                   <span className={styles.payoutLabel}>Progression Energy</span>
                 </div>
@@ -205,7 +215,7 @@ const MysteryBoxOpeningModal = ({ box, isOpen, onClose, onClaimSuccess }) => {
               style={{ width: '100%', padding: '15px', fontSize: '15px', fontWeight: 800 }}
             >
               <span>Deposit Rewards to Wallet</span>
-              <ArrowRight size={16} />
+              <CaretRight size={16} weight="bold" />
             </button>
           </div>
         )}

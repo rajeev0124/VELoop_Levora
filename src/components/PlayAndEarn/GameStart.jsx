@@ -1,5 +1,5 @@
 import React from 'react'
-import { Gamepad2, Clock, Zap, Play, ShieldCheck, Trophy, Sparkles } from 'lucide-react'
+import { GameController, Timer, Lightning, Play, ShieldCheck } from '@phosphor-icons/react'
 import styles from './PlayAndEarn.module.css'
 
 const GameStart = ({ onStart }) => {
@@ -8,11 +8,11 @@ const GameStart = ({ onStart }) => {
       {/* Top Header Row with Badges */}
       <div className={styles.startHeaderRow}>
         <div className={styles.gameBadge}>
-          <Gamepad2 size={12} className={styles.badgeIcon} />
+          <GameController size={14} weight="duotone" className={styles.badgeIcon} />
           <span>REFLEX ARCADE</span>
         </div>
         <div className={styles.verifiedBadge}>
-          <ShieldCheck size={12} className={styles.verifiedIcon} />
+          <ShieldCheck size={14} weight="duotone" className={styles.verifiedIcon} />
           <span>Fair-Play Certified</span>
         </div>
       </div>
@@ -30,7 +30,7 @@ const GameStart = ({ onStart }) => {
       {/* High-Tech Spec HUD Bar */}
       <div className={styles.specHudRow}>
         <div className={styles.specHudItem}>
-          <Clock size={14} className={styles.specIconGold} />
+          <Timer size={15} weight="duotone" className={styles.specIconGold} />
           <div className={styles.specItemText}>
             <span className={styles.specVal}>20s Blitz</span>
             <span className={styles.specLabel}>Round Timer</span>
@@ -38,7 +38,7 @@ const GameStart = ({ onStart }) => {
         </div>
         <div className={styles.specHudDivider} />
         <div className={styles.specHudItem}>
-          <Gamepad2 size={14} className={styles.specIconCyan} />
+          <GameController size={15} weight="duotone" className={styles.specIconCyan} />
           <div className={styles.specItemText}>
             <span className={styles.specVal}>Drag / Arrows</span>
             <span className={styles.specLabel}>Controls</span>
@@ -46,7 +46,7 @@ const GameStart = ({ onStart }) => {
         </div>
         <div className={styles.specHudDivider} />
         <div className={styles.specHudItem}>
-          <Zap size={14} className={styles.specIconPurple} />
+          <Lightning size={15} weight="fill" className={styles.specIconPurple} />
           <div className={styles.specItemText}>
             <span className={styles.specVal}>+150 XP Max</span>
             <span className={styles.specLabel}>Potential Yield</span>
@@ -94,11 +94,11 @@ const GameStart = ({ onStart }) => {
           className={`ve-btn ve-btn-gold ${styles.engageBtn}`}
           onClick={onStart}
         >
-          <Play size={16} fill="currentColor" />
+          <Play size={16} weight="fill" />
           <span>Engage XP Catcher</span>
         </button>
         <span className={styles.frequencyTag}>
-          <ShieldCheck size={13} className={styles.shieldIcon} />
+          <ShieldCheck size={14} weight="duotone" className={styles.shieldIcon} />
           100% Skill-Based Reflex Challenge • Zero Gambling Mechanics
         </span>
       </div>
