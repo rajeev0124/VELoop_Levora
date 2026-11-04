@@ -1,5 +1,5 @@
 // ============================================================
-// MYSTERY BOX DATA — VELoop Rewards
+// MYSTERY VAULT DATA — VELoop Rewards Redesign
 // 3D-inspired rewards discovery vaults with multi-tier rarities
 // ============================================================
 
@@ -46,7 +46,7 @@ export const mysteryBoxesData = [
     id: 'box-bronze',
     name: 'Bronze Cipher Casket',
     rarity: 'common',
-    status: 'ready', // ready to open
+    status: 'opened', // Past vault claimed
     artwork: '/assets/low.svg',
     tag: 'Daily Streak Vault',
     requirement: 'Claimed via 7-Day Active Login Streak',
@@ -64,10 +64,10 @@ export const mysteryBoxesData = [
     id: 'box-amethyst',
     name: 'Amethyst Vault Crate',
     rarity: 'rare',
-    status: 'ready', // ready to open
+    status: 'opened', // Past vault claimed
     artwork: '/assets/medium.svg',
     tag: 'Level 04 Milestone',
-    requirement: 'Unlocked at Silver Scout (Level 04)',
+    requirement: 'Claimed at Cobalt Vanguard (Level 04)',
     rewardSummary: '+75 XP & 15 Gems',
     rewardDetails: {
       xp: 75,
@@ -80,22 +80,43 @@ export const mysteryBoxesData = [
   },
   {
     id: 'box-gold-vault',
-    name: 'Cyber Gold Sovereign Safe',
+    name: 'Gold Guardian Sovereign Vault',
     rarity: 'epic',
-    status: 'ready', // ready to open
-    artwork: '/assets/safe-1.svg',
-    tag: 'Active Rank Vault',
-    requirement: 'Awarded at Level 05 (Gold Guardian)',
-    rewardSummary: '+500 VEs & 25 Gems',
+    status: 'ready', // Ready to open!
+    artwork: '/assets/vault-open-clean.png',
+    tag: 'Level 05 Active Milestone',
+    requirement: 'Achieved Level 05 (Gold Guardian)',
+    rewardSummary: '+500 VEs & +25 Gems',
     rewardDetails: {
       xp: 150,
       ve: 500,
       gems: 25,
-      bonus: 'VIP Profile Flare',
+      bonus: 'VIP Profile Flare & 1.15x Multiplier',
     },
     progressPct: 100,
     isFeatured: true,
-    lore: 'The executive Level 05 Milestone Safe. Features high-security cyber deadbolts packed with token yield.',
+    lore: 'The executive Level 05 Milestone Vault. Features high-security cyber deadbolts packed with sovereign token yield.',
+  },
+  {
+    id: 'box-platinum-vault',
+    name: 'Platinum Hero Milestone Vault',
+    rarity: 'epic',
+    status: 'locked', // Locked next vault
+    artwork: '/assets/vault-open-clean.png',
+    tag: 'Level 06 Target Milestone',
+    requirement: 'Requires Level 06 (1,580 XP remaining)',
+    rewardSummary: '+500 VEs, +25 Gems & 2 Spins',
+    rewardDetails: {
+      xp: 250,
+      ve: 500,
+      gems: 25,
+      spins: 2,
+      bonus: '1.25x Arcade XP Multiplier',
+    },
+    progressPct: 80,
+    progressLabel: '6,420 / 8,000 XP (1,580 XP remaining)',
+    isFeatured: true,
+    lore: 'Prestige platinum vault sealed with magnetic cryo-locks. Unlocks automatically upon reaching Level 06 at 8,000 XP.',
   },
   {
     id: 'box-diamond-crate',
@@ -103,7 +124,7 @@ export const mysteryBoxesData = [
     rarity: 'legendary',
     status: 'locked',
     artwork: '/assets/safe-2.svg',
-    tag: 'Next Major Tier',
+    tag: 'Level 07 Milestone',
     requirement: 'Requires Level 07 (Diamond Legend)',
     rewardSummary: '+100 SVEs Safe Grant',
     rewardDetails: {
@@ -114,7 +135,7 @@ export const mysteryBoxesData = [
       bonus: 'Permanent Streak Armor',
     },
     progressPct: 25,
-    progressLabel: '6,420 / 25,000 XP (25%)',
+    progressLabel: '6,420 / 16,000 XP (25%)',
     lore: 'Crystalline safe encased in diamond-grade magnetic shielding. Accessible exclusively to Level 07 legends.',
   },
   {
@@ -123,7 +144,7 @@ export const mysteryBoxesData = [
     rarity: 'exclusive',
     status: 'locked',
     artwork: '/assets/cart-top.svg',
-    tag: 'Apex Horizon',
+    tag: 'Level 10 Apex Horizon',
     requirement: 'Requires Level 10 (Apex Sovereign)',
     rewardSummary: '1 Tier 1 Safe Vault + 2.0x Multiplier',
     rewardDetails: {
@@ -132,8 +153,8 @@ export const mysteryBoxesData = [
       gems: 100,
       bonus: 'Permanent 2.0x Reward Multiplier',
     },
-    progressPct: 4,
-    progressLabel: '6,420 / 150,000 XP (4%)',
+    progressPct: 5,
+    progressLabel: '6,420 / 128,000 XP (5%)',
     lore: 'The ultimate summit vault of VELoop Rewards. Contains the legendary master core and lifetime sovereign status.',
   },
 ]

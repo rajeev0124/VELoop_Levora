@@ -1,22 +1,21 @@
 /* ============================================================
-   LEVEL ROADMAP — APEX MILESTONE CONDUIT & INSPECTOR
-   Palette 2: Cyber Obsidian & Electric Amethyst
+   LEVEL ROADMAP — VELoop Rewards Redesign
+   High-precision horizontal track + Desktop inspector + Mobile sheet
    ============================================================ */
 
 .section {
-  padding: 32px 0 24px;
-  position: relative;
+  width: 100%;
+  padding: 12px 0 28px;
 }
 
-/* Section Header */
 .sectionHead {
   display: flex;
   flex-direction: column;
-  gap: 18px;
-  margin-bottom: 24px;
+  gap: 16px;
+  margin-bottom: 20px;
 }
 
-@media (min-width: 900px) {
+@media (min-width: 992px) {
   .sectionHead {
     flex-direction: row;
     justify-content: space-between;
@@ -28,20 +27,21 @@
   display: flex;
   flex-direction: column;
   gap: 4px;
+  max-width: 720px;
 }
 
 .headerBadge {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.1em;
   color: var(--gold);
   background: var(--gold-soft);
   border: 1px solid var(--border-gold);
-  padding: 3px 10px;
+  padding: 4px 10px;
   border-radius: var(--radius-full);
   width: fit-content;
   margin-bottom: 4px;
@@ -57,69 +57,66 @@
   gap: 12px;
 }
 
-@media (min-width: 600px) {
+@media (min-width: 640px) {
   .headActions {
     flex-direction: row;
     align-items: center;
-    gap: 16px;
   }
 }
 
-/* Legend */
+/* Dynamic Legend */
 .legend {
   display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
   align-items: center;
+  gap: 14px;
+  background: rgba(14, 11, 28, 0.7);
+  border: 1px solid var(--border-card);
+  padding: 8px 14px;
+  border-radius: var(--radius-full);
+  flex-wrap: wrap;
 }
 
 .legendItem {
-  font-size: 11px;
-  color: var(--text-secondary);
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  background: rgba(20, 16, 36, 0.70);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  padding: 4px 10px;
-  border-radius: var(--radius-full);
-  border: 1px solid rgba(168, 85, 247, 0.18);
-  font-weight: 600;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-secondary);
 }
 
 .legendDotCompleted {
-  width: 7px;
-  height: 7px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
   background: var(--green);
-  box-shadow: 0 0 6px var(--green);
+  box-shadow: 0 0 8px var(--green);
 }
 
 .legendDotCurrent {
-  width: 7px;
-  height: 7px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
   background: var(--gold);
   box-shadow: 0 0 8px var(--gold);
+  animation: pulseSlow 1.8s infinite ease-in-out;
 }
 
 .legendDotNext {
-  width: 7px;
-  height: 7px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
-  background: var(--purple);
+  background: var(--purple-light);
   box-shadow: 0 0 8px var(--purple);
 }
 
 .legendDotLocked {
-  width: 7px;
-  height: 7px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
-  background: var(--text-muted);
+  background: #475569;
 }
 
-/* Controls */
 .controlGroup {
   display: flex;
   align-items: center;
@@ -127,428 +124,282 @@
 }
 
 .jumpBtn {
-  background: rgba(20, 16, 36, 0.85);
-  border: 1px solid var(--border-gold);
-  color: var(--gold);
-  font-size: 11px;
-  font-weight: 800;
-  padding: 6px 12px;
-  border-radius: var(--radius-full);
   display: inline-flex;
   align-items: center;
-  gap: 5px;
+  gap: 6px;
+  background: var(--gold-soft);
+  border: 1px solid var(--border-gold);
+  color: var(--gold);
+  font-size: 12px;
+  font-weight: 800;
+  padding: 8px 14px;
+  border-radius: var(--radius-full);
   cursor: pointer;
-  transition: all var(--transition-fast);
-  box-shadow: 0 0 10px rgba(251, 191, 36, 0.15);
+  transition: all var(--duration-fast);
+  white-space: nowrap;
 }
 
 .jumpBtn:hover {
-  background: var(--gold-soft);
-  box-shadow: 0 0 16px rgba(251, 191, 36, 0.35);
+  background: rgba(251, 191, 36, 0.22);
   transform: translateY(-1px);
 }
 
 .chevronGroup {
   display: flex;
-  gap: 4px;
+  align-items: center;
+  gap: 6px;
 }
 
 .chevronBtn {
-  background: rgba(20, 16, 36, 0.85);
-  border: 1px solid rgba(168, 85, 247, 0.22);
-  color: var(--text-secondary);
-  width: 32px;
-  height: 32px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-card);
+  color: var(--text-secondary);
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: all var(--transition-fast);
+  transition: all var(--duration-fast);
 }
 
 .chevronBtn:hover {
-  background: var(--purple-soft);
-  color: #fff;
-  border-color: var(--purple);
-  box-shadow: 0 0 12px rgba(168, 85, 247, 0.35);
+  background: rgba(255, 255, 255, 0.12);
+  color: #FFFFFF;
 }
 
-/* ============================================================
-   Horizontal Milestone Conduit Rail
-   ============================================================ */
+/* Roadmap Horizontal Scroll Rail with Edge Fades */
+.roadmapScrollContainer {
+  position: relative;
+  width: 100%;
+}
+
+.edgeFadeLeft {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: clamp(16px, 3vw, 36px);
+  background: linear-gradient(90deg, var(--bg-body) 0%, transparent 100%);
+  z-index: 5;
+  pointer-events: none;
+}
+
+.edgeFadeRight {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: clamp(16px, 3vw, 36px);
+  background: linear-gradient(-90deg, var(--bg-body) 0%, transparent 100%);
+  z-index: 5;
+  pointer-events: none;
+}
 
 .roadmapScroll {
+  width: 100%;
   overflow-x: auto;
-  padding: 18px 4px 28px;
+  scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
-  scrollbar-width: thin;
-  scrollbar-color: rgba(168, 85, 247, 0.4) rgba(10, 8, 20, 0.6);
-  border-radius: var(--radius-xl);
+  padding: 16px 12px 24px;
+  position: relative;
+  outline: none;
 }
 
 .roadmapScroll::-webkit-scrollbar {
   height: 6px;
 }
 
-.roadmapScroll::-webkit-scrollbar-track {
-  background: rgba(10, 8, 20, 0.6);
-  border-radius: var(--radius-full);
-}
-
-.roadmapScroll::-webkit-scrollbar-thumb {
-  background: linear-gradient(90deg, rgba(168, 85, 247, 0.4) 0%, rgba(251, 191, 36, 0.5) 100%);
-  border-radius: var(--radius-full);
-}
-
 .roadmapTrack {
-  display: flex;
-  min-width: max-content;
+  display: inline-flex;
   align-items: stretch;
-  gap: 16px;
-  padding: 16px 20px;
-  background: linear-gradient(135deg, rgba(20, 16, 36, 0.70) 0%, rgba(10, 8, 20, 0.85) 100%);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
-  border: 1px solid rgba(168, 85, 247, 0.18);
-  border-radius: var(--radius-xl);
-  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  gap: 0;
+  min-width: 100%;
   position: relative;
 }
 
-/* Node Wrapper (Enforces 160px width & zero shrink) */
+/* Node Wrapper & Connecting Line */
 .nodeWrapper {
   display: flex;
-  flex: 0 0 160px;
-  width: 160px;
-  min-width: 160px;
-  max-width: 160px;
+  align-items: center;
   position: relative;
+  scroll-snap-align: center;
   cursor: pointer;
   outline: none;
 }
 
-/* Laser Energy Conduit Line (Directly Behind Emblem Center at top 77px) */
 .conduitSegment {
-  position: absolute;
-  top: 77px;
-  left: 50%;
-  width: calc(100% + 16px);
+  width: 44px;
   height: 4px;
+  position: relative;
   z-index: 1;
-  pointer-events: none;
-  border-radius: var(--radius-full);
+  flex-shrink: 0;
 }
 
 .conduitCompleted {
-  background: linear-gradient(90deg, var(--green) 0%, var(--green) 100%);
-  box-shadow: 0 0 12px rgba(0, 230, 118, 0.7);
+  background: var(--green);
+  box-shadow: 0 0 10px rgba(0, 230, 118, 0.6);
 }
 
 .conduitActiveCharging {
-  background: linear-gradient(90deg, var(--gold) 0%, var(--purple) 100%);
-  box-shadow: 0 0 16px rgba(251, 191, 36, 0.6);
-  position: relative;
-  overflow: hidden;
+  background: var(--grad-xp-fill);
+  box-shadow: 0 0 12px rgba(251, 191, 36, 0.7);
 }
 
 .chargingBeam {
   position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 44px;
+  inset: 0;
   background: linear-gradient(90deg, transparent, #FFFFFF, transparent);
-  animation: chargingPulse 1.6s infinite ease-in-out;
-}
-
-@keyframes chargingPulse {
-  0% { transform: translateX(-44px); }
-  100% { transform: translateX(180px); }
+  animation: laserFlow 2s linear infinite;
+  background-size: 200% 100%;
 }
 
 .conduitLocked {
-  background: rgba(42, 36, 61, 0.6);
-  border-top: 1px dashed rgba(168, 85, 247, 0.25);
+  background: rgba(255, 255, 255, 0.1);
 }
 
-/* ============================================================
-   Symmetrical Micro-Vault Node Card (160px x 220px fixed)
-   ============================================================ */
-
+/* Node Card */
 .nodeCard {
-  width: 160px;
-  min-width: 160px;
-  max-width: 160px;
-  height: 220px;
-  min-height: 220px;
-  max-height: 220px;
-  box-sizing: border-box;
-  flex-shrink: 0;
-  background: linear-gradient(135deg, rgba(22, 17, 42, 0.90) 0%, rgba(11, 8, 22, 0.96) 100%);
-  backdrop-filter: blur(18px) saturate(180%);
-  -webkit-backdrop-filter: blur(18px) saturate(180%);
-  border: 1px solid rgba(168, 85, 247, 0.18);
-  border-radius: 16px;
+  width: 172px;
+  background: var(--grad-card-glass);
+  backdrop-filter: blur(var(--blur-glass));
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-24);
   padding: 14px 12px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
   text-align: center;
+  gap: 10px;
   position: relative;
   z-index: 2;
-  transition: transform var(--transition-normal), border-color var(--transition-normal), box-shadow var(--transition-normal);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.10);
+  transition: all var(--duration-normal) var(--ease-spring);
+  box-shadow: var(--shadow-sm);
+  flex-shrink: 0;
+}
+
+.nodeWrapper:focus-visible .nodeCard {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
 }
 
 .nodeCard:hover {
   transform: translateY(-4px);
-  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.68), 0 0 20px rgba(168, 85, 247, 0.30);
+  border-color: var(--border-card-hover);
+  box-shadow: var(--shadow-md);
 }
 
-/* State Variants */
+.nodeCardSelected {
+  border-color: var(--gold) !important;
+  box-shadow: 0 0 24px rgba(251, 191, 36, 0.45), inset 0 1px 0 rgba(251, 191, 36, 0.3) !important;
+  transform: translateY(-4px) scale(1.03);
+}
+
 .nodeCompleted {
-  border-color: rgba(0, 230, 118, 0.30);
-  box-shadow: 0 8px 26px rgba(0, 0, 0, 0.50), inset 0 1px 0 rgba(0, 230, 118, 0.15);
+  border-color: rgba(0, 230, 118, 0.35);
 }
 
 .nodeCurrent {
   border-color: var(--gold);
-  background: linear-gradient(135deg, rgba(34, 25, 52, 0.94) 0%, rgba(16, 12, 28, 0.98) 100%);
-  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.70), 0 0 24px rgba(251, 191, 36, 0.35), inset 0 1px 0 rgba(251, 191, 36, 0.35);
-  animation: currentPulse 3s infinite ease-in-out;
-}
-
-@keyframes currentPulse {
-  0%, 100% { box-shadow: 0 12px 36px rgba(0, 0, 0, 0.70), 0 0 20px rgba(251, 191, 36, 0.28); }
-  50% { box-shadow: 0 14px 40px rgba(0, 0, 0, 0.80), 0 0 30px rgba(251, 191, 36, 0.45); }
+  box-shadow: 0 0 20px rgba(251, 191, 36, 0.45);
+  animation: activeNodePulse 2.4s infinite ease-in-out;
 }
 
 .nodeNext {
-  border-color: var(--purple-light);
-  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.60), 0 0 22px rgba(168, 85, 247, 0.32), inset 0 1px 0 rgba(192, 132, 252, 0.30);
+  border-color: rgba(192, 132, 252, 0.45);
+  box-shadow: 0 0 16px rgba(192, 132, 252, 0.3);
+  animation: targetNodePulse 2.8s infinite ease-in-out;
 }
 
 .nodeLocked {
-  opacity: 0.82;
+  opacity: 0.72;
+  border-color: rgba(255, 255, 255, 0.08);
 }
 
-.nodeLocked:hover {
-  opacity: 1;
-}
-
-/* Apex Sovereign (Level 10) */
 .nodeCardApex {
-  border: 1.5px solid rgba(251, 191, 36, 0.45);
-  background: linear-gradient(135deg, rgba(40, 22, 56, 0.90) 0%, rgba(16, 10, 26, 0.98) 100%);
-  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.70), 0 0 30px rgba(168, 85, 247, 0.40);
+  background: linear-gradient(145deg, rgba(20, 45, 30, 0.85) 0%, rgba(10, 25, 18, 0.95) 100%);
+  border-color: rgba(16, 185, 129, 0.5);
 }
 
-/* Selected Node Indicator (Adds glowing ambient outline without overriding the card's native state color!) */
-.nodeCardSelected {
-  outline: 2px solid rgba(0, 245, 255, 0.6);
-  outline-offset: 3px;
-}
-
-/* 1. Status Pill Slot (Strict 24px Fixed Slot) */
+/* Status Pill Slot */
 .statusPillSlot {
-  height: 24px;
-  min-height: 24px;
-  max-height: 24px;
-  box-sizing: border-box;
+  min-height: 22px;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
 }
 
 .pillCompleted {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
   font-size: 9px;
   font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
   color: var(--green);
   background: var(--green-soft);
   border: 1px solid var(--border-green);
-  padding: 2px 8px;
+  padding: 2px 7px;
   border-radius: var(--radius-full);
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  white-space: nowrap;
 }
 
 .pillCurrent {
-  font-size: 9px;
-  font-weight: 900;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--gold);
-  background: var(--gold-soft);
-  border: 1px solid var(--border-gold);
-  padding: 2px 10px;
-  border-radius: var(--radius-full);
   display: inline-flex;
   align-items: center;
   gap: 5px;
-  box-shadow: 0 0 14px rgba(251, 191, 36, 0.35);
-  white-space: nowrap;
+  font-size: 9px;
+  font-weight: 800;
+  color: var(--gold);
+  background: var(--gold-soft);
+  border: 1px solid var(--border-gold);
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
 }
 
 .radarDot {
-  width: 5px;
-  height: 5px;
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
   background: var(--gold);
   box-shadow: 0 0 6px var(--gold);
-  animation: radarBlink 1.2s infinite;
-}
-
-@keyframes radarBlink {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.3; transform: scale(1.4); }
+  animation: pulseSlow 1.5s infinite ease-in-out;
 }
 
 .pillNext {
-  font-size: 9px;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--purple-light);
-  background: var(--purple-soft);
-  border: 1px solid var(--border-purple);
-  padding: 2px 8px;
-  border-radius: var(--radius-full);
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  white-space: nowrap;
+  font-size: 9px;
+  font-weight: 800;
+  color: var(--purple-light);
+  background: var(--purple-soft);
+  border: 1px solid var(--border-purple);
+  padding: 2px 7px;
+  border-radius: var(--radius-full);
 }
 
 .pillLocked {
-  font-size: 9px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--text-muted);
-  background: rgba(42, 36, 61, 0.45);
-  border: 1px solid rgba(168, 85, 247, 0.12);
-  padding: 2px 8px;
-  border-radius: var(--radius-full);
   display: inline-flex;
   align-items: center;
-  gap: 3px;
-  white-space: nowrap;
+  gap: 4px;
+  font-size: 9px;
+  font-weight: 800;
+  color: var(--text-muted);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 2px 7px;
+  border-radius: var(--radius-full);
 }
 
-/* 2. Emblem Halo Centerpiece (Strict 78px Fixed Slot) */
+/* Emblem Halo Wrap */
 .emblemHaloWrap {
-  height: 78px;
-  min-height: 78px;
-  max-height: 78px;
-  box-sizing: border-box;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 6px 0;
-  position: relative;
+  padding: 4px 0;
 }
 
-.emblemBezel {
-  width: 66px;
-  height: 66px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(30, 22, 54, 0.9) 0%, rgba(12, 9, 22, 0.95) 100%);
-  border: 2px solid rgba(168, 85, 247, 0.22);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  box-shadow: inset 0 0 14px rgba(0, 0, 0, 0.8), 0 4px 14px rgba(0, 0, 0, 0.5);
-}
-
-.nodeCurrent .emblemBezel {
-  border-color: var(--gold);
-  box-shadow: 0 0 18px rgba(251, 191, 36, 0.45), inset 0 0 14px rgba(251, 191, 36, 0.2);
-}
-
-.nodeCompleted .emblemBezel {
-  border-color: rgba(0, 230, 118, 0.4);
-}
-
-.nodeCardApex .emblemBezel {
-  border-color: var(--gold);
-  box-shadow: 0 0 22px rgba(168, 85, 247, 0.6), inset 0 0 14px rgba(251, 191, 36, 0.3);
-}
-
-.badgeSvg {
-  width: 48px;
-  height: 48px;
-  object-fit: contain;
-  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.7));
-}
-
-.nodeLocked .badgeSvg {
-  opacity: 0.60;
-  filter: brightness(0.85) saturate(0.65) drop-shadow(0 0 10px rgba(168, 85, 247, 0.35));
-}
-
-.badgeCheckCorner {
-  position: absolute;
-  bottom: 0px;
-  right: 0px;
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  background: var(--green);
-  color: #0E0B02;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 0 8px rgba(0, 230, 118, 0.6);
-  border: 2px solid #0E0918;
-}
-
-.badgeLockCorner {
-  position: absolute;
-  bottom: 0px;
-  right: 0px;
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  background: rgba(30, 20, 52, 0.95);
-  color: var(--purple-light);
-  border: 1.5px solid rgba(168, 85, 247, 0.45);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 0 8px rgba(168, 85, 247, 0.4);
-}
-
-.apexCrownBadge {
-  position: absolute;
-  top: -8px;
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-  background: var(--grad-gold);
-  color: #0E0B02;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 0 10px rgba(251, 191, 36, 0.7);
-}
-
-/* 3. Level & Tier Typography (Strict 48px Fixed Slot) */
+/* Node Typography */
 .nodeTypography {
-  height: 48px;
-  min-height: 48px;
-  max-height: 48px;
-  box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
   gap: 2px;
   width: 100%;
 }
@@ -556,82 +407,60 @@
 .nodeLevelNum {
   font-size: 10px;
   font-weight: 800;
-  letter-spacing: 0.14em;
-  color: var(--text-gold);
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
   text-transform: uppercase;
 }
 
 .nodeTierName {
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 800;
-  color: var(--text-primary);
+  color: #FFFFFF;
+  line-height: 1.25;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 135px;
-  line-height: 1.2;
+  width: 100%;
 }
 
 .nodeXPTarget {
-  font-size: 10px;
-  color: var(--text-muted);
-  font-weight: 600;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--gold);
 }
 
-/* 4. Bottom Reward Capsule (Strict 26px Fixed Slot) */
+/* Reward Capsule (Guaranteed Non-Overlapping) */
 .rewardCapsule {
-  width: 100%;
-  height: 26px;
-  min-height: 26px;
-  max-height: 26px;
-  box-sizing: border-box;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(168, 85, 247, 0.22);
-  border-radius: var(--radius-full);
-  padding: 4px 8px;
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
   gap: 5px;
-  margin-top: 6px;
-  transition: all var(--transition-fast);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 4px 9px;
+  border-radius: var(--radius-full);
+  font-size: 10px;
+  font-weight: 800;
+  max-width: 100%;
 }
 
 .rewardCapsuleCompleted {
-  background: var(--green-soft);
-  border-color: var(--border-green);
-}
-
-.rewardCapsuleCompleted .rewardCapsuleText {
+  border-color: rgba(0, 230, 118, 0.35);
   color: var(--green);
 }
 
 .rewardCapsuleCurrent {
-  background: var(--gold-soft);
   border-color: var(--border-gold);
-  box-shadow: 0 0 10px rgba(251, 191, 36, 0.25);
-}
-
-.rewardCapsuleCurrent .rewardCapsuleText {
   color: var(--gold);
+  background: var(--gold-soft);
 }
 
 .rewardCapsuleNext {
-  background: var(--purple-soft);
   border-color: var(--border-purple);
-  box-shadow: 0 0 10px rgba(168, 85, 247, 0.25);
-}
-
-.rewardCapsuleNext .rewardCapsuleText {
   color: var(--purple-light);
+  background: var(--purple-soft);
 }
 
 .rewardCapsuleLocked {
-  background: rgba(255, 255, 255, 0.02);
-  border-color: rgba(255, 255, 255, 0.06);
-}
-
-.rewardCapsuleLocked .rewardCapsuleText {
   color: var(--text-muted);
 }
 
@@ -639,41 +468,40 @@
   width: 13px;
   height: 13px;
   object-fit: contain;
+  flex-shrink: 0;
 }
 
 .rewardCapsuleText {
-  font-size: 10px;
-  font-weight: 800;
-  color: var(--gold);
   white-space: nowrap;
-  letter-spacing: 0.02em;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* ============================================================
-   Interactive Milestone Inspector Dock
+   LEVEL DETAIL PANEL (Desktop Inspector Dock)
    ============================================================ */
 
 .inspectorDock {
-  margin-top: 20px;
-  background: linear-gradient(135deg, rgba(20, 16, 36, 0.85) 0%, rgba(10, 8, 20, 0.95) 100%);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
-  border: 1px solid rgba(168, 85, 247, 0.25);
-  border-radius: var(--radius-xl);
-  padding: 24px 28px;
+  background: var(--grad-card-glass);
+  backdrop-filter: blur(var(--blur-glass)) saturate(180%);
+  -webkit-backdrop-filter: blur(var(--blur-glass)) saturate(180%);
+  border: 1px solid var(--border-card-hover);
+  border-radius: var(--radius-24);
+  padding: clamp(20px, 3vw, 28px);
   position: relative;
   overflow: hidden;
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.12);
-  animation: fadeIn 0.3s ease;
+  box-shadow: var(--shadow-card);
+  margin-top: 14px;
 }
 
 .dockGlowAura {
   position: absolute;
-  top: -80px;
-  left: 20%;
-  width: 300px;
-  height: 200px;
-  background: radial-gradient(ellipse, rgba(168, 85, 247, 0.15) 0%, transparent 70%);
+  top: -40px;
+  right: -40px;
+  width: 280px;
+  height: 280px;
+  background: radial-gradient(circle, rgba(168, 85, 247, 0.2) 0%, transparent 70%);
+  border-radius: 50%;
   pointer-events: none;
 }
 
@@ -685,47 +513,25 @@
   z-index: 2;
 }
 
-@media (min-width: 960px) {
+@media (min-width: 992px) {
   .dockGrid {
-    grid-template-columns: 1.15fr 1.1fr 1fr;
-    align-items: stretch;
+    grid-template-columns: 1.2fr 1fr 1fr;
+    align-items: center;
   }
 }
 
-/* Column 1: Tier Identity & Lore */
+/* Col 1 */
 .dockTierCol {
   display: flex;
+  align-items: center;
   gap: 18px;
-  align-items: flex-start;
 }
 
 .dockBadgeWrapper {
-  width: 104px;
-  height: 112px;
-  border-radius: 24px;
-  background: radial-gradient(circle at 50% 40%, rgba(251, 191, 36, 0.12) 0%, rgba(168, 85, 247, 0.08) 50%, rgba(8, 7, 16, 0.85) 100%);
-  border: 1.5px solid rgba(251, 191, 36, 0.35);
+  flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-shrink: 0;
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.7), 0 0 24px rgba(251, 191, 36, 0.2);
-  position: relative;
-  overflow: visible;
-}
-
-.dockBadgeImg {
-  width: 56px;
-  height: 56px;
-  object-fit: contain;
-}
-
-.dockApexGlow {
-  position: absolute;
-  inset: -6px;
-  border-radius: 50%;
-  border: 2px dashed var(--gold);
-  animation: spin 12s linear infinite;
 }
 
 .dockTierInfo {
@@ -744,56 +550,60 @@
 .dockLevelPill {
   font-size: 10px;
   font-weight: 800;
-  color: var(--text-gold);
+  letter-spacing: 0.1em;
+  color: var(--gold);
   background: var(--gold-soft);
   border: 1px solid var(--border-gold);
-  padding: 2px 8px;
+  padding: 3px 8px;
   border-radius: var(--radius-full);
-  letter-spacing: 0.1em;
 }
 
 .dockStatusCompleted {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
   font-size: 10px;
   font-weight: 800;
   color: var(--green);
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
 }
 
 .dockStatusActive {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
   font-size: 10px;
   font-weight: 800;
   color: var(--gold);
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
 }
 
 .dockStatusNext {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
   font-size: 10px;
   font-weight: 800;
   color: var(--purple-light);
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
 }
 
 .dockStatusLocked {
-  font-size: 10px;
-  font-weight: 700;
-  color: var(--text-muted);
   display: inline-flex;
   align-items: center;
   gap: 4px;
+  font-size: 10px;
+  font-weight: 800;
+  color: var(--text-muted);
 }
 
 .dockTierTitle {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 900;
-  color: var(--text-primary);
-  letter-spacing: -0.01em;
-  margin-top: 2px;
+  color: #FFFFFF;
+  line-height: 1.2;
+}
+
+.dockTierSilhouette {
+  font-size: 11px;
+  color: var(--text-muted);
 }
 
 .dockTierLore {
@@ -803,151 +613,131 @@
   margin-top: 2px;
 }
 
-/* Column 2: Milestone XP Gauge */
+/* Col 2 */
 .dockGaugeCol {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  background: rgba(255, 255, 255, 0.025);
-  border: 1px solid rgba(168, 85, 247, 0.18);
-  border-radius: var(--radius-lg);
-  padding: 16px 20px;
-  gap: 10px;
+  gap: 8px;
+  background: rgba(14, 11, 28, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-16);
+  padding: 16px;
 }
 
 .gaugeHeader {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  font-size: 11px;
+  font-weight: 800;
 }
 
 .gaugeLead {
-  font-size: 10px;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--purple-light);
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
 }
 
 .gaugeTargetVal {
-  font-size: 13px;
-  font-weight: 900;
-  color: var(--text-primary);
-  font-variant-numeric: tabular-nums;
+  color: var(--gold);
 }
 
 .gaugeBarTrack {
+  width: 100%;
   height: 8px;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.08);
   border-radius: var(--radius-full);
   position: relative;
-  overflow: visible;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  overflow: hidden;
 }
 
 .gaugeBarFill {
   height: 100%;
-  background: var(--grad-gold);
+  background: var(--grad-xp-fill);
   border-radius: var(--radius-full);
-  box-shadow: 0 0 10px rgba(251, 191, 36, 0.5);
-  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.gaugeBarIndicator {
-  position: absolute;
-  top: -4px;
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  background: #FFF;
-  border: 2px solid var(--gold);
-  box-shadow: 0 0 8px rgba(251, 191, 36, 0.9);
-  transform: translateX(-50%);
-  pointer-events: none;
+  transition: width 0.8s ease;
 }
 
 .gaugeStatusRow {
   font-size: 11px;
-  font-weight: 600;
-  font-variant-numeric: tabular-nums;
 }
 
 .gaugeSuccessText {
   color: var(--green);
+  font-weight: 700;
   display: inline-flex;
   align-items: center;
-  gap: 4px;
+  gap: 5px;
 }
 
 .gaugeCurrentText {
   color: var(--gold);
+  font-weight: 700;
   display: inline-flex;
   align-items: center;
-  gap: 4px;
+  gap: 5px;
 }
 
 .gaugeRemainingText {
-  color: var(--text-muted);
+  color: var(--text-secondary);
+  font-weight: 600;
 }
 
-/* Column 3: Rewards, Perks & Quick Action */
+/* Col 3 */
 .dockPerksCol {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  gap: 14px;
+  gap: 12px;
 }
 
 .dockRewardVault {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
+  flex-direction: column;
+  gap: 4px;
 }
 
 .vaultLabel {
   font-size: 10px;
   font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   color: var(--text-muted);
+  text-transform: uppercase;
 }
 
 .vaultPill {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   background: var(--gold-soft);
   border: 1px solid var(--border-gold);
-  padding: 4px 12px;
+  padding: 6px 12px;
   border-radius: var(--radius-full);
-  box-shadow: 0 0 12px rgba(251, 191, 36, 0.2);
+  width: fit-content;
 }
 
 .vaultRewardImg {
-  width: 16px;
-  height: 16px;
+  width: 18px;
+  height: 18px;
   object-fit: contain;
 }
 
 .vaultRewardText {
   font-size: 12px;
-  font-weight: 900;
+  font-weight: 800;
   color: var(--gold);
 }
 
 .perksListWrap {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 4px;
 }
 
 .perksListLabel {
   font-size: 10px;
   font-weight: 800;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--purple-light);
 }
 
 .perksList {
@@ -955,16 +745,14 @@
   display: flex;
   flex-direction: column;
   gap: 4px;
-  margin: 0;
-  padding: 0;
 }
 
 .perkItem {
-  font-size: 11px;
-  color: var(--text-secondary);
   display: flex;
   align-items: center;
   gap: 6px;
+  font-size: 12px;
+  color: var(--text-secondary);
 }
 
 .perkCheck {
@@ -973,231 +761,108 @@
 }
 
 .dockActionRow {
-  display: flex;
-  justify-content: flex-end;
-  margin-top: 2px;
+  margin-top: 4px;
 }
-
 
 /* ============================================================
-   LEVEL ROADMAP — RESPONSIVE OVERRIDES
-   Breakpoints: xs < 360, sm 360-479, mobile 480-767,
-   tablet 768-1023, desktop 1024-1279, wide 1280+
+   MOBILE SLIDE-UP DETAIL SHEET
    ============================================================ */
 
-/* ---- Section Header ---- */
-@media (max-width: 767px) {
-  .section {
-    padding: 20px 0 16px;
-  }
-
-  .sectionHead {
-    gap: 12px;
-    margin-bottom: 16px;
-  }
-
-  .headActions {
-    gap: 10px;
-  }
-
-  .legend {
-    gap: 6px;
-  }
-
-  .legendItem {
-    font-size: 10px;
-    padding: 3px 8px;
-  }
+.mobileSheetOverlay {
+  position: fixed;
+  inset: 0;
+  background: var(--bg-overlay-heavy);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  z-index: var(--z-sheet);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 }
 
-@media (max-width: 479px) {
-  .jumpBtn {
-    font-size: 10px;
-    padding: 5px 10px;
-  }
-
-  .chevronBtn {
-    width: 28px;
-    height: 28px;
-  }
-
-  .legend {
-    gap: 4px;
-  }
+.mobileSheetCard {
+  background: var(--bg-card-solid);
+  border-top: 1px solid var(--border-card-hover);
+  border-radius: var(--radius-32) var(--radius-32) 0 0;
+  padding: 20px 20px calc(24px + env(safe-area-inset-bottom, 0px));
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-height: 85vh;
+  overflow-y: auto;
+  box-shadow: 0 -12px 36px rgba(0, 0, 0, 0.8);
 }
 
-/* ---- Roadmap Scroll Track ---- */
-@media (max-width: 767px) {
-  .roadmapScroll {
-    padding: 12px 2px 20px;
-  }
-
-  .roadmapTrack {
-    gap: 12px;
-    padding: 12px 14px;
-  }
+.sheetDragHandle {
+  width: 44px;
+  height: 4px;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.2);
+  margin: 0 auto 6px;
 }
 
-@media (max-width: 479px) {
-  .roadmapTrack {
-    gap: 10px;
-    padding: 10px 10px;
-  }
-
-  /* Slightly shrink node cards on small screens for better fit */
-  .nodeWrapper {
-    flex: 0 0 140px;
-    width: 140px;
-    min-width: 140px;
-    max-width: 140px;
-  }
-
-  .nodeCard {
-    width: 140px;
-    min-width: 140px;
-    max-width: 140px;
-    height: 210px;
-    min-height: 210px;
-    max-height: 210px;
-    padding: 12px 10px;
-  }
-
-  .conduitSegment {
-    top: 72px;
-  }
-
-  .emblemBezel {
-    width: 58px;
-    height: 58px;
-  }
-
-  .badgeSvg {
-    width: 42px;
-    height: 42px;
-  }
-
-  .nodeTierName {
-    font-size: 11px;
-    max-width: 118px;
-  }
+.sheetCloseBtn {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
 }
 
-@media (max-width: 359px) {
-  .nodeWrapper {
-    flex: 0 0 128px;
-    width: 128px;
-    min-width: 128px;
-    max-width: 128px;
-  }
-
-  .nodeCard {
-    width: 128px;
-    min-width: 128px;
-    max-width: 128px;
-    height: 200px;
-    min-height: 200px;
-    max-height: 200px;
-    padding: 10px 8px;
-  }
-
-  .emblemBezel {
-    width: 52px;
-    height: 52px;
-  }
-
-  .badgeSvg {
-    width: 38px;
-    height: 38px;
-  }
-
-  .nodeTierName {
-    font-size: 10px;
-    max-width: 108px;
-  }
+.sheetHeader {
+  display: flex;
+  align-items: center;
+  gap: 14px;
 }
 
-/* ---- Inspector Dock ---- */
-@media (max-width: 767px) {
-  .inspectorDock {
-    padding: 18px 16px;
-    margin-top: 14px;
-  }
-
-  .dockGrid {
-    gap: 18px;
-  }
-
-  .dockTierCol {
-    gap: 14px;
-  }
-
-  .dockBadgeWrapper {
-    width: 94px;
-    height: 100px;
-    border-radius: 20px;
-  }
-
-  .dockBadgeImg {
-    width: 46px;
-    height: 46px;
-  }
-
-  .dockTierTitle {
-    font-size: 16px;
-  }
-
-  .dockGaugeCol {
-    padding: 12px 14px;
-  }
-
-  .dockActionRow {
-    justify-content: stretch;
-  }
-
-  .dockActionRow > * {
-    width: 100%;
-    text-align: center;
-    justify-content: center;
-  }
+.sheetTitleGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
 }
 
-@media (max-width: 479px) {
-  .inspectorDock {
-    padding: 14px 12px;
-  }
+.sheetTitle {
+  font-size: 18px;
+  font-weight: 900;
+  color: #FFFFFF;
+}
 
-  .dockTierCol {
-    flex-direction: row;
-    align-items: center;
-    gap: 14px;
-  }
+.sheetSilhouetteText {
+  font-size: 11px;
+  color: var(--text-muted);
+}
 
-  .dockBadgeWrapper {
-    width: 88px;
-    height: 94px;
-    border-radius: 18px;
-    overflow: visible;
-  }
+.sheetLore {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
 
-  .dockBadgeImg {
-    width: 40px;
-    height: 40px;
-  }
+.sheetProgressBlock {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-16);
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
 
-  .dockTierTitle {
-    font-size: 15px;
-  }
+.sheetProgressDiff {
+  font-size: 11px;
+  color: var(--gold);
+  font-weight: 700;
+}
 
-  .dockRewardVault {
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-
-  .perksListLabel {
-    font-size: 9px;
-  }
-
-  .perkItem {
-    font-size: 10px;
-  }
+.sheetActionArea {
+  margin-top: 6px;
 }

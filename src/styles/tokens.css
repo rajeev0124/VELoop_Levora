@@ -1,118 +1,169 @@
 /* ============================================================
-   DESIGN TOKENS — VELoop Rewards Level Dashboard
-   Aligned 100% to Level_up_page (5).pdf (Sections 33, 34, 35)
+   DESIGN TOKENS — VELoop Rewards Level Dashboard Redesign
+   High-precision Fintech Gamification Design System
    ============================================================ */
 
 :root {
-  /* ---------- Backgrounds (Palette 2: Cyber Obsidian & Electric Amethyst) ---------- */
-  --bg-canvas:      #06070E;
-  --bg-body:        #070913;
-  --bg-card:        rgba(18, 14, 32, 0.78);
-  --bg-card-hover:  rgba(28, 20, 50, 0.88);
-  --bg-elevated:    #161128;
-  --bg-overlay:     rgba(6, 7, 14, 0.96);
-  --bg-input:       #0B0916;
+  /* ---------- Core Color Palette (Dark Premium) ---------- */
+  --bg-canvas:         #04050A;
+  --bg-body:           #070814;
+  --bg-surface-1:      #0C0A1B;
+  --bg-surface-2:      #120E26;
+  --bg-surface-3:      #1A1435;
+  --bg-card:           rgba(15, 12, 30, 0.76);
+  --bg-card-hover:     rgba(24, 18, 46, 0.88);
+  --bg-card-glass:     rgba(18, 14, 38, 0.65);
+  --bg-card-solid:     #130F28;
+  --bg-overlay:        rgba(4, 5, 10, 0.88);
+  --bg-overlay-heavy:  rgba(4, 5, 10, 0.96);
+  --bg-input:          #090716;
 
-  /* ---------- Brand / Accent Colors (Cyber Gold, Electric Amethyst, Hyper Cyan, Matrix Mint) ---------- */
-  --gold:           #FBBF24;
-  --gold-dark:      #F59E0B;
-  --gold-light:     #FDE68A;
-  --gold-soft:      rgba(251, 191, 36, 0.14);
-  --gold-glow:      rgba(251, 191, 36, 0.35);
+  /* ---------- Brand Colors: Gold / Amber ---------- */
+  --gold:              #FBBF24;
+  --gold-light:        #FDE68A;
+  --gold-dark:         #D97706;
+  --gold-deep:         #B45309;
+  --gold-soft:         rgba(251, 191, 36, 0.12);
+  --gold-glow:         rgba(251, 191, 36, 0.40);
+  --gold-border:       rgba(251, 191, 36, 0.45);
 
-  --purple:         #A855F7;
-  --purple-dark:    #7C3AED;
-  --purple-light:   #C084FC;
-  --purple-soft:    rgba(168, 85, 247, 0.14);
-  --purple-glow:    rgba(168, 85, 247, 0.40);
+  /* ---------- Brand Colors: Purple / Amethyst ---------- */
+  --purple:            #A855F7;
+  --purple-light:      #C084FC;
+  --purple-dark:       #7C3AED;
+  --purple-deep:       #581C87;
+  --purple-soft:       rgba(168, 85, 247, 0.12);
+  --purple-glow:       rgba(168, 85, 247, 0.42);
+  --purple-border:     rgba(168, 85, 247, 0.40);
 
-  --blue:           #00F5FF;
-  --blue-soft:      rgba(0, 245, 255, 0.14);
-  --blue-glow:      rgba(0, 245, 255, 0.35);
+  /* ---------- Brand Accents: Hyper Cyan ---------- */
+  --cyan:              #00F5FF;
+  --cyan-light:        #67E8F9;
+  --cyan-dark:         #0284C7;
+  --cyan-soft:         rgba(0, 245, 255, 0.12);
+  --cyan-glow:         rgba(0, 245, 255, 0.38);
+  --cyan-border:       rgba(0, 245, 255, 0.40);
 
-  --green:          #00E676;
-  --green-soft:     rgba(0, 230, 118, 0.14);
-  --green-glow:     rgba(0, 230, 118, 0.35);
+  /* ---------- Status / Semantic Colors ---------- */
+  --green:             #00E676;
+  --green-light:       #69F0AE;
+  --green-dark:        #059669;
+  --green-soft:        rgba(0, 230, 118, 0.12);
+  --green-glow:        rgba(0, 230, 118, 0.40);
+  --green-border:      rgba(0, 230, 118, 0.40);
 
-  --silver:         #CBD5E1;
-  --red:            #FF1E56;
-  --red-soft:       rgba(255, 30, 86, 0.16);
+  --rose:              #FF1E56;
+  --rose-soft:         rgba(255, 30, 86, 0.14);
+  --rose-glow:         rgba(255, 30, 86, 0.35);
 
-  /* Tint backgrounds & borders */
-  --bg-tint-cyan:   rgba(0, 245, 255, 0.08);
-  --bg-tint-amber:  rgba(251, 191, 36, 0.08);
-  --bg-tint-green:  rgba(0, 230, 118, 0.08);
-  --bg-tint-purple: rgba(168, 85, 247, 0.08);
+  --silver:            #E2E8F0;
+  --silver-muted:      #94A3B8;
 
-  --border-cyan:    rgba(0, 245, 255, 0.40);
-  --border-green:   rgba(0, 230, 118, 0.40);
-  --border-gold:    rgba(251, 191, 36, 0.45);
-  --border-purple:  rgba(168, 85, 247, 0.45);
+  /* ---------- Level Progression Node States ---------- */
+  --state-completed:   #00E676;
+  --state-completed-glow: rgba(0, 230, 118, 0.45);
+  --state-current:     #FBBF24;
+  --state-current-glow: rgba(251, 191, 36, 0.55);
+  --state-next:        #C084FC;
+  --state-next-glow:   rgba(192, 132, 252, 0.45);
+  --state-locked:      #332A4C;
+  --state-locked-text: #94A3B8;
 
-  /* ---------- Typography Colors (Pure Ice White & Crisp Silver) ---------- */
-  --text-primary:   #FFFFFF;
-  --text-secondary: #A1A1AA;
-  --text-muted:     #71717A;
-  --text-gold:      #FBBF24;
+  /* ---------- Typography Colors (High Contrast WCAG AA) ---------- */
+  --text-primary:      #FFFFFF;
+  --text-secondary:    #CBD5E1;
+  --text-muted:        #94A3B8;
+  --text-disabled:     #64748B;
+  --text-gold:         #FDE68A;
+  --text-cyan:         #67E8F9;
+  --text-purple:       #E9D5FF;
 
-  /* ---------- Borders ---------- */
-  --border:         #221A3B;
-  --border-subtle:  rgba(168, 85, 247, 0.18);
-  --border-hover:   #3D2D66;
+  /* ---------- Borders & Dividers ---------- */
+  --border-subtle:     rgba(168, 85, 247, 0.16);
+  --border-glass:      rgba(255, 255, 255, 0.10);
+  --border-card:       rgba(168, 85, 247, 0.22);
+  --border-card-hover: rgba(168, 85, 247, 0.45);
+  --border-solid:      #261D42;
 
-  /* ---------- Level States (Section 20) ---------- */
-  --state-completed: #00E676;
-  --state-current:   #FBBF24;
-  --state-next:      #A855F7;
-  --state-locked:    #2A243D;
-  --state-locked-text: #71717A;
+  /* ---------- Gradients ---------- */
+  --grad-gold:         linear-gradient(135deg, #FEF08A 0%, #FBBF24 50%, #D97706 100%);
+  --grad-purple:       linear-gradient(135deg, #E9D5FF 0%, #C084FC 35%, #7C3AED 100%);
+  --grad-cyan:         linear-gradient(135deg, #A5F3FC 0%, #00F5FF 50%, #0284C7 100%);
+  --grad-green:        linear-gradient(135deg, #B9F6CA 0%, #00E676 50%, #059669 100%);
+  --grad-card-glass:   linear-gradient(145deg, rgba(22, 17, 42, 0.82) 0%, rgba(10, 8, 22, 0.92) 100%);
+  --grad-card-glow:    linear-gradient(145deg, rgba(32, 24, 62, 0.88) 0%, rgba(14, 11, 30, 0.95) 100%);
+  --grad-vault-pedestal: radial-gradient(ellipse 70% 35% at 50% 85%, rgba(251, 191, 36, 0.35) 0%, transparent 70%);
+  --grad-xp-fill:      linear-gradient(90deg, #7C3AED 0%, #C084FC 30%, #FBBF24 80%, #FDE68A 100%);
 
-  /* ---------- Gradients (Multi-Tone Cyber Luminescence) ---------- */
-  --grad-hero:        linear-gradient(135deg, rgba(22, 16, 40, 0.85) 0%, rgba(8, 6, 16, 0.95) 100%);
-  --grad-gold:        linear-gradient(135deg, #FDE68A 0%, #FBBF24 50%, #F59E0B 100%);
-  --grad-purple:      linear-gradient(135deg, #C084FC 0%, #A855F7 50%, #7C3AED 100%);
-  --grad-primary-cta: linear-gradient(135deg, #FDE68A 0%, #FBBF24 50%, #F59E0B 100%);
-  --grad-blue:        linear-gradient(135deg, #00F5FF 0%, #0284C7 100%);
-  --grad-green:       linear-gradient(135deg, #69F0AE 0%, #00E676 100%);
-  --grad-card:        linear-gradient(145deg, rgba(20, 16, 36, 0.80) 0%, rgba(10, 8, 20, 0.90) 100%);
-  --grad-reward:      linear-gradient(135deg, rgba(24, 18, 44, 0.85) 0%, rgba(65, 22, 110, 0.70) 100%);
-  --grad-xp-bar:      linear-gradient(90deg, #F59E0B 0%, #FBBF24 50%, #FDE68A 100%);
+  /* ---------- Shadows & Glows ---------- */
+  --shadow-sm:         0 2px 8px rgba(0, 0, 0, 0.40);
+  --shadow-md:         0 8px 24px rgba(0, 0, 0, 0.55);
+  --shadow-lg:         0 16px 48px rgba(0, 0, 0, 0.70);
+  --shadow-card:       0 12px 36px rgba(0, 0, 0, 0.60), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  --shadow-card-hover: 0 18px 48px rgba(124, 58, 237, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  --shadow-gold:       0 0 24px rgba(251, 191, 36, 0.40);
+  --shadow-purple:     0 0 28px rgba(168, 85, 247, 0.45);
+  --shadow-cyan:       0 0 24px rgba(0, 245, 255, 0.40);
 
-  /* ---------- Shadows ---------- */
-  --shadow-card:   0 10px 36px rgba(0, 0, 0, 0.55);
-  --shadow-gold:   0 0 24px rgba(251, 191, 36, 0.32);
-  --shadow-purple: 0 0 26px rgba(168, 85, 247, 0.38);
-  --shadow-hover:  0 16px 48px rgba(0, 0, 0, 0.75);
+  /* ---------- Blur Levels ---------- */
+  --blur-glass:        20px;
+  --blur-heavy:        32px;
+  --blur-subtle:       10px;
 
-  /* ---------- Spacing ---------- */
-  --space-xs:  4px;
-  --space-sm:  8px;
-  --space-md:  16px;
-  --space-lg:  24px;
-  --space-xl:  32px;
-  --space-2xl: 48px;
-  --space-3xl: 64px;
+  /* ---------- Border Radii (16 / 24 / 32) ---------- */
+  --radius-xs:         4px;
+  --radius-sm:         8px;
+  --radius-md:         12px;
+  --radius-16:         16px;
+  --radius-24:         24px;
+  --radius-32:         32px;
+  --radius-full:       9999px;
 
-  /* ---------- Border Radius ---------- */
-  --radius-sm:   6px;
-  --radius-md:   12px;
-  --radius-lg:   16px;
-  --radius-xl:   20px;
-  --radius-full: 9999px;
+  /* ---------- Spacing Scale (4px Base) ---------- */
+  --space-1:           4px;
+  --space-2:           8px;
+  --space-3:           12px;
+  --space-4:           16px;
+  --space-5:           20px;
+  --space-6:           24px;
+  --space-7:           28px;
+  --space-8:           32px;
+  --space-10:          40px;
+  --space-12:          48px;
+  --space-16:          64px;
 
   /* ---------- Typography ---------- */
-  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --text-hero:  clamp(32px, 4.5vw, 56px);
-  --text-2xl:   clamp(24px, 3vw, 32px);
-  --text-xl:    clamp(18px, 2.2vw, 24px);
-  --text-lg:    clamp(15px, 1.8vw, 18px);
-  --text-md:    15px;
-  --text-sm:    13px;
-  --text-xs:    11px;
-  --text-2xs:   10px;
+  --font-family:       'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-display:      'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-tabular:      'Inter', monospace;
 
-  /* ---------- Transitions ---------- */
-  --transition-fast:   0.15s ease;
-  --transition-normal: 0.25s ease;
-  --transition-slow:   0.4s ease;
+  /* Fluid Type Scales */
+  --text-hero:         clamp(32px, 4.2vw, 52px);
+  --text-3xl:          clamp(26px, 3.2vw, 36px);
+  --text-2xl:          clamp(20px, 2.5vw, 28px);
+  --text-xl:           clamp(18px, 2vw, 22px);
+  --text-lg:           clamp(16px, 1.6vw, 18px);
+  --text-base:         15px;
+  --text-sm:           14px;
+  --text-xs:           12px;
+  --text-2xs:          11px;
+
+  /* ---------- Motion Durations & Easings ---------- */
+  --ease-spring:       cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-smooth:       cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out:       cubic-bezier(0.4, 0, 0.2, 1);
+  --duration-fast:     180ms;
+  --duration-normal:   280ms;
+  --duration-slow:     500ms;
+  --duration-entrance: 650ms;
+
+  /* ---------- Z-Index Hierarchy ---------- */
+  --z-base:            1;
+  --z-card:            5;
+  --z-badge:           10;
+  --z-sticky-nav:      100;
+  --z-bottom-nav:      200;
+  --z-sheet:           500;
+  --z-modal:           1000;
+  --z-tooltip:         1100;
 }

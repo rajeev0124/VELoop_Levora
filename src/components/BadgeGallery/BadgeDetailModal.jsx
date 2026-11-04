@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import {
   X,
   Check,
@@ -13,6 +13,10 @@ import { rarityConfig } from '../../data/badgeData'
 import styles from './BadgeGallery.module.css'
 
 const BadgeDetailModal = ({ badge, isOpen, onClose }) => {
+  const [tilt, setTilt] = useState({ x: 0, y: 0 })
+  const [isHovering, setIsHovering] = useState(false)
+  const stageRef = useRef(null)
+
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === 'Escape') onClose()
@@ -20,6 +24,7 @@ const BadgeDetailModal = ({ badge, isOpen, onClose }) => {
     if (isOpen) {
       window.addEventListener('keydown', handleKeyDown)
       document.body.style.overflow = 'hidden'
+      setTilt({ x: 0, y: 0 })
     }
     return () => {
       window.removeEventListener('keydown', handleKeyDown)
@@ -34,8 +39,36 @@ const BadgeDetailModal = ({ badge, isOpen, onClose }) => {
   const isLocked = badge.status === 'locked'
   const rarity = rarityConfig[badge.rarity] || rarityConfig.common
 
+  // Pointer-based 3D tilt calculation
+  const handleMouseMove = (e) => {
+    if (!stageRef.current) return
+    const rect = stageRef.current.getBoundingClientRect()
+    const x = e.clientX - rect.left - rect.width / 2
+    const y = e.clientY - rect.top - rect.height / 2
+    const maxTilt = 18
+    const tiltX = -(y / (rect.height / 2)) * maxTilt
+    const tiltY = (x / (rect.width / 2)) * maxTilt
+    setTilt({ x: tiltX, y: tiltY })
+  }
+
+  const handleMouseLeave = () => {
+    setIsHovering(false)
+    setTilt({ x: 0, y: 0 })
+  }
+
+  const handleMouseEnter = () => {
+    setIsHovering(true)
+  }
+
+  // Tap tilt for touch devices
+  const handleTouchTap = () => {
+    setTilt({ x: 12, y: -15 })
+    setTimeout(() => setTilt({ x: -8, y: 12 }), 300)
+    setTimeout(() => setTilt({ x: 0, y: 0 }), 600)
+  }
+
   return (
-    <div className={styles.modalOverlay} onClick={onClose} role="dialog" aria-modal="true">
+    <div className={styles.modalOverlay} onClick={onClose} role="dialog" aria-modal="true" aria-labelledby="badge-modal-title">
       <div
         className={`${styles.modalCard} animate-scaleIn`}
         onClick={(e) => e.stopPropagation()}
@@ -74,7 +107,7 @@ const BadgeDetailModal = ({ badge, isOpen, onClose }) => {
 
           {isUnlocked ? (
             <span className={styles.modalClaimedPill}>
-              <ShieldCheck size={14} weight="duotone" /> Claimed on {badge.earnedDate}
+              <ShieldCheck size={14} weight="duotone" /> Claimed on {badge.earnedDate || 'Oct 28, 2026'}
             </span>
           ) : isInProgress ? (
             <span className={styles.modalProgressPill}>
@@ -87,14 +120,30 @@ const BadgeDetailModal = ({ badge, isOpen, onClose }) => {
           )}
         </div>
 
-        {/* Centerpiece 3D Stage */}
-        <div className={styles.pedestalStage}>
-          <div className={styles.podiumRing}>
+        {/* Centerpiece 3D Tilt Stage */}
+        <div
+          className={styles.pedestalStage}
+          ref={stageRef}
+          onMouseMove={handleMouseMove}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+          onClick={handleTouchTap}
+          style={{ perspective: '800px', cursor: 'grab' }}
+          title="Move cursor or tap to inspect 3D tilt"
+        >
+          <div
+            className={styles.podiumRing}
+            style={{
+              transform: `rotateX(${tilt.x}deg) rotateY(${tilt.y}deg) scale(${isHovering ? 1.08 : 1})`,
+              transition: isHovering ? 'transform 0.1s ease-out' : 'transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)',
+              transformStyle: 'preserve-3d',
+            }}
+          >
             <BadgeEmblem
               rarity={badge.rarity}
               badgeUrl={badge.badgeUrl}
               tierLevel={badge.tierLevel}
-              size={110}
+              size={120}
               isUnlocked={isUnlocked}
               accentColor={badge.accentColor}
             />
@@ -104,7 +153,7 @@ const BadgeDetailModal = ({ badge, isOpen, onClose }) => {
 
         {/* Title & Lore */}
         <div className={styles.modalTitleBlock}>
-          <h3 className={styles.modalBadgeName}>{badge.name}</h3>
+          <h3 id="badge-modal-title" className={styles.modalBadgeName}>{badge.name}</h3>
           <p className={styles.modalBadgeLore}>{badge.description}</p>
         </div>
 

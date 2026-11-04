@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import {
   House,
   Sparkle,
@@ -24,6 +24,46 @@ import SkeletonLoader from '../../components/shared/SkeletonLoader'
 import ErrorState from '../../components/shared/ErrorState'
 import styles from './LevelDashboard.module.css'
 
+// Animated XP count-up for Sticky Header Chip
+const HeaderXPChip = ({ xp = 6420, onClick }) => {
+  const [val, setVal] = useState(0)
+  useEffect(() => {
+    let start = null
+    const duration = 1200
+    const step = (ts) => {
+      if (!start) start = ts
+      const p = Math.min((ts - start) / duration, 1)
+      setVal(Math.floor(p * xp))
+      if (p < 1) requestAnimationFrame(step)
+    }
+    requestAnimationFrame(step)
+  }, [xp])
+
+  return (
+    <div
+      className={styles.walletPill}
+      onClick={onClick}
+      title="Your Current XP Balance — Click to inspect"
+      role="button"
+      tabIndex={0}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault()
+          onClick()
+        }
+      }}
+      aria-label={`XP Balance: ${xp} XP`}
+    >
+      <div className={styles.walletIconWrap}>
+        <img src="/assets/coin-ve-3d.png" alt="" aria-hidden="true" className={styles.walletSvg} />
+      </div>
+      <span className={`${styles.walletVal} tabular-nums`}>{val.toLocaleString()}</span>
+      <span className={styles.walletUnit}>XP</span>
+      <span className={styles.walletGlint} aria-hidden="true" />
+    </div>
+  )
+}
+
 const LevelDashboard = () => {
   const {
     data,
@@ -36,75 +76,93 @@ const LevelDashboard = () => {
   } = useLevelData()
 
   const [activeTab, setActiveTab] = useState('home')
+  const [scrolled, setScrolled] = useState(false)
+
+  // Track window scroll to increase blur and shadow on sticky header
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 15)
+    }
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  // Unified consistent navigation items: [Home, Roadmap, Vaults, Badges, Earn, Profile]
+  const navItems = [
+    { id: 'home', label: 'Home', icon: House, href: '#hero' },
+    { id: 'roadmap', label: 'Roadmap', icon: Sparkle, href: '#roadmap' },
+    { id: 'vaults', label: 'Vaults', icon: TreasureChest, href: '#vaults' },
+    { id: 'badges', label: 'Badges', icon: Trophy, href: '#badges' },
+    { id: 'earn', label: 'Earn', icon: Coins, href: '#earn' },
+    { id: 'profile', label: 'Profile', icon: UserCircle, onClick: triggerLevelUp },
+  ]
 
   return (
     <div className="page-wrapper">
-      {/* Top Navbar */}
-      <header className={styles.navbar} role="banner">
+      {/* 1. Sticky Header: logo, Rewards pill, XP chip (animated count-up), bell, avatar */}
+      <header className={`${styles.navbar} ${scrolled ? styles.navbarScrolled : ''}`} role="banner">
         <div className="content-container">
           <div className={styles.navInner}>
-            <a href="#hero" className={styles.brand}>
-              <img src="/assets/logo.svg" alt="VELOOP Logo" className={styles.brandLogoImg} />
+            {/* Brand Logo & Rewards Pill */}
+            <a href="#hero" className={styles.brand} aria-label="VELoop Rewards Home">
+              <img src="/assets/logo.svg" alt="" aria-hidden="true" className={styles.brandLogoImg} />
               <span className={styles.brandName}>VELOOP</span>
               <span className={styles.brandSub}>REWARDS</span>
             </a>
 
-            <nav className={styles.navLinks} aria-label="Desktop Primary Navigation">
-              <a href="#hero" className={`${styles.navLink} ${activeTab === 'home' ? styles.navLinkActive : ''}`} onClick={() => setActiveTab('home')}>
-                Level Hub
-              </a>
-              <a href="#roadmap" className={`${styles.navLink} ${activeTab === 'roadmap' ? styles.navLinkActive : ''}`} onClick={() => setActiveTab('roadmap')}>
-                Roadmap
-              </a>
-              <a href="#vaults" className={`${styles.navLink} ${activeTab === 'vaults' ? styles.navLinkActive : ''}`} onClick={() => setActiveTab('vaults')}>
-                Mystery Vaults
-              </a>
-              <a href="#badges" className={`${styles.navLink} ${activeTab === 'badges' ? styles.navLinkActive : ''}`} onClick={() => setActiveTab('badges')}>
-                Badges
-              </a>
-              <a href="#arcade" className={`${styles.navLink} ${activeTab === 'arcade' ? styles.navLinkActive : ''}`} onClick={() => setActiveTab('arcade')}>
-                Arcade
-              </a>
-              <a href="#activity" className={`${styles.navLink} ${activeTab === 'activity' ? styles.navLinkActive : ''}`} onClick={() => setActiveTab('activity')}>
-                Ledger
-              </a>
-              <a href="#earn" className={`${styles.navLink} ${activeTab === 'earn' ? styles.navLinkActive : ''}`} onClick={() => setActiveTab('earn')}>
-                Earn XP
-              </a>
+            {/* Desktop Navigation (Consistent [Home, Roadmap, Vaults, Badges, Earn, Profile]) */}
+            <nav className={styles.navLinks} aria-label="Primary Navigation">
+              {navItems.map((item) => {
+                const isActive = activeTab === item.id
+                return (
+                  <a
+                    key={item.id}
+                    href={item.href || '#'}
+                    className={`${styles.navLink} ${isActive ? styles.navLinkActive : ''}`}
+                    onClick={(e) => {
+                      if (item.onClick) {
+                        e.preventDefault()
+                        item.onClick()
+                      } else {
+                        setActiveTab(item.id)
+                      }
+                    }}
+                  >
+                    {item.label}
+                  </a>
+                )
+              })}
             </nav>
 
+            {/* Right Controls: Animated XP Chip, Notification Bell, User Avatar */}
             <div className={styles.navRight}>
               {data && (
-                <div
-                  className={styles.walletPill}
-                  onClick={triggerLevelUp}
-                  title="Your Current XP Balance — Click to inspect"
-                  role="button"
-                  tabIndex={0}
-                >
-                  <div className={styles.walletIconWrap}>
-                    <img src="/assets/xp-1.svg" alt="" aria-hidden="true" className={styles.walletSvg} />
-                  </div>
-                  <span className={styles.walletVal}>{data.currentXP?.toLocaleString()}</span>
-                  <span className={styles.walletUnit}>XP</span>
-                </div>
+                <HeaderXPChip xp={data.currentXP} onClick={triggerLevelUp} />
               )}
+
               <button
                 type="button"
                 className={styles.navNotifBtn}
                 onClick={triggerLevelUp}
-                title="Level-Up Notification"
+                title="Level-Up Celebration Preview"
                 aria-label="Level-Up Notification"
               >
                 <BellSimpleRinging size={17} weight="duotone" />
                 <span className={styles.navNotifDot} />
               </button>
+
               <div
                 className={styles.userAvatar}
                 onClick={triggerLevelUp}
-                title="Preview Level Up Celebration"
+                title="Preview Sovereign Profile & Level Up"
                 role="button"
                 tabIndex={0}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault()
+                    triggerLevelUp()
+                  }
+                }}
                 aria-label="User Profile"
               >
                 <UserCircle size={22} weight="duotone" color="#FFFFFF" />
@@ -114,7 +172,7 @@ const LevelDashboard = () => {
         </div>
       </header>
 
-      {/* Main Content (Section 39 Desktop Layout & Page 33 Mobile screens) */}
+      {/* Main Content Layout */}
       <main className={`content-container ${styles.mainContent}`} id="main-content">
         {loading && (
           <div className={styles.loadingContainer}>
@@ -136,7 +194,7 @@ const LevelDashboard = () => {
 
         {!loading && !error && data && (
           <>
-            {/* ROW 1: Current Level + XP Progress | Next Reward (Locked Reward Vault Card) */}
+            {/* ROW 1: Hero Level Card + Next Milestone Vault */}
             <div id="hero" className={`${styles.heroRewardGrid} animate-fadeInUp`} style={{ animationDelay: '80ms' }}>
               <section aria-label="Current Level & Daily Boost" className={styles.heroCol}>
                 <LevelHero data={data} onTriggerLevelUp={triggerLevelUp} />
@@ -146,28 +204,28 @@ const LevelDashboard = () => {
               </div>
             </div>
 
-            {/* SECTION 26: Personalized Recommendation Action Banner */}
-            <div className="animate-fadeInUp" style={{ animationDelay: '190ms' }}>
+            {/* Personalized Recommendation Banner */}
+            <div className="animate-fadeInUp" style={{ animationDelay: '180ms' }}>
               <RecommendationBanner data={data} />
             </div>
 
-            {/* ROW 2: Level Progression Roadmap */}
-            <div id="roadmap" className={`${styles.roadmapSection} animate-fadeInUp`} style={{ animationDelay: '260ms' }}>
+            {/* ROW 2: Level Progression Roadmap & Level Detail Panel */}
+            <div id="roadmap" className={`${styles.roadmapSection} animate-fadeInUp`} style={{ animationDelay: '250ms' }}>
               <LevelRoadmap data={data} />
             </div>
 
-            {/* ROW 3: MYSTERY BOX & MILESTONE VAULTS */}
-            <div id="vaults" className={`${styles.vaultsSection} animate-fadeInUp`} style={{ animationDelay: '310ms' }}>
+            {/* ROW 3: Mystery Box & Milestone Vaults */}
+            <div id="vaults" className={`${styles.vaultsSection} animate-fadeInUp`} style={{ animationDelay: '300ms' }}>
               <MysteryBoxGallery />
             </div>
 
-            {/* ROW 4: COLLECTIBLE BADGES & ACHIEVEMENTS */}
-            <div id="badges" className={`${styles.badgesSection} animate-fadeInUp`} style={{ animationDelay: '360ms' }}>
+            {/* ROW 4: Collectible Badges & Achievements */}
+            <div id="badges" className={`${styles.badgesSection} animate-fadeInUp`} style={{ animationDelay: '350ms' }}>
               <BadgeGallery />
             </div>
 
-            {/* ROW 5: ARCADE & RECENT ACTIVITY LEDGER */}
-            <div className={`${styles.row3Section} animate-fadeInUp`} style={{ animationDelay: '410ms' }}>
+            {/* ROW 5: Arcade XP Catcher Blitz & Activity Ledger */}
+            <div className={`${styles.row3Section} animate-fadeInUp`} style={{ animationDelay: '400ms' }}>
               <div className={styles.row3SectionHead}>
                 <div className={styles.row3HeaderBadge}>
                   <Lightning size={12} weight="fill" className={styles.row3BadgeIcon} />
@@ -191,8 +249,8 @@ const LevelDashboard = () => {
               </div>
             </div>
 
-            {/* ROW 6: EARN MORE XP & REWARDS */}
-            <div id="earn" className={`${styles.earnSection} animate-fadeInUp`} style={{ animationDelay: '460ms' }}>
+            {/* ROW 6: Earn More XP & Missions */}
+            <div id="earn" className={`${styles.earnSection} animate-fadeInUp`} style={{ animationDelay: '450ms' }}>
               <EarnMoreXP data={data} />
             </div>
           </>
@@ -208,16 +266,9 @@ const LevelDashboard = () => {
         />
       )}
 
-      {/* Screen 1 Mobile Bottom Navigation Bar */}
-      <nav className={styles.mobileBottomNav}>
-        {[
-          { id: 'home', label: 'Home', icon: House, href: '#hero' },
-          { id: 'roadmap', label: 'Roadmap', icon: Sparkle, href: '#roadmap' },
-          { id: 'vaults', label: 'Vaults', icon: TreasureChest, href: '#vaults' },
-          { id: 'badges', label: 'Badges', icon: Trophy, href: '#badges' },
-          { id: 'earn', label: 'Earn', icon: Coins, href: '#earn' },
-          { id: 'profile', label: 'Profile', icon: UserCircle, onClick: triggerLevelUp },
-        ].map((item) => {
+      {/* 8. Bottom Navigation (Mobile): [Home, Roadmap, Vaults, Badges, Earn, Profile] */}
+      <nav className={styles.mobileBottomNav} aria-label="Mobile Bottom Navigation">
+        {navItems.map((item) => {
           const IconComp = item.icon
           const isActive = activeTab === item.id
           return (
@@ -233,6 +284,7 @@ const LevelDashboard = () => {
                   setActiveTab(item.id)
                 }
               }}
+              aria-label={item.label}
             >
               <IconComp
                 size={20}
@@ -252,19 +304,19 @@ const LevelDashboard = () => {
           <div className={styles.footerInner}>
             <div className={styles.footerBrand}>
               <div className={styles.brand}>
-                <img src="/assets/logo.svg" alt="VELOOP Logo" className={styles.brandLogoImg} />
+                <img src="/assets/logo.svg" alt="" aria-hidden="true" className={styles.brandLogoImg} />
                 <span className={styles.brandName}>VELOOP</span>
                 <span className={styles.brandSub}>REWARDS</span>
               </div>
               <p className={styles.footerText}>
-                Tap. Earn. Loop. Transform digital screen time into real value through gamified progression and interactive micro-tasks.
+                Tap. Earn. Loop. Transform digital screen time into sovereign value through gamified progression, milestone vaults, and interactive micro-tasks.
               </p>
             </div>
             <div className={styles.footerLinks}>
-              <span>Privacy Policy</span>
-              <span>Terms & Conditions</span>
-              <span>Withdrawal Policy</span>
-              <span>Support</span>
+              <a href="#main-content" className={styles.footerLink}>Privacy Policy</a>
+              <a href="#main-content" className={styles.footerLink}>Terms & Conditions</a>
+              <a href="#main-content" className={styles.footerLink}>Withdrawal Policy</a>
+              <a href="#main-content" className={styles.footerLink}>Support Hub</a>
             </div>
           </div>
           <div className={styles.footerBottom}>

@@ -9,7 +9,7 @@ import {
   Lightning,
   ArrowsClockwise,
 } from '@phosphor-icons/react'
-import LevelBadgeHex from '../shared/LevelBadgeHex'
+import TierMedallion from '../shared/TierMedallion'
 import { LaurelBranch } from '../shared/LaurelWreath'
 import styles from './LevelUpModal.module.css'
 
@@ -95,7 +95,7 @@ const LevelUpModal = ({ isOpen, onClose, data }) => {
           <div className={styles.podiumShield}>
             <LaurelBranch side="left" size={44} />
             <div className={styles.shieldCenter}>
-              <LevelBadgeHex level={targetLevel} size={92} />
+              <TierMedallion level={targetLevel} size={92} status="current" />
             </div>
             <LaurelBranch side="right" size={44} />
           </div>

@@ -3,18 +3,27 @@
    Desktop Layout (PDF Section 39, Page 18) & Page 33 Mobile screens
    ============================================================ */
 
-/* Top Sticky Navbar */
+/* Top Sticky Navbar — Executive Frosted Glass Floating Cockpit */
 .navbar {
-  background: linear-gradient(180deg, rgba(14, 10, 26, 0.92) 0%, rgba(8, 6, 18, 0.96) 100%);
-  backdrop-filter: blur(24px) saturate(180%);
-  -webkit-backdrop-filter: blur(24px) saturate(180%);
-  border-bottom: 1px solid rgba(168, 85, 247, 0.18);
+  background: linear-gradient(180deg, rgba(12, 9, 22, 0.88) 0%, rgba(8, 6, 16, 0.94) 100%);
+  backdrop-filter: blur(28px) saturate(190%);
+  -webkit-backdrop-filter: blur(28px) saturate(190%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   position: sticky;
   top: 0;
   z-index: 100;
   padding: 12px 0;
   box-shadow: 0 6px 28px rgba(0, 0, 0, 0.65);
-  transition: all var(--transition-normal);
+  transition: all var(--duration-fast) var(--ease-smooth);
+}
+
+.navbarScrolled {
+  background: rgba(6, 5, 14, 0.96) !important;
+  backdrop-filter: blur(32px) saturate(200%) !important;
+  -webkit-backdrop-filter: blur(32px) saturate(200%) !important;
+  border-bottom-color: rgba(168, 85, 247, 0.35) !important;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.85), 0 0 24px rgba(124, 58, 237, 0.25) !important;
+  padding: 10px 0 !important;
 }
 
 .navbar::after {
@@ -24,7 +33,7 @@
   left: 0;
   right: 0;
   height: 1px;
-  background: linear-gradient(90deg, transparent 0%, rgba(168, 85, 247, 0.35) 25%, rgba(251, 191, 36, 0.35) 50%, rgba(168, 85, 247, 0.35) 75%, transparent 100%);
+  background: linear-gradient(90deg, transparent 0%, rgba(168, 85, 247, 0.4) 30%, rgba(251, 191, 36, 0.3) 50%, rgba(168, 85, 247, 0.4) 70%, transparent 100%);
   pointer-events: none;
 }
 
@@ -32,7 +41,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
+  gap: 16px;
+  position: relative;
 }
 
 .brand {
@@ -53,96 +63,110 @@
   width: 32px;
   height: 32px;
   object-fit: contain;
-  filter: drop-shadow(0 0 12px rgba(168, 85, 247, 0.6));
+  filter: drop-shadow(0 0 10px rgba(168, 85, 247, 0.5));
 }
 
 .brandName {
   font-size: 19px;
   font-weight: 900;
-  color: #FFFFFF;
   letter-spacing: -0.02em;
-  background: linear-gradient(135deg, #FFFFFF 40%, #E2E8F0 75%, #C084FC 100%);
+  background: linear-gradient(135deg, #FFFFFF 30%, #E2E8F0 70%, #C084FC 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .brandSub {
-  font-size: 10px;
+  font-size: 9.5px;
   font-weight: 800;
-  color: var(--purple-light);
-  background: linear-gradient(135deg, rgba(168, 85, 247, 0.22) 0%, rgba(126, 34, 206, 0.3) 100%);
-  border: 1px solid rgba(168, 85, 247, 0.4);
+  color: #C084FC;
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.25) 0%, rgba(126, 34, 206, 0.35) 100%);
+  border: 1px solid rgba(192, 132, 252, 0.5);
   padding: 2.5px 8px;
   border-radius: var(--radius-full);
   letter-spacing: 0.12em;
-  box-shadow: 0 0 10px rgba(168, 85, 247, 0.25);
+  box-shadow: 0 0 12px rgba(168, 85, 247, 0.3);
   text-transform: uppercase;
 }
 
+/* Symmetrical Dead-Center Floating Navigation Dock (No Nested Gray Box) */
 .navLinks {
   display: none;
   align-items: center;
-  gap: 6px;
+  gap: 4px;
+  background: transparent;
+  border: none;
+  padding: 0;
+  box-shadow: none;
 }
 
 @media (min-width: 860px) {
   .navLinks {
     display: flex;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
   }
 }
 
 .navLink {
-  color: var(--text-secondary);
-  font-size: var(--text-sm);
+  color: rgba(226, 232, 240, 0.72);
+  font-size: 13px;
   font-weight: 600;
   text-decoration: none;
   padding: 6px 14px;
   border-radius: var(--radius-full);
-  transition: all var(--transition-fast);
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
   border: 1px solid transparent;
+  position: relative;
+  letter-spacing: -0.01em;
 }
 
 .navLink:hover {
-  color: var(--text-primary);
-  background: rgba(255, 255, 255, 0.05);
+  color: #FFFFFF;
+  background: rgba(255, 255, 255, 0.07);
 }
 
+/* Sleek Glowing Frosted Glass Pill for Active Tab */
 .navLinkActive {
   color: #FFFFFF !important;
-  background: var(--purple-soft) !important;
-  border: 1px solid var(--border-purple) !important;
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.3) 0%, rgba(126, 34, 206, 0.45) 100%) !important;
+  border: 1px solid rgba(192, 132, 252, 0.55) !important;
+  box-shadow: 0 0 16px rgba(168, 85, 247, 0.32), inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+  font-weight: 700 !important;
+  text-shadow: 0 0 10px rgba(192, 132, 252, 0.5);
 }
 
 .navRight {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   flex-shrink: 0;
 }
 
+/* Notification Bell — Luxury Glass Medallion */
 .navNotifBtn {
-  background: linear-gradient(135deg, rgba(30, 20, 52, 0.85) 0%, rgba(14, 10, 26, 0.95) 100%);
-  border: 1px solid rgba(168, 85, 247, 0.3);
-  width: 36px;
-  height: 36px;
+  background: linear-gradient(135deg, rgba(32, 22, 54, 0.85) 0%, rgba(16, 11, 28, 0.95) 100%);
+  border: 1px solid rgba(168, 85, 247, 0.35);
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
   cursor: pointer;
-  color: var(--text-secondary);
+  color: rgba(226, 232, 240, 0.8);
   transition: all var(--transition-fast);
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.15);
   flex-shrink: 0;
 }
 
 .navNotifBtn:hover {
   background: var(--purple-soft);
   color: #FFFFFF;
-  border-color: var(--purple-light);
-  transform: scale(1.06);
-  box-shadow: 0 4px 16px rgba(168, 85, 247, 0.4);
+  border-color: rgba(192, 132, 252, 0.75);
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 6px 20px rgba(168, 85, 247, 0.45);
 }
 
 .navNotifDot {
@@ -152,73 +176,92 @@
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: var(--gold);
-  box-shadow: 0 0 8px rgba(251, 191, 36, 0.9);
-  border: 1.5px solid #0E0918;
+  background: #FBBF24;
+  box-shadow: 0 0 10px #FBBF24;
+  border: 1.5px solid #0E0A1A;
   animation: pulseSlow 2s infinite ease-in-out;
 }
 
+/* 3D Gold XP Currency Chip */
 .walletPill {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  background: linear-gradient(135deg, rgba(46, 32, 12, 0.85) 0%, rgba(20, 14, 6, 0.95) 100%);
-  border: 1px solid rgba(251, 191, 36, 0.5);
-  padding: 5px 12px;
+  gap: 8px;
+  background: linear-gradient(135deg, rgba(38, 26, 10, 0.9) 0%, rgba(18, 12, 4, 0.95) 100%);
+  border: 1px solid rgba(251, 191, 36, 0.55);
+  padding: 5px 14px 5px 8px;
   border-radius: var(--radius-full);
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5), 0 0 12px rgba(251, 191, 36, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6), 0 0 16px rgba(251, 191, 36, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.2);
   cursor: pointer;
   white-space: nowrap;
   flex-shrink: 0;
   transition: all var(--transition-fast);
+  position: relative;
+  overflow: hidden;
 }
 
 .walletPill:hover {
-  transform: translateY(-1px);
-  border-color: rgba(251, 191, 36, 0.8);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6), 0 0 18px rgba(251, 191, 36, 0.4);
+  transform: translateY(-2px);
+  border-color: rgba(251, 191, 36, 0.95);
+  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.7), 0 0 24px rgba(251, 191, 36, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.3);
 }
 
 .walletIconWrap {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 20px;
-  height: 20px;
+  width: 22px;
+  height: 22px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(251, 191, 36, 0.3) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(251, 191, 36, 0.35) 0%, transparent 70%);
 }
 
 .walletSvg {
-  width: 16px;
-  height: 16px;
+  width: 19px;
+  height: 19px;
   object-fit: contain;
-  filter: drop-shadow(0 0 6px rgba(251, 191, 36, 0.6));
+  filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.8)) drop-shadow(0 0 6px rgba(251, 191, 36, 0.5));
 }
 
 .walletVal {
-  font-size: 13px;
+  font-size: 13.5px;
   font-weight: 900;
-  color: #FFFBEB;
+  color: #FFFDF0;
   font-variant-numeric: tabular-nums;
   letter-spacing: -0.01em;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+  text-shadow: 0 0 10px rgba(251, 191, 36, 0.4);
 }
 
 .walletUnit {
   font-size: 10px;
   font-weight: 800;
-  color: var(--gold);
+  color: #FCD34D;
   letter-spacing: 0.06em;
 }
 
+.walletGlint {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transform: skewX(-20deg);
+  transition: left 0.6s ease;
+}
+
+.walletPill:hover .walletGlint {
+  left: 150%;
+}
+
+/* User Avatar — Luxury Ring with Active Status */
 .userAvatar {
-  width: 36px;
-  height: 36px;
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
-  background: linear-gradient(135deg, rgba(38, 24, 66, 0.9) 0%, rgba(16, 10, 30, 0.95) 100%);
+  background: linear-gradient(135deg, rgba(42, 26, 72, 0.9) 0%, rgba(18, 11, 34, 0.95) 100%);
   border: 1.5px solid rgba(168, 85, 247, 0.5);
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.5), 0 0 12px rgba(168, 85, 247, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5), 0 0 14px rgba(168, 85, 247, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -231,20 +274,20 @@
 .userAvatar::after {
   content: '';
   position: absolute;
-  bottom: 0;
-  right: 0;
+  bottom: -1px;
+  right: -1px;
   width: 10px;
   height: 10px;
-  background-color: #00E676;
-  border: 2px solid #090B16;
+  background-color: #10B981;
+  border: 2px solid #0E0A1A;
   border-radius: 50%;
-  box-shadow: 0 0 8px #00E676;
+  box-shadow: 0 0 8px #10B981;
 }
 
 .userAvatar:hover {
-  transform: scale(1.08);
-  border-color: var(--purple-light);
-  box-shadow: 0 0 20px rgba(168, 85, 247, 0.65);
+  transform: translateY(-2px) scale(1.05);
+  border-color: rgba(192, 132, 252, 0.85);
+  box-shadow: 0 6px 22px rgba(168, 85, 247, 0.55);
 }
 
 /* Mobile Navbar Overrides */
@@ -338,13 +381,19 @@
   }
 }
 
-/* Main Container Layout (Section 39) */
+/* Main Container Layout */
 .mainContent {
-  padding-top: clamp(24px, 3.5vw, 44px);
-  padding-bottom: 48px;
+  padding-top: clamp(20px, 3vw, 40px);
+  padding-bottom: calc(84px + env(safe-area-inset-bottom, 0px));
   display: flex;
   flex-direction: column;
-  gap: 28px;
+  gap: 32px;
+}
+
+@media (min-width: 860px) {
+  .mainContent {
+    padding-bottom: 56px;
+  }
 }
 
 /* Full-Width Dashboard Greeting Card */
@@ -572,24 +621,25 @@
   }
 }
 
-/* Mobile Bottom Navigation Bar (Screen 1) */
+/* Mobile Bottom Navigation Bar (Consistent [Home, Roadmap, Vaults, Badges, Earn, Profile]) */
 .mobileBottomNav {
   display: flex;
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
-  background: rgba(10, 8, 20, 0.96);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-top: 1px solid var(--border);
-  padding: 8px 16px;
+  background: rgba(8, 6, 18, 0.96);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border-top: 1px solid var(--border-card);
+  padding: 8px 12px calc(8px + env(safe-area-inset-bottom, 0px));
   justify-content: space-around;
   align-items: center;
-  z-index: 1000;
+  z-index: var(--z-bottom-nav, 200);
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.7);
 }
 
-@media (min-width: 768px) {
+@media (min-width: 860px) {
   .mobileBottomNav {
     display: none;
   }
@@ -599,13 +649,17 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 4px;
+  justify-content: center;
+  gap: 3px;
   text-decoration: none;
   color: var(--text-muted);
-  font-size: 10px;
-  font-weight: 600;
-  transition: all var(--transition-fast);
-  padding: 4px 8px;
+  font-size: 11px;
+  font-weight: 700;
+  transition: all var(--duration-fast);
+  padding: 6px 10px;
+  min-width: 48px;
+  min-height: 44px;
+  border-radius: var(--radius-sm);
 }
 
 .bottomNavItemActive {
@@ -631,7 +685,7 @@
 }
 
 .bottomNavIcon {
-  font-size: 18px;
+  font-size: 20px;
   line-height: 1;
 }
 
@@ -687,11 +741,16 @@
   gap: 20px;
   font-size: var(--text-sm);
   color: var(--text-secondary);
-  cursor: pointer;
 }
 
-.footerLinks span:hover {
-  color: var(--text-primary);
+.footerLink {
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color var(--duration-fast);
+}
+
+.footerLink:hover {
+  color: #FFFFFF;
 }
 
 .footerBottom {

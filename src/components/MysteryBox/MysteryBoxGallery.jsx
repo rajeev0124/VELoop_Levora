@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { TreasureChest, Key } from '@phosphor-icons/react'
+import React, { useState, useRef } from 'react'
+import { TreasureChest, Key, CaretLeft, CaretRight, Sparkle } from '@phosphor-icons/react'
 import { mysteryBoxesData } from '../../data/mysteryBoxData'
 import MysteryBoxCard from './MysteryBoxCard'
 import MysteryBoxOpeningModal from './MysteryBoxOpeningModal'
@@ -8,6 +8,8 @@ import styles from './MysteryBox.module.css'
 const MysteryBoxGallery = () => {
   const [boxes, setBoxes] = useState(mysteryBoxesData)
   const [selectedBox, setSelectedBox] = useState(null)
+  const [activeTab, setActiveTab] = useState('all') // 'all' | 'milestones' | 'claimed'
+  const swipeScrollRef = useRef(null)
 
   const readyCount = boxes.filter((b) => b.status === 'ready').length
 
@@ -17,6 +19,30 @@ const MysteryBoxGallery = () => {
     )
   }
 
+  // Filtered list
+  const filteredBoxes = boxes.filter((box) => {
+    if (activeTab === 'milestones') {
+      return box.id === 'box-gold-vault' || box.id === 'box-platinum-vault'
+    }
+    if (activeTab === 'claimed') {
+      return box.status === 'opened'
+    }
+    return true
+  })
+
+  // Swipe / scroll arrows
+  const handleScrollLeft = () => {
+    if (swipeScrollRef.current) {
+      swipeScrollRef.current.scrollBy({ left: -320, behavior: 'smooth' })
+    }
+  }
+
+  const handleScrollRight = () => {
+    if (swipeScrollRef.current) {
+      swipeScrollRef.current.scrollBy({ left: 320, behavior: 'smooth' })
+    }
+  }
+
   return (
     <section aria-labelledby="mystery-boxes-heading" className={styles.section}>
       {/* Section Header */}
@@ -24,39 +50,102 @@ const MysteryBoxGallery = () => {
         <div className={styles.titleGroup}>
           <div className={styles.headerBadge}>
             <TreasureChest size={13} weight="duotone" className={styles.badgeIcon} />
-            <span>REWARDS DISCOVERY & VAULTS</span>
+            <span>REWARDS DISCOVERY & MILESTONE SAFES</span>
           </div>
           <h2 id="mystery-boxes-heading" className="section-title">
             Mystery Box & Milestone Vaults
           </h2>
           <p className="section-subtitle">
-            Discover high-yield treasure vaults and milestone safes unlocked through daily streaks, rank promotions, and arcade triumphs. Tap any ready vault to engage the unboxing sequence.
+            Discover high-yield treasure vaults and milestone safes unlocked through rank promotions, streaks, and arcade achievements. Level 05 is ready to crack; Level 06 unlocks at 8,000 XP.
           </p>
         </div>
 
         {/* Ready Vaults Status Telemetry */}
-        <div className={styles.readyVaultsCard}>
-          <div className={styles.keyIconWrap}>
-            <Key size={20} weight="duotone" color="#FBBF24" />
-          </div>
-          <div className={styles.readyVaultsText}>
-            <span className={styles.readyVaultsVal}>
-              {readyCount} {readyCount === 1 ? 'Vault' : 'Vaults'} Ready
-            </span>
-            <span className={styles.readyVaultsSub}>Awaiting Unlock Decryption</span>
+        <div className={styles.headActionGroup}>
+          <div className={styles.readyVaultsCard}>
+            <div className={styles.keyIconWrap}>
+              <Key size={18} weight="fill" color="#FBBF24" />
+            </div>
+            <div className={styles.readyVaultsText}>
+              <span className={styles.readyVaultsVal}>
+                {readyCount} {readyCount === 1 ? 'Vault' : 'Vaults'} Ready
+              </span>
+              <span className={styles.readyVaultsSub}>Awaiting Crack Decryption</span>
+            </div>
           </div>
         </div>
       </div>
 
-      {/* Grid of Mystery Boxes */}
-      <div className={styles.boxesGrid}>
-        {boxes.map((box) => (
-          <MysteryBoxCard
-            key={box.id}
-            box={box}
-            onOpen={(b) => setSelectedBox(b)}
-          />
-        ))}
+      {/* Filter Tabs & Scroll Nav */}
+      <div className={styles.filterBarRow}>
+        <div className={styles.filterTabs} role="tablist" aria-label="Vault Categories">
+          <button
+            type="button"
+            role="tab"
+            aria-selected={activeTab === 'all'}
+            className={`${styles.filterTab} ${activeTab === 'all' ? styles.filterTabActive : ''}`}
+            onClick={() => setActiveTab('all')}
+          >
+            All Vaults ({boxes.length})
+          </button>
+          <button
+            type="button"
+            role="tab"
+            aria-selected={activeTab === 'milestones'}
+            className={`${styles.filterTab} ${activeTab === 'milestones' ? styles.filterTabActive : ''}`}
+            onClick={() => setActiveTab('milestones')}
+          >
+            <Sparkle size={12} weight="fill" />
+            <span>L05 & L06 Milestone Safes</span>
+          </button>
+          <button
+            type="button"
+            role="tab"
+            aria-selected={activeTab === 'claimed'}
+            className={`${styles.filterTab} ${activeTab === 'claimed' ? styles.filterTabActive : ''}`}
+            onClick={() => setActiveTab('claimed')}
+          >
+            Claimed Vaults
+          </button>
+        </div>
+
+        {/* Carousel Prev/Next for swipeable cards */}
+        <div className={styles.carouselNavButtons}>
+          <button
+            type="button"
+            className={styles.carouselChevronBtn}
+            onClick={handleScrollLeft}
+            aria-label="Scroll vaults left"
+          >
+            <CaretLeft size={16} weight="bold" />
+          </button>
+          <button
+            type="button"
+            className={styles.carouselChevronBtn}
+            onClick={handleScrollRight}
+            aria-label="Scroll vaults right"
+          >
+            <CaretRight size={16} weight="bold" />
+          </button>
+        </div>
+      </div>
+
+      {/* Swipeable Grid / Carousel Container */}
+      <div
+        className={styles.swipeScrollContainer}
+        ref={swipeScrollRef}
+        tabIndex={0}
+        aria-label="Milestone Vaults Track"
+      >
+        <div className={styles.boxesGrid}>
+          {filteredBoxes.map((box) => (
+            <MysteryBoxCard
+              key={box.id}
+              box={box}
+              onOpen={(b) => setSelectedBox(b)}
+            />
+          ))}
+        </div>
       </div>
 
       {/* Interactive Unboxing Modal */}
