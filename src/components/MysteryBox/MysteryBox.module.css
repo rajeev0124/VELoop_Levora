@@ -184,10 +184,12 @@
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
   padding-bottom: 12px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 .swipeScrollContainer::-webkit-scrollbar {
-  height: 6px;
+  display: none;
 }
 
 /* Boxes Grid */
@@ -415,8 +417,34 @@
   animation: floatIdle 4s ease-in-out infinite;
 }
 
+/* Rarity Shaders & Material Grading */
+.vaultRarity_common {
+  filter: sepia(0.85) hue-rotate(-25deg) saturate(1.2) brightness(0.88) contrast(1.05) drop-shadow(0 8px 18px rgba(0, 0, 0, 0.7));
+}
+
+.vaultRarity_rare {
+  filter: hue-rotate(220deg) saturate(1.4) brightness(0.95) contrast(1.1) drop-shadow(0 8px 20px rgba(168, 85, 247, 0.4));
+}
+
+.vaultRarity_epic {
+  filter: drop-shadow(0 0 20px rgba(251, 191, 36, 0.5)) drop-shadow(0 8px 24px rgba(0, 0, 0, 0.8));
+}
+
+.vaultRarity_legendary {
+  filter: drop-shadow(0 0 16px rgba(192, 132, 252, 0.4)) drop-shadow(0 8px 24px rgba(0, 0, 0, 0.85));
+}
+
+.vaultRarity_prismatic {
+  filter: drop-shadow(0 0 20px rgba(0, 245, 255, 0.55)) drop-shadow(0 8px 24px rgba(0, 0, 0, 0.85));
+}
+
+.vaultRarity_exclusive {
+  filter: drop-shadow(0 0 24px rgba(0, 230, 118, 0.5)) drop-shadow(0 8px 24px rgba(0, 0, 0, 0.85));
+}
+
 .vaultImgLocked {
-  filter: grayscale(0.7) brightness(0.75) drop-shadow(0 4px 12px rgba(0, 0, 0, 0.8));
+  opacity: 0.88;
+  filter: brightness(0.82) contrast(1.05) drop-shadow(0 4px 16px rgba(0, 0, 0, 0.85));
 }
 
 .boxCard:hover .vaultImg {
@@ -435,16 +463,17 @@
 }
 
 .lockIconBadge {
-  width: 38px;
-  height: 38px;
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
-  background: rgba(18, 14, 34, 0.9);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: var(--text-muted);
+  background: rgba(14, 11, 28, 0.85);
+  border: 1px solid rgba(168, 85, 247, 0.45);
+  backdrop-filter: blur(10px);
+  color: #E2E8F0;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.8);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8), 0 0 14px rgba(168, 85, 247, 0.3);
 }
 
 /* Vault Info */
@@ -1109,4 +1138,279 @@
 .bonusSparkle {
   color: var(--gold);
   flex-shrink: 0;
+}
+
+/* ============================================================
+   ACTIVE CIPHER DECRYPTION HERO CHAMBER
+   Tactile Command Wing for Unlocked Milestone Vaults
+   ============================================================ */
+
+.decryptionHeroChamber {
+  position: relative;
+  background: linear-gradient(135deg, rgba(28, 20, 52, 0.94) 0%, rgba(12, 10, 26, 0.98) 100%);
+  border: 1px solid rgba(251, 191, 36, 0.45);
+  border-radius: 24px;
+  padding: clamp(20px, 3.5vw, 32px);
+  margin-bottom: 28px;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.7), 0 0 32px rgba(251, 191, 36, 0.16), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  overflow: hidden;
+}
+
+@media (min-width: 860px) {
+  .decryptionHeroChamber {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 36px;
+    align-items: center;
+  }
+}
+
+.chamberAura {
+  position: absolute;
+  top: -20%;
+  left: -10%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(251, 191, 36, 0.12) 0%, transparent 70%);
+  filter: blur(40px);
+  pointer-events: none;
+}
+
+.chamberStage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  height: 200px;
+  z-index: 2;
+}
+
+.chamberBackRays {
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: conic-gradient(from 0deg, transparent 0deg, rgba(251, 191, 36, 0.35) 45deg, transparent 90deg, rgba(192, 132, 252, 0.35) 135deg, transparent 180deg, rgba(251, 191, 36, 0.35) 225deg, transparent 270deg, rgba(192, 132, 252, 0.35) 315deg, transparent 360deg);
+  filter: blur(14px);
+  animation: volumetricRays 16s linear infinite;
+  pointer-events: none;
+}
+
+.chamberOrbitContainer {
+  position: absolute;
+  width: 140px;
+  height: 140px;
+  pointer-events: none;
+}
+
+.chamberContactShadow {
+  position: absolute;
+  bottom: 12px;
+  width: 140px;
+  height: 22px;
+  background: radial-gradient(ellipse, rgba(0, 0, 0, 0.88) 0%, transparent 75%);
+  border-radius: 50%;
+  animation: contactShadowBreath 4s ease-in-out infinite;
+}
+
+.chamberVaultImg {
+  width: clamp(140px, 15vw, 168px);
+  height: auto;
+  max-height: 175px;
+  object-fit: contain;
+  filter: drop-shadow(0 12px 28px rgba(0, 0, 0, 0.85)) drop-shadow(0 0 24px rgba(251, 191, 36, 0.3));
+  animation: floatIdle 4s ease-in-out infinite;
+  position: relative;
+  z-index: 2;
+}
+
+.chamberDossier {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 2;
+}
+
+.chamberHeaderRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.chamberRarityPill {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold, #FBBF24);
+  background: rgba(251, 191, 36, 0.12);
+  border: 1px solid rgba(251, 191, 36, 0.35);
+  padding: 3px 10px;
+  border-radius: 999px;
+  box-shadow: 0 0 10px rgba(251, 191, 36, 0.3);
+}
+
+.chamberReadyBeacon {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #34D399;
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  padding: 3px 10px;
+  border-radius: 999px;
+  animation: pulseSlow 2s infinite ease-in-out;
+}
+
+.beaconKeyIcon {
+  color: #34D399;
+}
+
+.chamberTitle {
+  font-size: clamp(22px, 2.6vw, 30px);
+  font-weight: 900;
+  color: #FFFFFF;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+.chamberRequirement {
+  font-size: 13px;
+  color: #CBD5E1;
+  line-height: 1.5;
+}
+
+.chamberPayloadRow {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.chamberPayloadLabel {
+  font-size: 9.5px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #94A3B8;
+  text-transform: uppercase;
+}
+
+.chamberPayloadChips {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.payloadChip {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 12px;
+  padding: 6px 14px;
+  font-size: 12.5px;
+  font-weight: 800;
+  color: #F8FAFC;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.payloadChipHighlight {
+  border-color: rgba(251, 191, 36, 0.4);
+  background: rgba(251, 191, 36, 0.08);
+  color: var(--gold, #FBBF24);
+}
+
+.payloadChipImg {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+}
+
+.chamberActionRow {
+  margin-top: 8px;
+}
+
+.chamberCrackBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, #FDE68A 0%, #F59E0B 100%);
+  color: #0E0B02;
+  border: none;
+  font-size: 14px;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  padding: 13px 26px;
+  border-radius: 999px;
+  cursor: pointer;
+  box-shadow: 0 6px 24px rgba(251, 191, 36, 0.45);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.chamberCrackBtn:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 10px 32px rgba(251, 191, 36, 0.65);
+}
+
+.chamberCrackBtn:active {
+  transform: translateY(0);
+}
+
+/* Header Portfolio Telemetry */
+.portfolioStatsCard {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(var(--blur-glass));
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 10px 16px;
+  border-radius: var(--radius-16);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+}
+
+.portfolioStatsLabel {
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.portfolioStatsVal {
+  font-size: 13.5px;
+  font-weight: 900;
+  color: #F8FAFC;
+  line-height: 1.15;
+}
+
+.portfolioStatsSub {
+  font-size: 10.5px;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+/* 3D Vault Wrappers */
+.chamberVaultWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cardVaultWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

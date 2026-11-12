@@ -17,10 +17,38 @@ import styles from './LevelRoadmap.module.css'
 import { levelStateConfig } from '../../data/levelData'
 import TierMedallion from '../shared/TierMedallion'
 
+// Clean concise reward string formatting (guaranteed no ++ and no clipping)
+const formatCardReward = (lvl) => {
+  if (!lvl?.reward) return ''
+  const { amount, type } = lvl.reward
+  const amountStr = String(amount || '').trim()
+
+  if (lvl.level === 6) {
+    return '+500 VEs • +25 Gems'
+  }
+  if (lvl.level === 10) {
+    return 'Tier 1 Safe Vault'
+  }
+
+  if (amountStr.includes('VEs') || amountStr.includes('Gems') || amountStr.includes('Safe') || amountStr.includes('SVEs')) {
+    return amountStr.replace(/^\++/, '+')
+  }
+
+  const cleanAmount = amountStr.replace(/^\++/, '')
+  const num = Number(cleanAmount)
+  const displayAmount = !isNaN(num) ? num.toLocaleString() : cleanAmount
+  return `+${displayAmount} ${type || ''}`.trim()
+}
+
 const LevelRoadmap = ({ data }) => {
   const currentLvl = data?.currentLevel || 5
   const allLevels = data?.allLevels || []
   const currentXP = data?.currentXP || 6420
+  const dailyVelocity = data?.dailyVelocity || 215
+  const streakDays = data?.streakDays || 7
+  const streakMultiplier = data?.streakMultiplier || 1.15
+  const nextTargetXP = data?.requiredXP || 8000
+  const nextTierName = data?.nextLevelName || 'Platinum Hero'
 
   // Active selected level for the Level Detail Panel
   const [selectedLevel, setSelectedLevel] = useState(
@@ -64,6 +92,20 @@ const LevelRoadmap = ({ data }) => {
       })
     }
   }
+
+  // Smooth wheel horizontal scroll
+  useEffect(() => {
+    const container = scrollRef.current
+    if (!container) return
+    const onWheel = (e) => {
+      if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+        e.preventDefault()
+        container.scrollLeft += e.deltaY * 0.95
+      }
+    }
+    container.addEventListener('wheel', onWheel, { passive: false })
+    return () => container.removeEventListener('wheel', onWheel)
+  }, [])
 
   // Auto-center current level on initial mount
   useEffect(() => {
@@ -138,16 +180,16 @@ const LevelRoadmap = ({ data }) => {
         </div>
 
         <div className={styles.headActions}>
-          {/* Dynamic Legend (Reads state, not hard-coded L5) */}
+          {/* Clean Unified Legend */}
           <div className={styles.legend} role="list" aria-label="Roadmap Legend">
             <span className={styles.legendItem} role="listitem">
               <span className={styles.legendDotCompleted} /> Completed
             </span>
             <span className={styles.legendItem} role="listitem">
-              <span className={styles.legendDotCurrent} /> Active (L{currentLvl})
+              <span className={styles.legendDotCurrent} /> Active Rank
             </span>
             <span className={styles.legendItem} role="listitem">
-              <span className={styles.legendDotNext} /> Next (L{currentLvl + 1})
+              <span className={styles.legendDotNext} /> Next Target
             </span>
             <span className={styles.legendItem} role="listitem">
               <span className={styles.legendDotLocked} /> Locked
@@ -166,8 +208,8 @@ const LevelRoadmap = ({ data }) => {
               }}
               title="Jump to Current Level"
             >
-              <MapPin size={14} weight="duotone" />
-              <span>Current (L{currentLvl})</span>
+              <MapPin size={14} weight="fill" className={styles.jumpPinIcon} />
+              <span>Current (L{String(currentLvl).padStart(2, '0')})</span>
             </button>
             <div className={styles.chevronGroup}>
               <button
@@ -243,7 +285,115 @@ const LevelRoadmap = ({ data }) => {
                   }}
                   aria-label={`Level ${lvl.level}: ${lvl.name}, ${lvl.status}`}
                 >
-                  {/* Connecting Line Segment with Laser Flow Fill */}
+                  {/* Symmetrical Micro-Vault Node Card */}
+                  <div
+                    className={`${styles.nodeCard} ${nodeStateClass} ${
+                      isNodeSelected ? styles.nodeCardSelected : ''
+                    } ${isApex ? styles.nodeCardApex : ''}`}
+                  >
+                    {/* Active Crown Spotlight */}
+                    {nodeCurrent && <div className={styles.activeSpotlight} aria-hidden="true" />}
+
+                    {/* Edge Docking Ports (Connects to the Laser Conduit Rail) */}
+                    <span
+                      className={`${styles.dockPort} ${styles.dockPortLeft} ${
+                        nodeCompleted ? styles.dockPortCompleted : nodeCurrent ? styles.dockPortCurrent : nodeNext ? styles.dockPortNext : ''
+                      }`}
+                      aria-hidden="true"
+                    />
+                    <span
+                      className={`${styles.dockPort} ${styles.dockPortRight} ${
+                        nodeCompleted ? styles.dockPortCompleted : nodeCurrent ? styles.dockPortCurrent : nodeNext ? styles.dockPortNext : ''
+                      }`}
+                      aria-hidden="true"
+                    />
+
+                    {/* Top Uniform Status Pill */}
+                    <div className={styles.statusPillSlot}>
+                      {nodeCompleted && (
+                        <span className={styles.pillCompleted}>
+                          <CheckCircle size={11} weight="fill" /> COMPLETED
+                        </span>
+                      )}
+                      {nodeCurrent && (
+                        <span className={styles.pillCurrent}>
+                          <span className={styles.radarDot} /> ACTIVE RANK
+                        </span>
+                      )}
+                      {nodeNext && (
+                        <span className={styles.pillNext}>
+                          <Crosshair size={11} weight="bold" /> TARGET GOAL
+                        </span>
+                      )}
+                      {nodeLocked && (
+                        <span className={styles.pillLocked}>
+                          <LockSimple size={11} weight="bold" /> LOCKED
+                        </span>
+                      )}
+                    </div>
+
+                    {/* Standardized Circular Medallion Pedestal (Guarantees Consistent Visual Scale) */}
+                    <div
+                      className={`${styles.pedestalStage} ${
+                        nodeCurrent ? styles.pedestalCurrent : nodeNext ? styles.pedestalNext : nodeCompleted ? styles.pedestalCompleted : styles.pedestalLocked
+                      }`}
+                    >
+                      <div className={styles.pedestalAura} aria-hidden="true" />
+                      <TierMedallion
+                        level={lvl.level}
+                        size={52}
+                        status={nodeCompleted ? 'completed' : nodeCurrent ? 'current' : nodeNext ? 'next' : 'locked'}
+                        showStatusCorner={false}
+                      />
+                    </div>
+
+                    {/* Level Tag & Tier Name */}
+                    <div className={styles.nodeTypography}>
+                      <span className={styles.nodeLevelNum}>
+                        LVL {String(lvl.level).padStart(2, '0')}
+                      </span>
+                      <h4 className={styles.nodeTierName} title={lvl.name}>
+                        {lvl.name}
+                      </h4>
+                      <span
+                        className={`${styles.nodeXPTarget} ${
+                          nodeCompleted
+                            ? styles.xpCompleted
+                            : nodeCurrent
+                            ? styles.xpCurrent
+                            : nodeNext
+                            ? styles.xpNext
+                            : styles.xpLocked
+                        } tabular-nums`}
+                      >
+                        {lvl.xpRequired.toLocaleString()} XP
+                      </span>
+                    </div>
+
+                    {/* Bottom Milestone Reward Capsule (Clean text, no truncation or ++) */}
+                    <div
+                      className={`${styles.rewardCapsule} ${
+                        nodeCompleted ? styles.rewardCapsuleCompleted : ''
+                      } ${nodeCurrent ? styles.rewardCapsuleCurrent : ''} ${
+                        nodeNext ? styles.rewardCapsuleNext : ''
+                      } ${nodeLocked ? styles.rewardCapsuleLocked : ''}`}
+                      title={lvl.reward ? `Reward: ${lvl.reward.type || lvl.reward.amount}` : ''}
+                    >
+                      {lvl.reward?.icon && (
+                        <img
+                          src={lvl.reward.icon}
+                          alt=""
+                          aria-hidden="true"
+                          className={styles.rewardIconImg}
+                        />
+                      )}
+                      <span className={styles.rewardCapsuleText}>
+                        {formatCardReward(lvl)}
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Connecting Line Segment with Laser Flow Fill (Runs AFTER the node) */}
                   {idx < allLevels.length - 1 && (
                     <div
                       className={`${styles.conduitSegment} ${
@@ -258,81 +408,6 @@ const LevelRoadmap = ({ data }) => {
                       {lvl.level === currentLvl && <div className={styles.chargingBeam} />}
                     </div>
                   )}
-
-                  {/* Symmetrical Micro-Vault Node Card */}
-                  <div
-                    className={`${styles.nodeCard} ${nodeStateClass} ${
-                      isNodeSelected ? styles.nodeCardSelected : ''
-                    } ${isApex ? styles.nodeCardApex : ''}`}
-                  >
-                    {/* Top Uniform Status Pill */}
-                    <div className={styles.statusPillSlot}>
-                      {nodeCompleted && (
-                        <span className={styles.pillCompleted}>
-                          <CheckCircle size={11} weight="fill" /> COMPLETED
-                        </span>
-                      )}
-                      {nodeCurrent && (
-                        <span className={styles.pillCurrent}>
-                          <span className={styles.radarDot} /> ACTIVE
-                        </span>
-                      )}
-                      {nodeNext && (
-                        <span className={styles.pillNext}>
-                          <Crosshair size={11} weight="bold" /> TARGET
-                        </span>
-                      )}
-                      {nodeLocked && (
-                        <span className={styles.pillLocked}>
-                          <LockSimple size={11} weight="bold" /> LOCKED
-                        </span>
-                      )}
-                    </div>
-
-                    {/* Emblem Centerpiece with Level Silhouette */}
-                    <div className={styles.emblemHaloWrap}>
-                      <TierMedallion
-                        level={lvl.level}
-                        size={58}
-                        status={nodeCompleted ? 'completed' : nodeCurrent ? 'current' : nodeNext ? 'next' : 'locked'}
-                        showStatusCorner={true}
-                      />
-                    </div>
-
-                    {/* Level Tag & Tier Name */}
-                    <div className={styles.nodeTypography}>
-                      <span className={styles.nodeLevelNum}>
-                        LVL {String(lvl.level).padStart(2, '0')}
-                      </span>
-                      <h4 className={styles.nodeTierName} title={lvl.name}>
-                        {lvl.name}
-                      </h4>
-                      <span className={`${styles.nodeXPTarget} tabular-nums`}>
-                        {lvl.xpRequired.toLocaleString()} XP
-                      </span>
-                    </div>
-
-                    {/* Bottom Milestone Reward Capsule (No Overlap) */}
-                    <div
-                      className={`${styles.rewardCapsule} ${
-                        nodeCompleted ? styles.rewardCapsuleCompleted : ''
-                      } ${nodeCurrent ? styles.rewardCapsuleCurrent : ''} ${
-                        nodeNext ? styles.rewardCapsuleNext : ''
-                      } ${nodeLocked ? styles.rewardCapsuleLocked : ''}`}
-                    >
-                      {lvl.reward?.icon && (
-                        <img
-                          src={lvl.reward.icon}
-                          alt=""
-                          aria-hidden="true"
-                          className={styles.rewardIconImg}
-                        />
-                      )}
-                      <span className={styles.rewardCapsuleText}>
-                        +{lvl.reward?.amount} {lvl.reward?.type}
-                      </span>
-                    </div>
-                  </div>
                 </div>
               )
             })}
@@ -386,56 +461,177 @@ const LevelRoadmap = ({ data }) => {
               <h3 id="detail-panel-title" className={styles.dockTierTitle}>
                 {activeLevelData.name}
               </h3>
-              <p className={styles.dockTierSilhouette}>
-                <em>{activeLevelData.silhouette}</em>
-              </p>
+              <div className={styles.dockCodexMeta}>
+                <span className={styles.dockRarityBadge} style={{ borderColor: activeLevelData.color, color: activeLevelData.accentColor || '#FFF' }}>
+                  {activeLevelData.rarity}
+                </span>
+                <span className={styles.dockMaterialText}>{activeLevelData.material}</span>
+              </div>
               <p className={styles.dockTierLore}>{activeLevelData.lore}</p>
             </div>
           </div>
 
-          {/* Col 2: Milestone Criteria & Animated Progress */}
+          {/* Col 2: Flight-Deck Telemetry Console with 2x2 Matrix */}
           <div className={styles.dockGaugeCol}>
             <div className={styles.gaugeHeader}>
-              <span className={styles.gaugeLead}>MILESTONE CRITERIA & XP TARGET</span>
+              <span className={styles.gaugeLead}>
+                {isCurrent
+                  ? 'PROMOTION PROGRESSION TO L06'
+                  : isCompleted
+                  ? 'HISTORIC MILESTONE STATUS'
+                  : isNext
+                  ? 'TARGET QUALIFICATION GOAL'
+                  : 'LOCKED TIER REQUIREMENT'}
+              </span>
               <span className={`${styles.gaugeTargetVal} tabular-nums`}>
-                {activeLevelData.xpRequired.toLocaleString()} XP
+                {isCurrent
+                  ? `${(nextTargetXP - currentXP).toLocaleString()} XP to L06`
+                  : isCompleted
+                  ? `${activeLevelData.xpRequired.toLocaleString()} XP Met ✓`
+                  : isNext
+                  ? `${(activeLevelData.xpRequired - currentXP).toLocaleString()} XP Remaining`
+                  : `${xpDifference.toLocaleString()} XP Needed`}
               </span>
             </div>
 
             <div
               className={styles.gaugeBarTrack}
               role="progressbar"
-              aria-valuenow={percentToLevel}
+              aria-valuenow={isCurrent ? Math.round((currentXP / nextTargetXP) * 100) : percentToLevel}
               aria-valuemin={0}
               aria-valuemax={100}
-              aria-label={`Progress to Level ${activeLevelData.level}: ${percentToLevel}%`}
+              aria-label={`Progress to Level ${activeLevelData.level}`}
             >
               <div
-                className={styles.gaugeBarFill}
-                style={{ width: `${percentToLevel}%` }}
+                className={isCompleted ? styles.gaugeBarFillCompleted : styles.gaugeBarFill}
+                style={{
+                  width: `${isCurrent ? Math.round((currentXP / nextTargetXP) * 100) : percentToLevel}%`,
+                }}
               />
               <div
                 className={styles.gaugeBarIndicator}
-                style={{ left: `${percentToLevel}%` }}
+                style={{
+                  left: `${isCurrent ? Math.round((currentXP / nextTargetXP) * 100) : percentToLevel}%`,
+                }}
               />
             </div>
 
             <div className={styles.gaugeStatusRow}>
               {isCompleted ? (
                 <span className={styles.gaugeSuccessText}>
-                  <CheckCircle size={14} weight="fill" /> Tier Mastered & Claimed
+                  <CheckCircle size={13} weight="fill" /> Milestone Satisfied & Ledger Recorded
                 </span>
               ) : isCurrent ? (
                 <span className={styles.gaugeCurrentText}>
-                  <Fire size={14} weight="fill" /> In Progress: {currentXP.toLocaleString()} /{' '}
-                  {activeLevelData.xpRequired.toLocaleString()} XP ({percentToLevel}%)
+                  <Fire size={13} weight="fill" /> Active Rank • {currentXP.toLocaleString()} / {nextTargetXP.toLocaleString()} XP ({Math.round((currentXP / nextTargetXP) * 100)}%)
+                </span>
+              ) : isNext ? (
+                <span className={styles.gaugeNextText}>
+                  <Crosshair size={13} weight="bold" /> Target Goal • {currentXP.toLocaleString()} / {activeLevelData.xpRequired.toLocaleString()} XP
                 </span>
               ) : (
                 <span className={styles.gaugeRemainingText}>
-                  {xpDifference > 0
-                    ? `${xpDifference.toLocaleString()} XP remaining to achieve this tier`
-                    : 'Milestone requirement reached'}
+                  <LockSimple size={13} weight="bold" /> Requires Level 0{activeLevelData.level - 1} Completion
                 </span>
+              )}
+            </div>
+
+            {/* 2×2 Live Telemetry Matrix */}
+            <div className={styles.telemetryMatrix}>
+              {isCurrent ? (
+                <>
+                  <div className={styles.telemetryCard}>
+                    <span className={styles.telemetryLabel}>DAILY YIELD PACE</span>
+                    <span className={styles.telemetryValue}>+{dailyVelocity} XP / Day</span>
+                    <span className={styles.telemetryHint}>Current Velocity</span>
+                  </div>
+                  <div className={styles.telemetryCard}>
+                    <span className={styles.telemetryLabel}>ESTIMATED UNLOCK</span>
+                    <span className={`${styles.telemetryValue} ${styles.telemetryValueHighlight}`}>
+                      ~{Math.max(1, Math.ceil((nextTargetXP - currentXP) / dailyVelocity))} Days
+                    </span>
+                    <span className={styles.telemetryHint}>{(nextTargetXP - currentXP).toLocaleString()} XP to L06</span>
+                  </div>
+                  <div className={styles.telemetryCard}>
+                    <span className={styles.telemetryLabel}>ACTIVE STREAK</span>
+                    <span className={styles.telemetryValue}>{streakDays} Days Active</span>
+                    <span className={styles.telemetryHint}>{streakMultiplier}x Score Boost 🔥</span>
+                  </div>
+                  <div className={styles.telemetryCard}>
+                    <span className={styles.telemetryLabel}>NEXT VAULT PAYLOAD</span>
+                    <span className={`${styles.telemetryValue} ${styles.telemetryValueGold}`}>+500 VEs • +25 Gems</span>
+                    <span className={styles.telemetryHint}>Unlocks at Level 06</span>
+                  </div>
+                </>
+              ) : isCompleted ? (
+                <>
+                  <div className={styles.telemetryCard}>
+                    <span className={styles.telemetryLabel}>TIER STATUS</span>
+                    <span className={`${styles.telemetryValue} ${styles.telemetryValueGreen}`}>Mastered ✓</span>
+                    <span className={styles.telemetryHint}>Historic Milestone</span>
+                  </div>
+                  <div className={styles.telemetryCard}>
+                    <span className={styles.telemetryLabel}>XP CRITERIA</span>
+                    <span className={styles.telemetryValue}>{activeLevelData.xpRequired.toLocaleString()} XP Met</span>
+                    <span className={styles.telemetryHint}>Permanent Record</span>
+                  </div>
+                  <div className={styles.telemetryCard}>
+                    <span className={styles.telemetryLabel}>VAULT BOUNTY</span>
+                    <span className={`${styles.telemetryValue} ${styles.telemetryValueGold}`}>{formatCardReward(activeLevelData)}</span>
+                    <span className={styles.telemetryHint}>Granted to Wallet</span>
+                  </div>
+                  <div className={styles.telemetryCard}>
+                    <span className={styles.telemetryLabel}>ACTIVE PRIVILEGES</span>
+                    <span className={styles.telemetryValue}>{activeLevelData.perks?.length || 4} Privileges</span>
+                    <span className={styles.telemetryHint}>Permanent Access</span>
+                  </div>
+                </>
+              ) : isNext ? (
+                <>
+                  <div className={styles.telemetryCard}>
+                    <span className={styles.telemetryLabel}>TARGET REQUIREMENT</span>
+                    <span className={`${styles.telemetryValue} ${styles.telemetryValuePurple}`}>{activeLevelData.xpRequired.toLocaleString()} XP</span>
+                    <span className={styles.telemetryHint}>Qualification Goal</span>
+                  </div>
+                  <div className={styles.telemetryCard}>
+                    <span className={styles.telemetryLabel}>XP DEFICIT</span>
+                    <span className={styles.telemetryValue}>{(activeLevelData.xpRequired - currentXP).toLocaleString()} XP</span>
+                    <span className={styles.telemetryHint}>Remaining Balance</span>
+                  </div>
+                  <div className={styles.telemetryCard}>
+                    <span className={styles.telemetryLabel}>ESTIMATED HORIZON</span>
+                    <span className={styles.telemetryValue}>~{Math.max(1, Math.ceil((activeLevelData.xpRequired - currentXP) / dailyVelocity))} Days</span>
+                    <span className={styles.telemetryHint}>At +{dailyVelocity} XP/day</span>
+                  </div>
+                  <div className={styles.telemetryCard}>
+                    <span className={styles.telemetryLabel}>VAULT UNLOCK</span>
+                    <span className={`${styles.telemetryValue} ${styles.telemetryValueGold}`}>{formatCardReward(activeLevelData)}</span>
+                    <span className={styles.telemetryHint}>Pending Safe Vault</span>
+                  </div>
+                </>
+              ) : (
+                <>
+                  <div className={styles.telemetryCard}>
+                    <span className={styles.telemetryLabel}>TARGET THRESHOLD</span>
+                    <span className={styles.telemetryValue}>{activeLevelData.xpRequired.toLocaleString()} XP</span>
+                    <span className={styles.telemetryHint}>Milestone Target</span>
+                  </div>
+                  <div className={styles.telemetryCard}>
+                    <span className={styles.telemetryLabel}>XP REMAINING</span>
+                    <span className={styles.telemetryValue}>{xpDifference.toLocaleString()} XP Needed</span>
+                    <span className={styles.telemetryHint}>From 6,420 XP</span>
+                  </div>
+                  <div className={styles.telemetryCard}>
+                    <span className={styles.telemetryLabel}>PREREQUISITE</span>
+                    <span className={styles.telemetryValue}>Level 0{activeLevelData.level - 1} Mastery</span>
+                    <span className={styles.telemetryHint}>Sequential Chain</span>
+                  </div>
+                  <div className={styles.telemetryCard}>
+                    <span className={styles.telemetryLabel}>LOCKED VAULT</span>
+                    <span className={`${styles.telemetryValue} ${styles.telemetryValueGold}`}>{formatCardReward(activeLevelData)}</span>
+                    <span className={styles.telemetryHint}>Cryptographic Lock</span>
+                  </div>
+                </>
               )}
             </div>
           </div>
@@ -454,7 +650,7 @@ const LevelRoadmap = ({ data }) => {
                   />
                 )}
                 <span className={styles.vaultRewardText}>
-                  +{activeLevelData.reward?.amount} {activeLevelData.reward?.type}
+                  {formatCardReward(activeLevelData)}
                 </span>
               </div>
             </div>
@@ -464,7 +660,9 @@ const LevelRoadmap = ({ data }) => {
               <ul className={styles.perksList}>
                 {activeLevelData.perks?.map((perk, pIdx) => (
                   <li key={pIdx} className={styles.perkItem}>
-                    <Check size={12} weight="bold" className={styles.perkCheck} />
+                    <span className={styles.perkCheckCircle}>
+                      <Check size={9} weight="bold" className={styles.perkCheck} />
+                    </span>
                     <span>{perk}</span>
                   </li>
                 ))}
@@ -537,9 +735,13 @@ const LevelRoadmap = ({ data }) => {
                 <h3 id="mobile-sheet-title" className={styles.sheetTitle}>
                   {activeLevelData.name}
                 </h3>
-                <span className={styles.sheetSilhouetteText}>
-                  {activeLevelData.silhouette}
-                </span>
+                <div className={styles.dockCodexMeta}>
+                  <span className={styles.dockRarityBadge} style={{ borderColor: activeLevelData.color, color: activeLevelData.accentColor || '#FFF' }}>
+                    {activeLevelData.rarity}
+                  </span>
+                  <span className={styles.dockDotDivider}>•</span>
+                  <span className={styles.dockMaterialText}>{activeLevelData.material}</span>
+                </div>
               </div>
             </div>
 
@@ -578,7 +780,7 @@ const LevelRoadmap = ({ data }) => {
                   />
                 )}
                 <span className={styles.vaultRewardText}>
-                  +{activeLevelData.reward?.amount} {activeLevelData.reward?.type}
+                  {formatCardReward(activeLevelData)}
                 </span>
               </div>
             </div>

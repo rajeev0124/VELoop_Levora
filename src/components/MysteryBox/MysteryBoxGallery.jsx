@@ -12,17 +12,30 @@ const MysteryBoxGallery = () => {
   const swipeScrollRef = useRef(null)
 
   const readyCount = boxes.filter((b) => b.status === 'ready').length
+  const readyBox = boxes.find((b) => b.status === 'ready')
 
   const handleClaimSuccess = (boxId) => {
     setBoxes((prev) =>
-      prev.map((b) => (b.id === boxId ? { ...b, status: 'opened' } : b))
+      prev.map((b) =>
+        b.id === boxId
+          ? { ...b, status: 'opened', progressLabel: 'Milestone Claimed ✓' }
+          : b
+      )
     )
   }
 
-  // Filtered list
-  const filteredBoxes = boxes.filter((box) => {
+  // Filtered carousel list (excludes readyBox when featured in the Hero Chamber)
+  const carouselBoxes = boxes.filter((box) => {
+    if (readyBox && box.id === readyBox.id) {
+      return false
+    }
     if (activeTab === 'milestones') {
-      return box.id === 'box-gold-vault' || box.id === 'box-platinum-vault'
+      return (
+        (box.id.includes('vault') ||
+          box.id.includes('crate') ||
+          box.id.includes('summit')) &&
+        box.status === 'locked'
+      )
     }
     if (activeTab === 'claimed') {
       return box.status === 'opened'
@@ -60,8 +73,14 @@ const MysteryBoxGallery = () => {
           </p>
         </div>
 
-        {/* Ready Vaults Status Telemetry */}
+        {/* Ready Vaults Status & Portfolio Telemetry */}
         <div className={styles.headActionGroup}>
+          <div className={styles.portfolioStatsCard}>
+            <span className={styles.portfolioStatsLabel}>ACCUMULATED VALUE</span>
+            <span className={styles.portfolioStatsVal}>1,110 VEs • 40 Gems</span>
+            <span className={styles.portfolioStatsSub}>Claimed & Active Vaults</span>
+          </div>
+
           <div className={styles.readyVaultsCard}>
             <div className={styles.keyIconWrap}>
               <Key size={18} weight="fill" color="#FBBF24" />
@@ -70,13 +89,97 @@ const MysteryBoxGallery = () => {
               <span className={styles.readyVaultsVal}>
                 {readyCount} {readyCount === 1 ? 'Vault' : 'Vaults'} Ready
               </span>
-              <span className={styles.readyVaultsSub}>Awaiting Crack Decryption</span>
+              <span className={styles.readyVaultsSub}>Awaiting Cipher Decryption</span>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Filter Tabs & Scroll Nav */}
+      {/* FEATURED ACTIVE DECRYPTION CHAMBER (HERO BANNER) */}
+      {readyBox && (
+        <div className={styles.decryptionHeroChamber}>
+          <div className={styles.chamberAura} aria-hidden="true" />
+
+          <div className={styles.chamberStage}>
+            {/* Volumetric ambient back-rays */}
+            <div className={styles.chamberBackRays} aria-hidden="true" />
+            <div className={styles.chamberOrbitContainer} aria-hidden="true">
+              <span className={`${styles.orbitParticle} ${styles.orbitP1}`} />
+              <span className={`${styles.orbitParticle} ${styles.orbitP2}`} />
+              <span className={`${styles.orbitParticle} ${styles.orbitP3}`} />
+            </div>
+            <div className={styles.chamberContactShadow} aria-hidden="true" />
+            <div className={styles.chamberVaultWrapper}>
+              <img
+                src={readyBox.artwork}
+                alt=""
+                aria-hidden="true"
+                className={styles.chamberVaultImg}
+              />
+            </div>
+          </div>
+
+          <div className={styles.chamberDossier}>
+            <div className={styles.chamberHeaderRow}>
+              <span className={styles.chamberRarityPill}>
+                ★ {readyBox.rarity.toUpperCase()} MILESTONE VAULT
+              </span>
+              <span className={styles.chamberReadyBeacon}>
+                <Key size={13} weight="fill" className={styles.beaconKeyIcon} />
+                <span>READY FOR CIPHER DECRYPTION</span>
+              </span>
+            </div>
+
+            <h3 className={styles.chamberTitle}>{readyBox.name}</h3>
+            <p className={styles.chamberRequirement}>
+              {readyBox.requirement} — {readyBox.lore}
+            </p>
+
+            {/* Payload Breakdown Chips */}
+            <div className={styles.chamberPayloadRow}>
+              <span className={styles.chamberPayloadLabel}>GUARANTEED VAULT PAYLOAD:</span>
+              <div className={styles.chamberPayloadChips}>
+                <div className={styles.payloadChip}>
+                  <img
+                    src="/assets/coin-ve-3d.png"
+                    alt=""
+                    aria-hidden="true"
+                    className={styles.payloadChipImg}
+                  />
+                  <span>+{readyBox.rewardDetails.ve} VE Coins</span>
+                </div>
+                <div className={styles.payloadChip}>
+                  <img
+                    src="/assets/gem-3d.png"
+                    alt=""
+                    aria-hidden="true"
+                    className={styles.payloadChipImg}
+                  />
+                  <span>+{readyBox.rewardDetails.gems} Rare Gems</span>
+                </div>
+                <div className={`${styles.payloadChip} ${styles.payloadChipHighlight}`}>
+                  <Sparkle size={13} weight="fill" />
+                  <span>{readyBox.rewardDetails.bonus}</span>
+                </div>
+              </div>
+            </div>
+
+            <div className={styles.chamberActionRow}>
+              <button
+                type="button"
+                className={styles.chamberCrackBtn}
+                onClick={() => setSelectedBox(readyBox)}
+              >
+                <Key size={16} weight="fill" />
+                <span>Crack & Decrypt Vault Now</span>
+                <CaretRight size={16} weight="bold" />
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Milestone Armory Track Subheader & Filters */}
       <div className={styles.filterBarRow}>
         <div className={styles.filterTabs} role="tablist" aria-label="Vault Categories">
           <button
@@ -96,7 +199,7 @@ const MysteryBoxGallery = () => {
             onClick={() => setActiveTab('milestones')}
           >
             <Sparkle size={12} weight="fill" />
-            <span>L05 & L06 Milestone Safes</span>
+            <span>Milestone Horizon ({boxes.filter((b) => (b.id.includes('vault') || b.id.includes('crate') || b.id.includes('summit')) && b.status === 'locked').length})</span>
           </button>
           <button
             type="button"
@@ -105,7 +208,7 @@ const MysteryBoxGallery = () => {
             className={`${styles.filterTab} ${activeTab === 'claimed' ? styles.filterTabActive : ''}`}
             onClick={() => setActiveTab('claimed')}
           >
-            Claimed Vaults
+            Claimed Archive ({boxes.filter((b) => b.status === 'opened').length})
           </button>
         </div>
 
@@ -138,7 +241,7 @@ const MysteryBoxGallery = () => {
         aria-label="Milestone Vaults Track"
       >
         <div className={styles.boxesGrid}>
-          {filteredBoxes.map((box) => (
+          {carouselBoxes.map((box) => (
             <MysteryBoxCard
               key={box.id}
               box={box}

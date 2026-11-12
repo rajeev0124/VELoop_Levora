@@ -83,15 +83,15 @@ export const levels = [
   {
     level: 4,
     name: 'Sapphire Knight',
-    xpRequired: 5000,
+    xpRequired: 4800,
     reward: { type: 'Gems', amount: 10, icon: '/assets/gem.svg' },
     status: 'completed',
     rarity: 'Epic',
     silhouette: 'Hexagonal Shield, Crossed Blades, Deep Sapphire Blue',
     material: 'Deep Cobalt Sapphire & Refined Titanium',
-    color: '#3B82F6',
-    accentColor: '#93C5FD',
-    glow: 'rgba(59, 130, 246, 0.60)',
+    color: '#2563EB',
+    accentColor: '#60A5FA',
+    glow: 'rgba(37, 99, 235, 0.70)',
     lore: 'Elite knight status granting access to rare gem rewards and boosted activity yields.',
     perks: [
       '+10 Bonus Gems on Unlock',
@@ -103,7 +103,7 @@ export const levels = [
   {
     level: 5,
     name: 'Gold Guardian',
-    xpRequired: 5000, // achieved at 5,000 XP; user currently at 6,420 XP
+    xpRequired: 6000, // Achieved at 6,000 XP; user currently at 6,420 XP
     milestoneTargetXP: 8000,
     reward: { type: 'VEs', amount: 500, icon: '/assets/ve.svg' },
     status: 'current',
@@ -207,7 +207,7 @@ export const levels = [
     level: 10,
     name: 'Mythic Legend',
     xpRequired: 22000,
-    reward: { type: 'Safe Vault', amount: '1 Tier 1 Safe + 2.0x', icon: '/assets/cart-top.svg' },
+    reward: { type: 'Safe Vault', amount: '1 Tier 1 Safe + 2.0x', icon: '/assets/vault-milestone-clean.png' },
     status: 'locked',
     rarity: 'Mythic',
     silhouette: 'Animated Rainbow-Foil, Floating Crown, Particle Halo',

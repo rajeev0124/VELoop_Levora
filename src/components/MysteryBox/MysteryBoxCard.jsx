@@ -112,14 +112,17 @@ const MysteryBoxCard = ({ box, onOpen }) => {
         />
 
         {/* Floating Transparent 3D Vault Artwork */}
-        <img
-          src={box.artwork}
-          alt={box.name}
-          className={`${styles.vaultImg} ${isReady ? styles.vaultImgFloating : ''} ${
-            isLocked ? styles.vaultImgLocked : ''
-          }`}
-          loading="lazy"
-        />
+        <div className={styles.cardVaultWrapper}>
+          <img
+            src={box.artwork}
+            alt=""
+            aria-hidden="true"
+            className={`${styles.vaultImg} ${styles['vaultRarity_' + box.rarity] || ''} ${
+              isReady ? styles.vaultImgFloating : ''
+            } ${isLocked ? styles.vaultImgLocked : ''}`}
+            loading="lazy"
+          />
+        </div>
       </div>
 
       {/* Vault Identity */}

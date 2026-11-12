@@ -220,9 +220,24 @@ const TierMedallion = ({
     }, 450)
   }
 
-  // Proportional sizing
+  // Proportional sizing & Optical Visual Weight Normalization
   const medallionHeight = Math.round(size * 0.92)
   const totalHeight = showRibbon ? Math.round(size * 1.22) : medallionHeight
+
+  // Optical scale normalization: wide winged tiers (L3-L5) vs compact round bucklers (L1)
+  const TIER_SCALE_FACTORS = {
+    1: 0.90, // compact buckler normalized to match core shield size
+    2: 1.00,
+    3: 1.14,
+    4: 1.22, // Sapphire Knight wide wings restored to full heroic presence
+    5: 1.18, // Gold Guardian
+    6: 1.16, // Platinum Hero
+    7: 1.16, // Diamond Champion
+    8: 1.16, // Obsidian Sovereign
+    9: 1.16, // Celestial Ascendant
+    10: 1.18, // Mythic Legend
+  }
+  const opticalScale = TIER_SCALE_FACTORS[level] || 1.0
 
   // Dynamic status glow & filter
   const getFilterStyle = () => {
@@ -235,10 +250,10 @@ const TierMedallion = ({
     if (isCompleted) {
       return `drop-shadow(0 6px 16px rgba(0,0,0,0.65))`
     }
-    // Locked
+    // Locked — smoke-glass preview preserving distinct heraldic crest silhouette
     return isHovered
-      ? `grayscale(0.3) brightness(0.9) drop-shadow(0 4px 10px rgba(0,0,0,0.7)) drop-shadow(0 0 8px ${tier.glow})`
-      : `grayscale(0.85) brightness(0.6) contrast(1.1) drop-shadow(0 2px 6px rgba(0,0,0,0.5))`
+      ? `grayscale(0.20) brightness(0.95) contrast(1.15) drop-shadow(0 4px 12px rgba(0,0,0,0.75)) drop-shadow(0 0 10px ${tier.glow})`
+      : `grayscale(0.35) brightness(0.85) contrast(1.18) drop-shadow(0 3px 8px rgba(0,0,0,0.65))`
   }
 
   return (
@@ -304,7 +319,7 @@ const TierMedallion = ({
           justifyContent: 'center',
           transformStyle: 'preserve-3d',
           transform: `rotateX(${tilt.x}deg) rotateY(${tilt.y}deg) scale(${
-            isPressed ? 0.95 : isHovered ? 1.08 : 1
+            (isPressed ? 0.95 : isHovered ? 1.08 : 1) * opticalScale
           }) translateZ(${isHovered ? 12 : 0}px)`,
           transition: isHovered
             ? 'transform 0.08s ease-out, filter 0.2s ease'
@@ -328,7 +343,7 @@ const TierMedallion = ({
           {/* High-DPI Vector Artwork */}
           {!imgError ? (
             <img
-              src={tier.assetUrl}
+              src={`${tier.assetUrl}?v=clean2`}
               alt={tier.name}
               draggable={false}
               onError={() => setImgError(true)}
@@ -337,7 +352,7 @@ const TierMedallion = ({
                 height: '100%',
                 objectFit: 'contain',
                 pointerEvents: 'none',
-                filter: isLocked && !isHovered ? 'contrast(1.1) brightness(0.7)' : 'none',
+                filter: isLocked && !isHovered ? 'contrast(1.05) brightness(0.92)' : 'none',
               }}
             />
           ) : (

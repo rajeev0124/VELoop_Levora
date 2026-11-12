@@ -127,21 +127,27 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  background: var(--gold-soft);
-  border: 1px solid var(--border-gold);
-  color: var(--gold);
-  font-size: 12px;
-  font-weight: 800;
-  padding: 8px 14px;
-  border-radius: var(--radius-full);
+  background: rgba(251, 191, 36, 0.08);
+  border: 1px solid rgba(251, 191, 36, 0.35);
+  color: var(--gold-light, #FDE68A);
+  font-size: 11.5px;
+  font-weight: 700;
+  padding: 7px 14px;
+  border-radius: var(--radius-full, 999px);
   cursor: pointer;
-  transition: all var(--duration-fast);
+  transition: all 0.2s ease;
   white-space: nowrap;
 }
 
 .jumpBtn:hover {
-  background: rgba(251, 191, 36, 0.22);
+  background: rgba(251, 191, 36, 0.18);
+  border-color: rgba(251, 191, 36, 0.55);
   transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(251, 191, 36, 0.25);
+}
+
+.jumpPinIcon {
+  color: var(--gold, #FBBF24);
 }
 
 .chevronGroup {
@@ -151,22 +157,24 @@
 }
 
 .chevronBtn {
-  width: 36px;
-  height: 36px;
+  width: 34px;
+  height: 34px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.05);
-  border: 1px solid var(--border-card);
-  color: var(--text-secondary);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: var(--text-secondary, #CBD5E1);
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: all var(--duration-fast);
+  transition: all 0.2s ease;
 }
 
 .chevronBtn:hover {
   background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.28);
   color: #FFFFFF;
+  transform: translateY(-1px);
 }
 
 /* Roadmap Horizontal Scroll Rail with Edge Fades */
@@ -202,13 +210,15 @@
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
-  padding: 16px 12px 24px;
+  padding: 16px 14px 20px;
   position: relative;
   outline: none;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 .roadmapScroll::-webkit-scrollbar {
-  height: 6px;
+  display: none;
 }
 
 .roadmapTrack {
@@ -230,53 +240,109 @@
 }
 
 .conduitSegment {
-  width: 44px;
+  width: 32px;
   height: 4px;
   position: relative;
   z-index: 1;
   flex-shrink: 0;
+  border-radius: 999px;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.7);
 }
 
 .conduitCompleted {
-  background: var(--green);
-  box-shadow: 0 0 10px rgba(0, 230, 118, 0.6);
+  background: linear-gradient(90deg, #00E676 0%, #00E676 100%);
+  box-shadow: 0 0 10px rgba(0, 230, 118, 0.65), 0 0 2px #00E676;
 }
 
 .conduitActiveCharging {
-  background: var(--grad-xp-fill);
-  box-shadow: 0 0 12px rgba(251, 191, 36, 0.7);
+  background: linear-gradient(90deg, #FBBF24 0%, #C084FC 100%);
+  box-shadow: 0 0 12px rgba(251, 191, 36, 0.75), 0 0 14px rgba(192, 132, 252, 0.65);
 }
 
 .chargingBeam {
   position: absolute;
   inset: 0;
+  border-radius: 999px;
   background: linear-gradient(90deg, transparent, #FFFFFF, transparent);
   animation: laserFlow 2s linear infinite;
   background-size: 200% 100%;
 }
 
 .conduitLocked {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.6);
 }
 
 /* Node Card */
 .nodeCard {
-  width: 172px;
-  background: var(--grad-card-glass);
-  backdrop-filter: blur(var(--blur-glass));
-  border: 1px solid var(--border-card);
-  border-radius: var(--radius-24);
-  padding: 14px 12px;
+  width: 168px;
+  background: linear-gradient(145deg, rgba(18, 14, 34, 0.90) 0%, rgba(10, 8, 20, 0.96) 100%);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 18px;
+  padding: 13px 10px 13px;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: 10px;
+  gap: 7px;
   position: relative;
   z-index: 2;
-  transition: all var(--duration-normal) var(--ease-spring);
-  box-shadow: var(--shadow-sm);
+  transition: all 0.24s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.12);
   flex-shrink: 0;
+  overflow: hidden;
+}
+
+/* Active Crown Spotlight Falloff */
+.activeSpotlight {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 65px;
+  background: radial-gradient(ellipse 110px 55px at 50% 0%, rgba(251, 191, 36, 0.26) 0%, transparent 80%);
+  pointer-events: none;
+  border-radius: 18px 18px 0 0;
+}
+
+/* Edge Docking Ports (Precision Beveled Hardware Collars) */
+.dockPort {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 5px;
+  height: 13px;
+  border-radius: 2px;
+  background: linear-gradient(180deg, rgba(42, 32, 68, 0.95) 0%, rgba(18, 14, 32, 0.98) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.65);
+  z-index: 4;
+  pointer-events: none;
+}
+
+.dockPortLeft {
+  left: -3px;
+}
+
+.dockPortRight {
+  right: -3px;
+}
+
+.dockPortCompleted {
+  border-color: rgba(0, 230, 118, 0.7);
+  box-shadow: 0 0 8px rgba(0, 230, 118, 0.6), inset 0 0 3px rgba(0, 230, 118, 0.4);
+}
+
+.dockPortCurrent {
+  border-color: rgba(251, 191, 36, 0.85);
+  box-shadow: 0 0 10px rgba(251, 191, 36, 0.7), inset 0 0 4px rgba(251, 191, 36, 0.5);
+}
+
+.dockPortNext {
+  border-color: rgba(192, 132, 252, 0.75);
+  box-shadow: 0 0 8px rgba(192, 132, 252, 0.6), inset 0 0 3px rgba(192, 132, 252, 0.4);
 }
 
 .nodeWrapper:focus-visible .nodeCard {
@@ -285,41 +351,158 @@
 }
 
 .nodeCard:hover {
-  transform: translateY(-4px);
-  border-color: var(--border-card-hover);
-  box-shadow: var(--shadow-md);
+  transform: translateY(-3px);
+  border-color: rgba(255, 255, 255, 0.22);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.18);
 }
 
 .nodeCardSelected {
   border-color: var(--gold) !important;
-  box-shadow: 0 0 24px rgba(251, 191, 36, 0.45), inset 0 1px 0 rgba(251, 191, 36, 0.3) !important;
-  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 0 24px rgba(251, 191, 36, 0.45), inset 0 1px 0 rgba(251, 191, 36, 0.4) !important;
+  transform: translateY(-3px) scale(1.02);
 }
 
 .nodeCompleted {
-  border-color: rgba(0, 230, 118, 0.35);
+  border-color: rgba(0, 230, 118, 0.25);
+  box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(0, 230, 118, 0.15);
 }
 
 .nodeCurrent {
-  border-color: var(--gold);
-  box-shadow: 0 0 20px rgba(251, 191, 36, 0.45);
-  animation: activeNodePulse 2.4s infinite ease-in-out;
+  border-color: rgba(251, 191, 36, 0.65);
+  box-shadow:
+    0 14px 36px -6px rgba(0, 0, 0, 0.7),
+    0 0 24px rgba(251, 191, 36, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.28);
+  animation: activeNodePulse 2.6s infinite ease-in-out;
 }
 
 .nodeNext {
   border-color: rgba(192, 132, 252, 0.45);
-  box-shadow: 0 0 16px rgba(192, 132, 252, 0.3);
+  box-shadow:
+    0 12px 32px -6px rgba(0, 0, 0, 0.7),
+    0 0 20px rgba(192, 132, 252, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
   animation: targetNodePulse 2.8s infinite ease-in-out;
 }
 
 .nodeLocked {
-  opacity: 0.72;
-  border-color: rgba(255, 255, 255, 0.08);
+  opacity: 0.88;
+  border-color: rgba(255, 255, 255, 0.09);
+  background: linear-gradient(145deg, rgba(16, 12, 30, 0.85) 0%, rgba(9, 7, 18, 0.95) 100%);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
-.nodeCardApex {
-  background: linear-gradient(145deg, rgba(20, 45, 30, 0.85) 0%, rgba(10, 25, 18, 0.95) 100%);
+.nodeLocked:hover {
+  opacity: 1;
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.nodeCardApex.nodeLocked {
+  background: linear-gradient(145deg, rgba(14, 11, 26, 0.72) 0%, rgba(9, 7, 18, 0.88) 100%);
+  border-color: rgba(16, 185, 129, 0.25);
+  box-shadow: inset 0 0 14px rgba(16, 185, 129, 0.06);
+}
+
+.nodeCardApex:not(.nodeLocked) {
+  background: linear-gradient(145deg, rgba(16, 38, 26, 0.85) 0%, rgba(8, 20, 14, 0.95) 100%);
   border-color: rgba(16, 185, 129, 0.5);
+  box-shadow: 0 0 24px rgba(16, 185, 129, 0.25);
+}
+
+/* Standardized Circular Medallion Pedestal */
+.pedestalStage {
+  position: relative;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at 40% 35%, rgba(255, 255, 255, 0.08) 0%, rgba(20, 16, 36, 0.75) 65%, rgba(10, 8, 20, 0.95) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow:
+    0 4px 16px rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18),
+    inset 0 0 12px rgba(0, 0, 0, 0.4);
+  margin: 2px 0 2px;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.pedestalStage:hover {
+  transform: scale(1.05);
+}
+
+.pedestalAura {
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0.6;
+  filter: blur(8px);
+}
+
+.pedestalCompleted {
+  border-color: rgba(0, 230, 118, 0.28);
+  box-shadow:
+    0 4px 16px rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    inset 0 0 10px rgba(0, 230, 118, 0.1);
+}
+
+.pedestalCompleted .pedestalAura {
+  background: radial-gradient(circle, rgba(0, 230, 118, 0.25) 0%, transparent 70%);
+}
+
+.pedestalCurrent {
+  border-color: rgba(251, 191, 36, 0.55);
+  box-shadow:
+    0 6px 20px rgba(251, 191, 36, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35),
+    inset 0 0 16px rgba(251, 191, 36, 0.22);
+  animation: activePedestalGlow 2.4s infinite ease-in-out;
+}
+
+.pedestalCurrent .pedestalAura {
+  background: radial-gradient(circle, rgba(251, 191, 36, 0.38) 0%, transparent 70%);
+  opacity: 0.85;
+}
+
+.pedestalNext {
+  border-color: rgba(192, 132, 252, 0.45);
+  box-shadow:
+    0 6px 18px rgba(192, 132, 252, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25),
+    inset 0 0 14px rgba(192, 132, 252, 0.18);
+}
+
+.pedestalNext .pedestalAura {
+  background: radial-gradient(circle, rgba(192, 132, 252, 0.3) 0%, transparent 70%);
+}
+
+.pedestalLocked {
+  border-color: rgba(255, 255, 255, 0.08);
+  background: radial-gradient(circle at 40% 35%, rgba(255, 255, 255, 0.05) 0%, rgba(16, 12, 28, 0.8) 65%, rgba(8, 6, 16, 0.95) 100%);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.pedestalLocked:hover {
+  border-color: rgba(255, 255, 255, 0.18);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+@keyframes activePedestalGlow {
+  0%, 100% {
+    box-shadow:
+      0 6px 20px rgba(251, 191, 36, 0.25),
+      inset 0 1px 0 rgba(255, 255, 255, 0.35),
+      inset 0 0 16px rgba(251, 191, 36, 0.22);
+  }
+  50% {
+    box-shadow:
+      0 8px 24px rgba(251, 191, 36, 0.42),
+      inset 0 1px 0 rgba(255, 255, 255, 0.5),
+      inset 0 0 20px rgba(251, 191, 36, 0.35);
+  }
 }
 
 /* Status Pill Slot */
@@ -426,42 +609,66 @@
 .nodeXPTarget {
   font-size: 11px;
   font-weight: 700;
-  color: var(--gold);
+  transition: color 0.2s ease;
 }
 
-/* Reward Capsule (Guaranteed Non-Overlapping) */
+.xpCompleted {
+  color: #6EE7B7;
+}
+
+.xpCurrent {
+  color: var(--gold, #FBBF24);
+  font-weight: 800;
+  text-shadow: 0 0 10px rgba(251, 191, 36, 0.45);
+}
+
+.xpNext {
+  color: var(--purple-light, #C084FC);
+  font-weight: 800;
+}
+
+.xpLocked {
+  color: #94A3B8;
+  font-weight: 700;
+}
+
+/* Reward Capsule (Clean text with no truncation) */
 .rewardCapsule {
   display: inline-flex;
   align-items: center;
   gap: 5px;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 4px 9px;
+  padding: 4px 10px;
   border-radius: var(--radius-full);
   font-size: 10px;
-  font-weight: 800;
+  font-weight: 700;
   max-width: 100%;
 }
 
 .rewardCapsuleCompleted {
   border-color: rgba(0, 230, 118, 0.35);
   color: var(--green);
+  background: rgba(0, 230, 118, 0.06);
 }
 
 .rewardCapsuleCurrent {
-  border-color: var(--border-gold);
+  border-color: rgba(251, 191, 36, 0.45);
   color: var(--gold);
-  background: var(--gold-soft);
+  background: rgba(251, 191, 36, 0.1);
 }
 
 .rewardCapsuleNext {
-  border-color: var(--border-purple);
+  border-color: rgba(192, 132, 252, 0.45);
   color: var(--purple-light);
-  background: var(--purple-soft);
+  background: rgba(192, 132, 252, 0.1);
 }
 
 .rewardCapsuleLocked {
-  color: var(--text-muted);
+  color: #CBD5E1;
+  border-color: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.05);
+  font-weight: 700;
 }
 
 .rewardIconImg {
@@ -473,8 +680,7 @@
 
 .rewardCapsuleText {
   white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  letter-spacing: 0.01em;
 }
 
 /* ============================================================
@@ -515,8 +721,9 @@
 
 @media (min-width: 992px) {
   .dockGrid {
-    grid-template-columns: 1.2fr 1fr 1fr;
+    grid-template-columns: 1.15fr 1.35fr 1fr;
     align-items: center;
+    gap: 24px;
   }
 }
 
@@ -529,9 +736,53 @@
 
 .dockBadgeWrapper {
   flex-shrink: 0;
+  width: 104px;
+  height: 104px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 40% 35%, rgba(255, 255, 255, 0.08) 0%, rgba(22, 16, 42, 0.8) 60%, rgba(10, 8, 22, 0.96) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.22);
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dockBadgeWrapper:hover {
+  transform: scale(1.04);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.dockCodexMeta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 3px 0 2px;
+  flex-wrap: wrap;
+}
+
+.dockRarityBadge {
+  font-size: 9.5px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 2px 7px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.dockDotDivider {
+  color: var(--text-muted, #64748B);
+  font-size: 11px;
+}
+
+.dockMaterialText {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #94A3B8;
+  letter-spacing: 0.01em;
 }
 
 .dockTierInfo {
@@ -618,10 +869,6 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
-  background: rgba(14, 11, 28, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: var(--radius-16);
-  padding: 16px;
 }
 
 .gaugeHeader {
@@ -865,4 +1112,101 @@
 
 .sheetActionArea {
   margin-top: 6px;
+}
+
+
+/* Flight-Deck Telemetry Matrix & Status Additions */
+.gaugeBarFillCompleted {
+  height: 100%;
+  background: linear-gradient(90deg, #10B981 0%, #00E676 100%);
+  border-radius: var(--radius-full);
+  box-shadow: 0 0 10px rgba(0, 230, 118, 0.6);
+}
+
+.gaugeNextText {
+  color: var(--purple-light, #C084FC);
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.telemetryMatrix {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.telemetryCard {
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  padding: 8px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  transition: all 0.2s ease;
+}
+
+.telemetryCard:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.16);
+  transform: translateY(-1px);
+}
+
+.telemetryLabel {
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #64748B;
+}
+
+.telemetryValue {
+  font-size: 12px;
+  font-weight: 800;
+  color: #F1F5F9;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.telemetryValueHighlight {
+  color: var(--gold, #FBBF24);
+}
+
+.telemetryValueGold {
+  color: var(--gold-light, #FDE68A);
+}
+
+.telemetryValueGreen {
+  color: #34D399;
+}
+
+.telemetryValuePurple {
+  color: #C084FC;
+}
+
+.telemetryHint {
+  font-size: 10px;
+  font-weight: 600;
+  color: #94A3B8;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Upgraded Perk Items */
+.perkCheckCircle {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: rgba(0, 230, 118, 0.12);
+  border: 1px solid rgba(0, 230, 118, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
 }

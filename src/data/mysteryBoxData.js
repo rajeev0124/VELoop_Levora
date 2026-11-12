@@ -1,6 +1,7 @@
 // ============================================================
 // MYSTERY VAULT DATA — VELoop Rewards Redesign
 // 3D-inspired rewards discovery vaults with multi-tier rarities
+// Synchronized 100% with Level Roadmap Progression Engine
 // ============================================================
 
 export const mysteryBoxRarities = {
@@ -13,24 +14,31 @@ export const mysteryBoxRarities = {
   },
   rare: {
     label: 'Rare',
-    color: '#00F5FF',
-    gradient: 'linear-gradient(135deg, rgba(0, 245, 255, 0.15) 0%, rgba(8, 40, 60, 0.4) 100%)',
-    border: 'rgba(0, 245, 255, 0.45)',
-    glow: 'rgba(0, 245, 255, 0.4)',
+    color: '#38BDF8',
+    gradient: 'linear-gradient(135deg, rgba(56, 189, 248, 0.15) 0%, rgba(8, 40, 60, 0.4) 100%)',
+    border: 'rgba(56, 189, 248, 0.45)',
+    glow: 'rgba(56, 189, 248, 0.4)',
   },
   epic: {
     label: 'Epic',
-    color: '#C084FC',
-    gradient: 'linear-gradient(135deg, rgba(192, 132, 252, 0.16) 0%, rgba(60, 15, 90, 0.4) 100%)',
-    border: 'rgba(192, 132, 252, 0.50)',
-    glow: 'rgba(192, 132, 252, 0.45)',
-  },
-  legendary: {
-    label: 'Legendary',
     color: '#FBBF24',
     gradient: 'linear-gradient(135deg, rgba(251, 191, 36, 0.18) 0%, rgba(80, 45, 5, 0.45) 100%)',
     border: 'rgba(251, 191, 36, 0.55)',
     glow: 'rgba(251, 191, 36, 0.5)',
+  },
+  legendary: {
+    label: 'Legendary',
+    color: '#C084FC',
+    gradient: 'linear-gradient(135deg, rgba(192, 132, 252, 0.18) 0%, rgba(60, 15, 90, 0.4) 100%)',
+    border: 'rgba(192, 132, 252, 0.55)',
+    glow: 'rgba(192, 132, 252, 0.45)',
+  },
+  prismatic: {
+    label: 'Prismatic',
+    color: '#00F5FF',
+    gradient: 'linear-gradient(135deg, rgba(0, 245, 255, 0.20) 0%, rgba(192, 132, 252, 0.35) 100%)',
+    border: 'rgba(0, 245, 255, 0.60)',
+    glow: 'rgba(0, 245, 255, 0.55)',
   },
   exclusive: {
     label: 'Sovereign',
@@ -46,8 +54,8 @@ export const mysteryBoxesData = [
     id: 'box-bronze',
     name: 'Bronze Cipher Casket',
     rarity: 'common',
-    status: 'opened', // Past vault claimed
-    artwork: '/assets/low.svg',
+    status: 'opened',
+    artwork: '/assets/vault-open-clean.png',
     tag: 'Daily Streak Vault',
     requirement: 'Claimed via 7-Day Active Login Streak',
     rewardSummary: '+35 XP & 10 VEs',
@@ -58,16 +66,17 @@ export const mysteryBoxesData = [
       bonus: '1.05x Streak Boost',
     },
     progressPct: 100,
+    progressLabel: 'Milestone Claimed ✓',
     lore: 'A secure cipher container awarded to active daily operatives. Cracks instantly upon engagement.',
   },
   {
     id: 'box-amethyst',
     name: 'Amethyst Vault Crate',
     rarity: 'rare',
-    status: 'opened', // Past vault claimed
-    artwork: '/assets/medium.svg',
+    status: 'opened',
+    artwork: '/assets/vault-open-clean.png',
     tag: 'Level 04 Milestone',
-    requirement: 'Claimed at Cobalt Vanguard (Level 04)',
+    requirement: 'Claimed at Sapphire Knight (Level 04)',
     rewardSummary: '+75 XP & 15 Gems',
     rewardDetails: {
       xp: 75,
@@ -76,14 +85,15 @@ export const mysteryBoxesData = [
       bonus: 'Rare Gem Multiplier',
     },
     progressPct: 100,
+    progressLabel: 'Milestone Claimed ✓',
     lore: 'Forged from compressed purple obsidian. Emits a high-frequency resonance upon unlocking.',
   },
   {
     id: 'box-gold-vault',
     name: 'Gold Guardian Sovereign Vault',
     rarity: 'epic',
-    status: 'ready', // Ready to open!
-    artwork: '/assets/vault-open-clean.png',
+    status: 'ready',
+    artwork: '/assets/safe1_extracted.png', // Radiant 928x1131 golden vault with volumetric light bursting out!
     tag: 'Level 05 Active Milestone',
     requirement: 'Achieved Level 05 (Gold Guardian)',
     rewardSummary: '+500 VEs & +25 Gems',
@@ -94,17 +104,18 @@ export const mysteryBoxesData = [
       bonus: 'VIP Profile Flare & 1.15x Multiplier',
     },
     progressPct: 100,
+    progressLabel: '6,420 / 6,000 XP (Achieved ✓)',
     isFeatured: true,
-    lore: 'The executive Level 05 Milestone Vault. Features high-security cyber deadbolts packed with sovereign token yield.',
+    lore: 'The executive Level 05 Milestone Vault. Radiates high-yield sovereign light packed with VE tokens and rare platform gems.',
   },
   {
     id: 'box-platinum-vault',
     name: 'Platinum Hero Milestone Vault',
-    rarity: 'epic',
-    status: 'locked', // Locked next vault
-    artwork: '/assets/vault-open-clean.png',
+    rarity: 'legendary',
+    status: 'locked',
+    artwork: '/assets/vault-platinum-hero.png', // Studio 3D Platinum Cyber Vault with deadbolts & glowing cyan/violet LED trim!
     tag: 'Level 06 Target Milestone',
-    requirement: 'Requires Level 06 (1,580 XP remaining)',
+    requirement: 'Requires Level 06 at 8,000 XP (1,580 XP remaining)',
     rewardSummary: '+500 VEs, +25 Gems & 2 Spins',
     rewardDetails: {
       xp: 250,
@@ -121,11 +132,11 @@ export const mysteryBoxesData = [
   {
     id: 'box-diamond-crate',
     name: 'Prismatic SVE Safe',
-    rarity: 'legendary',
+    rarity: 'prismatic',
     status: 'locked',
-    artwork: '/assets/safe-2.svg',
+    artwork: '/assets/vault-prismatic-diamond.png', // Studio 3D Prismatic Crystalline Diamond Safe with rainbow refraction!
     tag: 'Level 07 Milestone',
-    requirement: 'Requires Level 07 (Diamond Legend)',
+    requirement: 'Requires Level 07 at 10,000 XP (3,580 XP remaining)',
     rewardSummary: '+100 SVEs Safe Grant',
     rewardDetails: {
       xp: 500,
@@ -134,8 +145,8 @@ export const mysteryBoxesData = [
       gems: 50,
       bonus: 'Permanent Streak Armor',
     },
-    progressPct: 25,
-    progressLabel: '6,420 / 16,000 XP (25%)',
+    progressPct: 64,
+    progressLabel: '6,420 / 10,000 XP (3,580 XP remaining)',
     lore: 'Crystalline safe encased in diamond-grade magnetic shielding. Accessible exclusively to Level 07 legends.',
   },
   {
@@ -143,9 +154,9 @@ export const mysteryBoxesData = [
     name: 'Celestial Sovereign Vault',
     rarity: 'exclusive',
     status: 'locked',
-    artwork: '/assets/cart-top.svg',
+    artwork: '/assets/vault-milestone-clean.png', // Monumental 3D armillary sphere vault
     tag: 'Level 10 Apex Horizon',
-    requirement: 'Requires Level 10 (Apex Sovereign)',
+    requirement: 'Requires Level 10 at 22,000 XP (15,580 XP remaining)',
     rewardSummary: '1 Tier 1 Safe Vault + 2.0x Multiplier',
     rewardDetails: {
       xp: 2000,
@@ -153,8 +164,8 @@ export const mysteryBoxesData = [
       gems: 100,
       bonus: 'Permanent 2.0x Reward Multiplier',
     },
-    progressPct: 5,
-    progressLabel: '6,420 / 128,000 XP (5%)',
+    progressPct: 29,
+    progressLabel: '6,420 / 22,000 XP (15,580 XP remaining)',
     lore: 'The ultimate summit vault of VELoop Rewards. Contains the legendary master core and lifetime sovereign status.',
   },
 ]

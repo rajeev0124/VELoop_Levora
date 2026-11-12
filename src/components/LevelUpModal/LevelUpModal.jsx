@@ -133,7 +133,7 @@ const LevelUpModal = ({ isOpen, onClose, data }) => {
         <button
           className="ve-btn ve-btn-gold"
           onClick={onClose}
-          style={{ width: '100%', padding: '16px', fontSize: '16px', fontWeight: 800 }}
+          style={{ width: '100%', height: '46px', fontSize: '15px', fontWeight: 800 }}
         >
           Claim Rewards
         </button>
