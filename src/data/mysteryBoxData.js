@@ -93,7 +93,7 @@ export const mysteryBoxesData = [
     name: 'Gold Guardian Sovereign Vault',
     rarity: 'epic',
     status: 'ready',
-    artwork: '/assets/safe1_extracted.png', // Radiant 928x1131 golden vault with volumetric light bursting out!
+    artwork: '/assets/vault-gold-guardian.png', // Studio 3D Winged Gold Guardian Sovereign Vault Chest!
     tag: 'Level 05 Active Milestone',
     requirement: 'Achieved Level 05 (Gold Guardian)',
     rewardSummary: '+500 VEs & +25 Gems',
