@@ -169,89 +169,16 @@ const NextLevelReward = ({ data, onTriggerLevelUp }) => {
             }}
           >
             <img
-              src="/assets/vault-open-clean.png"
-              alt={`Level ${targetLevel} Milestone Safe Vault`}
+              src="/assets/reward-vault-chest-hero.png"
+              alt={`Level ${targetLevel} Milestone Reward Chest`}
               className={styles.vaultLargeImg}
-            />
-
-            {/* Chamber Interior — Overflowing Radiant Treasure Cache */}
-            <div
-              className={styles.vaultInteriorTreasure}
-              aria-label="Treasures inside the milestone vault box"
               onClick={onTriggerLevelUp}
               role="button"
               tabIndex={0}
-              title="Inspect Level 06 Milestone Safe Rewards"
-            >
-            {/* Dynamic Volumetric Chamber Light Burst (Adapts to Active Reward) */}
-            <div
-              className={`${styles.interiorLightBurst} ${
-                activeReward === 'gem'
-                  ? styles.burstEmerald
-                  : activeReward === 'bonus'
-                  ? styles.burstCyan
-                  : styles.burstGold
-              }`}
-              aria-hidden="true"
+              title="Inspect Level 06 Milestone Chest Rewards"
             />
-
-            {/* Rising Golden Embers & Star Sparks */}
-            <div className={styles.chamberEmbersWrap} aria-hidden="true">
-              <span className={styles.chamberEmber1} />
-              <span className={styles.chamberEmber2} />
-              <span className={styles.chamberEmber3} />
-              <span className={styles.chamberEmber4} />
-            </div>
-
-            {/* Overflowing Sovereign Treasure Hoard — Centered on Chamber Floor */}
-            <div className={styles.chamberTreasureCache}>
-              {/* Left: 3D Astral Spin Token */}
-              <div
-                className={`${styles.chamberSpinWrap} ${activeReward === 'bonus' ? styles.treasureHighlight : ''}`}
-                title="+2 Lucky Wheel Spins"
-              >
-                <AstralSpinToken3D size={24} className={styles.chamberSpinSvg} />
-                <span className={styles.chamberSpinGlow} aria-hidden="true" />
-              </div>
-
-              {/* Center: Stacked Sovereign Gold VE Coins */}
-              <div
-                className={`${styles.chamberCoinsWrap} ${activeReward === 've' ? styles.treasureHighlight : ''}`}
-                title="+500 VE Coins Token Grant"
-              >
-                <img
-                  src="/assets/coin-ve-3d.png"
-                  alt="500 VEs"
-                  className={styles.chamberMainCoin}
-                />
-                <img
-                  src="/assets/coin-ve-3d.png"
-                  alt=""
-                  aria-hidden="true"
-                  className={styles.chamberSecondaryCoin}
-                />
-                <span className={styles.chamberCoinGlow} aria-hidden="true" />
-              </div>
-
-              {/* Right: Prismatic Emerald Gem */}
-              <div
-                className={`${styles.chamberGemWrap} ${activeReward === 'gem' ? styles.treasureHighlight : ''}`}
-                title="+25 Gems Rare Currency"
-              >
-                <img
-                  src="/assets/gem-3d.png"
-                  alt="25 Gems"
-                  className={styles.chamberGemImg}
-                />
-                <span className={styles.chamberGemGlow} aria-hidden="true" />
-              </div>
-
-              {/* Warm Floor Threshold Light Spill */}
-              <span className={styles.chamberThresholdLight} aria-hidden="true" />
-            </div>
           </div>
         </div>
-      </div>
 
         {/* Contact Shadow & Holographic Dais Base */}
         <div
@@ -345,12 +272,16 @@ const NextLevelReward = ({ data, onTriggerLevelUp }) => {
       <div className={styles.vaultConsole}>
         <div className={styles.consoleHeader}>
           <div className={styles.consoleStatusLeft}>
-            <span className={styles.lockStatusPingDot} aria-hidden="true" />
-            <LockKey size={13} weight="fill" className={styles.lockIconAmber} />
-            <span className={styles.consoleTitle}>VAULT CLEARANCE PROTOCOL</span>
+            <div className={styles.consoleShieldWrap}>
+              <ShieldCheck size={15} weight="fill" className={styles.shieldIconGreen} />
+            </div>
+            <div className={styles.consoleTextWrap}>
+              <span className={styles.consoleTitle}>Every XP counts</span>
+              <span className={styles.consoleSubtitle}>Level 06 Milestone • Clearly recorded</span>
+            </div>
           </div>
           <span className={styles.consoleBadge}>
-            <ShieldCheck size={12} weight="bold" />
+            <LockKey size={12} weight="bold" />
             {pct}% CHARGED
           </span>
         </div>
