@@ -256,7 +256,7 @@ const NextLevelReward = ({ data, onTriggerLevelUp }) => {
             aria-label="Milestone Reward: +2 Lucky Wheel Bonus Spins"
           >
             <div className={styles.token3dStage}>
-              <AstralSpinToken3D size={34} className={styles.token3dImg} />
+              <AstralSpinToken3D size={30} className={styles.token3dImg} />
               <span className={styles.tokenHaloCyan} aria-hidden="true" />
             </div>
             <div className={styles.lootTextCol}>
