@@ -39,13 +39,16 @@ const BadgeGallery = () => {
         <div className={styles.statsCard}>
           <div className={styles.statsLeft}>
             <div className={styles.trophyIconWrap}>
-              <Medal size={20} weight="duotone" color="#FBBF24" />
+              <Trophy size={20} weight="fill" className={styles.trophyGold} />
+              <span className={styles.trophyHalo} aria-hidden="true" />
             </div>
             <div className={styles.statsText}>
-              <span className={styles.statsVal}>
-                {unlockedCount} / {totalCount}
-              </span>
-              <span className={styles.statsLabel}>Badges Mastered</span>
+              <div className={styles.statsValRow}>
+                <span className={styles.statsVal}>{String(unlockedCount).padStart(2, '0')}</span>
+                <span className={styles.statsDivider}>/</span>
+                <span className={styles.statsTotalVal}>{String(totalCount).padStart(2, '0')}</span>
+              </div>
+              <span className={styles.statsLabel}>Insignias Mastered</span>
             </div>
           </div>
           <div className={styles.statsProgressWrap}>
@@ -53,9 +56,14 @@ const BadgeGallery = () => {
               <div
                 className={styles.statsProgressBarFill}
                 style={{ width: `${completionPct}%` }}
-              />
+              >
+                <span className={styles.progressGlint} />
+              </div>
             </div>
-            <span className={styles.statsPctText}>{completionPct}% Mastered</span>
+            <div className={styles.statsMetaRow}>
+              <span className={styles.statsPctText}>{completionPct}% Mastered</span>
+              <span className={styles.statsRankText}>Level 05 Sovereign</span>
+            </div>
           </div>
         </div>
       </div>
@@ -63,20 +71,27 @@ const BadgeGallery = () => {
       {/* Category Filter Pills */}
       <div className={styles.filterBar}>
         <div className={styles.filterTabs} role="tablist" aria-label="Badge Category Filters">
-          {badgeCategories.map((cat) => (
-            <button
-              key={cat.id}
-              type="button"
-              role="tab"
-              aria-selected={activeCategory === cat.id}
-              className={`${styles.filterTab} ${
-                activeCategory === cat.id ? styles.filterTabActive : ''
-              }`}
-              onClick={() => setActiveCategory(cat.id)}
-            >
-              {cat.label}
-            </button>
-          ))}
+          {badgeCategories.map((cat) => {
+            const count =
+              cat.id === 'all'
+                ? badgesData.length
+                : badgesData.filter((b) => b.category === cat.id).length
+            return (
+              <button
+                key={cat.id}
+                type="button"
+                role="tab"
+                aria-selected={activeCategory === cat.id}
+                className={`${styles.filterTab} ${
+                  activeCategory === cat.id ? styles.filterTabActive : ''
+                }`}
+                onClick={() => setActiveCategory(cat.id)}
+              >
+                <span>{cat.label}</span>
+                <span className={styles.tabBadgeCount}>{count}</span>
+              </button>
+            )
+          })}
         </div>
       </div>
 

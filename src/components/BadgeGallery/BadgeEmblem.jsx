@@ -1,23 +1,34 @@
-import React from 'react'
+import React, { useState, useRef } from 'react'
 import TierMedallion from '../shared/TierMedallion'
 
 /**
- * Custom metallic SVG Badge Emblem with rich 3D cyber styling
+ * AAA 3D Badge Emblem Visualizer
+ * Supports TierMedallion vector heraldry and high-definition 3D dimensional Insignia assets
  */
 const BadgeEmblem = ({
   rarity = 'common',
   badgeUrl,
   tierLevel,
-  size = 64,
+  size = 80,
   isUnlocked = true,
+  status = 'completed',
   accentColor = '#FBBF24',
 }) => {
+  const [tilt, setTilt] = useState({ x: 0, y: 0 })
+  const [isHovered, setIsHovered] = useState(false)
+  const containerRef = useRef(null)
+
   const glowColors = {
     common: '#94A3B8',
-    rare: '#00F5FF',
-    epic: '#C084FC',
+    uncommon: '#38BDF8',
+    rare: '#10B981',
+    epic: '#818CF8',
     legendary: '#FBBF24',
-    exclusive: '#00E676',
+    ascendant: '#C084FC',
+    prismatic: '#00F5FF',
+    sovereign: '#F43F5E',
+    celestial: '#F59E0B',
+    mythic: '#10B981',
   }
 
   const primaryGlow = glowColors[rarity] || accentColor
@@ -28,117 +39,129 @@ const BadgeEmblem = ({
       <TierMedallion
         level={tierLevel}
         size={size}
-        status={isUnlocked ? 'completed' : 'locked'}
+        status={status}
         showStatusCorner={false}
       />
     )
   }
 
+  // Handle pointer tilt physics for bespoke 3D badges
+  const handleMouseMove = (e) => {
+    if (!containerRef.current) return
+    const rect = containerRef.current.getBoundingClientRect()
+    const relX = (e.clientX - rect.left) / rect.width
+    const relY = (e.clientY - rect.top) / rect.height
+    setTilt({
+      x: -(relY - 0.5) * 22,
+      y: (relX - 0.5) * 22,
+    })
+  }
+
+  const handleMouseLeave = () => {
+    setIsHovered(false)
+    setTilt({ x: 0, y: 0 })
+  }
+
   return (
     <div
+      ref={containerRef}
+      onMouseMove={handleMouseMove}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={handleMouseLeave}
       style={{
         position: 'relative',
-        width: size,
-        height: size,
+        width: `${size}px`,
+        height: `${size}px`,
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
         flexShrink: 0,
+        perspective: '900px',
+        userSelect: 'none',
       }}
     >
-      {/* Ambient Radial Backlight */}
+      {/* Ambient Volumetric Backlight Glow */}
       <div
         style={{
           position: 'absolute',
-          inset: -6,
+          inset: -8,
           borderRadius: '50%',
           background: isUnlocked
-            ? `radial-gradient(circle, ${primaryGlow}40 0%, transparent 70%)`
-            : 'radial-gradient(circle, rgba(168, 85, 247, 0.12) 0%, transparent 70%)',
-          filter: 'blur(8px)',
+            ? `radial-gradient(circle, ${primaryGlow}55 0%, transparent 70%)`
+            : 'radial-gradient(circle, rgba(168, 85, 247, 0.15) 0%, transparent 70%)',
+          filter: 'blur(14px)',
           pointerEvents: 'none',
+          transition: 'all 0.3s ease',
         }}
+        aria-hidden="true"
       />
 
-      {/* Outer Hex/Octagon Bezel */}
-      <svg
-        width={size}
-        height={size}
-        viewBox="0 0 100 100"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        style={{ position: 'absolute', inset: 0 }}
+      {/* Floating 3D Artwork Anchor */}
+      <div
+        style={{
+          width: '100%',
+          height: '100%',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          transform: isHovered
+            ? `rotateX(${tilt.x}deg) rotateY(${tilt.y}deg) scale(1.08) translateZ(12px)`
+            : 'rotateX(0deg) rotateY(0deg) scale(1) translateZ(0)',
+          transition: isHovered ? 'transform 0.08s ease-out' : 'transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1)',
+          transformStyle: 'preserve-3d',
+        }}
       >
-        <defs>
-          <linearGradient id={`bezel-grad-${rarity}`} x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor={isUnlocked ? primaryGlow : '#3A3F60'} />
-            <stop offset="50%" stopColor={isUnlocked ? '#1E1838' : '#141224'} />
-            <stop offset="100%" stopColor={isUnlocked ? primaryGlow : '#25203A'} />
-          </linearGradient>
-          <linearGradient id={`inner-grad-${rarity}`} x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stopColor={isUnlocked ? '#1A1434' : '#0B0916'} />
-            <stop offset="100%" stopColor={isUnlocked ? '#0B0718' : '#07050E'} />
-          </linearGradient>
-        </defs>
+        {badgeUrl ? (
+          <img
+            src={badgeUrl}
+            alt=""
+            aria-hidden="true"
+            style={{
+              width: `${size}px`,
+              height: `${size}px`,
+              objectFit: 'contain',
+              position: 'relative',
+              zIndex: 2,
+              filter: isUnlocked
+                ? `drop-shadow(0 10px 24px rgba(0, 0, 0, 0.75)) drop-shadow(0 0 16px ${primaryGlow}60)`
+                : 'grayscale(0.40) brightness(0.85) contrast(1.15) drop-shadow(0 6px 14px rgba(0,0,0,0.75))',
+              transition: 'filter 0.3s ease',
+            }}
+          />
+        ) : (
+          <span
+            style={{
+              fontSize: size * 0.35,
+              fontWeight: 900,
+              color: isUnlocked ? primaryGlow : '#71717A',
+              zIndex: 2,
+              position: 'relative',
+            }}
+          >
+            ★
+          </span>
+        )}
+      </div>
 
-        {/* Outer Shield Hexagon */}
-        <polygon
-          points="50,4 92,26 92,74 50,96 8,74 8,26"
-          fill={`url(#inner-grad-${rarity})`}
-          stroke={`url(#bezel-grad-${rarity})`}
-          strokeWidth="3.5"
-          filter={isUnlocked ? `drop-shadow(0 0 6px ${primaryGlow}50)` : 'none'}
-        />
-
-        {/* Inner Engraved Accent Track */}
-        <polygon
-          points="50,11 85,29 85,71 50,89 15,71 15,29"
-          fill="none"
-          stroke={isUnlocked ? `${primaryGlow}50` : 'rgba(255, 255, 255, 0.08)'}
-          strokeWidth="1.2"
-          strokeDasharray="4 2"
-        />
-
-        {/* Corner Cyber Accents */}
-        <circle cx="50" cy="11" r="2" fill={isUnlocked ? primaryGlow : '#555'} />
-        <circle cx="85" cy="29" r="2" fill={isUnlocked ? primaryGlow : '#555'} />
-        <circle cx="85" cy="71" r="2" fill={isUnlocked ? primaryGlow : '#555'} />
-        <circle cx="50" cy="89" r="2" fill={isUnlocked ? primaryGlow : '#555'} />
-        <circle cx="15" cy="71" r="2" fill={isUnlocked ? primaryGlow : '#555'} />
-        <circle cx="15" cy="29" r="2" fill={isUnlocked ? primaryGlow : '#555'} />
-      </svg>
-
-      {/* Foreground Artwork (SVG or Fallback) */}
-      {badgeUrl ? (
-        <img
-          src={badgeUrl}
-          alt=""
-          aria-hidden="true"
-          style={{
-            width: size * 0.58,
-            height: size * 0.58,
-            objectFit: 'contain',
-            position: 'relative',
-            zIndex: 2,
-            filter: isUnlocked
-              ? 'drop-shadow(0 2px 8px rgba(0,0,0,0.6))'
-              : 'grayscale(90%) opacity(45%)',
-            transition: 'transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)',
-          }}
-        />
-      ) : (
-        <span
-          style={{
-            fontSize: size * 0.35,
-            fontWeight: 900,
-            color: isUnlocked ? primaryGlow : '#71717A',
-            zIndex: 2,
-            position: 'relative',
-          }}
-        >
-          {tierLevel ? `L${tierLevel}` : '★'}
-        </span>
-      )}
+      {/* Grounding Holographic Dais Base */}
+      <div
+        style={{
+          position: 'absolute',
+          bottom: '-6px',
+          left: '50%',
+          transform: 'translateX(-50%)',
+          width: `${Math.round(size * 0.85)}px`,
+          height: '14px',
+          borderRadius: '50%',
+          background: isUnlocked
+            ? `radial-gradient(ellipse, ${primaryGlow}50 0%, rgba(0, 0, 0, 0.7) 45%, transparent 75%)`
+            : 'radial-gradient(ellipse, rgba(0, 0, 0, 0.8) 0%, transparent 70%)',
+          filter: 'blur(3px)',
+          pointerEvents: 'none',
+          zIndex: 1,
+        }}
+        aria-hidden="true"
+      />
     </div>
   )
 }

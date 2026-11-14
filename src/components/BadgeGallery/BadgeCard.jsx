@@ -80,8 +80,9 @@ const BadgeCard = ({ badge, onSelect }) => {
           rarity={badge.rarity}
           badgeUrl={badge.badgeUrl}
           tierLevel={badge.tierLevel}
-          size={76}
+          size={86}
           isUnlocked={isUnlocked}
+          status={isUnlocked ? 'completed' : isInProgress ? 'next' : 'locked'}
           accentColor={badge.accentColor}
         />
       </div>
@@ -96,33 +97,39 @@ const BadgeCard = ({ badge, onSelect }) => {
 
       {/* Bottom Progress or Earned Footer */}
       <div className={styles.cardFooter}>
-        {isUnlocked ? (
-          <div className={styles.earnedDateRow}>
-            <span className={styles.earnedDot} />
-            <span className={styles.earnedText}>Unlocked {badge.earnedDate}</span>
-          </div>
-        ) : isInProgress ? (
-          <div className={styles.progressRow}>
-            <div className={styles.progressLabels}>
-              <span className={styles.progressText}>{badge.progressLabel || 'Progress'}</span>
-              <span className={styles.progressPctText}>{badge.progressPct}%</span>
+        <div className={styles.footerStatusArea}>
+          {isUnlocked ? (
+            <div className={styles.earnedDateRow}>
+              <span className={styles.earnedDot} />
+              <span className={styles.earnedText}>Unlocked {badge.earnedDate}</span>
             </div>
-            <div className={styles.progressTrack}>
-              <div
-                className={styles.progressFill}
-                style={{ width: `${badge.progressPct}%` }}
-              />
+          ) : isInProgress ? (
+            <div className={styles.progressRow}>
+              <div className={styles.progressLabels}>
+                <span className={styles.progressText}>{badge.progressLabel || 'Progress'}</span>
+                <span className={styles.progressPctText}>{badge.progressPct}%</span>
+              </div>
+              <div className={styles.progressTrack}>
+                <div
+                  className={styles.progressFill}
+                  style={{ width: `${badge.progressPct}%` }}
+                />
+              </div>
+              {badge.progressRemaining && (
+                <span className={styles.progressRemainingText}>{badge.progressRemaining}</span>
+              )}
             </div>
-          </div>
-        ) : (
-          <div className={styles.criteriaRow}>
-            <span className={styles.criteriaText}>{badge.criteria}</span>
-          </div>
-        )}
+          ) : (
+            <div className={styles.criteriaRow}>
+              <LockSimple size={11} weight="bold" className={styles.criteriaLockIcon} />
+              <span className={styles.criteriaText}>{badge.criteria}</span>
+            </div>
+          )}
+        </div>
 
-        <div className={styles.inspectHint}>
-          <span>Inspect</span>
-          <CaretRight size={12} weight="bold" />
+        <div className={styles.inspectBtn}>
+          <span>Inspect Insignia</span>
+          <CaretRight size={11} weight="bold" />
         </div>
       </div>
     </div>
