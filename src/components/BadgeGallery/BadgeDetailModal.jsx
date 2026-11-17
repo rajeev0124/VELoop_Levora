@@ -206,7 +206,7 @@ const BadgeDetailModal = ({ badge, isOpen, onClose }) => {
           ) : (
             <button
               type="button"
-              className="ve-btn ve-btn-purple"
+              className="ve-btn ve-btn-gold"
               onClick={() => {
                 onClose()
                 const el = document.getElementById('earn') || document.getElementById('arcade')
