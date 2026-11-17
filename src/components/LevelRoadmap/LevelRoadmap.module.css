@@ -954,8 +954,8 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: var(--gold-soft);
-  border: 1px solid var(--border-gold);
+  background: rgba(251, 191, 36, 0.08);
+  border: 1px solid rgba(251, 191, 36, 0.35);
   padding: 6px 12px;
   border-radius: var(--radius-full);
   width: fit-content;
@@ -970,7 +970,8 @@
 .vaultRewardText {
   font-size: 12px;
   font-weight: 800;
-  color: #FFFFFF;
+  color: #FDE68A;
+  text-shadow: 0 0 12px rgba(251, 191, 36, 0.35);
 }
 
 .perksListWrap {
@@ -1178,7 +1179,8 @@
 }
 
 .telemetryValueGold {
-  color: #FFFFFF;
+  color: #FDE68A;
+  text-shadow: 0 0 12px rgba(251, 191, 36, 0.35);
 }
 
 .telemetryValueGreen {

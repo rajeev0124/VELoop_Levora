@@ -41,8 +41,8 @@ const MysteryBoxCard = ({ box, onOpen }) => {
           background: isReady
             ? `radial-gradient(circle at 50% 30%, ${rarity.glow} 0%, transparent 68%)`
             : isLocked
-            ? 'radial-gradient(circle at 50% 30%, rgba(168, 85, 247, 0.08) 0%, transparent 60%)'
-            : 'radial-gradient(circle at 50% 30%, rgba(0, 230, 118, 0.08) 0%, transparent 60%)',
+            ? 'radial-gradient(circle at 50% 30%, rgba(255, 255, 255, 0.04) 0%, transparent 60%)'
+            : 'radial-gradient(circle at 50% 30%, rgba(16, 185, 129, 0.06) 0%, transparent 60%)',
         }}
         aria-hidden="true"
       />
@@ -63,7 +63,7 @@ const MysteryBoxCard = ({ box, onOpen }) => {
         {isReady && (
           <span className={styles.readyPill}>
             <Key size={12} weight="fill" />
-            <span>READY TO CRACK</span>
+            <span>READY TO UNLOCK</span>
           </span>
         )}
 

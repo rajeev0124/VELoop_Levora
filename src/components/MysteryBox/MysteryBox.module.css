@@ -116,10 +116,10 @@
 .filterTabs {
   display: inline-flex;
   gap: 6px;
-  background: rgba(14, 11, 28, 0.75);
+  background: rgba(13, 15, 23, 0.72);
   padding: 4px;
   border-radius: var(--radius-full);
-  border: 1px solid var(--border-card);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   overflow-x: auto;
   max-width: 100%;
 }
@@ -145,10 +145,10 @@
 }
 
 .filterTabActive {
-  background: var(--purple-soft);
+  background: rgba(255, 255, 255, 0.08);
   color: #FFFFFF;
-  border: 1px solid var(--border-purple);
-  box-shadow: 0 0 14px rgba(168, 85, 247, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.40);
 }
 
 .carouselNavButtons {
@@ -239,7 +239,7 @@
 .boxCard:hover {
   transform: translateY(-4px);
   border-color: var(--border-card-hover);
-  box-shadow: 0 16px 44px rgba(0, 0, 0, 0.75), 0 0 28px rgba(168, 85, 247, 0.3);
+  box-shadow: 0 16px 44px rgba(0, 0, 0, 0.75), inset 0 1px 0 rgba(255, 255, 255, 0.14);
 }
 
 .boxReady {
@@ -253,8 +253,8 @@
 }
 
 .boxFeatured {
-  border: 1px solid rgba(251, 191, 36, 0.55);
-  background: linear-gradient(145deg, rgba(28, 20, 52, 0.88) 0%, rgba(12, 10, 26, 0.96) 100%);
+  border: 1px solid rgba(251, 191, 36, 0.40);
+  background: linear-gradient(145deg, rgba(16, 18, 28, 0.88) 0%, rgba(9, 11, 18, 0.96) 100%);
 }
 
 .boxClaimed {
@@ -628,17 +628,17 @@
 }
 
 .openingModalCard {
-  background: var(--grad-card-glass);
-  backdrop-filter: blur(var(--blur-heavy)) saturate(200%);
-  -webkit-backdrop-filter: blur(var(--blur-heavy)) saturate(200%);
-  border: 1px solid var(--border-card-hover);
+  background: linear-gradient(145deg, rgba(16, 18, 28, 0.94) 0%, rgba(9, 11, 18, 0.98) 100%);
+  backdrop-filter: blur(var(--blur-heavy)) saturate(160%);
+  -webkit-backdrop-filter: blur(var(--blur-heavy)) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: var(--radius-32);
   width: 100%;
   max-width: 480px;
   padding: 28px;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.85), 0 0 36px rgba(168, 85, 247, 0.35);
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.85), inset 0 1px 0 rgba(255, 255, 255, 0.12);
 }
 
 .modalTopControls {
@@ -1145,12 +1145,12 @@
 
 .decryptionHeroChamber {
   position: relative;
-  background: linear-gradient(135deg, rgba(28, 20, 52, 0.94) 0%, rgba(12, 10, 26, 0.98) 100%);
-  border: 1px solid rgba(251, 191, 36, 0.45);
+  background: linear-gradient(135deg, rgba(16, 18, 28, 0.94) 0%, rgba(9, 11, 18, 0.98) 100%);
+  border: 1px solid rgba(251, 191, 36, 0.35);
   border-radius: 24px;
   padding: clamp(20px, 3.5vw, 32px);
   margin-bottom: 28px;
-  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.7), 0 0 32px rgba(251, 191, 36, 0.16), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.7), 0 0 32px rgba(251, 191, 36, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.12);
   display: flex;
   flex-direction: column;
   gap: 24px;

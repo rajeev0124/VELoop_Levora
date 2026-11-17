@@ -462,7 +462,7 @@ const LevelRoadmap = ({ data }) => {
                 {activeLevelData.name}
               </h3>
               <div className={styles.dockCodexMeta}>
-                <span className={styles.dockRarityBadge} style={{ borderColor: activeLevelData.color, color: activeLevelData.accentColor || '#FFF' }}>
+                <span className={styles.dockRarityBadge}>
                   {activeLevelData.rarity}
                 </span>
                 <span className={styles.dockMaterialText}>{activeLevelData.material}</span>
@@ -736,7 +736,7 @@ const LevelRoadmap = ({ data }) => {
                   {activeLevelData.name}
                 </h3>
                 <div className={styles.dockCodexMeta}>
-                  <span className={styles.dockRarityBadge} style={{ borderColor: activeLevelData.color, color: activeLevelData.accentColor || '#FFF' }}>
+                  <span className={styles.dockRarityBadge}>
                     {activeLevelData.rarity}
                   </span>
                   <span className={styles.dockDotDivider}>•</span>
