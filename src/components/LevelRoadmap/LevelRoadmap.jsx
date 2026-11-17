@@ -26,6 +26,9 @@ const formatCardReward = (lvl) => {
   if (lvl.level === 6) {
     return '+500 VEs • +25 Gems'
   }
+  if (lvl.level === 7) {
+    return '100 SVEs Safe Vault'
+  }
   if (lvl.level === 10) {
     return 'Tier 1 Safe Vault'
   }
@@ -42,7 +45,8 @@ const formatCardReward = (lvl) => {
 
 const LevelRoadmap = ({ data }) => {
   const currentLvl = data?.currentLevel || 5
-  const allLevels = data?.allLevels || []
+  // Exactly all 7 levels as defined in VELoop task requirements
+  const allLevels = (data?.allLevels || []).slice(0, 7)
   const currentXP = data?.currentXP || 6420
   const dailyVelocity = data?.dailyVelocity || 215
   const streakDays = data?.streakDays || 7
@@ -172,10 +176,10 @@ const LevelRoadmap = ({ data }) => {
             <span>PROGRESSION PIPELINE</span>
           </div>
           <h2 id="roadmap-heading" className="section-title">
-            Level Progression Roadmap
+            Level Journey (All 7 Levels)
           </h2>
           <p className="section-subtitle">
-            Visual milestone ladder — click any tier node to inspect criteria, perks, and reward vaults.
+            Visual 7-tier milestone progression — click any tier node to inspect criteria, perks, and reward vaults.
           </p>
         </div>
 
@@ -252,7 +256,7 @@ const LevelRoadmap = ({ data }) => {
               const nodeCurrent = lvl.level === currentLvl
               const nodeNext = lvl.level === currentLvl + 1
               const nodeLocked = lvl.level > currentLvl + 1
-              const isApex = lvl.level === 10
+              const isApex = lvl.level === 7
 
               let nodeStateClass = styles.nodeLocked
               if (nodeCompleted) nodeStateClass = styles.nodeCompleted
