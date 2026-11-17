@@ -100,7 +100,7 @@ const MysteryBoxCard = ({ box, onOpen }) => {
         {isLocked && (
           <div className={styles.lockedShieldOverlay} aria-hidden="true">
             <div className={styles.lockIconBadge}>
-              <LockSimple size={18} weight="fill" />
+              <LockSimple size={13} weight="fill" />
             </div>
           </div>
         )}
