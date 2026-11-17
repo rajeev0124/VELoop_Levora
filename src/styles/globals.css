@@ -48,16 +48,16 @@ body {
   background: var(--bg-surface-1);
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(168, 85, 247, 0.28);
+  background: rgba(255, 255, 255, 0.16);
   border-radius: var(--radius-full);
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(168, 85, 247, 0.50);
+  background: rgba(255, 255, 255, 0.32);
 }
 
 /* ---------- Text Selection ---------- */
 ::selection {
-  background: var(--purple-soft);
+  background: rgba(251, 191, 36, 0.22);
   color: #FFFFFF;
 }
 
