@@ -302,7 +302,7 @@ const NextLevelReward = ({ data, onTriggerLevelUp }) => {
         {/* Console Action & Requirement Row */}
         <div className={styles.consoleFooterRow}>
           <span className={styles.consoleReqText}>
-            Requires <strong>Level 06 Sovereign Promotion</strong>
+            Requires <strong>Level 06 {targetLevelName} Promotion</strong>
           </span>
           <button
             type="button"

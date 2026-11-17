@@ -62,7 +62,7 @@ const BadgeGallery = () => {
             </div>
             <div className={styles.statsMetaRow}>
               <span className={styles.statsPctText}>{completionPct}% Mastered</span>
-              <span className={styles.statsRankText}>Level 05 Sovereign</span>
+              <span className={styles.statsRankText}>Level 05 Gold Guardian</span>
             </div>
           </div>
         </div>

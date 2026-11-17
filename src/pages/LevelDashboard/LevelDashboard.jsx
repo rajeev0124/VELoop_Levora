@@ -154,7 +154,7 @@ const LevelDashboard = () => {
               <div
                 className={styles.userAvatar}
                 onClick={triggerLevelUp}
-                title="Preview Sovereign Profile & Level Up"
+                title="Preview Gold Guardian Profile & Level Up"
                 role="button"
                 tabIndex={0}
                 onKeyDown={(e) => {

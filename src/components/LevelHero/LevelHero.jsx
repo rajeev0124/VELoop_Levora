@@ -75,7 +75,7 @@ const LevelHero = ({ data, onTriggerLevelUp }) => {
             onClick={onTriggerLevelUp}
             role="button"
             tabIndex={0}
-            title="Inspect Level 05 Sovereign Privileges"
+            title="Inspect Level 05 Gold Guardian Privileges"
           >
             <ShieldCheck size={14} weight="duotone" />
             <span>LEVEL {String(currentLvl).padStart(2, '0')} ACTIVE RANK</span>
@@ -89,7 +89,7 @@ const LevelHero = ({ data, onTriggerLevelUp }) => {
         <div
           className={styles.emblemContainer}
           onClick={onTriggerLevelUp}
-          title="Inspect Sovereign Gold Guardian Badge"
+          title="Inspect Gold Guardian Badge"
           role="button"
           tabIndex={0}
         >
