@@ -141,14 +141,8 @@ const XPActivity = () => {
             return (
               <div key={item.id} className={styles.activityRow}>
                 {/* Left: Holographic Icon Circle */}
-                <div
-                  className={styles.iconCircle}
-                  style={{
-                    backgroundColor: `${item.color}15`,
-                    borderColor: `${item.color}40`,
-                  }}
-                >
-                  <IconComp size={18} weight="duotone" color={item.color} />
+                <div className={styles.iconCircle}>
+                  <IconComp size={18} weight="duotone" />
                 </div>
 
                 {/* Center: Details */}

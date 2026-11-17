@@ -6,13 +6,13 @@
 }
 
 .gameCardWrapper {
-  background: linear-gradient(145deg, rgba(18, 14, 34, 0.88) 0%, rgba(10, 8, 20, 0.95) 100%);
-  backdrop-filter: blur(28px) saturate(190%);
-  -webkit-backdrop-filter: blur(28px) saturate(190%);
+  background: linear-gradient(145deg, rgba(16, 18, 28, 0.88) 0%, rgba(9, 11, 18, 0.95) 100%);
+  backdrop-filter: blur(28px) saturate(140%);
+  -webkit-backdrop-filter: blur(28px) saturate(140%);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 20px;
   padding: 24px;
-  box-shadow: 0 16px 44px -10px rgba(0, 0, 0, 0.65), 0 2px 20px rgba(168, 85, 247, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  box-shadow: 0 16px 44px -10px rgba(0, 0, 0, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.08);
   width: 100%;
   height: 100%;
   display: flex;
@@ -111,8 +111,8 @@
   align-items: center;
   justify-content: space-around;
   width: 100%;
-  background: rgba(255, 255, 255, 0.025);
-  border: 1px solid rgba(168, 85, 247, 0.18);
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: var(--radius-lg);
   padding: 12px 16px;
   margin-bottom: 18px;
@@ -139,7 +139,7 @@
 .specHudDivider {
   width: 1px;
   height: 28px;
-  background: rgba(168, 85, 247, 0.18);
+  background: rgba(255, 255, 255, 0.08);
 }
 
 .specItemText {
@@ -186,8 +186,8 @@
 }
 
 .yieldChip {
-  background: rgba(20, 16, 36, 0.70);
-  border: 1px solid rgba(168, 85, 247, 0.16);
+  background: rgba(13, 15, 23, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: var(--radius-md);
   padding: 10px 8px;
   display: flex;
@@ -199,8 +199,8 @@
 }
 
 .yieldChip:hover {
-  background: rgba(28, 20, 52, 0.85);
-  border-color: rgba(168, 85, 247, 0.35);
+  background: rgba(19, 22, 33, 0.88);
+  border-color: rgba(255, 255, 255, 0.16);
   transform: translateY(-2px);
 }
 
@@ -362,8 +362,8 @@
 }
 
 .gameArena {
-  background: radial-gradient(circle at 50% 15%, #23183d 0%, #080612 100%);
-  border: 2px solid var(--border-purple);
+  background: radial-gradient(circle at 50% 15%, #0f1322 0%, #05060a 100%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: var(--radius-xl);
   position: relative;
   overflow: hidden;
