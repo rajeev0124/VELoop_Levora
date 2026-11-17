@@ -419,11 +419,11 @@
 
 /* Rarity Shaders & Material Grading */
 .vaultRarity_common {
-  filter: sepia(0.85) hue-rotate(-25deg) saturate(1.2) brightness(0.88) contrast(1.05) drop-shadow(0 8px 18px rgba(0, 0, 0, 0.7));
+  filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.7));
 }
 
 .vaultRarity_rare {
-  filter: hue-rotate(220deg) saturate(1.4) brightness(0.95) contrast(1.1) drop-shadow(0 8px 20px rgba(168, 85, 247, 0.4));
+  filter: drop-shadow(0 0 16px rgba(168, 85, 247, 0.4)) drop-shadow(0 8px 20px rgba(0, 0, 0, 0.7));
 }
 
 .vaultRarity_epic {

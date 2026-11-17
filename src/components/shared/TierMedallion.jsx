@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { Check, Crosshair, LockSimple } from '@phosphor-icons/react'
+import BespokeHeraldry from './BespokeHeraldry'
 
 /**
  * Authentic metallic color palettes, silhouettes, and heraldry per tier
@@ -340,42 +341,13 @@ const TierMedallion = ({
             animation: isCurrent ? 'floatIdle 3.4s infinite ease-in-out' : 'none',
           }}
         >
-          {/* High-DPI Vector Artwork */}
-          {!imgError ? (
-            <img
-              src={`${tier.assetUrl}?v=clean2`}
-              alt={tier.name}
-              draggable={false}
-              onError={() => setImgError(true)}
-              style={{
-                width: '100%',
-                height: '100%',
-                objectFit: 'contain',
-                pointerEvents: 'none',
-                filter: isLocked && !isHovered ? 'contrast(1.05) brightness(0.92)' : 'none',
-              }}
-            />
-          ) : (
-            // High-Performance Fallback Medallion
-            <div
-              style={{
-                width: '85%',
-                height: '85%',
-                borderRadius: '50%',
-                background: `radial-gradient(circle at 35% 30%, ${tier.light}, ${tier.primary} 60%, ${tier.secondary} 100%)`,
-                boxShadow: `inset 0 2px 4px rgba(255,255,255,0.7), 0 4px 12px rgba(0,0,0,0.6)`,
-                border: `2px solid ${tier.highlight}`,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                color: '#FFFFFF',
-                fontWeight: 900,
-                fontSize: `${Math.round(size * 0.22)}px`,
-              }}
-            >
-              {level}
-            </div>
-          )}
+          {/* Artisanal Bespoke 3D Gaming Heraldry */}
+          <BespokeHeraldry
+            level={level}
+            size={size}
+            isLocked={isLocked && !isHovered}
+            isCurrent={isCurrent}
+          />
 
           {/* Interactive Cursor-Tracking Holographic Specular Glint */}
           {interactive && sheen.active && (

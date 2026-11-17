@@ -26,17 +26,9 @@ import styles from './LevelDashboard.module.css'
 
 // Animated XP count-up for Sticky Header Chip
 const HeaderXPChip = ({ xp = 6420, onClick }) => {
-  const [val, setVal] = useState(0)
+  const [val, setVal] = useState(xp || 6420)
   useEffect(() => {
-    let start = null
-    const duration = 1200
-    const step = (ts) => {
-      if (!start) start = ts
-      const p = Math.min((ts - start) / duration, 1)
-      setVal(Math.floor(p * xp))
-      if (p < 1) requestAnimationFrame(step)
-    }
-    requestAnimationFrame(step)
+    setVal(xp || 6420)
   }, [xp])
 
   return (

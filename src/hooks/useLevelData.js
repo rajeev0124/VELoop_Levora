@@ -1,32 +1,29 @@
-import { useState, useEffect, useRef, useCallback } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { userData, levels } from '../data/levelData'
 
+const getCalculatedData = () => {
+  const xpPercent = Math.round((userData.currentXP / userData.requiredXP) * 100)
+  const xpRemaining = userData.requiredXP - userData.currentXP
+  const currentLevelData = levels.find(l => l.level === userData.currentLevel)
+  const nextLevelData = levels.find(l => l.level === userData.nextLevel)
+  return { ...userData, xpPercent, xpRemaining, currentLevelData, nextLevelData, allLevels: levels.slice(0, 7) }
+}
+
 const useLevelData = () => {
-  const [data, setData] = useState(null)
-  const [loading, setLoading] = useState(true)
+  const [data, setData] = useState(getCalculatedData)
+  const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
   const [showLevelUp, setShowLevelUp] = useState(false)
 
   const load = useCallback(() => {
-    setLoading(true)
-    setError(null)
-    const timer = setTimeout(() => {
-      try {
-        const xpPercent = Math.round((userData.currentXP / userData.requiredXP) * 100)
-        const xpRemaining = userData.requiredXP - userData.currentXP
-        const currentLevelData = levels.find(l => l.level === userData.currentLevel)
-        const nextLevelData = levels.find(l => l.level === userData.nextLevel)
-        setData({ ...userData, xpPercent, xpRemaining, currentLevelData, nextLevelData, allLevels: levels.slice(0, 7) })
-        setLoading(false)
-      } catch (err) {
-        setError('Unable to load level data')
-        setLoading(false)
-      }
-    }, 1200)
-    return () => clearTimeout(timer)
+    try {
+      setData(getCalculatedData())
+      setLoading(false)
+    } catch (err) {
+      setError('Unable to load level data')
+      setLoading(false)
+    }
   }, [])
-
-  useEffect(() => { const cleanup = load(); return cleanup }, [load])
 
   return {
     data, loading, error, showLevelUp,

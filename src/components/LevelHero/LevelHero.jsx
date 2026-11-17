@@ -15,9 +15,12 @@ import InfoTooltip from '../InfoTooltip/InfoTooltip'
 import styles from './LevelHero.module.css'
 
 const useCountUp = (target, duration = 1200, start = false) => {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(target || 0)
   useEffect(() => {
-    if (!start || !target) return
+    if (!start || !target) {
+      if (target) setCount(target)
+      return
+    }
     let startTime = null
     const step = (timestamp) => {
       if (!startTime) startTime = timestamp
@@ -27,7 +30,7 @@ const useCountUp = (target, duration = 1200, start = false) => {
     }
     requestAnimationFrame(step)
   }, [target, duration, start])
-  return count
+  return count || target || 6420
 }
 
 const LevelHero = ({ data, onTriggerLevelUp }) => {
