@@ -87,7 +87,7 @@ const LevelUpModal = ({ isOpen, onClose, data }) => {
         {/* Header */}
         <h2 className={styles.modalTitle}>LEVEL UP!</h2>
         <div className={styles.modalSub}>
-          You've reached <strong style={{ color: 'var(--gold)' }}>Level {String(targetLevel).padStart(2, '0')} — {currentLevelData?.name || 'Gold Guardian'}</strong>
+          You've reached <strong style={{ color: '#FFFFFF', fontWeight: 800 }}>Level {String(targetLevel).padStart(2, '0')} — {currentLevelData?.name || 'Gold Guardian'}</strong>
         </div>
 
         {/* Golden Pedestal with Badge */}

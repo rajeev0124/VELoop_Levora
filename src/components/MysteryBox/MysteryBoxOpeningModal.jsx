@@ -148,7 +148,7 @@ const MysteryBoxOpeningModal = ({ box, isOpen, onClose, onClaimSuccess }) => {
           <span
             className={styles.modalRarityPill}
             style={{
-              color: rarity.color,
+              color: '#FFFFFF',
               borderColor: rarity.border,
             }}
           >

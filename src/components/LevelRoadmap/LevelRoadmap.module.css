@@ -519,7 +519,7 @@
   gap: 4px;
   font-size: 9px;
   font-weight: 800;
-  color: var(--green);
+  color: #E2E8F0;
   background: var(--green-soft);
   border: 1px solid var(--border-green);
   padding: 2px 7px;
@@ -532,7 +532,7 @@
   gap: 5px;
   font-size: 9px;
   font-weight: 800;
-  color: var(--gold);
+  color: #FFFFFF;
   background: var(--gold-soft);
   border: 1px solid var(--border-gold);
   padding: 2px 8px;
@@ -554,7 +554,7 @@
   gap: 4px;
   font-size: 9px;
   font-weight: 800;
-  color: var(--purple-light);
+  color: #E2E8F0;
   background: var(--purple-soft);
   border: 1px solid var(--border-purple);
   padding: 2px 7px;
@@ -970,7 +970,7 @@
 .vaultRewardText {
   font-size: 12px;
   font-weight: 800;
-  color: var(--gold);
+  color: #FFFFFF;
 }
 
 .perksListWrap {
@@ -1003,7 +1003,7 @@
 }
 
 .perkCheck {
-  color: var(--green);
+  color: #E2E8F0;
   flex-shrink: 0;
 }
 
@@ -1106,7 +1106,7 @@
 
 .sheetProgressDiff {
   font-size: 11px;
-  color: var(--gold);
+  color: #FFFFFF;
   font-weight: 700;
 }
 
@@ -1124,7 +1124,7 @@
 }
 
 .gaugeNextText {
-  color: var(--purple-light, #C084FC);
+  color: #FFFFFF;
   font-weight: 700;
   display: inline-flex;
   align-items: center;
@@ -1174,19 +1174,19 @@
 }
 
 .telemetryValueHighlight {
-  color: var(--gold, #FBBF24);
+  color: #FFFFFF;
 }
 
 .telemetryValueGold {
-  color: var(--gold-light, #FDE68A);
+  color: #FFFFFF;
 }
 
 .telemetryValueGreen {
-  color: #34D399;
+  color: #FFFFFF;
 }
 
 .telemetryValuePurple {
-  color: #C084FC;
+  color: #FFFFFF;
 }
 
 .telemetryHint {

@@ -102,7 +102,7 @@ const LevelBadgeHex = ({ level = 5, size = 88, className = '' }) => {
             fontSize: `${Math.round(size * 0.12)}px`,
             fontWeight: 800,
             letterSpacing: '0.18em',
-            color: '#FBBF24',
+            color: '#FFFFFF',
             textTransform: 'uppercase',
             marginBottom: `${Math.round(size * 0.02)}px`,
             textShadow: '0 1px 3px rgba(0,0,0,0.8)',

@@ -46,7 +46,7 @@
 
 .tabBtnActive {
   background: var(--purple-soft);
-  color: var(--purple-light);
+  color: #FFFFFF;
   border: 1px solid var(--border-purple);
   box-shadow: 0 0 14px rgba(168, 85, 247, 0.35);
 }
@@ -66,8 +66,8 @@
   padding: 2px 8px;
   border-radius: var(--radius-full);
   background: rgba(251, 191, 36, 0.15);
-  color: var(--gold);
-  border: 1px solid rgba(251, 191, 36, 0.45);
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.25);
 }
 
 .activityRowUpcoming {
@@ -270,7 +270,7 @@
   align-items: center;
   gap: 6px;
   background: var(--purple-soft);
-  color: var(--purple-light);
+  color: #FFFFFF;
   border: 1px solid var(--border-purple);
   padding: 8px 16px;
   border-radius: var(--radius-full);

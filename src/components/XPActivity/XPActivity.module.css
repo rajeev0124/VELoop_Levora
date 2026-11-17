@@ -97,7 +97,7 @@
 
 .filterTabActive {
   background: var(--purple-soft);
-  color: var(--purple-light);
+  color: #FFFFFF;
   border-color: var(--border-purple);
   box-shadow: 0 0 10px rgba(168, 85, 247, 0.3);
 }
@@ -187,7 +187,7 @@
 }
 
 .verifiedText {
-  color: var(--green);
+  color: #CBD5E1;
   display: inline-flex;
   align-items: center;
   gap: 3px;
@@ -262,7 +262,7 @@
 .summaryTitle {
   font-size: 10px;
   font-weight: 800;
-  color: var(--purple-light);
+  color: #FFFFFF;
   text-transform: uppercase;
   letter-spacing: 0.1em;
 }
@@ -270,7 +270,7 @@
 .autoAuditTag {
   font-size: 9px;
   font-weight: 700;
-  color: var(--green);
+  color: #FFFFFF;
   background: var(--green-soft);
   border: 1px solid var(--border-green);
   padding: 1px 6px;
@@ -308,7 +308,7 @@
   height: 28px;
   border-radius: 50%;
   background: var(--purple-soft);
-  color: var(--purple-light);
+  color: #FFFFFF;
   border: 1px solid var(--border-purple);
   display: flex;
   align-items: center;
@@ -322,7 +322,7 @@
   height: 28px;
   border-radius: 50%;
   background: var(--gold-soft);
-  color: var(--gold);
+  color: #FFFFFF;
   border: 1px solid var(--border-gold);
   display: flex;
   align-items: center;
@@ -339,13 +339,13 @@
 .pillValXP {
   font-size: 13px;
   font-weight: 900;
-  color: var(--purple-light);
+  color: #FFFFFF;
 }
 
 .pillValVE {
   font-size: 13px;
   font-weight: 900;
-  color: var(--gold);
+  color: #FFFFFF;
 }
 
 .pillLabel {

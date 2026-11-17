@@ -97,7 +97,7 @@ const BadgeDetailModal = ({ badge, isOpen, onClose }) => {
           <span
             className={styles.modalRarityPill}
             style={{
-              color: rarity.color,
+              color: '#FFFFFF',
               background: rarity.bg,
               borderColor: rarity.border,
             }}

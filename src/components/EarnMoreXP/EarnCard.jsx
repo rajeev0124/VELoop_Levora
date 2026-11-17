@@ -29,7 +29,7 @@ const EarnCard = ({ earn, onAction }) => {
             ? {}
             : {
                 background: earn.colorSoft,
-                color: earn.color,
+                color: '#FFFFFF',
                 borderColor: earn.borderColor,
               }
         }

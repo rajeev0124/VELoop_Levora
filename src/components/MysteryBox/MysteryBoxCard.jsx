@@ -52,7 +52,7 @@ const MysteryBoxCard = ({ box, onOpen }) => {
         <span
           className={styles.rarityPill}
           style={{
-            color: rarity.color,
+            color: '#FFFFFF',
             borderColor: rarity.border,
             boxShadow: isReady ? `0 0 10px ${rarity.glow}` : 'none',
           }}

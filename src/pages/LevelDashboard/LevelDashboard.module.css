@@ -78,8 +78,8 @@
 .brandSub {
   font-size: 9.5px;
   font-weight: 800;
-  color: #C084FC;
-  background: linear-gradient(135deg, rgba(168, 85, 247, 0.25) 0%, rgba(126, 34, 206, 0.35) 100%);
+  color: #E2E8F0;
+  background: rgba(255, 255, 255, 0.08);
   border: 1px solid rgba(192, 132, 252, 0.5);
   padding: 2.5px 8px;
   border-radius: var(--radius-full);
@@ -235,7 +235,7 @@
 .walletUnit {
   font-size: 10px;
   font-weight: 800;
-  color: #FCD34D;
+  color: #FFFFFF;
   letter-spacing: 0.06em;
 }
 
@@ -665,7 +665,7 @@
 }
 
 .bottomNavItemActive {
-  color: var(--gold) !important;
+  color: #FFFFFF !important;
   position: relative;
 }
 
@@ -683,7 +683,7 @@
 }
 
 .bottomNavItem:hover {
-  color: var(--gold);
+  color: #FFFFFF;
 }
 
 .bottomNavIcon {
