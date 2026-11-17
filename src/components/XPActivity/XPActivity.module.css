@@ -49,9 +49,9 @@
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: var(--gold);
-  background: var(--gold-soft);
-  border: 1px solid var(--border-gold);
+  color: #E2E8F0;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   padding: 2px 7px;
   border-radius: var(--radius-full);
   width: fit-content;
@@ -168,6 +168,7 @@
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.06em;
+  color: var(--text-muted);
 }
 
 .metaRow {
@@ -210,20 +211,22 @@
   border-radius: var(--radius-full);
   letter-spacing: 0.02em;
   white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+  color: #FFFFFF;
 }
 
 .payoutXP {
-  background: var(--green-soft);
-  color: var(--green);
-  border: 1px solid var(--border-green);
-  box-shadow: 0 0 8px rgba(0, 230, 118, 0.25);
+  background: rgba(255, 255, 255, 0.06);
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 .payoutGold {
-  background: var(--gold-soft);
-  color: var(--gold);
-  border: 1px solid var(--border-gold);
-  box-shadow: 0 0 8px rgba(251, 191, 36, 0.25);
+  background: rgba(255, 255, 255, 0.06);
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 .chevron {

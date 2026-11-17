@@ -131,7 +131,7 @@
   font-weight: 800;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: #C084FC;
+  color: #E2E8F0;
 }
 
 .kickerIcon {
@@ -180,10 +180,9 @@
 }
 
 .goldNumber {
-  color: #FBBF24;
+  color: #FFFFFF;
   font-weight: 900;
   font-variant-numeric: tabular-nums;
-  text-shadow: 0 0 16px rgba(251, 191, 36, 0.35);
 }
 
 /* High-Precision Progress Gauge */
@@ -250,7 +249,7 @@
 }
 
 .pctTag {
-  color: #FDE68A;
+  color: #E2E8F0;
   font-weight: 700;
 }
 

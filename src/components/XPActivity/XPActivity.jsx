@@ -155,7 +155,7 @@ const XPActivity = () => {
                 <div className={styles.details}>
                   <div className={styles.titleRow}>
                     <span className={styles.itemTitle}>{item.title}</span>
-                    <span className={styles.itemTag} style={{ color: item.color }}>
+                    <span className={styles.itemTag}>
                       {item.tag}
                     </span>
                   </div>

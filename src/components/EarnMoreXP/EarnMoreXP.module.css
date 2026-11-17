@@ -164,10 +164,12 @@
 .rewardPillTag {
   font-size: 13px;
   font-weight: 800;
-  background: var(--bg-elevated);
+  color: #FFFFFF;
+  background: rgba(255, 255, 255, 0.06);
   padding: 4px 10px;
   border-radius: var(--radius-full);
-  border: 1px solid var(--border);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  font-variant-numeric: tabular-nums;
 }
 
 .chevron {
@@ -183,9 +185,9 @@
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  color: var(--purple-light);
-  background: var(--purple-soft);
-  border: 1px solid var(--border-purple);
+  color: #E2E8F0;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   padding: 3px 10px;
   border-radius: var(--radius-full);
   width: fit-content;
@@ -193,7 +195,7 @@
 }
 
 .badgeIcon {
-  color: var(--purple-light);
+  color: #C084FC;
 }
 
 .operationTag {
@@ -201,6 +203,7 @@
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.08em;
+  color: #CBD5E1;
   background: rgba(255, 255, 255, 0.05);
   padding: 2px 7px;
   border-radius: var(--radius-full);
@@ -246,9 +249,9 @@
 
 .encouragementHeading {
   font-size: 10px;
-  font-weight: 900;
+  font-weight: 800;
   letter-spacing: 0.1em;
-  color: var(--gold);
+  color: #E2E8F0;
   text-transform: uppercase;
 }
 

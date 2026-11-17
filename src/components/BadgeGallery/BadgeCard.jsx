@@ -44,7 +44,7 @@ const BadgeCard = ({ badge, onSelect }) => {
         <span
           className={styles.rarityPill}
           style={{
-            color: rarity.color,
+            color: '#FFFFFF',
             background: rarity.bg,
             borderColor: rarity.border,
           }}

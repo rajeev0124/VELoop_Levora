@@ -211,7 +211,7 @@ const EarnMoreXP = ({ data }) => {
                   {item.badge ? (
                     <span className={styles.comingSoonPill}>{item.badge}</span>
                   ) : (
-                    <span className={styles.operationTag} style={{ color: item.color }}>
+                    <span className={styles.operationTag}>
                       {item.tag}
                     </span>
                   )}
@@ -220,7 +220,7 @@ const EarnMoreXP = ({ data }) => {
               </div>
 
               <div className={styles.activityActionWrap}>
-                <span className={styles.rewardPillTag} style={{ color: item.color }}>
+                <span className={styles.rewardPillTag}>
                   {item.reward}
                 </span>
                 <CaretRight size={16} weight="bold" className={styles.chevron} />

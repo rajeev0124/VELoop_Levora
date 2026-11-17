@@ -560,9 +560,9 @@
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  color: var(--purple-light);
-  background: var(--purple-soft);
-  border: 1px solid var(--border-purple);
+  color: #E2E8F0;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   padding: 3px 10px;
   border-radius: var(--radius-full);
   width: fit-content;
@@ -570,7 +570,7 @@
 }
 
 .row3BadgeIcon {
-  color: var(--purple-light);
+  color: #C084FC;
 }
 
 .arcadeActivityGrid {

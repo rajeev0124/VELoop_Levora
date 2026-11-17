@@ -47,9 +47,9 @@
   font-size: 10px;
   font-weight: 800;
   text-transform: uppercase;
-  color: var(--purple-light);
-  background: var(--purple-soft);
-  border: 1px solid var(--border-purple);
+  color: #E2E8F0;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   padding: 3px 10px;
   border-radius: var(--radius-full);
   letter-spacing: 0.1em;
@@ -61,9 +61,9 @@
 .verifiedBadge {
   font-size: 10px;
   font-weight: 700;
-  color: var(--green);
-  background: var(--green-soft);
-  border: 1px solid var(--border-green);
+  color: #E2E8F0;
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.35);
   padding: 3px 10px;
   border-radius: var(--radius-full);
   display: inline-flex;
@@ -174,7 +174,7 @@
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: var(--purple-light);
+  color: #94A3B8;
   text-align: left;
 }
 

@@ -38,9 +38,9 @@
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: var(--gold);
-  background: var(--gold-soft);
-  border: 1px solid var(--border-gold);
+  color: #E2E8F0;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   padding: 4px 10px;
   border-radius: var(--radius-full);
   width: fit-content;
@@ -127,9 +127,9 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  background: rgba(251, 191, 36, 0.08);
-  border: 1px solid rgba(251, 191, 36, 0.35);
-  color: var(--gold-light, #FDE68A);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: #FFFFFF;
   font-size: 11.5px;
   font-weight: 700;
   padding: 7px 14px;
@@ -613,17 +613,16 @@
 }
 
 .xpCompleted {
-  color: #6EE7B7;
+  color: #E2E8F0;
 }
 
 .xpCurrent {
-  color: var(--gold, #FBBF24);
+  color: #FFFFFF;
   font-weight: 800;
-  text-shadow: 0 0 10px rgba(251, 191, 36, 0.45);
 }
 
 .xpNext {
-  color: var(--purple-light, #C084FC);
+  color: #E2E8F0;
   font-weight: 800;
 }
 
@@ -648,24 +647,24 @@
 
 .rewardCapsuleCompleted {
   border-color: rgba(0, 230, 118, 0.35);
-  color: var(--green);
+  color: #FFFFFF;
   background: rgba(0, 230, 118, 0.06);
 }
 
 .rewardCapsuleCurrent {
   border-color: rgba(251, 191, 36, 0.45);
-  color: var(--gold);
+  color: #FFFFFF;
   background: rgba(251, 191, 36, 0.1);
 }
 
 .rewardCapsuleNext {
   border-color: rgba(192, 132, 252, 0.45);
-  color: var(--purple-light);
+  color: #FFFFFF;
   background: rgba(192, 132, 252, 0.1);
 }
 
 .rewardCapsuleLocked {
-  color: #CBD5E1;
+  color: #E2E8F0;
   border-color: rgba(255, 255, 255, 0.12);
   background: rgba(255, 255, 255, 0.05);
   font-weight: 700;
@@ -802,9 +801,9 @@
   font-size: 10px;
   font-weight: 800;
   letter-spacing: 0.1em;
-  color: var(--gold);
-  background: var(--gold-soft);
-  border: 1px solid var(--border-gold);
+  color: #FFFFFF;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.14);
   padding: 3px 8px;
   border-radius: var(--radius-full);
 }
@@ -815,7 +814,7 @@
   gap: 4px;
   font-size: 10px;
   font-weight: 800;
-  color: var(--green);
+  color: #E2E8F0;
 }
 
 .dockStatusActive {
@@ -824,7 +823,7 @@
   gap: 4px;
   font-size: 10px;
   font-weight: 800;
-  color: var(--gold);
+  color: #FFFFFF;
 }
 
 .dockStatusNext {
@@ -833,7 +832,7 @@
   gap: 4px;
   font-size: 10px;
   font-weight: 800;
-  color: var(--purple-light);
+  color: #E2E8F0;
 }
 
 .dockStatusLocked {
@@ -885,7 +884,8 @@
 }
 
 .gaugeTargetVal {
-  color: var(--gold);
+  color: #FFFFFF;
+  font-weight: 800;
 }
 
 .gaugeBarTrack {
@@ -909,7 +909,7 @@
 }
 
 .gaugeSuccessText {
-  color: var(--green);
+  color: #E2E8F0;
   font-weight: 700;
   display: inline-flex;
   align-items: center;
@@ -917,7 +917,7 @@
 }
 
 .gaugeCurrentText {
-  color: var(--gold);
+  color: #FFFFFF;
   font-weight: 700;
   display: inline-flex;
   align-items: center;

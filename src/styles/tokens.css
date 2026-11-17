@@ -69,14 +69,19 @@
   --state-locked:      #332A4C;
   --state-locked-text: #94A3B8;
 
-  /* ---------- Typography Colors (High Contrast WCAG AA) ---------- */
+  /* ---------- Typography Colors (High Contrast Monochromatic WCAG AA) ---------- */
   --text-primary:      #FFFFFF;
-  --text-secondary:    #CBD5E1;
+  --text-secondary:    #E2E8F0;
   --text-muted:        #94A3B8;
   --text-disabled:     #64748B;
-  --text-gold:         #FDE68A;
-  --text-cyan:         #67E8F9;
-  --text-purple:       #E9D5FF;
+  --text-headline:     #FFFFFF;
+  --text-value:        #FFFFFF;
+  --text-kicker:       #94A3B8;
+  --text-label:        #94A3B8;
+  --text-capsule:      #F1F5F9;
+  --text-gold:         #FFFFFF;
+  --text-cyan:         #FFFFFF;
+  --text-purple:       #FFFFFF;
 
   /* ---------- Borders & Dividers ---------- */
   --border-subtle:     rgba(168, 85, 247, 0.16);

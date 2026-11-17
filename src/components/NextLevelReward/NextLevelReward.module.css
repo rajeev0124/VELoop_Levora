@@ -88,9 +88,9 @@
   font-size: 11px;
   font-weight: 800;
   letter-spacing: 0.08em;
-  color: #E9D5FF;
-  background: rgba(168, 85, 247, 0.12);
-  border: 1px solid rgba(168, 85, 247, 0.32);
+  color: #E2E8F0;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.14);
   padding: 3px 10px;
   border-radius: var(--radius-full);
 }
@@ -105,9 +105,9 @@
   gap: 5px;
   font-size: 10px;
   font-weight: 800;
-  color: var(--gold);
-  background: var(--gold-soft);
-  border: 1px solid var(--border-gold);
+  color: #E2E8F0;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   padding: 3px 10px;
   border-radius: var(--radius-full);
 }
@@ -124,7 +124,7 @@
   font-size: 11px;
   font-weight: 800;
   letter-spacing: 0.12em;
-  color: var(--gold);
+  color: var(--text-muted);
   text-transform: uppercase;
 }
 
@@ -774,38 +774,38 @@
 
 .lootAmountGold {
   font-size: 14px;
-  font-weight: 900;
-  color: #FBBF24;
+  font-weight: 800;
+  color: #FFFFFF;
   line-height: 1.15;
   font-variant-numeric: tabular-nums;
   letter-spacing: -0.01em;
-  text-shadow: 0 0 14px rgba(251, 191, 36, 0.6);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
 }
 
 .lootAmountEmerald {
   font-size: 14px;
-  font-weight: 900;
-  color: #34D399;
+  font-weight: 800;
+  color: #FFFFFF;
   line-height: 1.15;
   font-variant-numeric: tabular-nums;
   letter-spacing: -0.01em;
-  text-shadow: 0 0 14px rgba(16, 185, 129, 0.6);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
 }
 
 .lootAmountCyan {
   font-size: 14px;
-  font-weight: 900;
-  color: #38BDF8;
+  font-weight: 800;
+  color: #FFFFFF;
   line-height: 1.15;
   font-variant-numeric: tabular-nums;
   letter-spacing: -0.01em;
-  text-shadow: 0 0 14px rgba(56, 189, 248, 0.6);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
 }
 
 .lootLabel {
-  font-size: 9px;
-  font-weight: 800;
-  color: rgba(255, 255, 255, 0.75);
+  font-size: 9.5px;
+  font-weight: 700;
+  color: var(--text-muted);
   text-transform: uppercase;
   letter-spacing: 0.05em;
   white-space: nowrap;
@@ -908,13 +908,13 @@
   font-size: 10px;
   font-weight: 800;
   letter-spacing: 0.04em;
-  color: #34D399;
-  background: rgba(16, 185, 129, 0.12);
-  border: 1px solid rgba(16, 185, 129, 0.35);
+  color: #FFFFFF;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.16);
   padding: 2px 8px;
   border-radius: var(--radius-full);
   font-variant-numeric: tabular-nums;
-  box-shadow: 0 0 8px rgba(16, 185, 129, 0.18);
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.25);
 }
 
 .consoleBarRow {
@@ -975,7 +975,7 @@
 }
 
 .consoleReqText strong {
-  color: #FBBF24;
+  color: #FFFFFF;
   font-weight: 700;
 }
 
