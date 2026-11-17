@@ -62,7 +62,7 @@ const LevelUpModal = ({ isOpen, onClose, data }) => {
   }
   const perks = tierPerks[targetLevel] || tierPerks[5]
   const perkIcons = [TrendUp, Target, TreasureChest]
-  const perkColors = ['#7B61FF', '#3D9EFF', '#F5C842']
+  const perkColors = ['#6EE7B7', '#7DD3FC', '#FDE68A']
   const perkIconStyles = [styles.perkIconTrend, styles.perkIconTarget, styles.perkIconGift]
 
   return (

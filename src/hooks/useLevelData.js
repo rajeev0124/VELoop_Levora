@@ -16,7 +16,7 @@ const useLevelData = () => {
         const xpRemaining = userData.requiredXP - userData.currentXP
         const currentLevelData = levels.find(l => l.level === userData.currentLevel)
         const nextLevelData = levels.find(l => l.level === userData.nextLevel)
-        setData({ ...userData, xpPercent, xpRemaining, currentLevelData, nextLevelData, allLevels: levels })
+        setData({ ...userData, xpPercent, xpRemaining, currentLevelData, nextLevelData, allLevels: levels.slice(0, 7) })
         setLoading(false)
       } catch (err) {
         setError('Unable to load level data')
