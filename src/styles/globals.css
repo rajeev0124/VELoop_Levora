@@ -141,28 +141,32 @@ body {
 }
 
 .ve-btn-gold {
-  background: linear-gradient(135deg, #FEF08A 0%, #FBBF24 50%, #D97706 100%);
+  background: linear-gradient(180deg, #FEF08A 0%, #F59E0B 45%, #D97706 100%);
   color: #0E0B02;
   font-weight: 800;
-  border: 1px solid rgba(255, 255, 255, 0.45);
+  letter-spacing: 0.02em;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.55);
   box-shadow:
-    0 4px 14px rgba(245, 158, 11, 0.28),
-    0 1px 2px rgba(0, 0, 0, 0.35),
-    inset 0 1px 0 rgba(255, 255, 255, 0.55);
+    0 4px 18px rgba(245, 158, 11, 0.35),
+    0 2px 4px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.25);
 }
 .ve-btn-gold:hover {
   transform: translateY(-1.5px);
-  filter: brightness(1.06);
+  filter: brightness(1.08);
   box-shadow:
-    0 6px 20px rgba(245, 158, 11, 0.4),
-    0 2px 4px rgba(0, 0, 0, 0.4),
-    inset 0 1px 0 rgba(255, 255, 255, 0.75);
+    0 8px 26px rgba(245, 158, 11, 0.5),
+    0 2px 6px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.3);
 }
 .ve-btn-gold:active {
   transform: translateY(0px);
   box-shadow:
     0 2px 8px rgba(245, 158, 11, 0.25),
-    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
 }
 
 .ve-btn-purple {

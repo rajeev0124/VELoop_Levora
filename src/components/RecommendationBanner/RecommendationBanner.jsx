@@ -92,24 +92,16 @@ const RecommendationBanner = ({ data }) => {
         </div>
       </div>
 
-      {/* Right: Architectural, Proportional CTAs */}
+      {/* Right: Focused Acceleration CTA */}
       <div className={styles.bannerActions}>
         <button
           type="button"
           className={styles.btnPrimary}
           onClick={() => scrollToSection('arcade')}
-          aria-label="Launch XP Catcher Blitz in Arcade"
+          aria-label={`Accelerate to Level ${nextLvl} via Arcade Blitz`}
         >
           <Play size={13} weight="fill" aria-hidden="true" />
-          <span>Play XP Catcher</span>
-        </button>
-        <button
-          type="button"
-          className={styles.btnSecondary}
-          onClick={() => scrollToSection('earn')}
-          aria-label="Explore Acceleration Tasks"
-        >
-          <span>Explore Tasks</span>
+          <span>Accelerate to Level {nextLvl}</span>
           <ArrowRight size={13} weight="bold" className={styles.arrowIcon} aria-hidden="true" />
         </button>
       </div>
