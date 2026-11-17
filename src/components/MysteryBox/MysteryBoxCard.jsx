@@ -147,15 +147,15 @@ const MysteryBoxCard = ({ box, onOpen }) => {
             type="button"
             className={`${styles.actionBtnReady} ve-btn-gold`}
             tabIndex={-1}
-            aria-label={`Crack ${box.name} now`}
+            aria-label={`Unlock ${box.name} now`}
           >
-            <span>Crack Vault Now</span>
+            <span>Unlock Vault</span>
             <CaretRight size={14} weight="bold" />
           </button>
         ) : isOpened ? (
           <div className={styles.claimedFooter}>
             <CheckCircle size={14} weight="fill" className={styles.claimedIcon} />
-            <span>Vault Rewards Claimed</span>
+            <span>Vault Claimed</span>
           </div>
         ) : (
           <div className={styles.lockedFooter}>

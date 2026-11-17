@@ -63,12 +63,12 @@ const LevelHero = ({ data, onTriggerLevelUp }) => {
       <div className={styles.cardAura} aria-hidden="true" />
       <div className={styles.specularShimmer} aria-hidden="true" />
 
-      {/* Top Status Capsule Bar */}
+      {/* Top Status Bar */}
       <div className={styles.cockpitTopBar}>
         <div className={styles.statusPillsRow}>
           <div className={styles.greetingPill}>
             <span className={styles.greetingPingDot} aria-hidden="true" />
-            <span>Welcome, Sovereign Operative</span>
+            <span>Active Member Profile</span>
           </div>
           <div
             className={styles.activeRankBadge}
@@ -106,7 +106,7 @@ const LevelHero = ({ data, onTriggerLevelUp }) => {
 
         <div className={styles.heroStatsCol}>
           <div className={styles.tierRankLabel}>
-            <span className={styles.tierRankPrefix}>CURRENT SOVEREIGN RANK</span>
+            <span className={styles.tierRankPrefix}>CURRENT MEMBER RANK</span>
             <h1 className={styles.tierRankName}>{currentLvlName}</h1>
           </div>
 
@@ -201,9 +201,9 @@ const LevelHero = ({ data, onTriggerLevelUp }) => {
         <div className={styles.boostSectionHead}>
           <div className={styles.boostTitleWrap}>
             <Lightning size={13} weight="fill" className={styles.boostZap} aria-hidden="true" />
-            <span className={styles.boostTitle}>TODAY'S BOOST & ACTIVE VELOCITY</span>
+            <span className={styles.boostTitle}>DAILY MOMENTUM & YIELD</span>
           </div>
-          <span className={styles.boostAuditStatus}>Live Multiplier Telemetry</span>
+          <span className={styles.boostAuditStatus}>Real-Time Velocity</span>
         </div>
 
         <div className={styles.boostGrid}>

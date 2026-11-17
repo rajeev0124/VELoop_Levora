@@ -229,7 +229,7 @@ const LevelDashboard = () => {
               <div className={styles.row3SectionHead}>
                 <div className={styles.row3HeaderBadge}>
                   <Lightning size={12} weight="fill" className={styles.row3BadgeIcon} />
-                  <span>INTERACTIVE HUBS & TRANSACTIONS</span>
+                  <span>ACTIVITY & INSTANT YIELD</span>
                 </div>
                 <h2 id="arcade-heading" className="section-title">
                   Arcade & Yield Ledger

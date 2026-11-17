@@ -100,29 +100,25 @@ const NextLevelReward = ({ data, onTriggerLevelUp }) => {
       {/* Ambient background glow */}
       <div className={styles.glowAura} aria-hidden="true" />
 
-      {/* Header — Symmetric Luxury Capsule Architecture */}
+      {/* Header — Symmetric Luxury Architecture */}
       <div className={styles.header}>
         <div className={styles.headerLeft}>
           <div className={styles.statusPillsRow}>
             <div className={styles.rewardTierPill}>
-              <Crown size={12} weight="fill" className={styles.crownViolet} />
-              <span>LEVEL {String(targetLevel).padStart(2, '0')} UNLOCK</span>
-            </div>
-            <div className={styles.lockedPill}>
               <LockKey size={12} weight="bold" />
-              <span>MILESTONE VAULT</span>
+              <span>LEVEL {String(targetLevel).padStart(2, '0')} MILESTONE HORIZON</span>
             </div>
           </div>
           <div className={styles.milestoneHeadingCol}>
             <span className={styles.milestoneKicker}>
-              TIER {String(targetLevel).padStart(2, '0')} CLASSIFIED MILESTONE
+              NEXT UNLOCK TARGET
             </span>
             <h2 id="reward-vault-heading" className={styles.mainHeading}>
               {targetLevelName} Milestone Vault
             </h2>
           </div>
         </div>
-        <InfoTooltip text={`Achieve Level ${String(targetLevel).padStart(2, '0')} at 8,000 XP (1,580 XP remaining) to crack this milestone safe. Rewards credit automatically upon promotion.`} />
+        <InfoTooltip text={`Achieve Level ${String(targetLevel).padStart(2, '0')} at 8,000 XP (1,580 XP remaining) to unlock this milestone vault. Rewards credit automatically upon promotion.`} />
       </div>
 
       {/* Grand 3D Vault Stage Centerpiece */}

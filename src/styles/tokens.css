@@ -4,72 +4,72 @@
    ============================================================ */
 
 :root {
-  /* ---------- Core Color Palette (Dark Premium) ---------- */
-  --bg-canvas:         #04050A;
-  --bg-body:           #070814;
-  --bg-surface-1:      #0C0A1B;
-  --bg-surface-2:      #120E26;
-  --bg-surface-3:      #1A1435;
-  --bg-card:           rgba(15, 12, 30, 0.76);
-  --bg-card-hover:     rgba(24, 18, 46, 0.88);
-  --bg-card-glass:     rgba(18, 14, 38, 0.65);
-  --bg-card-solid:     #130F28;
-  --bg-overlay:        rgba(4, 5, 10, 0.88);
-  --bg-overlay-heavy:  rgba(4, 5, 10, 0.96);
-  --bg-input:          #090716;
+  /* ---------- Core Color Palette (Executive Obsidian & Graphite) ---------- */
+  --bg-canvas:         #040507;
+  --bg-body:           #07080C;
+  --bg-surface-1:      #0C0E14;
+  --bg-surface-2:      #12141C;
+  --bg-surface-3:      #181A24;
+  --bg-card:           rgba(13, 15, 23, 0.78);
+  --bg-card-hover:     rgba(19, 22, 33, 0.90);
+  --bg-card-glass:     rgba(13, 15, 23, 0.72);
+  --bg-card-solid:     #10121A;
+  --bg-overlay:        rgba(4, 5, 8, 0.88);
+  --bg-overlay-heavy:  rgba(4, 5, 8, 0.96);
+  --bg-input:          #08090E;
 
   /* ---------- Brand Colors: Gold / Amber ---------- */
   --gold:              #FBBF24;
   --gold-light:        #FDE68A;
   --gold-dark:         #D97706;
   --gold-deep:         #B45309;
-  --gold-soft:         rgba(251, 191, 36, 0.12);
-  --gold-glow:         rgba(251, 191, 36, 0.40);
-  --gold-border:       rgba(251, 191, 36, 0.45);
+  --gold-soft:         rgba(251, 191, 36, 0.10);
+  --gold-glow:         rgba(251, 191, 36, 0.28);
+  --gold-border:       rgba(251, 191, 36, 0.35);
 
-  /* ---------- Brand Colors: Purple / Amethyst ---------- */
+  /* ---------- Brand Colors: Purple / Amethyst (Subtle Luxury Accents) ---------- */
   --purple:            #A855F7;
   --purple-light:      #C084FC;
   --purple-dark:       #7C3AED;
   --purple-deep:       #581C87;
-  --purple-soft:       rgba(168, 85, 247, 0.12);
-  --purple-glow:       rgba(168, 85, 247, 0.42);
-  --purple-border:     rgba(168, 85, 247, 0.40);
+  --purple-soft:       rgba(168, 85, 247, 0.08);
+  --purple-glow:       rgba(168, 85, 247, 0.20);
+  --purple-border:     rgba(168, 85, 247, 0.25);
 
   /* ---------- Brand Accents: Hyper Cyan ---------- */
   --cyan:              #00F5FF;
   --cyan-light:        #67E8F9;
   --cyan-dark:         #0284C7;
-  --cyan-soft:         rgba(0, 245, 255, 0.12);
-  --cyan-glow:         rgba(0, 245, 255, 0.38);
-  --cyan-border:       rgba(0, 245, 255, 0.40);
+  --cyan-soft:         rgba(0, 245, 255, 0.08);
+  --cyan-glow:         rgba(0, 245, 255, 0.22);
+  --cyan-border:       rgba(0, 245, 255, 0.28);
 
   /* ---------- Status / Semantic Colors ---------- */
   --green:             #00E676;
   --green-light:       #69F0AE;
   --green-dark:        #059669;
-  --green-soft:        rgba(0, 230, 118, 0.12);
-  --green-glow:        rgba(0, 230, 118, 0.40);
-  --green-border:      rgba(0, 230, 118, 0.40);
+  --green-soft:        rgba(0, 230, 118, 0.10);
+  --green-glow:        rgba(0, 230, 118, 0.25);
+  --green-border:      rgba(0, 230, 118, 0.30);
 
   --rose:              #FF1E56;
-  --rose-soft:         rgba(255, 30, 86, 0.14);
-  --rose-glow:         rgba(255, 30, 86, 0.35);
+  --rose-soft:         rgba(255, 30, 86, 0.10);
+  --rose-glow:         rgba(255, 30, 86, 0.25);
 
   --silver:            #E2E8F0;
   --silver-muted:      #94A3B8;
 
   /* ---------- Level Progression Node States ---------- */
   --state-completed:   #00E676;
-  --state-completed-glow: rgba(0, 230, 118, 0.45);
+  --state-completed-glow: rgba(0, 230, 118, 0.35);
   --state-current:     #FBBF24;
-  --state-current-glow: rgba(251, 191, 36, 0.55);
+  --state-current-glow: rgba(251, 191, 36, 0.40);
   --state-next:        #C084FC;
-  --state-next-glow:   rgba(192, 132, 252, 0.45);
-  --state-locked:      #332A4C;
+  --state-next-glow:   rgba(192, 132, 252, 0.35);
+  --state-locked:      #1F2330;
   --state-locked-text: #94A3B8;
 
-  /* ---------- Typography Colors (High Contrast Monochromatic WCAG AA) ---------- */
+  /* ---------- Typography Colors (High Contrast Monochromatic WCAG AAA) ---------- */
   --text-primary:      #FFFFFF;
   --text-secondary:    #E2E8F0;
   --text-muted:        #94A3B8;
@@ -83,32 +83,32 @@
   --text-cyan:         #FFFFFF;
   --text-purple:       #FFFFFF;
 
-  /* ---------- Borders & Dividers ---------- */
-  --border-subtle:     rgba(168, 85, 247, 0.16);
-  --border-glass:      rgba(255, 255, 255, 0.10);
-  --border-card:       rgba(168, 85, 247, 0.22);
-  --border-card-hover: rgba(168, 85, 247, 0.45);
-  --border-solid:      #261D42;
+  /* ---------- Hairline Platinum Borders & Dividers ---------- */
+  --border-subtle:     rgba(255, 255, 255, 0.05);
+  --border-glass:      rgba(255, 255, 255, 0.08);
+  --border-card:       rgba(255, 255, 255, 0.08);
+  --border-card-hover: rgba(255, 255, 255, 0.18);
+  --border-solid:      #1A1D27;
 
-  /* ---------- Gradients ---------- */
+  /* ---------- Luxury Glass Gradients ---------- */
   --grad-gold:         linear-gradient(135deg, #FEF08A 0%, #FBBF24 50%, #D97706 100%);
   --grad-purple:       linear-gradient(135deg, #E9D5FF 0%, #C084FC 35%, #7C3AED 100%);
   --grad-cyan:         linear-gradient(135deg, #A5F3FC 0%, #00F5FF 50%, #0284C7 100%);
   --grad-green:        linear-gradient(135deg, #B9F6CA 0%, #00E676 50%, #059669 100%);
-  --grad-card-glass:   linear-gradient(145deg, rgba(22, 17, 42, 0.82) 0%, rgba(10, 8, 22, 0.92) 100%);
-  --grad-card-glow:    linear-gradient(145deg, rgba(32, 24, 62, 0.88) 0%, rgba(14, 11, 30, 0.95) 100%);
-  --grad-vault-pedestal: radial-gradient(ellipse 70% 35% at 50% 85%, rgba(251, 191, 36, 0.35) 0%, transparent 70%);
-  --grad-xp-fill:      linear-gradient(90deg, #7C3AED 0%, #C084FC 30%, #FBBF24 80%, #FDE68A 100%);
+  --grad-card-glass:   linear-gradient(145deg, rgba(16, 18, 28, 0.80) 0%, rgba(9, 11, 18, 0.92) 100%);
+  --grad-card-glow:    linear-gradient(145deg, rgba(20, 24, 36, 0.88) 0%, rgba(11, 13, 21, 0.95) 100%);
+  --grad-vault-pedestal: radial-gradient(ellipse 70% 35% at 50% 85%, rgba(255, 255, 255, 0.12) 0%, transparent 70%);
+  --grad-xp-fill:      linear-gradient(90deg, #3B82F6 0%, #8B5CF6 35%, #FBBF24 85%, #FDE68A 100%);
 
-  /* ---------- Shadows & Glows ---------- */
-  --shadow-sm:         0 2px 8px rgba(0, 0, 0, 0.40);
-  --shadow-md:         0 8px 24px rgba(0, 0, 0, 0.55);
-  --shadow-lg:         0 16px 48px rgba(0, 0, 0, 0.70);
-  --shadow-card:       0 12px 36px rgba(0, 0, 0, 0.60), inset 0 1px 0 rgba(255, 255, 255, 0.08);
-  --shadow-card-hover: 0 18px 48px rgba(124, 58, 237, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.15);
-  --shadow-gold:       0 0 24px rgba(251, 191, 36, 0.40);
-  --shadow-purple:     0 0 28px rgba(168, 85, 247, 0.45);
-  --shadow-cyan:       0 0 24px rgba(0, 245, 255, 0.40);
+  /* ---------- Executive Shadows & Hairline Reflections ---------- */
+  --shadow-sm:         0 2px 8px rgba(0, 0, 0, 0.50);
+  --shadow-md:         0 8px 24px rgba(0, 0, 0, 0.65);
+  --shadow-lg:         0 16px 48px rgba(0, 0, 0, 0.80);
+  --shadow-card:       0 12px 36px rgba(0, 0, 0, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.10);
+  --shadow-card-hover: 0 18px 48px rgba(0, 0, 0, 0.85), inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  --shadow-gold:       0 0 20px rgba(251, 191, 36, 0.25);
+  --shadow-purple:     0 0 20px rgba(168, 85, 247, 0.22);
+  --shadow-cyan:       0 0 20px rgba(0, 245, 255, 0.22);
 
   /* ---------- Blur Levels ---------- */
   --blur-glass:        20px;

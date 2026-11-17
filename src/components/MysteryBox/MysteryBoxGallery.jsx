@@ -63,13 +63,13 @@ const MysteryBoxGallery = () => {
         <div className={styles.titleGroup}>
           <div className={styles.headerBadge}>
             <TreasureChest size={13} weight="duotone" className={styles.badgeIcon} />
-            <span>REWARDS DISCOVERY & MILESTONE SAFES</span>
+            <span>MILESTONE VAULTS & DISCOVERY</span>
           </div>
           <h2 id="mystery-boxes-heading" className="section-title">
             Mystery Box & Milestone Vaults
           </h2>
           <p className="section-subtitle">
-            Discover high-yield treasure vaults and milestone safes unlocked through rank promotions, streaks, and arcade achievements. Level 05 is ready to crack; Level 06 unlocks at 8,000 XP.
+            Discover high-yield treasure vaults unlocked through rank promotions, streaks, and platform achievements. Level 05 is ready to unlock; Level 06 unlocks at 8,000 XP.
           </p>
         </div>
 
@@ -89,7 +89,7 @@ const MysteryBoxGallery = () => {
               <span className={styles.readyVaultsVal}>
                 {readyCount} {readyCount === 1 ? 'Vault' : 'Vaults'} Ready
               </span>
-              <span className={styles.readyVaultsSub}>Awaiting Cipher Decryption</span>
+              <span className={styles.readyVaultsSub}>Available to Unlock</span>
             </div>
           </div>
         </div>
@@ -122,11 +122,11 @@ const MysteryBoxGallery = () => {
           <div className={styles.chamberDossier}>
             <div className={styles.chamberHeaderRow}>
               <span className={styles.chamberRarityPill}>
-                ★ {readyBox.rarity.toUpperCase()} MILESTONE VAULT
+                {readyBox.rarity.toUpperCase()} MILESTONE VAULT
               </span>
               <span className={styles.chamberReadyBeacon}>
                 <Key size={13} weight="fill" className={styles.beaconKeyIcon} />
-                <span>READY FOR CIPHER DECRYPTION</span>
+                <span>READY TO UNLOCK</span>
               </span>
             </div>
 
@@ -137,7 +137,7 @@ const MysteryBoxGallery = () => {
 
             {/* Payload Breakdown Chips */}
             <div className={styles.chamberPayloadRow}>
-              <span className={styles.chamberPayloadLabel}>GUARANTEED VAULT PAYLOAD:</span>
+              <span className={styles.chamberPayloadLabel}>GUARANTEED CONTENTS:</span>
               <div className={styles.chamberPayloadChips}>
                 <div className={styles.payloadChip}>
                   <img
@@ -171,7 +171,7 @@ const MysteryBoxGallery = () => {
                 onClick={() => setSelectedBox(readyBox)}
               >
                 <Key size={16} weight="fill" />
-                <span>Crack & Decrypt Vault Now</span>
+                <span>Unlock Vault Now</span>
                 <CaretRight size={16} weight="bold" />
               </button>
             </div>
