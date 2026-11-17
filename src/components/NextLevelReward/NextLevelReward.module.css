@@ -773,31 +773,31 @@
 .lootAmountGold {
   font-size: 14px;
   font-weight: 800;
-  color: #FFFFFF;
+  color: #FDE68A;
   line-height: 1.15;
   font-variant-numeric: tabular-nums;
   letter-spacing: -0.01em;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8), 0 0 10px rgba(251, 191, 36, 0.3);
 }
 
 .lootAmountEmerald {
   font-size: 14px;
   font-weight: 800;
-  color: #FFFFFF;
+  color: #6EE7B7;
   line-height: 1.15;
   font-variant-numeric: tabular-nums;
   letter-spacing: -0.01em;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8), 0 0 10px rgba(16, 185, 129, 0.3);
 }
 
 .lootAmountCyan {
   font-size: 14px;
   font-weight: 800;
-  color: #FFFFFF;
+  color: #7DD3FC;
   line-height: 1.15;
   font-variant-numeric: tabular-nums;
   letter-spacing: -0.01em;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8), 0 0 10px rgba(56, 189, 248, 0.3);
 }
 
 .lootLabel {

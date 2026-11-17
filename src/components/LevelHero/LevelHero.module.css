@@ -204,10 +204,12 @@
 .tierRankName {
   font-size: clamp(22px, 2.5vw, 26px);
   font-weight: 900;
-  color: #FFFFFF;
+  background: linear-gradient(135deg, #FFFFFF 25%, #FDE68A 65%, #F59E0B 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   letter-spacing: -0.01em;
   line-height: 1.15;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.85);
+  filter: drop-shadow(0 2px 10px rgba(245, 158, 11, 0.25));
 }
 
 .xpBigCounter {
@@ -229,8 +231,9 @@
 .xpUnit {
   font-size: clamp(16px, 1.8vw, 20px);
   font-weight: 800;
-  color: #E2E8F0;
+  color: #FDE68A;
   letter-spacing: 0.04em;
+  opacity: 0.95;
 }
 
 .xpTargetHorizon {

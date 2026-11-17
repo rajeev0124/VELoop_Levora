@@ -1275,9 +1275,12 @@
 .chamberTitle {
   font-size: clamp(22px, 2.6vw, 30px);
   font-weight: 900;
-  color: #FFFFFF;
+  background: linear-gradient(135deg, #FFFFFF 30%, #FDE68A 70%, #F59E0B 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   line-height: 1.2;
   letter-spacing: -0.01em;
+  filter: drop-shadow(0 2px 10px rgba(245, 158, 11, 0.25));
 }
 
 .chamberRequirement {
@@ -1323,9 +1326,9 @@
 }
 
 .payloadChipHighlight {
-  border-color: rgba(255, 255, 255, 0.22);
-  background: rgba(255, 255, 255, 0.08);
-  color: #FFFFFF;
+  border-color: rgba(251, 191, 36, 0.35);
+  background: rgba(251, 191, 36, 0.08);
+  color: #FDE68A;
 }
 
 .payloadChipImg {

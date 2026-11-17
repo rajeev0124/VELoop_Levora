@@ -223,9 +223,9 @@
 }
 
 .payoutGold {
-  background: rgba(255, 255, 255, 0.06);
-  color: #FFFFFF;
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(251, 191, 36, 0.10);
+  color: #FDE68A;
+  border: 1px solid rgba(251, 191, 36, 0.35);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 

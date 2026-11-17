@@ -180,9 +180,10 @@
 }
 
 .goldNumber {
-  color: #FFFFFF;
+  color: #FDE68A;
   font-weight: 900;
   font-variant-numeric: tabular-nums;
+  text-shadow: 0 0 12px rgba(251, 191, 36, 0.35);
 }
 
 /* High-Precision Progress Gauge */
