@@ -683,31 +683,41 @@
 }
 
 /* ============================================================
-   LEVEL DETAIL PANEL (Desktop Inspector Dock)
+   LEVEL DETAIL PANEL (Desktop Flight-Deck Tactical HUD & 3D Stage)
    ============================================================ */
 
 .inspectorDock {
-  background: var(--grad-card-glass);
-  backdrop-filter: blur(var(--blur-glass)) saturate(180%);
-  -webkit-backdrop-filter: blur(var(--blur-glass)) saturate(180%);
-  border: 1px solid var(--border-card-hover);
+  background: linear-gradient(180deg, rgba(16, 21, 33, 0.94) 0%, rgba(9, 12, 20, 0.98) 100%);
+  backdrop-filter: blur(28px) saturate(200%);
+  -webkit-backdrop-filter: blur(28px) saturate(200%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-top: 1px solid rgba(251, 191, 36, 0.45);
   border-radius: var(--radius-24);
   padding: clamp(20px, 3vw, 28px);
   position: relative;
   overflow: hidden;
-  box-shadow: var(--shadow-card);
-  margin-top: 14px;
+  box-shadow: 0 24px 56px rgba(0, 0, 0, 0.75), inset 0 1px 0 rgba(255, 255, 255, 0.14);
+  margin-top: 16px;
 }
 
 .dockGlowAura {
   position: absolute;
   top: -40px;
   right: -40px;
-  width: 280px;
-  height: 280px;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.04) 0%, transparent 70%);
+  width: 320px;
+  height: 320px;
+  background: radial-gradient(circle, rgba(251, 191, 36, 0.08) 0%, rgba(56, 189, 248, 0.04) 40%, transparent 70%);
   border-radius: 50%;
   pointer-events: none;
+}
+
+.dockScanlineOverlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0, 0, 0, 0.10) 3px, rgba(0, 0, 0, 0.10) 6px);
+  opacity: 0.35;
+  z-index: 1;
 }
 
 .dockGrid {
@@ -720,44 +730,211 @@
 
 @media (min-width: 992px) {
   .dockGrid {
-    grid-template-columns: 1.15fr 1.35fr 1fr;
+    grid-template-columns: 1.12fr 1.38fr 1.05fr;
     align-items: center;
-    gap: 24px;
+    gap: 26px;
   }
 }
 
-/* Col 1 */
+/* ------------------------------------------------------------
+   Col 1: Monumental 3D Holo-Pedestal Stage & Tier Lore
+   ------------------------------------------------------------ */
 .dockTierCol {
   display: flex;
   align-items: center;
   gap: 18px;
 }
 
-.dockBadgeWrapper {
+.holoStageContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 130px;
+  min-height: 140px;
   flex-shrink: 0;
+}
+
+.holoFloorRing {
+  position: absolute;
+  bottom: 14px;
   width: 104px;
-  height: 104px;
+  height: 28px;
   border-radius: 50%;
-  background: radial-gradient(circle at 40% 35%, rgba(255, 255, 255, 0.08) 0%, rgba(18, 21, 32, 0.8) 60%, rgba(10, 12, 18, 0.96) 100%);
-  border: 1px solid rgba(255, 255, 255, 0.10);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.16);
+  background: radial-gradient(ellipse at center, rgba(251, 191, 36, 0.38) 0%, rgba(251, 191, 36, 0.08) 55%, transparent 75%);
+  border: 1px dashed rgba(251, 191, 36, 0.35);
+  transform: rotateX(65deg);
+  pointer-events: none;
+}
+
+.holoLightShaft {
+  position: absolute;
+  bottom: 22px;
+  width: 76px;
+  height: 85px;
+  pointer-events: none;
+  background: linear-gradient(180deg, transparent 0%, rgba(251, 191, 36, 0.06) 60%, rgba(251, 191, 36, 0.20) 100%);
+  clip-path: polygon(25% 0%, 75% 0%, 100% 100%, 0% 100%);
+  opacity: 0.7;
+  filter: blur(2px);
+}
+
+.dockBadgeWrapper {
+  position: relative;
+  z-index: 3;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  filter: drop-shadow(0 14px 28px rgba(0, 0, 0, 0.75));
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .dockBadgeWrapper:hover {
-  transform: scale(1.04);
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  transform: scale(1.05) translateY(-3px);
+}
+
+.dockPedestalNavBtn {
+  position: absolute;
+  top: 42%;
+  transform: translateY(-50%);
+  z-index: 5;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: rgba(15, 23, 42, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: #E2E8F0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(8px);
+}
+
+.dockPedestalNavBtn:hover:not(:disabled) {
+  background: rgba(251, 191, 36, 0.2);
+  border-color: rgba(251, 191, 36, 0.5);
+  color: #FFFFFF;
+  transform: translateY(-50%) scale(1.1);
+}
+
+.dockPedestalNavBtn:disabled {
+  opacity: 0.25;
+  cursor: not-allowed;
+}
+
+.dockPedestalNavPrev {
+  left: -2px;
+}
+
+.dockPedestalNavNext {
+  right: -2px;
+}
+
+.holoStageBaseText {
+  font-family: var(--font-mono, monospace);
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: rgba(255, 255, 255, 0.45);
+  margin-top: 8px;
+  text-transform: uppercase;
+}
+
+.dockTierInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.dockHeadingRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.tacticalSectorTag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 9px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.sectorLedGold {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #FBBF24;
+  box-shadow: 0 0 8px #FBBF24;
+  animation: pulseBeacon 2s infinite ease-in-out;
+}
+
+.sectorLedGreen {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #10B981;
+  box-shadow: 0 0 8px #10B981;
+}
+
+.sectorLedPurple {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #C084FC;
+  box-shadow: 0 0 8px #C084FC;
+}
+
+.sectorLedGray {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #64748B;
+}
+
+.sectorCode {
+  font-family: var(--font-mono, monospace);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #FFFFFF;
+}
+
+.sectorDivider {
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 9px;
+}
+
+.sectorStatusText {
+  font-size: 9.5px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #E2E8F0;
+  text-transform: uppercase;
+}
+
+.dockTierTitle {
+  font-size: clamp(21px, 2.3vw, 25px);
+  font-weight: 950;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  background: linear-gradient(180deg, #FFFFFF 0%, #FDE68A 45%, #F59E0B 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 2px 8px rgba(245, 158, 11, 0.3));
 }
 
 .dockCodexMeta {
   display: flex;
   align-items: center;
   gap: 8px;
-  margin: 3px 0 2px;
+  margin: 1px 0;
   flex-wrap: wrap;
 }
 
@@ -768,8 +945,9 @@
   text-transform: uppercase;
   padding: 2px 7px;
   border-radius: 4px;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(251, 191, 36, 0.12);
+  border: 1px solid rgba(251, 191, 36, 0.35);
+  color: #FDE68A;
 }
 
 .dockDotDivider {
@@ -784,86 +962,16 @@
   letter-spacing: 0.01em;
 }
 
-.dockTierInfo {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.dockHeadingRow {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  flex-wrap: wrap;
-}
-
-.dockLevelPill {
-  font-size: 10px;
-  font-weight: 800;
-  letter-spacing: 0.1em;
-  color: #FFFFFF;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  padding: 3px 8px;
-  border-radius: var(--radius-full);
-}
-
-.dockStatusCompleted {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  font-size: 10px;
-  font-weight: 800;
-  color: #E2E8F0;
-}
-
-.dockStatusActive {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  font-size: 10px;
-  font-weight: 800;
-  color: #FFFFFF;
-}
-
-.dockStatusNext {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  font-size: 10px;
-  font-weight: 800;
-  color: #E2E8F0;
-}
-
-.dockStatusLocked {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  font-size: 10px;
-  font-weight: 800;
-  color: var(--text-muted);
-}
-
-.dockTierTitle {
-  font-size: 20px;
-  font-weight: 900;
-  color: #FFFFFF;
-  line-height: 1.2;
-}
-
-.dockTierSilhouette {
-  font-size: 11px;
-  color: var(--text-muted);
-}
-
 .dockTierLore {
   font-size: 12px;
   color: var(--text-secondary);
-  line-height: 1.5;
-  margin-top: 2px;
+  line-height: 1.45;
+  margin-top: 1px;
 }
 
-/* Col 2 */
+/* ------------------------------------------------------------
+   Col 2: Cybernetic Flight-Deck HUD Matrix
+   ------------------------------------------------------------ */
 .dockGaugeCol {
   display: flex;
   flex-direction: column;
@@ -874,42 +982,149 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 11px;
+  font-size: 10.5px;
   font-weight: 800;
+}
+
+.hudHeaderLeft {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.hudPulseBeacon {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #00E676;
+  box-shadow: 0 0 8px #00E676;
+  animation: pulseBeacon 2s infinite ease-in-out;
 }
 
 .gaugeLead {
-  color: var(--text-muted);
+  font-family: var(--font-mono, monospace);
+  color: #94A3B8;
   letter-spacing: 0.08em;
+  font-size: 9.5px;
+  font-weight: 700;
 }
 
 .gaugeTargetVal {
-  color: #FFFFFF;
+  font-family: var(--font-mono, monospace);
+  color: #FDE68A;
   font-weight: 800;
+  letter-spacing: 0.04em;
+  text-shadow: 0 0 10px rgba(251, 191, 36, 0.4);
 }
 
-.gaugeBarTrack {
+.plasmaConduitTrack {
   width: 100%;
-  height: 8px;
-  background: rgba(255, 255, 255, 0.08);
-  border-radius: var(--radius-full);
+  height: 12px;
+  background: rgba(0, 0, 0, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 6px;
   position: relative;
   overflow: hidden;
+  margin: 2px 0 1px;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.8);
 }
 
-.gaugeBarFill {
+.conduitScanlines {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(90deg, transparent, transparent 3px, rgba(255, 255, 255, 0.03) 3px, rgba(255, 255, 255, 0.03) 6px);
+  z-index: 1;
+}
+
+.conduitNotch {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: rgba(255, 255, 255, 0.22);
+  z-index: 2;
+}
+
+.plasmaFillActive {
   height: 100%;
-  background: var(--grad-xp-fill);
-  border-radius: var(--radius-full);
-  transition: width 0.8s ease;
+  background: linear-gradient(90deg, #00F5FF 0%, #FBBF24 50%, #F59E0B 100%);
+  position: relative;
+  border-radius: 5px;
+  box-shadow: 0 0 14px rgba(251, 191, 36, 0.7);
+  transition: width 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+  z-index: 2;
 }
 
-.gaugeStatusRow {
+.plasmaFillCompleted {
+  height: 100%;
+  background: linear-gradient(90deg, #10B981 0%, #00E676 100%);
+  position: relative;
+  border-radius: 5px;
+  box-shadow: 0 0 14px rgba(0, 230, 118, 0.7);
+  z-index: 2;
+}
+
+.plasmaCoreGlow {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.45) 0%, transparent 60%);
+  border-radius: 5px;
+}
+
+.plasmaPulseHead {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 6px;
+  background: #FFFFFF;
+  border-radius: 0 5px 5px 0;
+  box-shadow: 0 0 10px #FFFFFF, 0 0 20px #FBBF24;
+  animation: pulseHead 1.5s infinite alternate;
+}
+
+.conduitStatusRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 10.5px;
+}
+
+.conduitDiagGroup {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.conduitDiagCode {
+  font-family: var(--font-mono, monospace);
+  font-size: 9px;
+  font-weight: 800;
+  color: #64748B;
+  letter-spacing: 0.06em;
+}
+
+.conduitReadout {
   font-size: 11px;
+  font-weight: 700;
+  color: #FFFFFF;
+}
+
+.conduitCapacitorBadge {
+  font-family: var(--font-mono, monospace);
+  font-size: 9.5px;
+  font-weight: 800;
+  padding: 2px 7px;
+  background: rgba(251, 191, 36, 0.12);
+  border: 1px solid rgba(251, 191, 36, 0.4);
+  color: #FDE68A;
+  border-radius: 4px;
+  letter-spacing: 0.05em;
 }
 
 .gaugeSuccessText {
-  color: #E2E8F0;
+  color: #34D399;
   font-weight: 700;
   display: inline-flex;
   align-items: center;
@@ -924,92 +1139,485 @@
   gap: 5px;
 }
 
-.gaugeRemainingText {
-  color: var(--text-secondary);
-  font-weight: 600;
+.gaugeNextText {
+  color: #E2E8F0;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
 }
 
-/* Col 3 */
+.gaugeRemainingText {
+  color: #94A3B8;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* 2×2 Cybernetic Avionics Modules */
+.telemetryMatrix {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.telemetryCard {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(13, 17, 28, 0.78) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  padding: 8px 11px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.25s ease;
+}
+
+.telemetryCard:hover {
+  background: rgba(255, 255, 255, 0.07);
+  transform: translateY(-2px);
+}
+
+.hudCardTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.hudCardTag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--font-mono, monospace);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #64748B;
+}
+
+.hudCardStatus {
+  font-family: var(--font-mono, monospace);
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  padding: 1px 5px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.06);
+  color: #94A3B8;
+}
+
+/* Avionics Accent Styles */
+.hudCardCyan {
+  border-top: 2px solid #38BDF8;
+}
+.hudCardCyan .hudCardTag {
+  color: #38BDF8;
+}
+.hudCardCyan .hudCardStatus {
+  background: rgba(56, 189, 248, 0.15);
+  color: #38BDF8;
+}
+
+.hudCardAmber {
+  border-top: 2px solid #FBBF24;
+}
+.hudCardAmber .hudCardTag {
+  color: #FBBF24;
+}
+.hudCardAmber .hudCardStatus {
+  background: rgba(251, 191, 36, 0.15);
+  color: #FBBF24;
+}
+
+.hudCardOrange {
+  border-top: 2px solid #FB923C;
+}
+.hudCardOrange .hudCardTag {
+  color: #FB923C;
+}
+.hudCardOrange .hudCardStatus {
+  background: rgba(251, 146, 60, 0.15);
+  color: #FB923C;
+}
+
+.hudCardGold {
+  border-top: 2px solid #F59E0B;
+}
+.hudCardGold .hudCardTag {
+  color: #FDE68A;
+}
+.hudCardGold .hudCardStatus {
+  background: rgba(251, 191, 36, 0.15);
+  color: #FDE68A;
+}
+
+.hudCardGreen {
+  border-top: 2px solid #10B981;
+}
+.hudCardGreen .hudCardTag {
+  color: #34D399;
+}
+.hudCardGreen .hudCardStatus {
+  background: rgba(16, 185, 129, 0.15);
+  color: #34D399;
+}
+
+.hudCardPurple {
+  border-top: 2px solid #C084FC;
+}
+.hudCardPurple .hudCardTag {
+  color: #C084FC;
+}
+.hudCardPurple .hudCardStatus {
+  background: rgba(192, 132, 252, 0.15);
+  color: #C084FC;
+}
+
+.hudCardGray {
+  border-top: 2px solid #64748B;
+}
+
+.telemetryValue {
+  font-size: 13px;
+  font-weight: 900;
+  color: #F1F5F9;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.valCyan {
+  color: #38BDF8;
+  text-shadow: 0 0 10px rgba(56, 189, 248, 0.35);
+}
+
+.valAmber {
+  color: #FBBF24;
+  text-shadow: 0 0 10px rgba(251, 191, 36, 0.35);
+}
+
+.valOrange {
+  color: #FB923C;
+  text-shadow: 0 0 10px rgba(251, 146, 60, 0.35);
+}
+
+.valGold {
+  color: #FDE68A;
+  text-shadow: 0 0 10px rgba(251, 191, 36, 0.4);
+}
+
+.valGreen {
+  color: #34D399;
+  text-shadow: 0 0 10px rgba(52, 211, 153, 0.35);
+}
+
+.valPurple {
+  color: #C084FC;
+  text-shadow: 0 0 10px rgba(192, 132, 252, 0.35);
+}
+
+.telemetryHint {
+  font-size: 9.5px;
+  font-weight: 600;
+  color: #94A3B8;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ------------------------------------------------------------
+   Col 3: 3D Vault Hologram Pod & RPG Perk Shards
+   ------------------------------------------------------------ */
 .dockPerksCol {
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
 
-.dockRewardVault {
+.dockVaultPod {
   display: flex;
-  flex-direction: column;
-  gap: 4px;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 14px;
+  background: linear-gradient(135deg, rgba(251, 191, 36, 0.08) 0%, rgba(17, 24, 39, 0.8) 100%);
+  border: 1px solid rgba(251, 191, 36, 0.35);
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.15);
 }
 
-.vaultLabel {
-  font-size: 10px;
+.vaultPodGlow {
+  position: absolute;
+  left: -20px;
+  top: -20px;
+  width: 90px;
+  height: 90px;
+  background: radial-gradient(circle, rgba(251, 191, 36, 0.25) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.vaultPodVisual {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.vaultPod3DImage {
+  width: 46px;
+  height: 46px;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 12px rgba(251, 191, 36, 0.5));
+  animation: vaultFloat 3s ease-in-out infinite;
+}
+
+.vaultPodRing {
+  position: absolute;
+  bottom: 2px;
+  width: 40px;
+  height: 12px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(251, 191, 36, 0.4) 0%, transparent 70%);
+  transform: rotateX(65deg);
+  pointer-events: none;
+}
+
+.vaultPodContent {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.vaultPodSubhead {
+  font-family: var(--font-mono, monospace);
+  font-size: 8.5px;
   font-weight: 800;
-  letter-spacing: 0.08em;
-  color: var(--text-muted);
+  letter-spacing: 0.1em;
+  color: #94A3B8;
   text-transform: uppercase;
 }
 
-.vaultPill {
+.vaultPodRewardTitle {
+  font-size: 15px;
+  font-weight: 950;
+  color: #FDE68A;
+  text-shadow: 0 0 14px rgba(251, 191, 36, 0.5);
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.vaultPodStatusPill {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  background: rgba(251, 191, 36, 0.08);
-  border: 1px solid rgba(251, 191, 36, 0.35);
-  padding: 6px 12px;
-  border-radius: var(--radius-full);
-  width: fit-content;
-}
-
-.vaultRewardImg {
-  width: 18px;
-  height: 18px;
-  object-fit: contain;
-}
-
-.vaultRewardText {
-  font-size: 12px;
+  gap: 4px;
+  font-family: var(--font-mono, monospace);
+  font-size: 8.5px;
   font-weight: 800;
-  color: #FDE68A;
-  text-shadow: 0 0 12px rgba(251, 191, 36, 0.35);
+  color: #FBBF24;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
 }
 
+/* RPG Tactical Perk Shards */
 .perksListWrap {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 6px;
+}
+
+.perksListHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .perksListLabel {
-  font-size: 10px;
+  font-family: var(--font-mono, monospace);
+  font-size: 9px;
   font-weight: 800;
   letter-spacing: 0.08em;
-  color: var(--text-muted);
+  color: #64748B;
   text-transform: uppercase;
 }
 
-.perksList {
-  list-style: none;
+.perksCountTag {
+  font-family: var(--font-mono, monospace);
+  font-size: 8.5px;
+  font-weight: 800;
+  color: #94A3B8;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 1px 6px;
+  border-radius: 3px;
+}
+
+.rpgShardsContainer {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 6px;
 }
 
-.perkItem {
+.rpgPerkShard {
   display: flex;
   align-items: center;
-  gap: 6px;
-  font-size: 12px;
-  color: var(--text-secondary);
+  gap: 10px;
+  padding: 7px 10px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(13, 17, 28, 0.8) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 8px;
+  position: relative;
+  transition: all 0.2s ease;
 }
 
-.perkCheck {
-  color: #E2E8F0;
+.rpgPerkShard:hover {
+  background: rgba(255, 255, 255, 0.07);
+  transform: translateX(3px);
+}
+
+.shardGold {
+  border-left: 3px solid #FBBF24;
+  box-shadow: inset 3px 0 8px rgba(251, 191, 36, 0.2);
+}
+
+.shardCyan {
+  border-left: 3px solid #38BDF8;
+  box-shadow: inset 3px 0 8px rgba(56, 189, 248, 0.2);
+}
+
+.shardOrange {
+  border-left: 3px solid #FB923C;
+  box-shadow: inset 3px 0 8px rgba(251, 146, 60, 0.2);
+}
+
+.shardPurple {
+  border-left: 3px solid #C084FC;
+  box-shadow: inset 3px 0 8px rgba(192, 132, 252, 0.2);
+}
+
+.shardIconBadge {
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   flex-shrink: 0;
 }
 
+.shardGold .shardIconBadge {
+  background: rgba(251, 191, 36, 0.15);
+  color: #FBBF24;
+  border: 1px solid rgba(251, 191, 36, 0.35);
+}
+
+.shardCyan .shardIconBadge {
+  background: rgba(56, 189, 248, 0.15);
+  color: #38BDF8;
+  border: 1px solid rgba(56, 189, 248, 0.35);
+}
+
+.shardOrange .shardIconBadge {
+  background: rgba(251, 146, 60, 0.15);
+  color: #FB923C;
+  border: 1px solid rgba(251, 146, 60, 0.35);
+}
+
+.shardPurple .shardIconBadge {
+  background: rgba(192, 132, 252, 0.15);
+  color: #C084FC;
+  border: 1px solid rgba(192, 132, 252, 0.35);
+}
+
+.shardInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  min-width: 0;
+  flex: 1;
+}
+
+.shardCategoryText {
+  font-family: var(--font-mono, monospace);
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: #64748B;
+  text-transform: uppercase;
+}
+
+.shardTitleText {
+  font-size: 11.5px;
+  font-weight: 750;
+  color: #F1F5F9;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.shardActiveBadge {
+  font-family: var(--font-mono, monospace);
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  padding: 2px 6px;
+  border-radius: 3px;
+  background: rgba(0, 230, 118, 0.12);
+  border: 1px solid rgba(0, 230, 118, 0.35);
+  color: #00E676;
+  flex-shrink: 0;
+}
+
+.additionalPerksNote {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 10px;
+  font-weight: 600;
+  color: #94A3B8;
+  margin-top: 2px;
+}
+
 .dockActionRow {
-  margin-top: 4px;
+  margin-top: 2px;
+}
+
+.tacticalCtaBtn {
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 11px 20px;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.tacticalCtaBtn:hover .ctaArrow {
+  transform: translateX(4px);
+}
+
+.ctaGlowIcon {
+  animation: pulseHead 2s infinite alternate;
+}
+
+.ctaArrow {
+  transition: transform 0.2s ease;
 }
 
 /* ============================================================
@@ -1084,11 +1692,6 @@
   color: #FFFFFF;
 }
 
-.sheetSilhouetteText {
-  font-size: 11px;
-  color: var(--text-muted);
-}
-
 .sheetLore {
   font-size: 13px;
   color: var(--text-secondary);
@@ -1115,100 +1718,36 @@
   margin-top: 6px;
 }
 
-
-/* Flight-Deck Telemetry Matrix & Status Additions */
-.gaugeBarFillCompleted {
-  height: 100%;
-  background: linear-gradient(90deg, #10B981 0%, #00E676 100%);
-  border-radius: var(--radius-full);
-  box-shadow: 0 0 10px rgba(0, 230, 118, 0.6);
+/* ============================================================
+   Keyframe Animations
+   ============================================================ */
+@keyframes pulseBeacon {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.35);
+    opacity: 0.6;
+  }
 }
 
-.gaugeNextText {
-  color: #FFFFFF;
-  font-weight: 700;
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
+@keyframes pulseHead {
+  0% {
+    opacity: 0.7;
+    filter: drop-shadow(0 0 4px #FFFFFF);
+  }
+  100% {
+    opacity: 1;
+    filter: drop-shadow(0 0 12px #FBBF24);
+  }
 }
 
-.telemetryMatrix {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 8px;
-  margin-top: 4px;
-}
-
-.telemetryCard {
-  background: rgba(255, 255, 255, 0.035);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 10px;
-  padding: 8px 12px;
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  transition: all 0.2s ease;
-}
-
-.telemetryCard:hover {
-  background: rgba(255, 255, 255, 0.06);
-  border-color: rgba(255, 255, 255, 0.16);
-  transform: translateY(-1px);
-}
-
-.telemetryLabel {
-  font-size: 9px;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: #64748B;
-}
-
-.telemetryValue {
-  font-size: 12px;
-  font-weight: 800;
-  color: #F1F5F9;
-  letter-spacing: -0.01em;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.telemetryValueHighlight {
-  color: #FFFFFF;
-}
-
-.telemetryValueGold {
-  color: #FDE68A;
-  text-shadow: 0 0 12px rgba(251, 191, 36, 0.35);
-}
-
-.telemetryValueGreen {
-  color: #FFFFFF;
-}
-
-.telemetryValuePurple {
-  color: #FFFFFF;
-}
-
-.telemetryHint {
-  font-size: 10px;
-  font-weight: 600;
-  color: #94A3B8;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-/* Upgraded Perk Items */
-.perkCheckCircle {
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  background: rgba(0, 230, 118, 0.12);
-  border: 1px solid rgba(0, 230, 118, 0.35);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
+@keyframes vaultFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
 }
