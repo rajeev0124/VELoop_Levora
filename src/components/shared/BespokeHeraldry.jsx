@@ -349,63 +349,47 @@ export const HeraldryPlatinum = ({ size = 72, isLocked = false }) => (
     }}
   >
     <defs>
-      <linearGradient id="platChrome" x1="0%" y1="0%" x2="100%" y2="100%">
+      <linearGradient id="platWingL" x1="0%" y1="0%" x2="100%" y2="100%">
         <stop offset="0%" stopColor="#FFFFFF" />
         <stop offset="35%" stopColor="#E2E8F0" />
-        <stop offset="65%" stopColor="#A855F7" />
+        <stop offset="70%" stopColor="#94A3B8" />
+        <stop offset="100%" stopColor="#475569" />
+      </linearGradient>
+      <linearGradient id="platWingR" x1="100%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stopColor="#FFFFFF" />
+        <stop offset="35%" stopColor="#E2E8F0" />
+        <stop offset="70%" stopColor="#94A3B8" />
+        <stop offset="100%" stopColor="#475569" />
+      </linearGradient>
+      <linearGradient id="amethystSpire" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#FAF5FF" />
+        <stop offset="40%" stopColor="#C084FC" />
+        <stop offset="80%" stopColor="#7E22CE" />
         <stop offset="100%" stopColor="#3B0764" />
       </linearGradient>
-      <radialGradient id="platEnergy" cx="40%" cy="30%" r="70%">
-        <stop offset="0%" stopColor="#F5F3FF" />
-        <stop offset="35%" stopColor="#C084FC" />
-        <stop offset="70%" stopColor="#7E22CE" />
-        <stop offset="100%" stopColor="#1E1B4B" />
+      <radialGradient id="platVioletCore" cx="50%" cy="40%" r="60%">
+        <stop offset="0%" stopColor="#FFFFFF" />
+        <stop offset="35%" stopColor="#E879F9" />
+        <stop offset="70%" stopColor="#A855F7" />
+        <stop offset="100%" stopColor="#3B0764" />
       </radialGradient>
-      <linearGradient id="platSpikes" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="#38BDF8" />
-        <stop offset="50%" stopColor="#A855F7" />
-        <stop offset="100%" stopColor="#6366F1" />
-      </linearGradient>
     </defs>
 
-    {/* Interlocking Platinum Blade Ring Spikes */}
-    {[0, 60, 120, 180, 240, 300].map((angle, i) => {
-      return (
-        <g key={i} transform={`rotate(${angle} 50 50)`}>
-          <polygon points="50,8 55,22 45,22" fill="url(#platSpikes)" stroke="#E0E7FF" strokeWidth="0.8" />
-        </g>
-      )
-    })}
+    {/* Soaring Platinum Razor Wings */}
+    <path d="M12 42 L34 22 L38 52 L20 62 Z" fill="url(#platWingL)" stroke="#FFFFFF" strokeWidth="1" />
+    <path d="M88 42 L66 22 L62 52 L80 62 Z" fill="url(#platWingR)" stroke="#FFFFFF" strokeWidth="1" />
 
-    {/* Orbiting Amethyst Gem Satellites */}
-    <circle cx="20" cy="30" r="3" fill="#C084FC" stroke="#FFFFFF" strokeWidth="0.8" filter="drop-shadow(0 0 6px #C084FC)" />
-    <circle cx="80" cy="30" r="3" fill="#C084FC" stroke="#FFFFFF" strokeWidth="0.8" filter="drop-shadow(0 0 6px #C084FC)" />
-    <circle cx="50" cy="88" r="3.5" fill="#38BDF8" stroke="#FFFFFF" strokeWidth="0.8" filter="drop-shadow(0 0 6px #38BDF8)" />
+    {/* Inset Amethyst Crystal Spires Flanking Core */}
+    <polygon points="32,18 42,38 34,50 26,30" fill="url(#amethystSpire)" stroke="#FAF5FF" strokeWidth="0.8" />
+    <polygon points="68,18 58,38 66,50 74,30" fill="url(#amethystSpire)" stroke="#FAF5FF" strokeWidth="0.8" />
 
-    {/* Central Octagonal Platinum Sol-Disc */}
-    <polygon
-      points="50,18 72,26 84,48 76,74 50,84 24,74 16,48 28,26"
-      fill="url(#platChrome)"
-      stroke="#FAF5FF"
-      strokeWidth="1.8"
-      filter="drop-shadow(0 6px 16px rgba(0,0,0,0.75))"
-    />
-    <polygon
-      points="50,24 68,30 78,48 70,70 50,78 30,70 22,48 32,30"
-      fill="#130826"
-      stroke="#A855F7"
-      strokeWidth="1.2"
-    />
+    {/* Angular Hexagonal Platinum Armor Plate */}
+    <polygon points="50,20 74,34 68,76 50,90 32,76 26,34" fill="#0F172A" stroke="#E2E8F0" strokeWidth="2" />
+    <polygon points="50,28 66,38 62,70 50,80 38,70 34,38" fill="#1E1B4B" stroke="#C084FC" strokeWidth="1" />
 
-    {/* Radiant Violet/Amethyst Core */}
-    <polygon
-      points="50,30 64,40 68,58 50,72 32,58 36,40"
-      fill="url(#platEnergy)"
-      stroke="#F5F3FF"
-      strokeWidth="1.5"
-      filter="drop-shadow(0 0 12px rgba(192, 132, 252, 0.95))"
-    />
-    <circle cx="50" cy="51" r="5" fill="#FFFFFF" filter="drop-shadow(0 0 8px #FFFFFF)" />
+    {/* Ultraviolet Singularity Core */}
+    <polygon points="50,34 64,48 50,68 36,48" fill="url(#platVioletCore)" stroke="#FFFFFF" strokeWidth="1.5" filter="drop-shadow(0 0 14px #C084FC)" />
+    <circle cx="50" cy="50" r="4.5" fill="#FFFFFF" />
   </svg>
 )
 

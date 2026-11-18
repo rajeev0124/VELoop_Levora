@@ -74,7 +74,7 @@ export const TIER_CONFIGS = {
   6: {
     level: 6,
     name: 'Platinum Hero',
-    silhouette: 'Cryo-Amethyst Hyper-Disc with Floating Shards & Ultraviolet Singularity',
+    silhouette: 'Ascendant Platinum-Amethyst Aegis with Soaring Razor Wings & Ultraviolet Core',
     primary: '#C084FC',
     secondary: '#6B21A8',
     light: '#F3E8FF',
@@ -251,10 +251,10 @@ const TierMedallion = ({
     if (isCompleted) {
       return `drop-shadow(0 6px 16px rgba(0,0,0,0.65))`
     }
-    // Locked — smoke-glass preview preserving distinct heraldic crest silhouette
+    // Locked — high-tech frost-glass preview with subtle ambient rim glow
     return isHovered
-      ? `grayscale(0.20) brightness(0.95) contrast(1.15) drop-shadow(0 4px 12px rgba(0,0,0,0.75)) drop-shadow(0 0 10px ${tier.glow})`
-      : `grayscale(0.35) brightness(0.85) contrast(1.18) drop-shadow(0 3px 8px rgba(0,0,0,0.65))`
+      ? `drop-shadow(0 6px 16px rgba(0,0,0,0.85)) drop-shadow(0 0 14px ${tier.glow})`
+      : `drop-shadow(0 4px 12px rgba(0,0,0,0.7))`
   }
 
   return (
@@ -353,8 +353,10 @@ const TierMedallion = ({
                 height: '100%',
                 objectFit: 'contain',
                 pointerEvents: 'none',
-                filter: isLocked && !isHovered
-                  ? 'grayscale(0.4) brightness(0.75) contrast(1.15) drop-shadow(0 4px 10px rgba(0,0,0,0.8))'
+                filter: isLocked
+                  ? isHovered
+                    ? 'brightness(1.05) contrast(1.15) saturate(1.1) drop-shadow(0 0 14px rgba(0, 245, 255, 0.4))'
+                    : 'brightness(0.92) contrast(1.18) saturate(0.85) opacity(0.82) drop-shadow(0 4px 10px rgba(0,0,0,0.7))'
                   : 'drop-shadow(0 8px 18px rgba(0,0,0,0.75))',
                 transition: 'filter 0.3s ease, transform 0.3s ease',
               }}
