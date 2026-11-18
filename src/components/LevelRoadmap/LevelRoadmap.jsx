@@ -83,8 +83,14 @@ const formatCardReward = (lvl) => {
   if (lvl.level === 7) {
     return '100 SVEs Safe Vault'
   }
+  if (lvl.level === 8) {
+    return '+1,000 VEs'
+  }
+  if (lvl.level === 9) {
+    return '+50 Gems'
+  }
   if (lvl.level === 10) {
-    return 'Tier 1 Safe Vault'
+    return '+5,000 VEs • +100 Gems'
   }
 
   if (amountStr.includes('VEs') || amountStr.includes('Gems') || amountStr.includes('Safe') || amountStr.includes('SVEs')) {
@@ -99,8 +105,8 @@ const formatCardReward = (lvl) => {
 
 const LevelRoadmap = ({ data }) => {
   const currentLvl = data?.currentLevel || 5
-  // Exactly all 7 levels as defined in VELoop task requirements
-  const allLevels = (data?.allLevels || []).slice(0, 7)
+  // All 10 canonical levels from levelData.js
+  const allLevels = data?.allLevels || []
   const currentXP = data?.currentXP || 6420
   const dailyVelocity = data?.dailyVelocity || 215
   const streakDays = data?.streakDays || 7
@@ -241,10 +247,10 @@ const LevelRoadmap = ({ data }) => {
             <span>PROGRESSION PIPELINE</span>
           </div>
           <h2 id="roadmap-heading" className="section-title">
-            Level Journey (All 7 Levels)
+            Level Journey (All 10 Sovereign Tiers)
           </h2>
           <p className="section-subtitle">
-            Visual 7-tier milestone progression — click any tier node to inspect criteria, perks, and reward vaults.
+            Visual 10-tier esports milestone progression — click any tier node to inspect criteria, perks, and reward vaults.
           </p>
         </div>
 
@@ -410,7 +416,7 @@ const LevelRoadmap = ({ data }) => {
                       <div className={styles.pedestalAura} aria-hidden="true" />
                       <TierMedallion
                         level={lvl.level}
-                        size={52}
+                        size={88}
                         status={nodeCompleted ? 'completed' : nodeCurrent ? 'current' : nodeNext ? 'next' : 'locked'}
                         showStatusCorner={false}
                       />

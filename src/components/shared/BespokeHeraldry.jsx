@@ -14,72 +14,39 @@ export const HeraldryBronze = ({ size = 72, isLocked = false }) => (
     viewBox="0 0 100 100"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
-    style={{ filter: isLocked ? 'grayscale(0.7) brightness(0.7)' : 'drop-shadow(0 6px 14px rgba(205, 127, 50, 0.45))' }}
+    style={{ filter: isLocked ? 'grayscale(0.7) brightness(0.7)' : 'drop-shadow(0 6px 16px rgba(205, 127, 50, 0.55))' }}
   >
     <defs>
-      <linearGradient id="bronzeRim" x1="0%" y1="0%" x2="100%" y2="100%">
+      <linearGradient id="bronzeChevronA" x1="0%" y1="0%" x2="100%" y2="100%">
         <stop offset="0%" stopColor="#F5A962" />
-        <stop offset="25%" stopColor="#CD7F32" />
-        <stop offset="50%" stopColor="#8C4A15" />
-        <stop offset="75%" stopColor="#E2924E" />
-        <stop offset="100%" stopColor="#4A2609" />
-      </linearGradient>
-      <radialGradient id="bronzeCore" cx="40%" cy="35%" r="65%">
-        <stop offset="0%" stopColor="#E2924E" />
         <stop offset="40%" stopColor="#CD7F32" />
-        <stop offset="75%" stopColor="#5C2E0B" />
-        <stop offset="100%" stopColor="#2D1504" />
-      </radialGradient>
-      <linearGradient id="bronzeIron" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="80%" stopColor="#7A3E10" />
+        <stop offset="100%" stopColor="#3E1A04" />
+      </linearGradient>
+      <linearGradient id="damascusSteel" x1="0%" y1="0%" x2="100%" y2="100%">
         <stop offset="0%" stopColor="#78716C" />
-        <stop offset="50%" stopColor="#44403C" />
-        <stop offset="100%" stopColor="#1C1917" />
+        <stop offset="50%" stopColor="#292524" />
+        <stop offset="100%" stopColor="#0C0A09" />
       </linearGradient>
-      <linearGradient id="bronzeGold" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="#FFFBEB" />
-        <stop offset="50%" stopColor="#FDE68A" />
-        <stop offset="100%" stopColor="#D97706" />
-      </linearGradient>
+      <radialGradient id="moltenBronzeCore" cx="50%" cy="40%" r="60%">
+        <stop offset="0%" stopColor="#FEF08A" />
+        <stop offset="35%" stopColor="#F97316" />
+        <stop offset="70%" stopColor="#C2410C" />
+        <stop offset="100%" stopColor="#431407" />
+      </radialGradient>
     </defs>
 
-    {/* Crossed Gladius Blades Behind Shield */}
-    <path d="M18 18 L34 34 M18 18 L22 14 L36 30 L32 34 Z" fill="url(#bronzeIron)" stroke="#A8A29E" strokeWidth="0.5" />
-    <path d="M82 18 L66 34 M82 18 L78 14 L64 30 L68 34 Z" fill="url(#bronzeIron)" stroke="#A8A29E" strokeWidth="0.5" />
-    <path d="M24 82 L38 68 M24 82 L20 78 L34 64 L38 68 Z" fill="url(#bronzeIron)" stroke="#A8A29E" strokeWidth="0.5" />
-    <path d="M76 82 L62 68 M76 82 L80 78 L66 64 L62 68 Z" fill="url(#bronzeIron)" stroke="#A8A29E" strokeWidth="0.5" />
+    {/* Dual Upward Combat Blades */}
+    <polygon points="26,18 36,36 30,50 18,30" fill="url(#damascusSteel)" stroke="#F5A962" strokeWidth="0.8" />
+    <polygon points="74,18 64,36 70,50 82,30" fill="url(#damascusSteel)" stroke="#F5A962" strokeWidth="0.8" />
 
-    {/* Outer Heavy Studded Bronze Buckler Rim */}
-    <circle cx="50" cy="50" r="42" fill="url(#bronzeRim)" stroke="#FFE3CC" strokeWidth="1" />
-    <circle cx="50" cy="50" r="38" fill="url(#bronzeIron)" stroke="#292524" strokeWidth="1.5" />
-    <circle cx="50" cy="50" r="32" fill="url(#bronzeCore)" stroke="#F5A962" strokeWidth="1.2" />
+    {/* Heavy Angular V-Chevron Outer Armor Plate */}
+    <polygon points="50,16 82,32 50,88 18,32" fill="url(#bronzeChevronA)" stroke="#FFE3CC" strokeWidth="1.5" />
+    <polygon points="50,24 74,38 50,78 26,38" fill="url(#damascusSteel)" stroke="#CD7F32" strokeWidth="1" />
 
-    {/* 8 Steel Rivet Studs */}
-    {[0, 45, 90, 135, 180, 225, 270, 315].map((angle, i) => {
-      const rad = (angle * Math.PI) / 180
-      const cx = 50 + 35 * Math.cos(rad)
-      const cy = 50 + 35 * Math.sin(rad)
-      return (
-        <circle
-          key={i}
-          cx={cx}
-          cy={cy}
-          r="2.4"
-          fill="#E7E5E4"
-          stroke="#44403C"
-          strokeWidth="0.75"
-        />
-      )
-    })}
-
-    {/* Inner Heraldic Spike Star Emblem */}
-    <path
-      d="M50 26 L53 43 L70 43 L56 53 L61 70 L50 59 L39 70 L44 53 L30 43 L47 43 Z"
-      fill="url(#bronzeGold)"
-      stroke="#7A3E10"
-      strokeWidth="1"
-      filter="drop-shadow(0 2px 4px rgba(0,0,0,0.6))"
-    />
-    <circle cx="50" cy="50" r="4.5" fill="#FFFBEB" stroke="#B45309" strokeWidth="1" />
+    {/* Incandescent Molten Magma Core */}
+    <polygon points="50,30 66,42 50,68 34,42" fill="url(#moltenBronzeCore)" stroke="#FDE68A" strokeWidth="1.2" filter="drop-shadow(0 0 10px #EA580C)" />
+    <circle cx="50" cy="46" r="4.5" fill="#FFFBEB" />
   </svg>
 )
 
@@ -597,32 +564,41 @@ export const HeraldryMythic = ({ size = 72, isLocked = false }) => (
     style={{
       filter: isLocked
         ? 'grayscale(0.7) brightness(0.7)'
-        : 'drop-shadow(0 0 24px rgba(16, 185, 129, 0.9)) drop-shadow(0 8px 24px rgba(0, 0, 0, 0.9))',
+        : 'drop-shadow(0 0 24px rgba(0, 245, 255, 0.9)) drop-shadow(0 8px 24px rgba(0, 0, 0, 0.9))',
     }}
   >
     <defs>
-      <linearGradient id="mythicRainbow" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="#00F5FF" />
-        <stop offset="33%" stopColor="#10B981" />
-        <stop offset="66%" stopColor="#FBBF24" />
-        <stop offset="100%" stopColor="#C084FC" />
+      <linearGradient id="mythicGoldWings" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#FFFBEB" />
+        <stop offset="35%" stopColor="#FEF08A" />
+        <stop offset="70%" stopColor="#F59E0B" />
+        <stop offset="100%" stopColor="#78350F" />
       </linearGradient>
-      <radialGradient id="singularityCore" cx="50%" cy="50%" r="50%">
+      <linearGradient id="radiantDiamondBlade" x1="0%" y1="0%" x2="100%" y2="100%">
         <stop offset="0%" stopColor="#FFFFFF" />
-        <stop offset="40%" stopColor="#34D399" />
-        <stop offset="80%" stopColor="#065F46" />
-        <stop offset="100%" stopColor="#022C22" />
+        <stop offset="50%" stopColor="#A5F3FC" />
+        <stop offset="100%" stopColor="#0284C7" />
+      </linearGradient>
+      <radialGradient id="tachyonApexCore" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stopColor="#FFFFFF" />
+        <stop offset="30%" stopColor="#E0F2FE" />
+        <stop offset="65%" stopColor="#00F5FF" />
+        <stop offset="100%" stopColor="#0369A1" />
       </radialGradient>
     </defs>
-    {/* Tachyon Wings & Halo */}
-    <circle cx="50" cy="50" r="42" fill="none" stroke="url(#mythicRainbow)" strokeWidth="1.5" strokeDasharray="4 2" />
-    <path d="M12 45 C20 30, 36 26, 44 32 C38 42, 28 52, 12 45 Z" fill="url(#mythicRainbow)" opacity="0.9" />
-    <path d="M88 45 C80 30, 64 26, 56 32 C62 42, 72 52, 88 45 Z" fill="url(#mythicRainbow)" opacity="0.9" />
-    {/* Floating Tripartite Crown */}
-    <path d="M30 24 L38 12 L50 20 L62 12 L70 24 L50 28 Z" fill="#FDE047" stroke="#FFFFFF" strokeWidth="1" />
-    {/* Singularity Crystal */}
-    <polygon points="50,30 68,50 50,70 32,50" fill="url(#singularityCore)" stroke="#FFFFFF" strokeWidth="1.8" />
-    <circle cx="50" cy="50" r="5" fill="#FFFFFF" />
+    {/* Swept 24K Gold & Diamond Wings */}
+    <path d="M10 40 L34 26 L28 58 L14 52 Z" fill="url(#mythicGoldWings)" stroke="#FFFFFF" strokeWidth="0.8" />
+    <path d="M90 40 L66 26 L72 58 L86 52 Z" fill="url(#mythicGoldWings)" stroke="#FFFFFF" strokeWidth="0.8" />
+    <path d="M18 52 L36 40 L30 70 L20 64 Z" fill="url(#radiantDiamondBlade)" stroke="#A5F3FC" strokeWidth="0.8" />
+    <path d="M82 52 L64 40 L70 70 L80 64 Z" fill="url(#radiantDiamondBlade)" stroke="#A5F3FC" strokeWidth="0.8" />
+
+    {/* Hovering Celestial Tri-Crown */}
+    <polygon points="50,12 62,24 50,22 38,24" fill="#FFFFFF" stroke="#FEF08A" strokeWidth="1" />
+    <circle cx="50" cy="16" r="3" fill="#00F5FF" />
+
+    {/* Radiant Central Diamond Singularity */}
+    <polygon points="50,24 72,48 50,86 28,48" fill="url(#tachyonApexCore)" stroke="#FFFFFF" strokeWidth="1.8" filter="drop-shadow(0 0 16px #00F5FF)" />
+    <polygon points="50,30 64,48 50,56 36,48" fill="#FFFFFF" opacity="0.9" />
   </svg>
 )
 
