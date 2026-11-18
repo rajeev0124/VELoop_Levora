@@ -507,6 +507,125 @@ export const HeraldryDiamond = ({ size = 72, isLocked = false }) => (
   </svg>
 )
 
+export const HeraldryObsidian = ({ size = 72, isLocked = false }) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 100 100"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    style={{
+      filter: isLocked
+        ? 'grayscale(0.7) brightness(0.7)'
+        : 'drop-shadow(0 0 20px rgba(244, 63, 94, 0.8)) drop-shadow(0 8px 24px rgba(0, 0, 0, 0.9))',
+    }}
+  >
+    <defs>
+      <linearGradient id="obsidianGlass" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#27272A" />
+        <stop offset="50%" stopColor="#18181B" />
+        <stop offset="100%" stopColor="#09090B" />
+      </linearGradient>
+      <linearGradient id="moltenMagma" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#FDE047" />
+        <stop offset="35%" stopColor="#F97316" />
+        <stop offset="70%" stopColor="#E11D48" />
+        <stop offset="100%" stopColor="#881337" />
+      </linearGradient>
+      <radialGradient id="voidCore" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stopColor="#FDA4AF" />
+        <stop offset="40%" stopColor="#E11D48" />
+        <stop offset="70%" stopColor="#4C0519" />
+        <stop offset="100%" stopColor="#020617" />
+      </radialGradient>
+    </defs>
+    {/* Dragon Horns & Spikes */}
+    <path d="M22 28 L14 12 L28 22 Z" fill="url(#moltenMagma)" />
+    <path d="M78 28 L86 12 L72 22 Z" fill="url(#moltenMagma)" />
+    {/* Heavy Obsidian Shield */}
+    <polygon points="50,14 82,28 72,76 50,92 28,76 18,28" fill="url(#obsidianGlass)" stroke="url(#moltenMagma)" strokeWidth="2" />
+    <polygon points="50,22 74,34 66,70 50,82 34,70 26,34" fill="#09090B" stroke="#F43F5E" strokeWidth="1" />
+    {/* Molten Magma Core Vortex */}
+    <circle cx="50" cy="52" r="18" fill="url(#voidCore)" stroke="#FB7185" strokeWidth="1.5" />
+    <circle cx="50" cy="52" r="8" fill="#FFF1F2" opacity="0.85" />
+  </svg>
+)
+
+export const HeraldryCelestial = ({ size = 72, isLocked = false }) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 100 100"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    style={{
+      filter: isLocked
+        ? 'grayscale(0.7) brightness(0.7)'
+        : 'drop-shadow(0 0 22px rgba(245, 158, 11, 0.85)) drop-shadow(0 8px 24px rgba(0, 0, 0, 0.9))',
+    }}
+  >
+    <defs>
+      <linearGradient id="celestialGold" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#FEF08A" />
+        <stop offset="50%" stopColor="#F59E0B" />
+        <stop offset="100%" stopColor="#B45309" />
+      </linearGradient>
+      <radialGradient id="supernovaNova" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stopColor="#FFFFFF" />
+        <stop offset="30%" stopColor="#FEF08A" />
+        <stop offset="65%" stopColor="#F59E0B" />
+        <stop offset="100%" stopColor="#78350F" />
+      </radialGradient>
+    </defs>
+    {/* Orbiting Gyro Ring */}
+    <ellipse cx="50" cy="54" rx="42" ry="16" fill="none" stroke="#FBBF24" strokeWidth="1.5" strokeDasharray="6 3" />
+    {/* Tripartite Stellar Crown */}
+    <path d="M26 40 L34 22 L50 32 L66 22 L74 40 L50 48 Z" fill="url(#celestialGold)" stroke="#FFFBEB" strokeWidth="1" />
+    {/* Supernova Star Core */}
+    <circle cx="50" cy="54" r="16" fill="url(#supernovaNova)" stroke="#FFFBEB" strokeWidth="2" filter="drop-shadow(0 0 12px #FDE68A)" />
+    <circle cx="50" cy="54" r="6" fill="#FFFFFF" />
+  </svg>
+)
+
+export const HeraldryMythic = ({ size = 72, isLocked = false }) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 100 100"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    style={{
+      filter: isLocked
+        ? 'grayscale(0.7) brightness(0.7)'
+        : 'drop-shadow(0 0 24px rgba(16, 185, 129, 0.9)) drop-shadow(0 8px 24px rgba(0, 0, 0, 0.9))',
+    }}
+  >
+    <defs>
+      <linearGradient id="mythicRainbow" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#00F5FF" />
+        <stop offset="33%" stopColor="#10B981" />
+        <stop offset="66%" stopColor="#FBBF24" />
+        <stop offset="100%" stopColor="#C084FC" />
+      </linearGradient>
+      <radialGradient id="singularityCore" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stopColor="#FFFFFF" />
+        <stop offset="40%" stopColor="#34D399" />
+        <stop offset="80%" stopColor="#065F46" />
+        <stop offset="100%" stopColor="#022C22" />
+      </radialGradient>
+    </defs>
+    {/* Tachyon Wings & Halo */}
+    <circle cx="50" cy="50" r="42" fill="none" stroke="url(#mythicRainbow)" strokeWidth="1.5" strokeDasharray="4 2" />
+    <path d="M12 45 C20 30, 36 26, 44 32 C38 42, 28 52, 12 45 Z" fill="url(#mythicRainbow)" opacity="0.9" />
+    <path d="M88 45 C80 30, 64 26, 56 32 C62 42, 72 52, 88 45 Z" fill="url(#mythicRainbow)" opacity="0.9" />
+    {/* Floating Tripartite Crown */}
+    <path d="M30 24 L38 12 L50 20 L62 12 L70 24 L50 28 Z" fill="#FDE047" stroke="#FFFFFF" strokeWidth="1" />
+    {/* Singularity Crystal */}
+    <polygon points="50,30 68,50 50,70 32,50" fill="url(#singularityCore)" stroke="#FFFFFF" strokeWidth="1.8" />
+    <circle cx="50" cy="50" r="5" fill="#FFFFFF" />
+  </svg>
+)
+
 /**
  * Master Heraldry Dispatcher
  */
@@ -525,8 +644,14 @@ export const BespokeHeraldry = ({ level = 5, size = 72, isLocked = false, isCurr
     case 6:
       return <HeraldryPlatinum size={size} isLocked={isLocked} />
     case 7:
-    default:
       return <HeraldryDiamond size={size} isLocked={isLocked} />
+    case 8:
+      return <HeraldryObsidian size={size} isLocked={isLocked} />
+    case 9:
+      return <HeraldryCelestial size={size} isLocked={isLocked} />
+    case 10:
+    default:
+      return <HeraldryMythic size={size} isLocked={isLocked} />
   }
 }
 

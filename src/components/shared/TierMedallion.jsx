@@ -9,7 +9,7 @@ export const TIER_CONFIGS = {
   1: {
     level: 1,
     name: 'Bronze Initiate',
-    silhouette: 'Small Round Shield, Simple Wings, Warm Copper',
+    silhouette: 'Gladiator Vanguard Buckler with 8 Steel Studs & Crossed Gladius Swords',
     primary: '#CD7F32',
     secondary: '#7A3E10',
     light: '#F5A962',
@@ -17,12 +17,12 @@ export const TIER_CONFIGS = {
     glow: 'rgba(205, 127, 50, 0.55)',
     bannerText: 'LVL 01',
     rarity: 'Common',
-    assetUrl: '/assets/lvl-1.svg',
+    assetUrl: '/assets/ranks/rank-lvl-01.png',
   },
   2: {
     level: 2,
     name: 'Silver Scout',
-    silhouette: 'Winged Shield with Inset Gems, Cool Silver-Blue',
+    silhouette: 'Supersonic Falcon Aegis with Polished Silver Wings & Blue Topaz Core',
     primary: '#CBD5E1',
     secondary: '#475569',
     light: '#E2E8F0',
@@ -30,12 +30,12 @@ export const TIER_CONFIGS = {
     glow: 'rgba(56, 189, 248, 0.55)',
     bannerText: 'LVL 02',
     rarity: 'Uncommon',
-    assetUrl: '/assets/lvl-2.svg',
+    assetUrl: '/assets/ranks/rank-lvl-02.png',
   },
   3: {
     level: 3,
     name: 'Emerald Ranger',
-    silhouette: 'Pointed Kite Shield, Leaf-Wing Motif, Emerald Gems',
+    silhouette: 'Gothic Obsidian Kite Shield with Emerald Blades & Radioactive Core',
     primary: '#10B981',
     secondary: '#065F46',
     light: '#6EE7B7',
@@ -43,12 +43,12 @@ export const TIER_CONFIGS = {
     glow: 'rgba(16, 185, 129, 0.60)',
     bannerText: 'LVL 03',
     rarity: 'Rare',
-    assetUrl: '/assets/lvl-3.svg',
+    assetUrl: '/assets/ranks/rank-lvl-03.png',
   },
   4: {
     level: 4,
     name: 'Sapphire Knight',
-    silhouette: 'Hexagonal Shield, Crossed Blades, Deep Sapphire Blue',
+    silhouette: 'Hexagonal Titanium Pavise with Crossed Broadswords & Sapphire Reactor',
     primary: '#3B82F6',
     secondary: '#1E3A8A',
     light: '#93C5FD',
@@ -56,25 +56,25 @@ export const TIER_CONFIGS = {
     glow: 'rgba(59, 130, 246, 0.65)',
     bannerText: 'LVL 04',
     rarity: 'Epic',
-    assetUrl: '/assets/lvl-4.svg',
+    assetUrl: '/assets/ranks/rank-lvl-04.png',
   },
   5: {
     level: 5,
     name: 'Gold Guardian',
-    silhouette: 'Ornate Hex Shield, Crown, Large Spread Wings, Warm Gold',
+    silhouette: 'Imperial Sovereign Sun-Eagle with 5-Tier Gold Wings & Crown',
     primary: '#FBBF24',
     secondary: '#B45309',
     light: '#FEF08A',
     highlight: '#FFFBEB',
-    glow: 'rgba(251, 191, 36, 0.40)',
+    glow: 'rgba(251, 191, 36, 0.55)',
     bannerText: 'LVL 05',
     rarity: 'Legendary',
-    assetUrl: '/assets/lvl-5.svg',
+    assetUrl: '/assets/ranks/rank-lvl-05.png',
   },
   6: {
     level: 6,
     name: 'Platinum Hero',
-    silhouette: 'Icy Platinum & Violet, Tall Ornate Crown, Orbiting Gems',
+    silhouette: 'Cryo-Amethyst Hyper-Disc with Floating Shards & Ultraviolet Singularity',
     primary: '#C084FC',
     secondary: '#6B21A8',
     light: '#F3E8FF',
@@ -82,12 +82,12 @@ export const TIER_CONFIGS = {
     glow: 'rgba(192, 132, 252, 0.80)',
     bannerText: 'LVL 06',
     rarity: 'Ascendant',
-    assetUrl: '/assets/lvl-6.svg',
+    assetUrl: '/assets/ranks/rank-lvl-06.png',
   },
   7: {
     level: 7,
     name: 'Diamond Champion',
-    silhouette: 'Faceted Diamond Silhouette, Cyan-White Refraction',
+    silhouette: 'Prismatic Star-Vanguard with 8-Point Diamond Star & Cyan Reticle',
     primary: '#00F5FF',
     secondary: '#0369A1',
     light: '#A5F3FC',
@@ -95,12 +95,12 @@ export const TIER_CONFIGS = {
     glow: 'rgba(0, 245, 255, 0.80)',
     bannerText: 'LVL 07',
     rarity: 'Prismatic',
-    assetUrl: '/assets/lvl-7.svg',
+    assetUrl: '/assets/ranks/rank-lvl-07.png',
   },
   8: {
     level: 8,
     name: 'Obsidian Sovereign',
-    silhouette: 'Black-Glass Crest with Magenta and Gold Edge Glow',
+    silhouette: 'Molten Void-Dragon Pavise with Magma Fissures & Dark Matter Core',
     primary: '#F43F5E',
     secondary: '#881337',
     light: '#FDE68A',
@@ -108,12 +108,12 @@ export const TIER_CONFIGS = {
     glow: 'rgba(244, 63, 94, 0.85)',
     bannerText: 'LVL 08',
     rarity: 'Sovereign',
-    assetUrl: '/assets/lvl-8.svg',
+    assetUrl: '/assets/ranks/rank-lvl-08.png',
   },
   9: {
     level: 9,
     name: 'Celestial Ascendant',
-    silhouette: 'Star-and-Halo Emblem, Animated Aurora Gradient',
+    silhouette: 'Supernova Corona with Stellar Crown, Gyro Ring & Burning Solar Wings',
     primary: '#F59E0B',
     secondary: '#78350F',
     light: '#38BDF8',
@@ -121,12 +121,12 @@ export const TIER_CONFIGS = {
     glow: 'rgba(245, 158, 11, 0.85)',
     bannerText: 'LVL 09',
     rarity: 'Celestial',
-    assetUrl: '/assets/lvl-9.svg',
+    assetUrl: '/assets/ranks/rank-lvl-09.png',
   },
   10: {
     level: 10,
     name: 'Mythic Legend',
-    silhouette: 'Animated Rainbow-Foil, Floating Crown, Particle Halo',
+    silhouette: 'Transcendent Cosmic Relic with Iridescent Phoenix Wings & Rainbow Aurora',
     primary: '#10B981',
     secondary: '#A855F7',
     light: '#FBBF24',
@@ -134,7 +134,7 @@ export const TIER_CONFIGS = {
     glow: 'rgba(16, 185, 129, 0.90)',
     bannerText: 'MYTHIC 10',
     rarity: 'Mythic',
-    assetUrl: '/assets/lvl-10.svg',
+    assetUrl: '/assets/ranks/rank-lvl-10.png',
   },
 }
 
@@ -227,18 +227,18 @@ const TierMedallion = ({
 
   // Optical scale normalization: wide winged tiers (L3-L5) vs compact round bucklers (L1)
   const TIER_SCALE_FACTORS = {
-    1: 0.90, // compact buckler normalized to match core shield size
-    2: 1.00,
-    3: 1.14,
-    4: 1.22, // Sapphire Knight wide wings restored to full heroic presence
-    5: 1.18, // Gold Guardian
-    6: 1.16, // Platinum Hero
-    7: 1.16, // Diamond Champion
-    8: 1.16, // Obsidian Sovereign
-    9: 1.16, // Celestial Ascendant
-    10: 1.18, // Mythic Legend
+    1: 1.05,
+    2: 1.05,
+    3: 1.05,
+    4: 1.05,
+    5: 1.05,
+    6: 1.05,
+    7: 1.05,
+    8: 1.05,
+    9: 1.05,
+    10: 1.05,
   }
-  const opticalScale = TIER_SCALE_FACTORS[level] || 1.0
+  const opticalScale = TIER_SCALE_FACTORS[level] || 1.05
 
   // Dynamic status glow & filter
   const getFilterStyle = () => {
@@ -341,13 +341,32 @@ const TierMedallion = ({
             animation: isCurrent ? 'floatIdle 3.4s infinite ease-in-out' : 'none',
           }}
         >
-          {/* Artisanal Bespoke 3D Gaming Heraldry */}
-          <BespokeHeraldry
-            level={level}
-            size={size}
-            isLocked={isLocked && !isHovered}
-            isCurrent={isCurrent}
-          />
+          {/* Authentic AAA 3D Esports Rank Insignia */}
+          {!imgError ? (
+            <img
+              src={`${tier.assetUrl}?v=3d-insignia`}
+              alt={`${tier.name} Rank Insignia`}
+              draggable={false}
+              onError={() => setImgError(true)}
+              style={{
+                width: '100%',
+                height: '100%',
+                objectFit: 'contain',
+                pointerEvents: 'none',
+                filter: isLocked && !isHovered
+                  ? 'grayscale(0.4) brightness(0.75) contrast(1.15) drop-shadow(0 4px 10px rgba(0,0,0,0.8))'
+                  : 'drop-shadow(0 8px 18px rgba(0,0,0,0.75))',
+                transition: 'filter 0.3s ease, transform 0.3s ease',
+              }}
+            />
+          ) : (
+            <BespokeHeraldry
+              level={level}
+              size={size}
+              isLocked={isLocked && !isHovered}
+              isCurrent={isCurrent}
+            />
+          )}
 
           {/* Interactive Cursor-Tracking Holographic Specular Glint */}
           {interactive && sheen.active && (

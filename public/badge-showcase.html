@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>VELoop 10-Tier Esports Rank Insignias — Showcase</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #080612;
+    color: #F8FAFC;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    padding: 40px 24px;
+    min-height: 100vh;
+  }
+  .header {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 36px;
+  }
+  .header h1 {
+    font-size: 28px;
+    font-weight: 900;
+    letter-spacing: 1px;
+    background: linear-gradient(135deg, #FFF 0%, #FBBF24 50%, #F59E0B 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 8px;
+  }
+  .header p {
+    color: #94A3B8;
+    font-size: 14px;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .card {
+    position: relative;
+    background: radial-gradient(circle at 50% 20%, rgba(255,255,255,0.05) 0%, rgba(14, 11, 28, 0.95) 75%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 18px;
+    padding: 24px 16px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    overflow: hidden;
+  }
+  .card:hover {
+    transform: translateY(-6px);
+  }
+  .card-aura {
+    position: absolute;
+    top: 20px;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    filter: blur(28px);
+    opacity: 0.35;
+    pointer-events: none;
+  }
+  .badge-img {
+    width: 130px;
+    height: 130px;
+    object-fit: contain;
+    position: relative;
+    z-index: 2;
+    filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.8));
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .card:hover .badge-img {
+    transform: scale(1.1) rotate(2deg);
+  }
+  .pill {
+    margin-top: 14px;
+    padding: 3px 10px;
+    border-radius: 999px;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 2;
+  }
+  .title {
+    font-size: 15px;
+    font-weight: 800;
+    margin-top: 8px;
+    position: relative;
+    z-index: 2;
+  }
+  .rarity {
+    font-size: 11px;
+    font-weight: 600;
+    color: #94A3B8;
+    margin-top: 2px;
+    position: relative;
+    z-index: 2;
+  }
+</style>
+</head>
+<body>
+  <div class="header">
+    <h1>PROJECT SOVEREIGN HERALDRY</h1>
+    <p>10 Photorealistic AAA 3D Esports Rank Crests • Octane 3D Raytraced Die-Cast Medallions</p>
+  </div>
+  <div class="grid" id="badgeGrid"></div>
+
+  <script>
+    const TIERS = [
+      { lvl: '01', name: 'Bronze Initiate', archetype: 'Gladiator Buckler', rarity: 'Common', glow: '#CD7F32', pillBg: 'rgba(205, 127, 50, 0.2)', border: 'rgba(205, 127, 50, 0.5)' },
+      { lvl: '02', name: 'Silver Scout', archetype: 'Falcon Aegis', rarity: 'Uncommon', glow: '#38BDF8', pillBg: 'rgba(56, 189, 248, 0.2)', border: 'rgba(56, 189, 248, 0.5)' },
+      { lvl: '03', name: 'Emerald Ranger', archetype: 'Bio-Plasma Kite', rarity: 'Rare', glow: '#10B981', pillBg: 'rgba(16, 185, 129, 0.2)', border: 'rgba(16, 185, 129, 0.5)' },
+      { lvl: '04', name: 'Sapphire Knight', archetype: 'Titanium Broadsword', rarity: 'Epic', glow: '#3B82F6', pillBg: 'rgba(59, 130, 246, 0.2)', border: 'rgba(59, 130, 246, 0.5)' },
+      { lvl: '05', name: 'Gold Guardian', archetype: 'Sun-Eagle Sovereign', rarity: 'Legendary (ACTIVE)', glow: '#FBBF24', pillBg: 'rgba(251, 191, 36, 0.2)', border: 'rgba(251, 191, 36, 0.6)' },
+      { lvl: '06', name: 'Platinum Hero', archetype: 'Cryo-Amethyst Disc', rarity: 'Ascendant', glow: '#C084FC', pillBg: 'rgba(192, 132, 252, 0.2)', border: 'rgba(192, 132, 252, 0.5)' },
+      { lvl: '07', name: 'Diamond Champion', archetype: 'Prismatic Star-Vanguard', rarity: 'Prismatic', glow: '#00F5FF', pillBg: 'rgba(0, 245, 255, 0.2)', border: 'rgba(0, 245, 255, 0.5)' },
+      { lvl: '08', name: 'Obsidian Sovereign', archetype: 'Molten Void-Dragon', rarity: 'Sovereign', glow: '#F43F5E', pillBg: 'rgba(244, 63, 94, 0.2)', border: 'rgba(244, 63, 94, 0.5)' },
+      { lvl: '09', name: 'Celestial Ascendant', archetype: 'Supernova Corona', rarity: 'Celestial', glow: '#F59E0B', pillBg: 'rgba(245, 158, 11, 0.2)', border: 'rgba(245, 158, 11, 0.5)' },
+      { lvl: '10', name: 'Mythic Legend', archetype: 'Transcendent Relic', rarity: 'Mythic (GOD-TIER)', glow: '#10B981', pillBg: 'rgba(16, 185, 129, 0.2)', border: 'rgba(16, 185, 129, 0.6)' }
+    ];
+
+    const grid = document.getElementById('badgeGrid');
+    TIERS.forEach(t => {
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.style.borderColor = t.border;
+      card.innerHTML = `
+        <div class="card-aura" style="background: ${t.glow}"></div>
+        <img class="badge-img" src="/assets/ranks/rank-lvl-${t.lvl}.png" alt="${t.name}">
+        <span class="pill" style="color: ${t.glow}; background: ${t.pillBg}; border: 1px solid ${t.border}">LEVEL ${t.lvl}</span>
+        <div class="title" style="color: #FFF">${t.name}</div>
+        <div class="rarity">${t.rarity}</div>
+      `;
+      grid.appendChild(card);
+    });
+  </script>
+</body>
+</html>
