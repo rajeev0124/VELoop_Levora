@@ -22,7 +22,7 @@ export const TIER_CONFIGS = {
   2: {
     level: 2,
     name: 'Silver Scout',
-    silhouette: 'Supersonic Falcon Aegis with Polished Silver Wings & Blue Topaz Core',
+    silhouette: 'Aerospace Titanium Dual-Chevron Vanguard with Cold Cyan Particle Vents',
     primary: '#CBD5E1',
     secondary: '#475569',
     light: '#E2E8F0',
@@ -35,7 +35,7 @@ export const TIER_CONFIGS = {
   3: {
     level: 3,
     name: 'Emerald Ranger',
-    silhouette: 'Gothic Obsidian Kite Shield with Emerald Blades & Radioactive Core',
+    silhouette: 'Verdant Cyber-Strike Aegis with Chiseled Tungsten Armor & Hexagonal Emerald Matrix',
     primary: '#10B981',
     secondary: '#065F46',
     light: '#6EE7B7',
@@ -48,7 +48,7 @@ export const TIER_CONFIGS = {
   4: {
     level: 4,
     name: 'Sapphire Knight',
-    silhouette: 'Hexagonal Titanium Pavise with Crossed Broadswords & Sapphire Reactor',
+    silhouette: 'Cobalt Hyper-Drive Vanguard with Swept Blade-Wings & Pulsating Sapphire Reactor',
     primary: '#3B82F6',
     secondary: '#1E3A8A',
     light: '#93C5FD',
@@ -61,12 +61,12 @@ export const TIER_CONFIGS = {
   5: {
     level: 5,
     name: 'Gold Guardian',
-    silhouette: 'Imperial Sovereign Sun-Eagle with 5-Tier Gold Wings & Crown',
+    silhouette: 'Imperial Apex Gold Solar Aegis with Swept 24K Blade-Wings & Fusion Core',
     primary: '#FBBF24',
     secondary: '#B45309',
     light: '#FEF08A',
     highlight: '#FFFBEB',
-    glow: 'rgba(251, 191, 36, 0.55)',
+    glow: 'rgba(251, 191, 36, 0.75)',
     bannerText: 'LVL 05',
     rarity: 'Legendary',
     assetUrl: '/assets/ranks/rank-lvl-05.png',
@@ -344,7 +344,7 @@ const TierMedallion = ({
           {/* Authentic AAA 3D Esports Rank Insignia */}
           {!imgError ? (
             <img
-              src={`${tier.assetUrl}?v=3d-insignia`}
+              src={`${tier.assetUrl}?v=esports-v4`}
               alt={`${tier.name} Rank Insignia`}
               draggable={false}
               onError={() => setImgError(true)}

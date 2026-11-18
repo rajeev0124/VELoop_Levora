@@ -208,12 +208,11 @@ export const HeraldrySapphire = ({ size = 72, isLocked = false }) => (
       </radialGradient>
     </defs>
 
-    {/* Crossed Titanium Knight Broadswords Behind Shield */}
-    <path d="M12 14 L42 44 M12 14 L16 10 L44 38 L40 42 Z" fill="url(#saphBlade)" stroke="#CBD5E1" strokeWidth="0.8" />
-    <path d="M88 14 L58 44 M88 14 L84 10 L56 38 L60 42 Z" fill="url(#saphBlade)" stroke="#CBD5E1" strokeWidth="0.8" />
-    {/* Sword Guards and Pommels */}
-    <circle cx="14" cy="12" r="3.5" fill="#FBBF24" stroke="#B45309" strokeWidth="0.8" />
-    <circle cx="86" cy="12" r="3.5" fill="#FBBF24" stroke="#B45309" strokeWidth="0.8" />
+    {/* Swept Aerodynamic Titanium Blade-Wings (No Crossed Swords) */}
+    <path d="M14 26 L34 38 L28 54 L8 36 Z" fill="url(#saphBlade)" stroke="#60A5FA" strokeWidth="1" filter="drop-shadow(0 2px 8px rgba(0,0,0,0.5))" />
+    <path d="M86 26 L66 38 L72 54 L92 36 Z" fill="url(#saphBlade)" stroke="#60A5FA" strokeWidth="1" filter="drop-shadow(0 2px 8px rgba(0,0,0,0.5))" />
+    <path d="M6 38 L24 48 L18 62 L2 48 Z" fill="#1E3A8A" stroke="#38BDF8" strokeWidth="0.8" />
+    <path d="M94 38 L76 48 L82 62 L98 48 Z" fill="#1E3A8A" stroke="#38BDF8" strokeWidth="0.8" />
 
     {/* Hexagonal Adamantine Knight's Pavise Shield */}
     <polygon
